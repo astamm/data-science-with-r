@@ -1,24 +1,94 @@
 [
   {
-    "objectID": "01_Introduction/authoring-with-quarto.html",
-    "href": "01_Introduction/authoring-with-quarto.html",
-    "title": "Authoring with Quarto",
+    "objectID": "02_Visualize/02-Visualize-Exercises.html",
+    "href": "02_Visualize/02-Visualize-Exercises.html",
+    "title": "Visualize Data",
     "section": "",
-    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+    "text": "Add a setup chunk that loads the tidyverse packages and turn the global option eval to true in the above YAML header.\n\nmpg"
   },
   {
-    "objectID": "01_Introduction/authoring-with-quarto.html#section-1",
-    "href": "01_Introduction/authoring-with-quarto.html#section-1",
-    "title": "Authoring with Quarto",
-    "section": "Section 1",
-    "text": "Section 1\nText written in markdown.\n\n# Code written in R\n(x &lt;- 1:10)\n\n [1]  1  2  3  4  5  6  7  8  9 10"
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-0",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-0",
+    "title": "Visualize Data",
+    "section": "",
+    "text": "Add a setup chunk that loads the tidyverse packages and turn the global option eval to true in the above YAML header.\n\nmpg"
   },
   {
-    "objectID": "01_Introduction/authoring-with-quarto.html#section-2",
-    "href": "01_Introduction/authoring-with-quarto.html#section-2",
-    "title": "Authoring with Quarto",
-    "section": "Section 2",
-    "text": "Section 2\nText written in markdown.\n\nggplot(data = mpg) +\n  geom_point(aes(x = displ, y = hwy, color = class))\n\n\n\n\n\n\n\n\n…and so on."
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-1",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-1",
+    "title": "Visualize Data",
+    "section": "Your Turn 1",
+    "text": "Your Turn 1\nRun the code on the slide to make a graph. Pay strict attention to spelling, capitalization, and parentheses!"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-2",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-2",
+    "title": "Visualize Data",
+    "section": "Your Turn 2",
+    "text": "Your Turn 2\nAdd color, size, alpha, and shape aesthetics to your graph. Experiment.\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy))"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#help-me",
+    "href": "02_Visualize/02-Visualize-Exercises.html#help-me",
+    "title": "Visualize Data",
+    "section": "Help Me",
+    "text": "Help Me\nWhat do facet_grid() and facet_wrap() do? (run the code, interpret, convince your group)\n\n# Makes a plot that the commands below will modify\nq &lt;- ggplot(mpg) + geom_point(aes(x = displ, y = hwy))\n\nq + facet_grid(cols = vars(cyl))\nq + facet_grid(rows = vars(drv))\nq + facet_grid(rows = vars(drv), cols = vars(cyl))\nq + facet_wrap(facets = vars(class))"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-3",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-3",
+    "title": "Visualize Data",
+    "section": "Your Turn 3",
+    "text": "Your Turn 3\nAdd the black code to your graph. What does it do?\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(displ, hwy, color = class))"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-4",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-4",
+    "title": "Visualize Data",
+    "section": "Your Turn 4",
+    "text": "Your Turn 4\nReplace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.\n\nggplot(mpg) + geom_point(aes(class, hwy))"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-5",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-5",
+    "title": "Visualize Data",
+    "section": "Your Turn 5",
+    "text": "Your Turn 5\nMake a histogram of the hwy variable from mpg. Hint: do not supply a y variable."
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-6",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-6",
+    "title": "Visualize Data",
+    "section": "Your Turn 6",
+    "text": "Your Turn 6\nUse the help page for geom_histogram to make the bins 2 units wide."
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-7",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-7",
+    "title": "Visualize Data",
+    "section": "Your Turn 7",
+    "text": "Your Turn 7\nMake a bar chart class colored by class. Use the help page for geom_bar to choose a “color” aesthetic for class."
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#quiz",
+    "href": "02_Visualize/02-Visualize-Exercises.html#quiz",
+    "title": "Visualize Data",
+    "section": "Quiz",
+    "text": "Quiz\nWhat will this code do?\n\nggplot(mpg) + \n  geom_point(aes(displ, hwy)) +\n  geom_smooth(aes(displ, hwy))"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#quiz-1",
+    "href": "02_Visualize/02-Visualize-Exercises.html#quiz-1",
+    "title": "Visualize Data",
+    "section": "Quiz",
+    "text": "Quiz\nWhat is different about this plot? Run the code!\n\np &lt;- ggplot(mpg) + \n  geom_point(aes(displ, hwy)) +\n  geom_smooth(aes(displ, hwy))\n\nlibrary(plotly)\nggplotly(p)"
+  },
+  {
+    "objectID": "01_Introduction/01-Introduction-Exercises.html",
+    "href": "01_Introduction/01-Introduction-Exercises.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "This is a Quarto file. It contains plain text interspersed with grey chunks of code. You can use the file to take notes and run code. For example, you can write your name on the line below. Try it:\n\n# You can write code in chunks that look like this.\n# This chunk uses the code plot(cars) to plot a data set.\n# To run the code, click the Green play button at the\n# top right of this chunk. Try it!\nplot(cars)\n\n\n\n\n\n\n\n\nGood job! The results of a code chunk will appear beneath the chunk. You can click the x above the results to make them go away, but let’s not do that.\nYou can open a new Quarto file by going to File &gt; New File &gt; Quarto Document…. Then click OK. But let’s not open a new file now—keep reading this one!\n\nAdding chunks\nTo add a new code chunk, press Cmd+Option+I (Ctrl+Alt+I on Windows), or click the Insert button at the top of this document, then select R. Quarto will add a new, empty chunk at your cursor’s location.\nTry making a code chunk below:\nGood job! For today, you should place all of your R code inside of code chunks.\n\n# Sometimes you might want to run only some of the code \n# in a code chunk. To do that, highlight the code to \n# run and then press Cmd + Enter (Control + Enter on \n# Windows). If you do not highlight any code, R will \n# run the line of code that your cursor is on.\n# Try it now. Run mean(1:5) but not the line below.\nmean(1:5)\n\n[1] 3\n\nwarning(\"You shouldn't run this!\")\n\nWarning: You shouldn't run this!\n\n\n\n# You can click the downward facing arrow to the left of the play button to run\n# every chunk above the current code chunk. This is useful if the code in your\n# chunk uses object that you made in previous chunks.\n# Sys.Date()\n\nDid you notice the green lines in the code chunk above? They are code comments, lines of text that R ignores when it runs the code. R will treat everything that appears after # on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that’s fine)!\nRemove the # on the last line of the chunk above and then rerun the chunk. Can you tell what Sys.Date() does?\nBy the way, you only need to use code comments inside of code chunks. R knows not to try to run the text that you write outside of code chunks.\n\n\nText formatting\nHave you noticed the funny highlighting that appears in this document? Quarto treats text surrounded by asterisks, double asterisks, and backticks in special ways. It is Quarto’s way of saying that these words are in\n\nitalics\nalso italics\nbold, and\ncode font\n\n*, **, and ` are signals used by a text editing format known as markdown. Quarto uses markdown to turn your plain looking .Rmd documents into polished reports. Let’s give that a try.\n\n\nReports\nWhen you click the knit button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:\n\nTransforms all of your markdown cues into actual formatted text (e.g. bold text, italic text, etc.)\nReruns all of your code chunks in a clean R session and appends the results to the finished report.\nSaves the finished report alongside your .Rmd file\n\nClick the knit button at the top of this document or press Cmd+Shift+K (Ctrl+Shift+K on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking Knit now.\nGood job! You’ll learn more about Quarto throughout the day!\n\n\nR Packages\nHere is one last code chunk that we will use in the next exercise. If you uncomment the code and try to run it, it won’t work. If you don’t believe me try!\n\n# ggplot(data = diamonds) + geom_point(aes(x = carat, y = price))"
   },
   {
     "objectID": "index.html",
@@ -56,10 +126,24 @@
     "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\n[MacOS only] OpenMP support: https://mac.r-project.org/openmp/\nR packages:\n\n{tidyverse}"
   },
   {
-    "objectID": "01_Introduction/01-Introduction-Exercises.html",
-    "href": "01_Introduction/01-Introduction-Exercises.html",
-    "title": "Quarto",
+    "objectID": "01_Introduction/authoring-with-quarto.html",
+    "href": "01_Introduction/authoring-with-quarto.html",
+    "title": "Authoring with Quarto",
     "section": "",
-    "text": "This is a Quarto file. It contains plain text interspersed with grey chunks of code. You can use the file to take notes and run code. For example, you can write your name on the line below. Try it:\n\n# You can write code in chunks that look like this.\n# This chunk uses the code plot(cars) to plot a data set.\n# To run the code, click the Green play button at the\n# top right of this chunk. Try it!\nplot(cars)\n\n\n\n\n\n\n\n\nGood job! The results of a code chunk will appear beneath the chunk. You can click the x above the results to make them go away, but let’s not do that.\nYou can open a new Quarto file by going to File &gt; New File &gt; Quarto Document…. Then click OK. But let’s not open a new file now—keep reading this one!\n\nAdding chunks\nTo add a new code chunk, press Cmd+Option+I (Ctrl+Alt+I on Windows), or click the Insert button at the top of this document, then select R. Quarto will add a new, empty chunk at your cursor’s location.\nTry making a code chunk below:\nGood job! For today, you should place all of your R code inside of code chunks.\n\n# Sometimes you might want to run only some of the code \n# in a code chunk. To do that, highlight the code to \n# run and then press Cmd + Enter (Control + Enter on \n# Windows). If you do not highlight any code, R will \n# run the line of code that your cursor is on.\n# Try it now. Run mean(1:5) but not the line below.\nmean(1:5)\n\n[1] 3\n\nwarning(\"You shouldn't run this!\")\n\nWarning: You shouldn't run this!\n\n\n\n# You can click the downward facing arrow to the left of the play button to run\n# every chunk above the current code chunk. This is useful if the code in your\n# chunk uses object that you made in previous chunks.\n# Sys.Date()\n\nDid you notice the green lines in the code chunk above? They are code comments, lines of text that R ignores when it runs the code. R will treat everything that appears after # on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that’s fine)!\nRemove the # on the last line of the chunk above and then rerun the chunk. Can you tell what Sys.Date() does?\nBy the way, you only need to use code comments inside of code chunks. R knows not to try to run the text that you write outside of code chunks.\n\n\nText formatting\nHave you noticed the funny highlighting that appears in this document? Quarto treats text surrounded by asterisks, double asterisks, and backticks in special ways. It is Quarto’s way of saying that these words are in\n\nitalics\nalso italics\nbold, and\ncode font\n\n*, **, and ` are signals used by a text editing format known as markdown. Quarto uses markdown to turn your plain looking .Rmd documents into polished reports. Let’s give that a try.\n\n\nReports\nWhen you click the knit button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:\n\nTransforms all of your markdown cues into actual formatted text (e.g. bold text, italic text, etc.)\nReruns all of your code chunks in a clean R session and appends the results to the finished report.\nSaves the finished report alongside your .Rmd file\n\nClick the knit button at the top of this document or press Cmd+Shift+K (Ctrl+Shift+K on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking Knit now.\nGood job! You’ll learn more about Quarto throughout the day!\n\n\nR Packages\nHere is one last code chunk that we will use in the next exercise. If you uncomment the code and try to run it, it won’t work. If you don’t believe me try!\n\n# ggplot(data = diamonds) + geom_point(aes(x = carat, y = price))"
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+  },
+  {
+    "objectID": "01_Introduction/authoring-with-quarto.html#section-1",
+    "href": "01_Introduction/authoring-with-quarto.html#section-1",
+    "title": "Authoring with Quarto",
+    "section": "Section 1",
+    "text": "Section 1\nText written in markdown.\n\n# Code written in R\n(x &lt;- 1:10)\n\n [1]  1  2  3  4  5  6  7  8  9 10"
+  },
+  {
+    "objectID": "01_Introduction/authoring-with-quarto.html#section-2",
+    "href": "01_Introduction/authoring-with-quarto.html#section-2",
+    "title": "Authoring with Quarto",
+    "section": "Section 2",
+    "text": "Section 2\nText written in markdown.\n\nggplot(data = mpg) +\n  geom_point(aes(x = displ, y = hwy, color = class))\n\n\n\n\n\n\n\n\n…and so on."
   }
 ]
