@@ -1,0 +1,23 @@
+---
+title: "Authoring with Quarto"
+format: html
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## Section 1
+
+Text written in **markdown**.
+
+```{r}
+# Code written in R
+(x <- 1:10)
+```
+
+## Section 2
+
+Text written in *markdown*.
+
+...and so on.
