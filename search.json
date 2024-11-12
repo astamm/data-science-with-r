@@ -18,7 +18,7 @@
     "href": "01_Introduction/authoring-with-quarto.html#section-2",
     "title": "Authoring with Quarto",
     "section": "Section 2",
-    "text": "Section 2\nText written in markdown.\n…and so on."
+    "text": "Section 2\nText written in markdown.\n\nggplot(data = mpg) +\n  geom_point(aes(x = displ, y = hwy, color = class))\n\n\n\n\n\n\n\n\n…and so on."
   },
   {
     "objectID": "index.html",
@@ -39,7 +39,7 @@
     "href": "index.html#material",
     "title": "Instructions for the class",
     "section": "Material",
-    "text": "Material\nThe class is organised in XXX parts each of which has its own set of slides and exercises. The slides are available in the slides folder and the exercises in the labs folder. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\nThe main webpage is at https://astamm.github.io/data-science-with-r/."
+    "text": "Material\nThe class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the slides folder and the exercises in the labs folder. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\nThe main webpage is at https://astamm.github.io/data-science-with-r/."
   },
   {
     "objectID": "index.html#outline",
