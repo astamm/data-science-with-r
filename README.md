@@ -13,7 +13,7 @@ copyright.
 
 ### Material
 
-The class is organised in XXX parts each of which has its own set of slides and
+The class is organised in 9 parts each of which has its own set of slides and
 exercises. The slides are available in the `slides` folder and the exercises in
 the `labs` folder. The slides are written partly with Keynote (exported as PDFs)
 and partly in Quarto reveajs slides. The exercises are written in
