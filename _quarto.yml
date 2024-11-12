@@ -16,10 +16,14 @@ website:
         menu:
           - text: "Introduction"
             href: 01_Introduction/01-Introduction-Slides.pdf
+          - text: "Visualize"
+            href: 02_Visualize/02-Visualize-Slides.pdf
       - text: "Labs"
         menu:
           - text: "Introduction"
             href: 01_Introduction/01-Introduction-Exercises.qmd
+          - text: "Visualize"
+            href: 02_Visualize/02-Visualize-Exercises.qmd
     right:
       - icon: github
         href: https://github.com/astamm/data-science-with-r/
