@@ -25,8 +25,8 @@ The main webpage is at <https://astamm.github.io/data-science-with-r/>.
 
 | Part | Title | Slides | Exercises |
 |------|-------|--------|-----------|
-| 1    | Introduction | [PDF](01_Introduction/01-Introduction-Slides.pdf) | [Quarto](01_Introduction/01-Introduction-Exercises.qmd) |
-| 2    | Visualize Data | [PDF](slides/02-visualize-data.pdf) | [Quarto](labs/02-visualize-data.Rmd) |
+| 1    | Introduction | [PDF](01_Introduction/01-Introduction-Slides.pdf) | [Quarto](https://github.com/astamm/data-science-with-r/blob/main/01_Introduction/01-Introduction-Exercises.qmd) |
+| 2    | Visualize Data | [PDF](02_Visualize/02-Visualize-Slides.pdf) | [Quarto](https://github.com/astamm/data-science-with-r/blob/main/02_Visualize/02-Visualize-Exercises.qmd) |
 | 3    | Transform Data | [PDF](slides/03-transform-data.pdf) | [Quarto](labs/03-transform-data.Rmd) |
 | 4    | Model Data | [PDF](slides/04-model-data.pdf) | [Quarto](labs/04-model-data.Rmd) |
 | 5    | Communicate Data | [PDF](slides/05-communicate-data.pdf) | [Quarto](labs/05-communicate-data.Rmd) |
