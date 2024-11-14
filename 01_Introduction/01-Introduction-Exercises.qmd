@@ -46,11 +46,11 @@ warning("You shouldn't run this!")
 # Sys.Date()
 ```
 
-Did you notice the green lines in the code chunk above? They are *code comments*, lines of text that R ignores when it runs the code. R will treat everything that appears after `#` on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that's fine)!
+Did you notice the green lines (if your RStudio theme is the default one) in the code chunk above? They are *code comments*, lines of text that R ignores when it runs the code. R will treat everything that appears after `#` on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that's fine)!
 
 Remove the `#` on the last line of the chunk above and then rerun the chunk. Can you tell what `Sys.Date()` does?
 
-By the way, you only need to use code comments _inside_ of code chunks. R knows not to try to run the text that you write outside of code chunks.
+By the way, you only need to use code comments _inside_ of code chunks. R knows not to try to run the text that you write outside of code chunks. You can press *Cmd+Shift+C* to comment or uncomment a line of code.
 
 # Text formatting
 
@@ -65,13 +65,13 @@ Have you noticed the funny highlighting that appears in this document? Quarto tr
 
 # Reports
 
-When you click the `knit` button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:
+When you click the `Render` button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:
 
 1. Transforms all of your markdown cues into actual formatted text (e.g. bold text, italic text, etc.)
 2. Reruns all of your code chunks in a clean R session and appends the results to the finished report.
 3. Saves the finished report alongside your .Rmd file
 
-Click the *knit* button at the top of this document or press *Cmd+Shift+K* (*Ctrl+Shift+K* on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking *Knit* now.
+Click the *Render* button at the top of this document or press *Cmd+Shift+K* (*Ctrl+Shift+K* on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking *Render* now.
 
 Good job! You'll learn more about Quarto throughout the day!
 
