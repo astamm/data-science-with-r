@@ -247,9 +247,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># chunk uses object that you made in previous chunks.</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.Date()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Did you notice the green lines in the code chunk above? They are <em>code comments</em>, lines of text that R ignores when it runs the code. R will treat everything that appears after <code>#</code> on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that’s fine)!</p>
+<p>Did you notice the green lines (if your RStudio theme is the default one) in the code chunk above? They are <em>code comments</em>, lines of text that R ignores when it runs the code. R will treat everything that appears after <code>#</code> on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that’s fine)!</p>
 <p>Remove the <code>#</code> on the last line of the chunk above and then rerun the chunk. Can you tell what <code>Sys.Date()</code> does?</p>
-<p>By the way, you only need to use code comments <em>inside</em> of code chunks. R knows not to try to run the text that you write outside of code chunks.</p>
+<p>By the way, you only need to use code comments <em>inside</em> of code chunks. R knows not to try to run the text that you write outside of code chunks. You can press <em>Cmd+Shift+C</em> to comment or uncomment a line of code.</p>
 </section>
 <section id="text-formatting" class="level1">
 <h1>Text formatting</h1>
@@ -264,13 +264,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="reports" class="level1">
 <h1>Reports</h1>
-<p>When you click the <code>knit</code> button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:</p>
+<p>When you click the <code>Render</code> button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:</p>
 <ol type="1">
 <li>Transforms all of your markdown cues into actual formatted text (e.g.&nbsp;bold text, italic text, etc.)</li>
 <li>Reruns all of your code chunks in a clean R session and appends the results to the finished report.</li>
 <li>Saves the finished report alongside your .Rmd file</li>
 </ol>
-<p>Click the <em>knit</em> button at the top of this document or press <em>Cmd+Shift+K</em> (<em>Ctrl+Shift+K</em> on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking <em>Knit</em> now.</p>
+<p>Click the <em>Render</em> button at the top of this document or press <em>Cmd+Shift+K</em> (<em>Ctrl+Shift+K</em> on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking <em>Render</em> now.</p>
 <p>Good job! You’ll learn more about Quarto throughout the day!</p>
 </section>
 <section id="r-packages" class="level1">
