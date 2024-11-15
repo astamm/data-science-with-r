@@ -91,6 +91,216 @@
     "text": "This is a Quarto file. It contains plain text interspersed with grey chunks of code. You can use the file to take notes and run code. For example, you can write your name on the line below. Try it:\n\n# You can write code in chunks that look like this.\n# This chunk uses the code plot(cars) to plot a data set.\n# To run the code, click the Green play button at the\n# top right of this chunk. Try it!\nplot(cars)\n\n\n\n\n\n\n\n\nGood job! The results of a code chunk will appear beneath the chunk. You can click the x above the results to make them go away, but let’s not do that.\nYou can open a new Quarto file by going to File &gt; New File &gt; Quarto Document…. Then click OK. But let’s not open a new file now—keep reading this one!\n\nAdding chunks\nTo add a new code chunk, press Cmd+Option+I (Ctrl+Alt+I on Windows), or click the Insert button at the top of this document, then select R. Quarto will add a new, empty chunk at your cursor’s location.\nTry making a code chunk below:\nGood job! For today, you should place all of your R code inside of code chunks.\n\n# Sometimes you might want to run only some of the code \n# in a code chunk. To do that, highlight the code to \n# run and then press Cmd + Enter (Control + Enter on \n# Windows). If you do not highlight any code, R will \n# run the line of code that your cursor is on.\n# Try it now. Run mean(1:5) but not the line below.\nmean(1:5)\n\n[1] 3\n\nwarning(\"You shouldn't run this!\")\n\nWarning: You shouldn't run this!\n\n\n\n# You can click the downward facing arrow to the left of the play button to run\n# every chunk above the current code chunk. This is useful if the code in your\n# chunk uses object that you made in previous chunks.\n# Sys.Date()\n\nDid you notice the green lines (if your RStudio theme is the default one) in the code chunk above? They are code comments, lines of text that R ignores when it runs the code. R will treat everything that appears after # on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that’s fine)!\nRemove the # on the last line of the chunk above and then rerun the chunk. Can you tell what Sys.Date() does?\nBy the way, you only need to use code comments inside of code chunks. R knows not to try to run the text that you write outside of code chunks. You can press Cmd+Shift+C to comment or uncomment a line of code.\n\n\nText formatting\nHave you noticed the funny highlighting that appears in this document? Quarto treats text surrounded by asterisks, double asterisks, and backticks in special ways. It is Quarto’s way of saying that these words are in\n\nitalics\nalso italics\nbold, and\ncode font\n\n*, **, and ` are signals used by a text editing format known as markdown. Quarto uses markdown to turn your plain looking .Rmd documents into polished reports. Let’s give that a try.\n\n\nReports\nWhen you click the Render button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:\n\nTransforms all of your markdown cues into actual formatted text (e.g. bold text, italic text, etc.)\nReruns all of your code chunks in a clean R session and appends the results to the finished report.\nSaves the finished report alongside your .Rmd file\n\nClick the Render button at the top of this document or press Cmd+Shift+K (Ctrl+Shift+K on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking Render now.\nGood job! You’ll learn more about Quarto throughout the day!\n\n\nR Packages\nHere is one last code chunk that we will use in the next exercise. If you uncomment the code and try to run it, it won’t work. If you don’t believe me try!\n\n# ggplot(data = diamonds) + geom_point(aes(x = carat, y = price))"
   },
   {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#general-data-modeling-framework",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#general-data-modeling-framework",
+    "title": "Hypothesis Testing",
+    "section": "General data modeling framework",
+    "text": "General data modeling framework\n\nYou have some data \\(\\{x_1, \\dots, x_n\\}\\) that you presume have been sampled independently from their corresponding random variables \\(\\{X_1, \\dots, X_n\\}\\);\nYou formulate a simple hypothesis \\(H_0\\), called null hypothesis, about the distribution from which this data were sampled;\nYou want to confront this hypothesis against an alternative hypothesis \\(H_a\\) using your finite amount of data;\nYou use a test statistic \\(T(X_1, \\dots, X_n)\\) that depends on the sample (and thus that you can calculate anytime you observe a sample) and of which you know (an approximation of) the distribution when you assume that your null hypothesis is true; it is called the null distribution of the test statistic \\(T\\);\nYou compute the value \\(t_0\\) of this test statistic with your observed data;\nYou strongly reject \\(H_0\\) if \\(t_0\\) falls on the tails of the null distribution of \\(T\\); or,\nYou lack evidence to reject \\(H_0\\) if \\(t_0\\) ends up in the central part of the null distribution of \\(T\\).\nWarning: It is straightforward from this setup to understand that the problem is not symmetric in the hypotheses. Indeed, the procedure relies on what happens when \\(H_0\\) is true but does not depend on \\(H_a\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#theoretical-aspects",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#theoretical-aspects",
+    "title": "Hypothesis Testing",
+    "section": "Theoretical aspects",
+    "text": "Theoretical aspects\nYou design a test statistic \\(T(X_1, \\dots, X_n)\\) for the purpose of performing this test which must satisfy at least the first three of the following four properties:\n\nIt evaluates to real values;\nYou have all the required knowledge to compute its value once you observe the data;\nIf \\(H_0\\) is true, then small values of the statistic should comfort you with the idea that \\(H_0\\) is a reasonable assumption, while larger values of the statistic should generate suspicion about \\(H_0\\) in favor of the alternative hypothesis \\(H_a\\);\n[optional] If \\(H_0\\) is true, then it can be very helpful to have access to the (asymptotic) distribution of the test statistic under classical assumptions (such as normality)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#example-test-on-the-mean",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#example-test-on-the-mean",
+    "title": "Hypothesis Testing",
+    "section": "Example: Test on the mean",
+    "text": "Example: Test on the mean\nSuppose you have a sample of \\(n\\) i.i.d. random variables \\(X_1, \\dots, X_n \\sim \\mathcal{N}(\\mu, \\sigma^2)\\) and you know the value of \\(\\sigma^2\\). We want to test whether the mean \\(\\mu\\) of the distribution is equal to some pre-specified value \\(\\mu_0\\). We can therefore use \\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\). At this point, a good candidate test statistic to look at for performing this test is: \\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma}, \\quad \\mbox{with} \\quad \\overline X := \\frac{1}{n} \\sum_{i=1}^n X_i. \\]\n\nIt evaluates to real values;\nYou have all the required knowledge to compute its value once you observe the data (\\(\\overline x\\));\nThe sample mean \\(\\overline X\\) is an unbiased estimator of the true unknown mean \\(\\mu\\); so, if \\(H_0\\) is true, then \\(\\overline X\\) will produce values that are close to \\(\\mu_0\\); hence, small values of \\(T\\) will comfort you with the idea that \\(H_0\\) is a reasonable assumption, while larger values, both positive or negative, of the statistic should generate suspicion about \\(H_0\\) in favor of the alternative hypothesis \\(H_a\\);\nIf you assume normality and independence of the sample, then \\(T \\sim \\mathcal{N}(0, 1)\\) under \\(H_0\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#distribution-of-the-test-statistic-under-h_0",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#distribution-of-the-test-statistic-under-h_0",
+    "title": "Hypothesis Testing",
+    "section": "Distribution of the test statistic under \\(H_0\\)",
+    "text": "Distribution of the test statistic under \\(H_0\\)\n\nParametric testing. If you designed your test statistic carefully, you might have access to its theoretical distribution when \\(H_0\\) is true under distributional assumptions about the data. This is called parametric hypothesis testing.\nAsymptotic testing. If it is not the case, you can often derive the theoretical distribution of the statistic under the null hypothesis asymptotically, i.e. assuming that you have a large sample (\\(n \\gg 1\\)); this is called asymptotic hypothesis testing.\nBootstrap testing. If you are in a large sample size regime but still cannot have access to the theoretical distribution of your test statistic, you can approach this distribution using bootstrapping; this is called bootstrap hypothesis testing.\nPermutation testing. If you are in a low sample size regime, then you can approach the distribution of the test statistic using permutations; this is called permutation hypothesis testing."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#two-sided-vs.-one-sided-hypothesis-tests",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#two-sided-vs.-one-sided-hypothesis-tests",
+    "title": "Hypothesis Testing",
+    "section": "Two-sided vs. one-sided hypothesis tests",
+    "text": "Two-sided vs. one-sided hypothesis tests\nDepending on what you put into the alternative hypothesis \\(H_a\\), larger values of the test statistic that raise suspicion regarding the validity of \\(H_0\\) might mean:\n\nlarger values only on the right tail of the null distribution of \\(T\\);\nlarger values only on the left tail of the null distribution of \\(T\\);\nlarger values on both tails.\n\nIn the first two cases, we say that the test is one-sided. In the latter case, we say that the test is two-sided because we interpret large values in both tails as suspicious."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#example-test-on-the-mean-continued",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#example-test-on-the-mean-continued",
+    "title": "Hypothesis Testing",
+    "section": "Example: Test on the mean (continued)",
+    "text": "Example: Test on the mean (continued)\nSuppose you have a sample of \\(n\\) i.i.d. random variables \\(X_1, \\dots, X_n \\sim \\mathcal{N}(\\mu, \\sigma^2)\\) and you know the value of \\(\\sigma^2\\). We want to test whether the mean \\(\\mu\\) of the distribution is equal to some pre-specified value \\(\\mu_0\\). As we have seen, a good candidate test statistic to look at for performing this test is:\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma}, \\quad \\mbox{with} \\quad \\overline X := \\frac{1}{n} \\sum_{i=1}^n X_i. \\]\nNow, using this test statistic, we might be interested in performing three different tests:\n\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &gt; \\mu_0\\);\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &lt; \\mu_0\\);\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-mu_0",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-mu_0",
+    "title": "Hypothesis Testing",
+    "section": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu > \\mu_0\\)",
+    "text": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &gt; \\mu_0\\)\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma} \\] Remember that we must look at large values of \\(T\\) that raise suspicion in favor of \\(H_a\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\overline X\\) is an unbiased estimator of the true mean.\nLarge negative values of \\(T\\) that happen when the true mean is far less than \\(\\mu_0\\) does not raise suspicion in favor of \\(H_a\\).\nLarge positive values of \\(T\\) that happen when the true mean is far more than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nConclusion: we are interested only in the right tail of the null distribution of \\(T\\) to find evidence to reject \\(H_0\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-mu_0-1",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-mu_0-1",
+    "title": "Hypothesis Testing",
+    "section": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu < \\mu_0\\)",
+    "text": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &lt; \\mu_0\\)\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma} \\] Remember that we must look at large values of \\(T\\) that raise suspicion in favor of \\(H_a\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\overline X\\) is an unbiased estimator of the true mean.\nLarge negative values of \\(T\\) that happen when the true mean is far more than \\(\\mu_0\\) does not raise suspicion in favor of \\(H_a\\).\nLarge positive values of \\(T\\) that happen when the true mean is far less than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nConclusion: we are interested only in the left tail of the null distribution of \\(T\\) to find evidence to reject \\(H_0\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-ne-mu_0",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-ne-mu_0",
+    "title": "Hypothesis Testing",
+    "section": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\)",
+    "text": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\)\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma} \\] Remember that we must look at large values of \\(T\\) that raise suspicion in favor of \\(H_a\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\overline X\\) is an unbiased estimator of the true mean.\nLarge negative values of \\(T\\) that happen when the true mean is far more than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nLarge positive values of \\(T\\) that happen when the true mean is far less than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nConclusion: we are interested in both the left and the right tails of the null distribution of \\(T\\) to find evidence to reject \\(H_0\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#type-i-and-type-ii-errors",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#type-i-and-type-ii-errors",
+    "title": "Hypothesis Testing",
+    "section": "Type I and Type II errors",
+    "text": "Type I and Type II errors\nSo we are now at a point where we know which tail(s) which we should look at and we now need to make a decision as to what large means. In other words, above which threshold on all possible values of my test statistic should I consider that I can reject \\(H_0\\).\n\nNotice that you are going to take this decision based on the null distribution.\nWhen you decide to reject or not, you might make an error:\n\n\n\n\n\n\nDecision\n\\(H_0\\) is true\n\\(H_a\\) is true\n\n\n\n\nDo not reject \\(H_0\\)\nWell done\nType II error\n\n\nReject \\(H_0\\)\nType I error\nWell done\n\n\n\n\n\n\n\n\nThe only error rate you can control is the type I error rate because it is a probability computed assuming that the null hypothesis is true, which is exactly the situation we put ourselves in for making the decision (i.e. looking at the tails of the null distribution of \\(T\\))."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#significance-level",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#significance-level",
+    "title": "Hypothesis Testing",
+    "section": "Significance level",
+    "text": "Significance level\n\nAt this point, you can decide that you do not want to make more than a certain amount of type I errors. So you want to force that \\(\\mathbb{P}_{H_0}(\\mbox{reject } H_0) \\le \\alpha\\), for some upper bound threshold \\(\\alpha\\) on the probability of type I errors. This threshold is called significance level of the test and is often denoted by the greek letter \\(\\alpha\\).\nLet us now translate what this rule implies for the right-tail alternative case. The event “\\(\\mbox{reject } H_0\\)” translates in this case into \\(T &gt; x\\) for some \\(x\\) value of the test statistic \\(T\\). Hence, the rule becomes: \\[ \\mathbb{P}_{H_0}(T &gt; x) \\le \\alpha \\\\ \\Leftrightarrow 1 - \\mathbb{P}_{H_0}(T \\le x) \\le \\alpha \\\\ \\Leftrightarrow 1 - F_T^{\\left(H_0\\right)}(x) \\le \\alpha \\\\ \\Leftrightarrow F_T^{\\left(H_0\\right)}(x) \\ge 1 - \\alpha \\] verified for all \\(x \\ge q_{1-\\alpha}\\), where \\(q_{1-\\alpha}\\) is the quantile of order \\(1-\\alpha\\) of the null distribution of \\(T\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#significance-level-continued",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#significance-level-continued",
+    "title": "Hypothesis Testing",
+    "section": "Significance level (continued)",
+    "text": "Significance level (continued)\nDecision-making rule:\n\nWe reject \\(H_0\\) if the value \\(t_0\\) of the test statistic computed on the observed sample is greater than the quantile of order \\(1-\\alpha\\) of the null distribution of \\(T\\);\nWe decide that we lack evidence to reject \\(H_0\\) if the value \\(t_0\\) of the test statistic calculated on the observed sample is smaller than the quantile of order \\(1-\\alpha\\) of the null distribution of \\(T\\).\nThis decision-making rule guarantees that the probability of making a type I error is upper-bounded by the significance level \\(\\alpha\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#p-value",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#p-value",
+    "title": "Hypothesis Testing",
+    "section": "p-value",
+    "text": "p-value\n\nDefinition. The p-value is a scalar value between \\(0\\) and \\(1\\) that measures what was the probability, assuming that the null hypothesis \\(H_0\\) is true, of observing the data we did observe, or data even more in favor of the alternative hypothesis.\nMathematical expression. If \\(t_0\\) is the value of the test statistic computed from the observed sample, then:\n\n\\(p = \\mathbb{P}_{H_0}(T &gt; t_0)\\) for right-tail hypothesis tests (e.g. \\(H_a: \\mu &gt; \\mu_0\\) when testing the mean);\n\\(p = \\mathbb{P}_{H_0}(T &lt; t_0)\\) for left-tail hypothesis tests (e.g. \\(H_a: \\mu &lt; \\mu_0\\) when testing the mean);\n\\(p = 2 \\min\\left( \\mathbb{P}_{H_0} \\left( T &gt; t_0 \\right), \\mathbb{P}_{H_0} \\left( T &lt; t_0 \\right) \\right)\\) for two-tail hypothesis tests (e.g. \\(H_a: \\mu \\ne \\mu_0\\) when testing the mean).\n\nInterpretation. If the \\(p\\)-value is very small, it means that\n\neither we observed a miracle,\nor the null hypothesis might be wrong.\n\nDecision-making rule. We can show that rejecting the null hypothesis when \\(p \\le \\alpha\\) also produces a decision-making rule that guarantees a probability of type I error at most \\(\\alpha\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#decision-making-summary-right-tail-scenario",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#decision-making-summary-right-tail-scenario",
+    "title": "Hypothesis Testing",
+    "section": "Decision-Making: Summary (right-tail scenario)",
+    "text": "Decision-Making: Summary (right-tail scenario)"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#statistical-power-of-a-test",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#statistical-power-of-a-test",
+    "title": "Hypothesis Testing",
+    "section": "Statistical power of a test",
+    "text": "Statistical power of a test\n\nDefinition. It is the probability of correctly rejecting the null hypothesis, i.e. to reject it when the alternative is in fact correct. It is often denoted by \\(\\mu\\). In terms of events, it is defined by: \\[ \\mu := \\mathbb{P}_{H_a}(\\mbox{Reject } H_0). \\]\nUsage. The statistical power of a test is an important aspect of the test because:\n\nit is an important performance indicator to compare different testing procedures (observe that there is not a unique statistic to perform a given test);\nit is often used in clinical trials or other types of trials (e.g. crash tests) to calibrate the number of observations required to achieve a given statistical power.\n\nRemarks.\n\nThe statistical power \\(\\mu\\) is equal to \\(1 - \\beta\\), where \\(\\beta\\) is the greek letter often used to designate the probability of type II errors, \\(\\beta := \\mathbb{P}_{H_a}(\\mbox{Do not reject } H_0)\\).\nPower calculations are difficult because it requires to put ourselves under \\(H_a\\), which is often of the form \\(\\mu &gt; \\mu_0\\) or \\(\\mu &lt; \\mu_0\\) or \\(\\mu \\ne \\mu_0\\). In other words, you often lack information to compute probabilities assuming that the alternative hypothesis is true. You have to assess how the power changes as you explore different alternatives."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean",
+    "title": "Hypothesis Testing",
+    "section": "Testing the mean",
+    "text": "Testing the mean\n\nModel. Let \\((X_1, \\dots, X_n)\\) be \\(n\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu, \\sigma^2)\\).\nHypotheses. \\[ H_0: \\mu = \\mu_0 \\quad \\mbox{vs.} \\quad H_a: \\mu \\ne \\mu_0 \\quad \\mbox{or} \\quad H_a: \\mu &gt; \\mu_0 \\quad \\mbox{or} \\quad H_a: \\mu &lt; \\mu_0. \\]\nTest Statistic. \\[ Z_n = \\sqrt{n} \\frac{\\overline X_n - \\mu_0}{\\sigma}. \\]\nProblem. Under the null hypothesis, I do not have complete knowledge to compute the test statistic because I do not know the value of \\(\\sigma\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean-with-known-variance",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean-with-known-variance",
+    "title": "Hypothesis Testing",
+    "section": "Testing the mean with known variance",
+    "text": "Testing the mean with known variance\n\nProblem solved. I now have complete knowledge to compute the test statistic.\nNull distribution. The null distribution is \\[ Z_n \\stackrel{H_0}{\\sim} \\mathcal{N}(0, 1). \\]\nR function. None"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean-with-unknown-variance",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean-with-unknown-variance",
+    "title": "Hypothesis Testing",
+    "section": "Testing the mean with unknown variance",
+    "text": "Testing the mean with unknown variance\n\nProblem solved. I plug in the empirical standard deviation instead of \\(\\sigma\\) in the definition of the test statistic.\nTest Statistic. \\[ T_n = \\frac{\\overline X_n - \\mu_0}{\\sqrt{\\frac{S_{n-1}^2}{n}}}, \\quad \\mbox{with} \\quad S_{n-1}^2 := \\frac{1}{n-1} \\sum_{i = 1}^n (X_i - \\overline X)^2. \\]\nNull distribution. \\[ T_n \\stackrel{H_0}{\\sim} \\mathcal{S}tudent(n-1). \\]\nR function. t.test()"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance",
+    "title": "Hypothesis Testing",
+    "section": "Testing the variance",
+    "text": "Testing the variance\n\nAssumptions. Let \\((X_1, \\dots, X_n)\\) be \\(n\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu, \\sigma^2)\\).\nHypotheses. \\[ H_0: \\sigma^2 = \\sigma_0^2 \\quad \\mbox{vs.} \\quad H_a: \\sigma^2 \\ne \\sigma_0^2 \\quad \\mbox{or} \\quad H_a: \\sigma^2 &gt; \\sigma_0^2 \\quad \\mbox{or} \\quad H_a: \\sigma^2 &lt; \\sigma_0^2. \\]\nTest Statistic. \\[ U_n = \\sum_{i = 1}^n \\frac{(X_i - \\mu)^2}{\\sigma_0^2}. \\]\nProblem. Under the null hypothesis, I do not have complete knowledge to compute the test statistic because I do not know the value of \\(\\mu\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance-with-known-mean",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance-with-known-mean",
+    "title": "Hypothesis Testing",
+    "section": "Testing the variance with known mean",
+    "text": "Testing the variance with known mean\n\nProblem solved. I now have complete knowledge to compute the test statistic.\nNull distribution. The null distribution is \\[ U_n \\stackrel{H_0}{\\sim} \\chi^2(n). \\]\nR function. None."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance-with-unknown-mean",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance-with-unknown-mean",
+    "title": "Hypothesis Testing",
+    "section": "Testing the variance with unknown mean",
+    "text": "Testing the variance with unknown mean\n\nProblem solved. I plug in the empirical mean instead of \\(\\mu\\) in the definition of the test statistic.\nTest Statistic. \\[ U_{n-1} = \\sum_{i = 1}^n \\frac{\\left( X_i - \\overline X_n \\right)^2}{\\sigma_0^2}. \\]\nNull distribution. \\[ U_{n-1} \\stackrel{H_0}{\\sim} \\chi^2(n-1). \\]\nR function. None."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-a-proportion",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-a-proportion",
+    "title": "Hypothesis Testing",
+    "section": "Testing a proportion",
+    "text": "Testing a proportion\nHere we want to test whether the proportion \\(p\\) of individuals in a given population who have a feature of interest is equal to a pre-specified rate.\n\nModel. Let \\((X_1, \\dots, X_n)\\) be \\(n\\) i.i.d. random variables that follow a Bernoulli distribution \\(\\mathcal{B}e(p)\\). The interpretation is that \\(X_i\\) measures if individual \\(i\\) possesses the characteristic of which we want to know the proportion or not.\nHypotheses. \\[ H_0: p = p_0 \\quad \\mbox{vs.} \\quad H_a: p \\ne p_0 \\quad \\mbox{or} \\quad H_a: p &gt; p_0 \\quad \\mbox{or} \\quad H_a: p &lt; p_0. \\]\nTest Statistic. \\[ B_n = \\sum_{i=1}^n X_i \\]\nNull distribution. \\[ B_n \\sim \\mathcal{B}inom(n,p_0) \\]\nR function. binom.test()"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-variance-differences",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-variance-differences",
+    "title": "Hypothesis Testing",
+    "section": "Testing for variance differences",
+    "text": "Testing for variance differences\n\nModel. Let \\((X_1, \\dots, X_{n_x})\\) be \\(n_X\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_X, \\sigma_X^2)\\) and \\((Y_1, \\dots, Y_{n_Y})\\) be \\(n_Y\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_Y, \\sigma_Y^2)\\). Assume furthermore that the two samples are statistically independent.\nHypotheses. \\[ H_0: \\sigma_X^2 = \\sigma_Y^2 \\quad \\mbox{vs.} \\quad H_a: \\sigma_X^2 \\ne \\sigma_Y^2 \\quad \\mbox{or} \\quad H_a: \\sigma_X^2 &gt; \\sigma_Y^2 \\quad \\mbox{or} \\quad H_a: \\sigma_X^2 &lt; \\sigma_Y^2 \\]\nTest Statistic. \\[ V_n = \\frac{S_X^2}{S_Y^2}, \\quad \\mbox{with} \\quad S_X^2 = \\frac{1}{n_X - 1} \\sum_{i = 1}^{n_X} (X_i - \\overline X_n)^2 \\quad \\mbox{and} \\quad S_Y^2 = \\frac{1}{n_Y - 1} \\sum_{i = 1}^{n_Y} (Y_i - \\overline Y_n)^2 \\]\nNull distribution. \\[ V_n \\stackrel{H_0}{\\sim} \\mathcal{F}isher(n_X - 1, n_Y - 1) \\]\nR function. var.test()\nValidity. Relies on the normality assumption and independence within and between samples."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences",
+    "title": "Hypothesis Testing",
+    "section": "Testing for mean differences",
+    "text": "Testing for mean differences\n\nModel. Let \\((X_1, \\dots, X_{n_x})\\) be \\(n_X\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_X, \\sigma_X^2)\\) and \\((Y_1, \\dots, Y_{n_Y})\\) be \\(n_Y\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_Y, \\sigma_Y^2)\\). Assume furthermore that the two samples are statistically independent.\nHypotheses. \\[ H_0: \\mu_X = \\mu_Y \\quad \\mbox{vs.} \\quad H_a: \\mu_X \\ne \\mu_Y \\quad \\mbox{or} \\quad H_a: \\mu_X &gt; \\mu_Y \\quad \\mbox{or} \\quad H_a: \\mu_X &lt; \\mu_Y \\]\nR function. t.test()\nValidity. Relies on the normality assumption and independence within and between samples."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences-when-variances-are-equal",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences-when-variances-are-equal",
+    "title": "Hypothesis Testing",
+    "section": "Testing for mean differences when variances are equal",
+    "text": "Testing for mean differences when variances are equal\n\nTest Statistic. Let \\(\\delta = \\mu_X - \\mu_Y\\) be the mean difference and \\(\\delta_0\\) be the assumed mean difference under \\(H_0\\). Then, \\[\nT_n = \\frac{\\left( \\overline X_n - \\overline Y_n \\right) - \\delta_0}{\\sqrt{S_\\mathrm{pooled}^2 \\left( \\frac{1}{n_X} + \\frac{1}{n_Y} \\right)}} \\mbox{ with } S_\\mathrm{pooled}^2 = \\frac{(n_X - 1) S_X^2 + (n_Y - 1) S_Y^2}{n_X + n_Y - 2}\n\\]\nNull distribution. \\[\nT_n \\stackrel{H_0}{\\sim} \\mathcal{S}tudent(n_X + n_Y - 2)\n\\]"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences-when-variances-are-not-equal",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences-when-variances-are-not-equal",
+    "title": "Hypothesis Testing",
+    "section": "Testing for mean differences when variances are not equal",
+    "text": "Testing for mean differences when variances are not equal\n\nTest Statistic. \\[\nT_n = \\frac{\\left( \\overline X_n - \\overline Y_n \\right) - \\delta_0}{\\sqrt{\\frac{S_X^2}{n_X} + \\frac{S_Y^2}{n_Y}}}\n\\]\nNull distribution. \\[\nT_n \\stackrel{H_0}{\\sim} \\mathcal{S}tudent(m)\n\\] where the degree of freedom \\(m\\) of the Student’s law is obtained either via: \\[\nm = \\frac{\\left( \\frac{S_X^2}{n_X} + \\frac{S_Y^2}{n_Y} \\right)^2}{\\frac{\\left( \\frac{S_X^2}{n_X} \\right)^2}{n_X-1} + \\frac{\\left( \\frac{S_Y^2}{n_Y} \\right)^2}{n_Y-1}}\n\\]"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#shapiro-wilk-test",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#shapiro-wilk-test",
+    "title": "Hypothesis Testing",
+    "section": "Shapiro-Wilk test",
+    "text": "Shapiro-Wilk test\n\nHypotheses. \\[ H_0: (X_1, \\dots, X_n) \\stackrel{i.i.d.}{\\sim} \\mathcal{N}(\\mu, \\sigma^2) \\quad \\mbox{vs.} \\quad H_a: (X_1, \\dots, X_n) \\not\\sim \\mathcal{N}(\\mu, \\sigma^2). \\]\nTest Statistic. \\[\nT_n = {\\left(\\sum_{i=1}^n a_i X_{(i)}\\right)^2 \\over \\sum_{i=1}^n (X_i-\\overline{X}_n)^2}\n\\] where \\(X_{(i)}\\) is the order statistic for observation \\(i\\), \\(\\overline X_n\\) the sample mean and \\((a_1, \\dots, a_n)\\) are weights computed from the first two moments of the order statistics of standard normal variables.\nNull distribution. \\[ T \\stackrel{H_0}{\\sim} \\mathcal{W}ilks(n). \\]\nR function. shapiro.test()\nValidity. The sample size should meet \\(3 \\le n \\le 5000\\). The Wilks distribution is approximated except for \\(n=3\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#kolmogorov-smirnov-test",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#kolmogorov-smirnov-test",
+    "title": "Hypothesis Testing",
+    "section": "Kolmogorov-Smirnov test",
+    "text": "Kolmogorov-Smirnov test\n\nHypotheses. \\[ H_0: (X_1, \\dots, X_n) \\stackrel{i.i.d.}{\\sim} F_0 \\quad \\mbox{vs.} \\quad H_a: (X_1, \\dots, X_n) \\not\\sim F_0. \\]\nTest Statistic. \\[\nT_n = \\sup_{x \\in \\mathbb R} | F_n(x) - F(x)|\n\\] where \\(F_n\\) is the cumulative distribution function and \\(F\\) is the cumulative distribution function of the law under testing.\nNull distribution. \\[ \\sqrt{n} T \\xrightarrow{\\mathcal{L}} \\sup_{x \\in \\mathbb R} | B(F(x))|, \\] where \\(B\\) is the Brownian bridge.\nR function. ks.test()\nValidity. Asymptotic."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#chi2-test-of-adequacy-for-a-single-categorical-variable",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#chi2-test-of-adequacy-for-a-single-categorical-variable",
+    "title": "Hypothesis Testing",
+    "section": "\\(\\chi^2\\) test of adequacy for a single categorical variable",
+    "text": "\\(\\chi^2\\) test of adequacy for a single categorical variable\n\nModel. We group observations in classes and we compare the observed frequencies of these classes to the corresponding theoretical frequencies as given by the hypothesized law \\(F_0\\).\nHypotheses. \\(H_0: (X_1, \\dots, X_n) \\stackrel{i.i.d.}{\\sim} F_0 \\quad \\mbox{vs.} \\quad H_a: (X_1, \\dots, X_n) \\not\\sim F_0\\).\nTest Statistic. \\[\nU_n = n\\sum_{i=1}^k\\frac{(f_i-f_{0i})^2}{f_{0i}},\n\\] where \\(n\\) is the total number of observations, \\(k\\) the number of classes, \\(f_i = n_i / n\\) and \\(f_{i0}\\) the theoretical frequency of class \\(i\\), i.e. the probability that the random variable ends up in class \\(i\\).\nNull distribution. \\[ U_n \\xrightarrow{\\mathcal{L}} \\chi^2_{k - 1 - \\ell}, \\mbox{ where } \\ell \\mbox{ is the number of estimated parameters for } F_0.\\]\nR function. chisq.test()\nValidity. Requires large class frequencies. Typically, \\(n_i \\ge 5\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#chi-2-test-of-independence-between-two-categorical-variables",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#chi-2-test-of-independence-between-two-categorical-variables",
+    "title": "Hypothesis Testing",
+    "section": "\\(\\chi ^2\\) test of independence between two categorical variables",
+    "text": "\\(\\chi ^2\\) test of independence between two categorical variables\n\nModel. Let \\(X = (Y, Z) = ((Y_1, Z_1), \\dots, (Y_n, Z_n))\\) be a bivariate sample of \\(n\\) i.i.d. pairs of categorical random variables. Let \\(\\nu\\) be the law of \\((Y_1, Z_1)\\), \\(\\mu\\) the law of \\(Y_1\\) and \\(\\lambda\\) the law of \\(Z_1\\). Let \\(\\{y_1, \\dots, y_s\\}\\) be the set of possible values for \\(Y_1\\) and \\(\\{z_1, \\dots, z_r\\}\\) the set of possible values for \\(Z_1\\). For \\(\\ell \\in \\{1, \\dots, s\\}\\) et \\(h \\in \\{1, \\dots, r\\}\\), let \\[ N_{\\ell,\\cdot} = \\left| \\left\\{ i  \\in \\{1, \\dots, n\\}; Y_i = y_\\ell \\right\\} \\right|,\\quad N_{\\cdot, h} = \\left| \\left\\{ i  \\in \\{1, \\dots, n\\}; Z_i = z_h \\right\\} \\right|, \\\\ N_{\\ell,h} = \\left| \\left\\{(i \\in \\{1, \\dots, n\\}; Y_i = y_\\ell, Z_i = z_h \\right\\} \\right|.\n\\]\nHypotheses. \\(H_0: \\nu = \\mu \\otimes \\lambda \\quad \\mbox{vs.} \\quad H_a: \\nu \\ne \\mu \\otimes \\lambda\\).\nTest statistic. \\[ U_n = n  \\sum_{\\ell = 1}^s \\sum_{h = 1}^r \\frac{ \\left( \\frac{N_{\\ell, h}}{n}  -  \\frac{N_{\\ell, \\cdot}}{n} \\frac{N_{\\cdot, h}}{n} \\right)^2 }{ \\frac{N_{\\ell, \\cdot}}{n} \\frac{N_{\\cdot, h}}{n} }. \\]\nNull distribution. \\(U_n \\xrightarrow{\\mathcal{L}} \\chi^2 \\left( (s-1)(r-1) \\right)\\).\nR function. chisq.test()\nValidity. Asymptotic. Often, \\(n \\gg 30\\) and \\(N_{\\ell, h} \\gg 5\\), for each pair \\((\\ell, h)\\).\n\n\n\n\n\nData Science with R - aymeric.stamm@cnrs.fr - https://astamm.github.io/"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Instructions for the class",
@@ -109,21 +319,105 @@
     "href": "index.html#material",
     "title": "Instructions for the class",
     "section": "Material",
-    "text": "Material\nThe class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the slides folder and the exercises in the labs folder. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\nThe main webpage is at https://astamm.github.io/data-science-with-r/."
+    "text": "Material\nThe main webpage is at https://astamm.github.io/data-science-with-r/."
   },
   {
     "objectID": "index.html#outline",
     "href": "index.html#outline",
     "title": "Instructions for the class",
     "section": "Outline",
-    "text": "Outline\n\n\n\nPart\nTitle\nSlides\nExercises\n\n\n\n\n1\nIntroduction\nPDF\nQuarto\n\n\n2\nVisualize Data\nPDF\nQuarto\n\n\n3\nTransform Data\nPDF\nQuarto\n\n\n4\nModel Data\nPDF\nQuarto\n\n\n5\nCommunicate Data\nPDF\nQuarto\n\n\n6\nTidy Data\nPDF\nQuarto\n\n\n7\nJoin Data\nPDF\nQuarto\n\n\n8\nManipulate Data Types\nPDF\nQuarto\n\n\n9\nManipulate Lists\nPDF\nQuarto"
+    "text": "Outline\n\nData wrangling with R\nThe class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the above Data Wranging - Slides tab and the exercises in the above Data Wranging - Labs tab. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\n\n\n\n\n1\nIntroduction\nPDF\nQuarto\n\n\n2\nVisualize Data\nPDF\nQuarto\n\n\n3\nTransform Data\nPDF\nQuarto\n\n\n4\nModel Data\nPDF\nQuarto\n\n\n5\nCommunicate Data\nPDF\nQuarto\n\n\n6\nTidy Data\nPDF\nQuarto\n\n\n7\nJoin Data\nPDF\nQuarto\n\n\n8\nManipulate Data Types\nPDF\nQuarto\n\n\n9\nManipulate Lists\nPDF\nQuarto\n\n\n\n\n\nExploratory Data Analysis with R\nThe class is organised in 4 parts each of which has its own set of slides and exercises. The slides are available in the above Exploratory Data Analysis - Slides tab and the exercises in the the above Exploratory Data Analysis - Labs tab. The slides are written in Quarto revealjs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\n\n\n\n\n1\nHypothesis Testing\nQuarto\nQuarto\n\n\n2\nLinear Regression\nQuarto\nQuarto\n\n\n3\nPrincipal Component Analysis\nQuarto\nQuarto\n\n\n4\nClustering\nQuarto\nQuarto"
   },
   {
     "objectID": "index.html#requirements",
     "href": "index.html#requirements",
     "title": "Instructions for the class",
     "section": "Requirements",
-    "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\n[MacOS only] OpenMP support: https://mac.r-project.org/openmp/\nR packages:\n\n{tidyverse}"
+    "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\nR packages:\n\n{tidyverse}\n{plotly}"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html",
+    "title": "Hypothesis Testing",
+    "section": "",
+    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the energy efficiency?\nDoes that mean that the data significantly prove that the energy efficiency is larger than the expected nominal value?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-1",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-1",
+    "title": "Hypothesis Testing",
+    "section": "",
+    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the energy efficiency?\nDoes that mean that the data significantly prove that the energy efficiency is larger than the expected nominal value?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-2",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-2",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nA study about air pollution done by a research station measured, on \\(8\\) different air samples, the following values of a polluant (in \\(\\mu\\)g/m\\(^2\\)):\n\\[ 2.2 \\quad 1.8 \\quad 3.1 \\quad 2.0 \\quad 2.4 \\quad 2.0 \\quad 2.1 \\quad 1.2 \\]\nAssuming that the sampled population is normal,\n\nCan we say that the polluant is present with less than \\(2.5 \\mu\\)g/m\\(^2\\)?\nCan we say that the polluant is present with less than \\(2.4 \\mu\\)g/m\\(^2\\)?\nIs the normality hypothesis essential to justify the method used?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-3",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-3",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nA medical inspection in an elementary school during a measles epidemic led to the examination of \\(30\\) children to assess whether they were affected. The results are in a tibble exam which contains the following:\n\n\n# A tibble: 30 × 2\n      Id Status \n   &lt;int&gt; &lt;chr&gt;  \n 1     1 Healthy\n 2     2 Healthy\n 3     3 Healthy\n 4     4 Healthy\n 5     5 Healthy\n 6     6 Healthy\n 7     7 Healthy\n 8     8 Healthy\n 9     9 Healthy\n10    10 Healthy\n# ℹ 20 more rows\n\n\nLet \\(p\\) be the probability that a child from the same school is sick.\n\nDetermine a point estimate \\(\\widehat{p}\\) for \\(p\\).\nThe school will be closed if more than 5% of the children are sick. Can you conclude that, statistically, this is the case? Use a significance level of 5%."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-4",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-4",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nThe capacities (in ampere-hours) of \\(10\\) batteries were recorded as follows:\n\\[ 140, \\quad 136, \\quad 150, \\quad 144, \\quad 148, \\quad 152, \\quad 138, \\quad 141, \\quad 143, \\quad 151 \\]\n\nEstimate the population variance \\(\\sigma^2\\).\nCan we claim that the mean capacity of a battery is greater than 142 ampere-hours ?\nCan we claim that the mean capacity of a battery is greater than 140 ampere-hours ?\nCan we claim that the standard deviation of the capacity is less than 6 ampere-hours ?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-5",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-5",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nA company produces barbed wire in skeins of \\(100\\)m each, nominally. The real length of the skeins is a random variable \\(X\\) distributed as a \\(\\mathcal{N}(\\mu, 4)\\). Measuring \\(10\\) skeins, we get the following lengths:\n\\[ 98.683, 96.599, 99.617, 102.544, 100.110, 102.000, 98.394, 100.324, 98.743, 103.247 \\]\n\nPerform a conformity test at significance level \\(\\alpha = 5\\%\\).\nDetermine, on the basis of the observed values, the p-value of the test."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-6",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-6",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nIn an atmospheric study the researchers registered, over \\(8\\) different samples of air, the following concentration of COG (in micrograms over cubic meter):\n\\[ 2.3;\\; 1.7;\\; 3.2;\\; 2.1;\\; 2.3;\\; 2.0;\\; 2.2;\\; 1.2 \\]\n\nUsing unbiased estimators, determine a point estimate of the mean and variance of COG concentration.\n\nAssume now that the COG concentration is normally distributed.\n\nUsing a suitable statistical tool, establish whether the measured data allow to say that the mean concentration of COG is greater than \\(1.8\\) \\(\\mu\\)g/m\\(^3\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-7",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-7",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 7",
+    "text": "Exercise 7\nOn a total of \\(2350\\) interviewed citizens, \\(1890\\) approve the construction of a new movie theater.\n\nPerform an hypothesis test of level \\(5\\%\\), with null hypothesis that the percentage of citizens that approve the construction is at least \\(81\\%\\), versus the alternative hypothesis that the percentage is less than \\(81\\%\\).\nCompute the \\(p\\)-value of the test.\n[difficult] Determine the minimum sample size such that the power of the test with significance level \\(\\alpha = 0.05\\) when the real proportion \\(p\\) is \\(0.8\\) is at least \\(50\\%\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-8",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-8",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 8",
+    "text": "Exercise 8\nA computer chip manufacturer claims that no more than \\(1\\%\\) of the chips it sends out are defective. An electronics company, impressed with this claim, has purchased a large quantity of such chips. To determine if the manufacturer’s claim can be taken literally, the company has decided to test a sample of \\(300\\) of these chips. If \\(5\\) of these \\(300\\) chips are found to be defective, should the manufacturer’s claim be rejected?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-9",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-9",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 9",
+    "text": "Exercise 9\nTo determine the impurity level in alloys of steel, two different tests can be used. \\(8\\) specimens are tested, with both procedures, and the results are written in the following table:\n\n\n\nspecimen n.\n1\n2\n3\n4\n5\n6\n7\n8\n\n\n\n\nTest 1\n1.2\n1.3\n1.7\n1.8\n1.5\n1.4\n1.4\n1.3\n\n\nTest 2\n1.4\n1.7\n2.0\n2.1\n1.5\n1.3\n1.7\n1.6\n\n\n\nAssume that the data are normal.\n\nbased on the data in the table, can we state that at significance level \\(\\alpha=5\\%\\) the Test 1 and 2 give a different average level of impurity?\nbased on the data in the table, can we state that at significance level \\(\\alpha=1\\%\\) the Test 2 gives an average level of impurity greater than Test 1?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-10",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-10",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 10",
+    "text": "Exercise 10\nA sample of \\(300\\) voters from region A and \\(200\\) voters from region B showed that the \\(56\\%\\) and the \\(48\\%\\), respectively, prefer a certain candidate. Can we say that at a significance level of \\(5\\%\\) there is a difference between the two regions?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-11",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-11",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 11",
+    "text": "Exercise 11\nIn a sample of \\(100\\) measures of the boiling temperature of a certain liquid, we obtain a sample mean \\(\\overline{x} = 100^{o}C\\) with a sample variance \\(s^2 = 0.0098^{o}C^2\\). Assuming that the observation comes from a normal population:\n\nWhat is the smallest level of significance that would lead to reject the null hypothesis that the variance is \\(\\leq 0.015\\)?\nOn the basis of the previous answer, what decision do we take if we fix the level of the test equal to \\(0.01\\)?"
   },
   {
     "objectID": "01_Introduction/authoring-with-quarto.html",

@@ -2,18 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://astamm.github.io/data-science-with-r/02_Visualize/02-Visualize-Exercises.html</loc>
-    <lastmod>2024-11-14T06:28:13.736Z</lastmod>
+    <lastmod>2024-11-15T10:47:38.003Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/01_Introduction/01-Introduction-Exercises.html</loc>
-    <lastmod>2024-11-14T06:28:13.710Z</lastmod>
+    <lastmod>2024-11-15T10:47:37.970Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html</loc>
+    <lastmod>2024-11-15T10:47:38.052Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/index.html</loc>
-    <lastmod>2024-11-14T06:28:13.775Z</lastmod>
+    <lastmod>2024-11-15T10:47:38.054Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html</loc>
+    <lastmod>2024-11-15T10:47:38.052Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/01_Introduction/authoring-with-quarto.html</loc>
-    <lastmod>2024-11-14T06:28:13.736Z</lastmod>
+    <lastmod>2024-11-15T10:47:38.003Z</lastmod>
   </url>
 </urlset>

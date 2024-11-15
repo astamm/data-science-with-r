@@ -88,32 +88,54 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Slides</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-wrangling---slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Wrangling - Slides</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling---slides">    
         <li>
     <a class="dropdown-item" href="./01_Introduction/01-Introduction-Slides.pdf">
- <span class="dropdown-text">Introduction</span></a>
+ <span class="dropdown-text">1 Introduction</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./02_Visualize/02-Visualize-Slides.pdf">
- <span class="dropdown-text">Visualize</span></a>
+ <span class="dropdown-text">2 Visualize</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Labs</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-wrangling---labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Wrangling - Labs</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling---labs">    
         <li>
     <a class="dropdown-item" href="./01_Introduction/01-Introduction-Exercises.html">
- <span class="dropdown-text">Introduction</span></a>
+ <span class="dropdown-text">1 Introduction</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./02_Visualize/02-Visualize-Exercises.html">
- <span class="dropdown-text">Visualize</span></a>
+ <span class="dropdown-text">2 Visualize</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exploratory-data-analysis---slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exploratory Data Analysis - Slides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exploratory-data-analysis---slides">    
+        <li>
+    <a class="dropdown-item" href="./10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html">
+ <span class="dropdown-text">1 Hypothesis Testing</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exploratory-data-analysis---labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exploratory Data Analysis - Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exploratory-data-analysis---labs">    
+        <li>
+    <a class="dropdown-item" href="./10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html">
+ <span class="dropdown-text">1 Hypothesis Testing</span></a>
   </li>  
     </ul>
   </li>
@@ -142,7 +164,11 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link active" data-scroll-target="#disclaimer">Disclaimer</a></li>
   <li><a href="#material" id="toc-material" class="nav-link" data-scroll-target="#material">Material</a></li>
-  <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a>
+  <ul class="collapse">
+  <li><a href="#data-wrangling-with-r" id="toc-data-wrangling-with-r" class="nav-link" data-scroll-target="#data-wrangling-with-r">Data wrangling with R</a></li>
+  <li><a href="#exploratory-data-analysis-with-r" id="toc-exploratory-data-analysis-with-r" class="nav-link" data-scroll-target="#exploratory-data-analysis-with-r">Exploratory Data Analysis with R</a></li>
+  </ul></li>
   <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -175,11 +201,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="material" class="level2">
 <h2 class="anchored" data-anchor-id="material">Material</h2>
-<p>The class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the <code>slides</code> folder and the exercises in the <code>labs</code> folder. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in <a href="https://quarto.org">Quarto</a>.</p>
 <p>The main webpage is at <a href="https://astamm.github.io/data-science-with-r/" class="uri">https://astamm.github.io/data-science-with-r/</a>.</p>
 </section>
 <section id="outline" class="level2">
 <h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<section id="data-wrangling-with-r" class="level3">
+<h3 class="anchored" data-anchor-id="data-wrangling-with-r">Data wrangling with R</h3>
+<p>The class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the above <em>Data Wranging - Slides</em> tab and the exercises in the above <em>Data Wranging - Labs</em> tab. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in <a href="https://quarto.org">Quarto</a>.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -247,6 +275,47 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
+<section id="exploratory-data-analysis-with-r" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-data-analysis-with-r">Exploratory Data Analysis with R</h3>
+<p>The class is organised in 4 parts each of which has its own set of slides and exercises. The slides are available in the above <em>Exploratory Data Analysis - Slides</em> tab and the exercises in the the above <em>Exploratory Data Analysis - Labs</em> tab. The slides are written in Quarto <em>revealjs</em> slides. The exercises are written in <a href="https://quarto.org">Quarto</a>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Title</th>
+<th>Slides</th>
+<th>Exercises</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Hypothesis Testing</td>
+<td><a href="./10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html">Quarto</a></td>
+<td><a href="./10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html">Quarto</a></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Linear Regression</td>
+<td><a href="11_Linear_Regression/11-Linear-Regression-Slides.qmd">Quarto</a></td>
+<td><a href="11_Linear_Regression/11-Linear-Regression-Exercises.qmd">Quarto</a></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Principal Component Analysis</td>
+<td><a href="12_Principal_Component_Analysis/12-Principal-Component-Analysis-Slides.qmd">Quarto</a></td>
+<td><a href="12_Principal_Component_Analysis/12-Principal-Component-Analysis-Exercises.qmd">Quarto</a></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Clustering</td>
+<td><a href="13_Clustering/13-Clustering-Slides.qmd">Quarto</a></td>
+<td><a href="13_Clustering/13-Clustering-Exercises.qmd">Quarto</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="requirements" class="level2">
 <h2 class="anchored" data-anchor-id="requirements">Requirements</h2>
 <ul>
@@ -254,10 +323,10 @@ ul.task-list li input[type="checkbox"] {
 <li><p>RStudio: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p></li>
 <li><p>Quarto: <a href="https://quarto.org/docs/get-started/" class="uri">https://quarto.org/docs/get-started/</a></p></li>
 <li><p>Quarto Drop extension: <a href="https://github.com/r-wasm/quarto-drop" class="uri">https://github.com/r-wasm/quarto-drop</a></p></li>
-<li><p>[MacOS only] OpenMP support: <a href="https://mac.r-project.org/openmp/" class="uri">https://mac.r-project.org/openmp/</a></p></li>
 <li><p>R packages:</p>
 <ul>
 <li><a href="https://www.tidyverse.org">{tidyverse}</a></li>
+<li><a href="https://plotly.com/r/">{plotly}</a></li>
 </ul></li>
 </ul>
 
