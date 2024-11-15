@@ -12,18 +12,26 @@ website:
     right: This website is built with [Quarto](https://quarto.org/)
   navbar:
     left:
-      - text: "Slides"
+      - text: "Data Wrangling - Slides"
         menu:
-          - text: "Introduction"
+          - text: "1 Introduction"
             href: 01_Introduction/01-Introduction-Slides.pdf
-          - text: "Visualize"
+          - text: "2 Visualize"
             href: 02_Visualize/02-Visualize-Slides.pdf
-      - text: "Labs"
+      - text: "Data Wrangling - Labs"
         menu:
-          - text: "Introduction"
+          - text: "1 Introduction"
             href: 01_Introduction/01-Introduction-Exercises.qmd
-          - text: "Visualize"
+          - text: "2 Visualize"
             href: 02_Visualize/02-Visualize-Exercises.qmd
+      - text: "Exploratory Data Analysis - Slides"
+        menu:
+          - text: "1 Hypothesis Testing"
+            href: 10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.qmd
+      - text: "Exploratory Data Analysis - Labs"
+        menu:
+          - text: "1 Hypothesis Testing"
+            href: 10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.qmd
     right:
       - icon: github
         href: https://github.com/astamm/data-science-with-r/
