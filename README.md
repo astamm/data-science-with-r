@@ -27,9 +27,9 @@ slides. The exercises are written in [Quarto](https://quarto.org).
 
 | Part | Title | Slides | Exercises | Data |
 |------|-------|--------|-----------|------|
-| 1    | Introduction | [PDF](01_Introduction/01-Introduction-Slides.pdf) | [Quarto](https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/01_Introduction/01-Introduction-Exercises.qmd) | |
-| 2    | Visualize Data | [PDF](02_Visualize/02-Visualize-Slides.pdf) | [Quarto](https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/02_Visualize/02-Visualize-Exercises.qmd) | |
-| 3    | Transform Data | [PDF](03_Transform/03-Transform-Slides.pdf) | [Quarto](https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/03_Transform/03-Transform-Exercises.qmd) | [CSV](03_Transform/babynames.csv) |
+| 1    | Introduction | [PDF](01_Introduction/01-Introduction-Slides.pdf) | [Quarto](01_Introduction/01-Introduction-Exercises.qmd) | |
+| 2    | Visualize Data | [PDF](02_Visualize/02-Visualize-Slides.pdf) | [Quarto](02_Visualize/02-Visualize-Exercises.qmd) | |
+| 3    | Transform Data | [PDF](03_Transform/03-Transform-Slides.pdf) | [Quarto](03_Transform/03-Transform-Exercises.qmd) | [CSV](03_Transform/babynames.csv) |
 | 4    | Model Data | [PDF](slides/04-model-data.pdf) | [Quarto](labs/04-model-data.Rmd) | |
 | 5    | Communicate Data | [PDF](slides/05-communicate-data.pdf) | [Quarto](labs/05-communicate-data.Rmd) | |
 | 6    | Tidy Data | [PDF](slides/06-tidy-data.pdf) | [Quarto](labs/06-tidy-data.Rmd) | |

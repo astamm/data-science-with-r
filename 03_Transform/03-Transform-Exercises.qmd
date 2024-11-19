@@ -1,6 +1,9 @@
 ---
 title: "Transform Data"
-format: html
+format:
+  html:
+    code-tools:
+      source: repo
 ---
 
 ```{r setup}
