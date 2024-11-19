@@ -18,12 +18,16 @@ website:
             href: 01_Introduction/01-Introduction-Slides.pdf
           - text: "2 Visualize"
             href: 02_Visualize/02-Visualize-Slides.pdf
+          - text: "3 Transform"
+            href: 03_Transform/03-Transform-Slides.pdf
       - text: "Data Wrangling - Labs"
         menu:
           - text: "1 Introduction"
             href: 01_Introduction/01-Introduction-Exercises.qmd
           - text: "2 Visualize"
             href: 02_Visualize/02-Visualize-Exercises.qmd
+          - text: "3 Transform"
+            href: 03_Transform/03-Transform-Exercises.qmd
       - text: "Exploratory Data Analysis - Slides"
         menu:
           - text: "1 Hypothesis Testing"

@@ -33,7 +33,7 @@ jobs:
                paste(getRversion(), R.version$platform, R.version$arch, R.version$os)
              )
            )
-           install.packages(c("tidyverse", "kableExtra"))
+           install.packages(c("tidyverse", "kableExtra", "babynames"))
         shell: Rscript {0}
 
       - name: Setup OpenMP

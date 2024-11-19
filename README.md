@@ -25,17 +25,17 @@ and the exercises in the above *Data Wranging - Labs* tab. The slides are
 written partly with Keynote (exported as PDFs) and partly in Quarto reveajs
 slides. The exercises are written in [Quarto](https://quarto.org).
 
-| Part | Title | Slides | Exercises |
-|------|-------|--------|-----------|
-| 1    | Introduction | [PDF](01_Introduction/01-Introduction-Slides.pdf) | [Quarto](https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/01_Introduction/01-Introduction-Exercises.qmd) |
-| 2    | Visualize Data | [PDF](02_Visualize/02-Visualize-Slides.pdf) | [Quarto](https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/02_Visualize/02-Visualize-Exercises.qmd) |
-| 3    | Transform Data | [PDF](slides/03-transform-data.pdf) | [Quarto](labs/03-transform-data.Rmd) |
-| 4    | Model Data | [PDF](slides/04-model-data.pdf) | [Quarto](labs/04-model-data.Rmd) |
-| 5    | Communicate Data | [PDF](slides/05-communicate-data.pdf) | [Quarto](labs/05-communicate-data.Rmd) |
-| 6    | Tidy Data | [PDF](slides/06-tidy-data.pdf) | [Quarto](labs/06-tidy-data.Rmd) |
-| 7    | Join Data | [PDF](slides/07-join-data.pdf) | [Quarto](labs/07-join-data.Rmd) |
-| 8    | Manipulate Data Types | [PDF](slides/08-manipulate-data-types.pdf) | [Quarto](labs/08-manipulate-data-types.Rmd) |
-| 9    | Manipulate Lists | [PDF](slides/09-manipulate-lists.pdf) | [Quarto](labs/09-manipulate-lists.Rmd) |
+| Part | Title | Slides | Exercises | Data |
+|------|-------|--------|-----------|------|
+| 1    | Introduction | [PDF](01_Introduction/01-Introduction-Slides.pdf) | [Quarto](https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/01_Introduction/01-Introduction-Exercises.qmd) | |
+| 2    | Visualize Data | [PDF](02_Visualize/02-Visualize-Slides.pdf) | [Quarto](https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/02_Visualize/02-Visualize-Exercises.qmd) | |
+| 3    | Transform Data | [PDF](03_Transform/03-Transform-Slides.pdf) | [Quarto](https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/03_Transform/03-Transform-Exercises.qmd) | [CSV](03_Transform/babynames.csv) |
+| 4    | Model Data | [PDF](slides/04-model-data.pdf) | [Quarto](labs/04-model-data.Rmd) | |
+| 5    | Communicate Data | [PDF](slides/05-communicate-data.pdf) | [Quarto](labs/05-communicate-data.Rmd) | |
+| 6    | Tidy Data | [PDF](slides/06-tidy-data.pdf) | [Quarto](labs/06-tidy-data.Rmd) | |
+| 7    | Join Data | [PDF](slides/07-join-data.pdf) | [Quarto](labs/07-join-data.Rmd) | |
+| 8    | Manipulate Data Types | [PDF](slides/08-manipulate-data-types.pdf) | [Quarto](labs/08-manipulate-data-types.Rmd) | |
+| 9    | Manipulate Lists | [PDF](slides/09-manipulate-lists.pdf) | [Quarto](labs/09-manipulate-lists.Rmd) | |
 
 #### Exploratory Data Analysis with R
 
@@ -60,5 +60,6 @@ written in [Quarto](https://quarto.org).
 - Quarto Drop extension: <https://github.com/r-wasm/quarto-drop>
 - R packages: 
 
-    - [{tidyverse}](https://www.tidyverse.org)
+    - [{babynames}](https://hadley.github.io/babynames/)
     - [{plotly}](https://plotly.com/r/)
+    - [{tidyverse}](https://www.tidyverse.org)
