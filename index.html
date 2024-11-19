@@ -100,6 +100,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./02_Visualize/02-Visualize-Slides.pdf">
  <span class="dropdown-text">2 Visualize</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./03_Transform/03-Transform-Slides.pdf">
+ <span class="dropdown-text">3 Transform</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -114,6 +118,10 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="./02_Visualize/02-Visualize-Exercises.html">
  <span class="dropdown-text">2 Visualize</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./03_Transform/03-Transform-Exercises.html">
+ <span class="dropdown-text">3 Transform</span></a>
   </li>  
     </ul>
   </li>
@@ -215,6 +223,7 @@ ul.task-list li input[type="checkbox"] {
 <th>Title</th>
 <th>Slides</th>
 <th>Exercises</th>
+<th>Data</th>
 </tr>
 </thead>
 <tbody>
@@ -223,54 +232,63 @@ ul.task-list li input[type="checkbox"] {
 <td>Introduction</td>
 <td><a href="01_Introduction/01-Introduction-Slides.pdf">PDF</a></td>
 <td><a href="https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/01_Introduction/01-Introduction-Exercises.qmd">Quarto</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>2</td>
 <td>Visualize Data</td>
 <td><a href="02_Visualize/02-Visualize-Slides.pdf">PDF</a></td>
 <td><a href="https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/02_Visualize/02-Visualize-Exercises.qmd">Quarto</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>3</td>
 <td>Transform Data</td>
-<td><a href="slides/03-transform-data.pdf">PDF</a></td>
-<td><a href="labs/03-transform-data.Rmd">Quarto</a></td>
+<td><a href="03_Transform/03-Transform-Slides.pdf">PDF</a></td>
+<td><a href="https://raw.githubusercontent.com/astamm/data-science-with-r/refs/heads/main/03_Transform/03-Transform-Exercises.qmd">Quarto</a></td>
+<td><a href="03_Transform/babynames.csv">CSV</a></td>
 </tr>
 <tr class="even">
 <td>4</td>
 <td>Model Data</td>
 <td><a href="slides/04-model-data.pdf">PDF</a></td>
 <td><a href="labs/04-model-data.Rmd">Quarto</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>5</td>
 <td>Communicate Data</td>
 <td><a href="slides/05-communicate-data.pdf">PDF</a></td>
 <td><a href="labs/05-communicate-data.Rmd">Quarto</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>6</td>
 <td>Tidy Data</td>
 <td><a href="slides/06-tidy-data.pdf">PDF</a></td>
 <td><a href="labs/06-tidy-data.Rmd">Quarto</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>7</td>
 <td>Join Data</td>
 <td><a href="slides/07-join-data.pdf">PDF</a></td>
 <td><a href="labs/07-join-data.Rmd">Quarto</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>8</td>
 <td>Manipulate Data Types</td>
 <td><a href="slides/08-manipulate-data-types.pdf">PDF</a></td>
 <td><a href="labs/08-manipulate-data-types.Rmd">Quarto</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>9</td>
 <td>Manipulate Lists</td>
 <td><a href="slides/09-manipulate-lists.pdf">PDF</a></td>
 <td><a href="labs/09-manipulate-lists.Rmd">Quarto</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -325,8 +343,9 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Quarto Drop extension: <a href="https://github.com/r-wasm/quarto-drop" class="uri">https://github.com/r-wasm/quarto-drop</a></p></li>
 <li><p>R packages:</p>
 <ul>
-<li><a href="https://www.tidyverse.org">{tidyverse}</a></li>
+<li><a href="https://hadley.github.io/babynames/">{babynames}</a></li>
 <li><a href="https://plotly.com/r/">{plotly}</a></li>
+<li><a href="https://www.tidyverse.org">{tidyverse}</a></li>
 </ul></li>
 </ul>
 
