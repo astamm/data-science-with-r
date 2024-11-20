@@ -28,7 +28,7 @@ library(babynames)
 
 ## Your Turn 1
 
-Set the working directory to the folder where you saved the slides, the Quarto lab and the `babynames.csv` file to work on data transformation (presumably 03_Transform_Data or something like that).
+Make sure that the `.csv` file is in the same directory as the `.qmd` file you're currently working on.
 Then import the `babynames.csv` data set. Give it the name `babynames`.
 Then copy the import code into the code chunk below. Does it run?
 
