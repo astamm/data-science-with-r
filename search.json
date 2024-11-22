@@ -1,5 +1,68 @@
 [
   {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html",
+    "title": "Linear Regression with R",
+    "section": "",
+    "text": "In the following exercises, you will be asked to study the relationship of a continuous response variable and one or more predictors. In doing so, remember to:\n\nperform model diagnosis\nincluding visualization tools\nincluding multicollinearity assessment\nperform informed model selection\ncomment each result of an analysis you run with R"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#expectations",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#expectations",
+    "title": "Linear Regression with R",
+    "section": "",
+    "text": "In the following exercises, you will be asked to study the relationship of a continuous response variable and one or more predictors. In doing so, remember to:\n\nperform model diagnosis\nincluding visualization tools\nincluding multicollinearity assessment\nperform informed model selection\ncomment each result of an analysis you run with R"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-1",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-1",
+    "title": "Linear Regression with R",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nAnalysis of the production data set which is composed of the following variables:\n\n\n\nVariable name\nDescription\n\n\n\n\nx\nNumber of produced pieces\n\n\ny\nProduction cost\n\n\n\nStudy the relationship between x and y."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-2",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-2",
+    "title": "Linear Regression with R",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nAnalysis of the brain data set which is composed of the following variables:\n\n\n\nVariable name\nDescription\n\n\n\n\nbody_weight\nBody weight in kg\n\n\nbrain_weight\nBrain weight in kg\n\n\n\nStudy the relationship between body and brain weights, to establish how the variable brain_weight changes with the variable body_weight."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-3",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-3",
+    "title": "Linear Regression with R",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nAnalysis of the anscombe data set which is composed of the following variables:\n\n\n\nVariable name\nDescription\n\n\n\n\nx1\nPredictor to be used for explaining y1\n\n\nx2\nPredictor to be used for explaining y2\n\n\nx3\nPredictor to be used for explaining y3\n\n\nx4\nPredictor to be used for explaining y4\n\n\ny1\nResponse to be explained by x1\n\n\ny2\nResponse to be explained by x2\n\n\ny3\nResponse to be explained by x3\n\n\ny4\nResponse to be explained by x4\n\n\n\nStudy the relationship between each \\(y_i\\) and the corresponding \\(x_i\\)."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-4",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-4",
+    "title": "Linear Regression with R",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nAnalysis of the cement data set, which contains the following variables:\n\n\n\n\n\n\n\nVariable name\nDescription\n\n\n\n\naluminium\nPercentage of \\(\\mathrm{Ca}_3 \\mathrm{Al}_2 \\mathrm{O}_6\\)\n\n\nsilicate\nPercentage of \\(\\mathrm{C}_2 \\mathrm{S}\\)\n\n\naluminium_ferrite\nPercentage of \\(4 \\mathrm{CaO} \\mathrm{Al}_2 \\mathrm{O}_3 \\mathrm{Fe}_2 \\mathrm{O}_3\\)\n\n\nsilicate_bic\nPercentage of \\(\\mathrm{C}_3 \\mathrm{S}\\)\n\n\nhardness\nHardness of the cement obtained by mixing the above four components\n\n\n\nStudy, using a multiple linear regression model, how the variable hardness depends on the four predictors."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-5",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-5",
+    "title": "Linear Regression with R",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nAnalysis of the job data set, which contains the following variables:\n\n\n\nVariable name\nDescription\n\n\n\n\naverage_score\nAverage score obtained by the employee in the test\n\n\nyears_service\nNumber of years of service\n\n\nsex\nMale or female\n\n\n\nWe want to see if it is possible to use the sex of the person in addition to the years of service to predict, with a linear model, the average score obtained in the test. Estimate a linear regression of average_score vs. years_service, considering the categorical variable sex."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-6",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-6",
+    "title": "Linear Regression with R",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nAnalysis of the cars data set, which contains the following variables:\n\n\n\n\n\n\n\nVariable name\nDescription\n\n\n\n\nspeed\nSpeed of the car before starting braking\n\n\ndist\nDistance travelled by the car during the braking period until it completely stops\n\n\n\nVerify if the distance travelled during the braking depends on the starting velocity of the car:\n\nChoose the best model to explain the distance as function of the speed,\nPredict the braking distance for a starting velocity of 25 km/h, using a point estimate and a prediction interval."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-7",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Exercises.html#exercise-7",
+    "title": "Linear Regression with R",
+    "section": "Exercise 7",
+    "text": "Exercise 7\nAnalysis of the mussels data set, which contains the following variables:\n\n\n\nVariable name\nDescription\n\n\n\n\nlength\nLength of a mussel (mm)\n\n\nwidth\nWidth of a mussel (mm)\n\n\nheight\nHeight of a mussel (mm)\n\n\nsize\nMass of a mussel (g)\n\n\nweight\nWeight of eatable part of a mussel (g)\n\n\n\nWe want to study how the eatable part of a mussel varies as a function of the other four variables using a multiple linear regression."
+  },
+  {
     "objectID": "02_Visualize/02-Visualize-Exercises.html",
     "href": "02_Visualize/02-Visualize-Exercises.html",
     "title": "Visualize Data",
@@ -95,91 +158,91 @@
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#general-data-modeling-framework",
     "title": "Hypothesis Testing",
     "section": "General data modeling framework",
-    "text": "General data modeling framework\n\nYou have some data \\(\\{x_1, \\dots, x_n\\}\\) that you presume have been sampled independently from their corresponding random variables \\(\\{X_1, \\dots, X_n\\}\\);\nYou formulate a simple hypothesis \\(H_0\\), called null hypothesis, about the distribution from which this data were sampled;\nYou want to confront this hypothesis against an alternative hypothesis \\(H_a\\) using your finite amount of data;\nYou use a test statistic \\(T(X_1, \\dots, X_n)\\) that depends on the sample (and thus that you can calculate anytime you observe a sample) and of which you know (an approximation of) the distribution when you assume that your null hypothesis is true; it is called the null distribution of the test statistic \\(T\\);\nYou compute the value \\(t_0\\) of this test statistic with your observed data;\nYou strongly reject \\(H_0\\) if \\(t_0\\) falls on the tails of the null distribution of \\(T\\); or,\nYou lack evidence to reject \\(H_0\\) if \\(t_0\\) ends up in the central part of the null distribution of \\(T\\).\nWarning: It is straightforward from this setup to understand that the problem is not symmetric in the hypotheses. Indeed, the procedure relies on what happens when \\(H_0\\) is true but does not depend on \\(H_a\\)."
+    "text": "General data modeling framework\n\n\nYou have some data \\(\\{x_1, \\dots, x_n\\}\\) that you presume have been sampled independently from their corresponding random variables \\(\\{X_1, \\dots, X_n\\}\\);\nYou formulate a simple hypothesis \\(H_0\\), called null hypothesis, about the distribution from which this data were sampled;\nYou want to confront this hypothesis against an alternative hypothesis \\(H_a\\) using your finite amount of data;\nYou use a test statistic \\(T(X_1, \\dots, X_n)\\) that depends on the sample (and thus that you can calculate anytime you observe a sample) and of which you know (an approximation of) the distribution when you assume that your null hypothesis is true; it is called the null distribution of the test statistic \\(T\\);\nYou compute the value \\(t_0\\) of this test statistic with your observed data;\nYou strongly reject \\(H_0\\) if \\(t_0\\) falls on the tails of the null distribution of \\(T\\); or,\nYou lack evidence to reject \\(H_0\\) if \\(t_0\\) ends up in the central part of the null distribution of \\(T\\).\nWarning: It is straightforward from this setup to understand that the problem is not symmetric in the hypotheses. Indeed, the procedure relies on what happens when \\(H_0\\) is true but does not depend on \\(H_a\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#theoretical-aspects",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#theoretical-aspects",
     "title": "Hypothesis Testing",
     "section": "Theoretical aspects",
-    "text": "Theoretical aspects\nYou design a test statistic \\(T(X_1, \\dots, X_n)\\) for the purpose of performing this test which must satisfy at least the first three of the following four properties:\n\nIt evaluates to real values;\nYou have all the required knowledge to compute its value once you observe the data;\nIf \\(H_0\\) is true, then small values of the statistic should comfort you with the idea that \\(H_0\\) is a reasonable assumption, while larger values of the statistic should generate suspicion about \\(H_0\\) in favor of the alternative hypothesis \\(H_a\\);\n[optional] If \\(H_0\\) is true, then it can be very helpful to have access to the (asymptotic) distribution of the test statistic under classical assumptions (such as normality)."
+    "text": "Theoretical aspects\n\nYou design a test statistic \\(T(X_1, \\dots, X_n)\\) for the purpose of performing this test which must satisfy at least the first three of the following four properties:\n\nIt evaluates to real values;\nYou have all the required knowledge to compute its value once you observe the data;\nIf \\(H_0\\) is true, then small values of the statistic should comfort you with the idea that \\(H_0\\) is a reasonable assumption, while larger values of the statistic should generate suspicion about \\(H_0\\) in favor of the alternative hypothesis \\(H_a\\);\n[optional] If \\(H_0\\) is true, then it can be very helpful to have access to the (asymptotic) distribution of the test statistic under classical assumptions (such as normality)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#example-test-on-the-mean",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#example-test-on-the-mean",
     "title": "Hypothesis Testing",
     "section": "Example: Test on the mean",
-    "text": "Example: Test on the mean\nSuppose you have a sample of \\(n\\) i.i.d. random variables \\(X_1, \\dots, X_n \\sim \\mathcal{N}(\\mu, \\sigma^2)\\) and you know the value of \\(\\sigma^2\\). We want to test whether the mean \\(\\mu\\) of the distribution is equal to some pre-specified value \\(\\mu_0\\). We can therefore use \\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\). At this point, a good candidate test statistic to look at for performing this test is: \\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma}, \\quad \\mbox{with} \\quad \\overline X := \\frac{1}{n} \\sum_{i=1}^n X_i. \\]\n\nIt evaluates to real values;\nYou have all the required knowledge to compute its value once you observe the data (\\(\\overline x\\));\nThe sample mean \\(\\overline X\\) is an unbiased estimator of the true unknown mean \\(\\mu\\); so, if \\(H_0\\) is true, then \\(\\overline X\\) will produce values that are close to \\(\\mu_0\\); hence, small values of \\(T\\) will comfort you with the idea that \\(H_0\\) is a reasonable assumption, while larger values, both positive or negative, of the statistic should generate suspicion about \\(H_0\\) in favor of the alternative hypothesis \\(H_a\\);\nIf you assume normality and independence of the sample, then \\(T \\sim \\mathcal{N}(0, 1)\\) under \\(H_0\\)."
+    "text": "Example: Test on the mean\n\nSuppose you have a sample of \\(n\\) i.i.d. random variables \\(X_1, \\dots, X_n \\sim \\mathcal{N}(\\mu, \\sigma^2)\\) and you know the value of \\(\\sigma^2\\). We want to test whether the mean \\(\\mu\\) of the distribution is equal to some pre-specified value \\(\\mu_0\\). We can therefore use \\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\). At this point, a good candidate test statistic to look at for performing this test is: \\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma}, \\quad \\mbox{with} \\quad \\overline X := \\frac{1}{n} \\sum_{i=1}^n X_i. \\]\n\nIt evaluates to real values;\nYou have all the required knowledge to compute its value once you observe the data (\\(\\overline x\\));\nThe sample mean \\(\\overline X\\) is an unbiased estimator of the true unknown mean \\(\\mu\\); so, if \\(H_0\\) is true, then \\(\\overline X\\) will produce values that are close to \\(\\mu_0\\); hence, small values of \\(T\\) will comfort you with the idea that \\(H_0\\) is a reasonable assumption, while larger values, both positive or negative, of the statistic should generate suspicion about \\(H_0\\) in favor of the alternative hypothesis \\(H_a\\);\nIf you assume normality and independence of the sample, then \\(T \\sim \\mathcal{N}(0, 1)\\) under \\(H_0\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#distribution-of-the-test-statistic-under-h_0",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#distribution-of-the-test-statistic-under-h_0",
     "title": "Hypothesis Testing",
     "section": "Distribution of the test statistic under \\(H_0\\)",
-    "text": "Distribution of the test statistic under \\(H_0\\)\n\nParametric testing. If you designed your test statistic carefully, you might have access to its theoretical distribution when \\(H_0\\) is true under distributional assumptions about the data. This is called parametric hypothesis testing.\nAsymptotic testing. If it is not the case, you can often derive the theoretical distribution of the statistic under the null hypothesis asymptotically, i.e. assuming that you have a large sample (\\(n \\gg 1\\)); this is called asymptotic hypothesis testing.\nBootstrap testing. If you are in a large sample size regime but still cannot have access to the theoretical distribution of your test statistic, you can approach this distribution using bootstrapping; this is called bootstrap hypothesis testing.\nPermutation testing. If you are in a low sample size regime, then you can approach the distribution of the test statistic using permutations; this is called permutation hypothesis testing."
+    "text": "Distribution of the test statistic under \\(H_0\\)\n\n\nParametric testing. If you designed your test statistic carefully, you might have access to its theoretical distribution when \\(H_0\\) is true under distributional assumptions about the data. This is called parametric hypothesis testing.\nAsymptotic testing. If it is not the case, you can often derive the theoretical distribution of the statistic under the null hypothesis asymptotically, i.e. assuming that you have a large sample (\\(n \\gg 1\\)); this is called asymptotic hypothesis testing.\nBootstrap testing. If you are in a large sample size regime but still cannot have access to the theoretical distribution of your test statistic, you can approach this distribution using bootstrapping; this is called bootstrap hypothesis testing.\nPermutation testing. If you are in a low sample size regime, then you can approach the distribution of the test statistic using permutations; this is called permutation hypothesis testing."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#two-sided-vs.-one-sided-hypothesis-tests",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#two-sided-vs.-one-sided-hypothesis-tests",
     "title": "Hypothesis Testing",
     "section": "Two-sided vs. one-sided hypothesis tests",
-    "text": "Two-sided vs. one-sided hypothesis tests\nDepending on what you put into the alternative hypothesis \\(H_a\\), larger values of the test statistic that raise suspicion regarding the validity of \\(H_0\\) might mean:\n\nlarger values only on the right tail of the null distribution of \\(T\\);\nlarger values only on the left tail of the null distribution of \\(T\\);\nlarger values on both tails.\n\nIn the first two cases, we say that the test is one-sided. In the latter case, we say that the test is two-sided because we interpret large values in both tails as suspicious."
+    "text": "Two-sided vs. one-sided hypothesis tests\n\nDepending on what you put into the alternative hypothesis \\(H_a\\), larger values of the test statistic that raise suspicion regarding the validity of \\(H_0\\) might mean:\n\nlarger values only on the right tail of the null distribution of \\(T\\);\nlarger values only on the left tail of the null distribution of \\(T\\);\nlarger values on both tails.\n\nIn the first two cases, we say that the test is one-sided. In the latter case, we say that the test is two-sided because we interpret large values in both tails as suspicious."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#example-test-on-the-mean-continued",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#example-test-on-the-mean-continued",
     "title": "Hypothesis Testing",
     "section": "Example: Test on the mean (continued)",
-    "text": "Example: Test on the mean (continued)\nSuppose you have a sample of \\(n\\) i.i.d. random variables \\(X_1, \\dots, X_n \\sim \\mathcal{N}(\\mu, \\sigma^2)\\) and you know the value of \\(\\sigma^2\\). We want to test whether the mean \\(\\mu\\) of the distribution is equal to some pre-specified value \\(\\mu_0\\). As we have seen, a good candidate test statistic to look at for performing this test is:\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma}, \\quad \\mbox{with} \\quad \\overline X := \\frac{1}{n} \\sum_{i=1}^n X_i. \\]\nNow, using this test statistic, we might be interested in performing three different tests:\n\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &gt; \\mu_0\\);\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &lt; \\mu_0\\);\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\)."
+    "text": "Example: Test on the mean (continued)\n\nSuppose you have a sample of \\(n\\) i.i.d. random variables \\(X_1, \\dots, X_n \\sim \\mathcal{N}(\\mu, \\sigma^2)\\) and you know the value of \\(\\sigma^2\\). We want to test whether the mean \\(\\mu\\) of the distribution is equal to some pre-specified value \\(\\mu_0\\). As we have seen, a good candidate test statistic to look at for performing this test is:\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma}, \\quad \\mbox{with} \\quad \\overline X := \\frac{1}{n} \\sum_{i=1}^n X_i. \\]\nNow, using this test statistic, we might be interested in performing three different tests:\n\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &gt; \\mu_0\\);\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &lt; \\mu_0\\);\n\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-mu_0",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-mu_0",
     "title": "Hypothesis Testing",
     "section": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu > \\mu_0\\)",
-    "text": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &gt; \\mu_0\\)\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma} \\] Remember that we must look at large values of \\(T\\) that raise suspicion in favor of \\(H_a\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\overline X\\) is an unbiased estimator of the true mean.\nLarge negative values of \\(T\\) that happen when the true mean is far less than \\(\\mu_0\\) does not raise suspicion in favor of \\(H_a\\).\nLarge positive values of \\(T\\) that happen when the true mean is far more than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nConclusion: we are interested only in the right tail of the null distribution of \\(T\\) to find evidence to reject \\(H_0\\)."
+    "text": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &gt; \\mu_0\\)\n\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma} \\] Remember that we must look at large values of \\(T\\) that raise suspicion in favor of \\(H_a\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\overline X\\) is an unbiased estimator of the true mean.\nLarge negative values of \\(T\\) that happen when the true mean is far less than \\(\\mu_0\\) does not raise suspicion in favor of \\(H_a\\).\nLarge positive values of \\(T\\) that happen when the true mean is far more than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nConclusion: we are interested only in the right tail of the null distribution of \\(T\\) to find evidence to reject \\(H_0\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-mu_0-1",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-mu_0-1",
     "title": "Hypothesis Testing",
     "section": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu < \\mu_0\\)",
-    "text": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &lt; \\mu_0\\)\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma} \\] Remember that we must look at large values of \\(T\\) that raise suspicion in favor of \\(H_a\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\overline X\\) is an unbiased estimator of the true mean.\nLarge negative values of \\(T\\) that happen when the true mean is far more than \\(\\mu_0\\) does not raise suspicion in favor of \\(H_a\\).\nLarge positive values of \\(T\\) that happen when the true mean is far less than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nConclusion: we are interested only in the left tail of the null distribution of \\(T\\) to find evidence to reject \\(H_0\\)."
+    "text": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu &lt; \\mu_0\\)\n\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma} \\] Remember that we must look at large values of \\(T\\) that raise suspicion in favor of \\(H_a\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\overline X\\) is an unbiased estimator of the true mean.\nLarge negative values of \\(T\\) that happen when the true mean is far more than \\(\\mu_0\\) does not raise suspicion in favor of \\(H_a\\).\nLarge positive values of \\(T\\) that happen when the true mean is far less than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nConclusion: we are interested only in the left tail of the null distribution of \\(T\\) to find evidence to reject \\(H_0\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-ne-mu_0",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#h_0-mu-mu_0-vs.-h_a-mu-ne-mu_0",
     "title": "Hypothesis Testing",
     "section": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\)",
-    "text": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\)\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma} \\] Remember that we must look at large values of \\(T\\) that raise suspicion in favor of \\(H_a\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\overline X\\) is an unbiased estimator of the true mean.\nLarge negative values of \\(T\\) that happen when the true mean is far more than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nLarge positive values of \\(T\\) that happen when the true mean is far less than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nConclusion: we are interested in both the left and the right tails of the null distribution of \\(T\\) to find evidence to reject \\(H_0\\)."
+    "text": "\\(H_0: \\mu = \\mu_0\\) vs. \\(H_a: \\mu \\ne \\mu_0\\)\n\n\\[ T(X_1, \\dots, X_n) := \\sqrt{n} \\frac{\\overline X - \\mu_0}{\\sigma} \\] Remember that we must look at large values of \\(T\\) that raise suspicion in favor of \\(H_a\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\overline X\\) is an unbiased estimator of the true mean.\nLarge negative values of \\(T\\) that happen when the true mean is far more than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nLarge positive values of \\(T\\) that happen when the true mean is far less than \\(\\mu_0\\) does raise suspicion in favor of \\(H_a\\).\nConclusion: we are interested in both the left and the right tails of the null distribution of \\(T\\) to find evidence to reject \\(H_0\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#type-i-and-type-ii-errors",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#type-i-and-type-ii-errors",
     "title": "Hypothesis Testing",
     "section": "Type I and Type II errors",
-    "text": "Type I and Type II errors\nSo we are now at a point where we know which tail(s) which we should look at and we now need to make a decision as to what large means. In other words, above which threshold on all possible values of my test statistic should I consider that I can reject \\(H_0\\).\n\nNotice that you are going to take this decision based on the null distribution.\nWhen you decide to reject or not, you might make an error:\n\n\n\n\n\n\nDecision\n\\(H_0\\) is true\n\\(H_a\\) is true\n\n\n\n\nDo not reject \\(H_0\\)\nWell done\nType II error\n\n\nReject \\(H_0\\)\nType I error\nWell done\n\n\n\n\n\n\n\n\nThe only error rate you can control is the type I error rate because it is a probability computed assuming that the null hypothesis is true, which is exactly the situation we put ourselves in for making the decision (i.e. looking at the tails of the null distribution of \\(T\\))."
+    "text": "Type I and Type II errors\n\nSo we are now at a point where we know which tail(s) which we should look at and we now need to make a decision as to what large means. In other words, above which threshold on all possible values of my test statistic should I consider that I can reject \\(H_0\\).\n\nNotice that you are going to take this decision based on the null distribution.\nWhen you decide to reject or not, you might make an error:\n\n\n\n\n\n\nDecision\n\\(H_0\\) is true\n\\(H_a\\) is true\n\n\n\n\nDo not reject \\(H_0\\)\nWell done\nType II error\n\n\nReject \\(H_0\\)\nType I error\nWell done\n\n\n\n\n\n\n\n\nThe only error rate you can control is the type I error rate because it is a probability computed assuming that the null hypothesis is true, which is exactly the situation we put ourselves in for making the decision (i.e. looking at the tails of the null distribution of \\(T\\))."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#significance-level",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#significance-level",
     "title": "Hypothesis Testing",
     "section": "Significance level",
-    "text": "Significance level\n\nAt this point, you can decide that you do not want to make more than a certain amount of type I errors. So you want to force that \\(\\mathbb{P}_{H_0}(\\mbox{reject } H_0) \\le \\alpha\\), for some upper bound threshold \\(\\alpha\\) on the probability of type I errors. This threshold is called significance level of the test and is often denoted by the greek letter \\(\\alpha\\).\nLet us now translate what this rule implies for the right-tail alternative case. The event “\\(\\mbox{reject } H_0\\)” translates in this case into \\(T &gt; x\\) for some \\(x\\) value of the test statistic \\(T\\). Hence, the rule becomes: \\[ \\mathbb{P}_{H_0}(T &gt; x) \\le \\alpha \\\\ \\Leftrightarrow 1 - \\mathbb{P}_{H_0}(T \\le x) \\le \\alpha \\\\ \\Leftrightarrow 1 - F_T^{\\left(H_0\\right)}(x) \\le \\alpha \\\\ \\Leftrightarrow F_T^{\\left(H_0\\right)}(x) \\ge 1 - \\alpha \\] verified for all \\(x \\ge q_{1-\\alpha}\\), where \\(q_{1-\\alpha}\\) is the quantile of order \\(1-\\alpha\\) of the null distribution of \\(T\\)."
+    "text": "Significance level\n\n\nAt this point, you can decide that you do not want to make more than a certain amount of type I errors. So you want to force that \\(\\mathbb{P}_{H_0}(\\mbox{reject } H_0) \\le \\alpha\\), for some upper bound threshold \\(\\alpha\\) on the probability of type I errors. This threshold is called significance level of the test and is often denoted by the greek letter \\(\\alpha\\).\nLet us now translate what this rule implies for the right-tail alternative case. The event “\\(\\mbox{reject } H_0\\)” translates in this case into \\(T &gt; x\\) for some \\(x\\) value of the test statistic \\(T\\). Hence, the rule becomes: \\[ \\mathbb{P}_{H_0}(T &gt; x) \\le \\alpha \\\\ \\Leftrightarrow 1 - \\mathbb{P}_{H_0}(T \\le x) \\le \\alpha \\\\ \\Leftrightarrow 1 - F_T^{\\left(H_0\\right)}(x) \\le \\alpha \\\\ \\Leftrightarrow F_T^{\\left(H_0\\right)}(x) \\ge 1 - \\alpha \\] verified for all \\(x \\ge q_{1-\\alpha}\\), where \\(q_{1-\\alpha}\\) is the quantile of order \\(1-\\alpha\\) of the null distribution of \\(T\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#significance-level-continued",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#significance-level-continued",
     "title": "Hypothesis Testing",
     "section": "Significance level (continued)",
-    "text": "Significance level (continued)\nDecision-making rule:\n\nWe reject \\(H_0\\) if the value \\(t_0\\) of the test statistic computed on the observed sample is greater than the quantile of order \\(1-\\alpha\\) of the null distribution of \\(T\\);\nWe decide that we lack evidence to reject \\(H_0\\) if the value \\(t_0\\) of the test statistic calculated on the observed sample is smaller than the quantile of order \\(1-\\alpha\\) of the null distribution of \\(T\\).\nThis decision-making rule guarantees that the probability of making a type I error is upper-bounded by the significance level \\(\\alpha\\)."
+    "text": "Significance level (continued)\n\nDecision-making rule:\n\nWe reject \\(H_0\\) if the value \\(t_0\\) of the test statistic computed on the observed sample is greater than the quantile of order \\(1-\\alpha\\) of the null distribution of \\(T\\);\nWe decide that we lack evidence to reject \\(H_0\\) if the value \\(t_0\\) of the test statistic calculated on the observed sample is smaller than the quantile of order \\(1-\\alpha\\) of the null distribution of \\(T\\).\nThis decision-making rule guarantees that the probability of making a type I error is upper-bounded by the significance level \\(\\alpha\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#p-value",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#p-value",
     "title": "Hypothesis Testing",
     "section": "p-value",
-    "text": "p-value\n\nDefinition. The p-value is a scalar value between \\(0\\) and \\(1\\) that measures what was the probability, assuming that the null hypothesis \\(H_0\\) is true, of observing the data we did observe, or data even more in favor of the alternative hypothesis.\nMathematical expression. If \\(t_0\\) is the value of the test statistic computed from the observed sample, then:\n\n\\(p = \\mathbb{P}_{H_0}(T &gt; t_0)\\) for right-tail hypothesis tests (e.g. \\(H_a: \\mu &gt; \\mu_0\\) when testing the mean);\n\\(p = \\mathbb{P}_{H_0}(T &lt; t_0)\\) for left-tail hypothesis tests (e.g. \\(H_a: \\mu &lt; \\mu_0\\) when testing the mean);\n\\(p = 2 \\min\\left( \\mathbb{P}_{H_0} \\left( T &gt; t_0 \\right), \\mathbb{P}_{H_0} \\left( T &lt; t_0 \\right) \\right)\\) for two-tail hypothesis tests (e.g. \\(H_a: \\mu \\ne \\mu_0\\) when testing the mean).\n\nInterpretation. If the \\(p\\)-value is very small, it means that\n\neither we observed a miracle,\nor the null hypothesis might be wrong.\n\nDecision-making rule. We can show that rejecting the null hypothesis when \\(p \\le \\alpha\\) also produces a decision-making rule that guarantees a probability of type I error at most \\(\\alpha\\)."
+    "text": "p-value\n\n\nDefinition. The p-value is a scalar value between \\(0\\) and \\(1\\) that measures what was the probability, assuming that the null hypothesis \\(H_0\\) is true, of observing the data we did observe, or data even more in favor of the alternative hypothesis.\nMathematical expression. If \\(t_0\\) is the value of the test statistic computed from the observed sample, then:\n\n\\(p = \\mathbb{P}_{H_0}(T &gt; t_0)\\) for right-tail hypothesis tests (e.g. \\(H_a: \\mu &gt; \\mu_0\\) when testing the mean);\n\\(p = \\mathbb{P}_{H_0}(T &lt; t_0)\\) for left-tail hypothesis tests (e.g. \\(H_a: \\mu &lt; \\mu_0\\) when testing the mean);\n\\(p = 2 \\min\\left( \\mathbb{P}_{H_0} \\left( T &gt; t_0 \\right), \\mathbb{P}_{H_0} \\left( T &lt; t_0 \\right) \\right)\\) for two-tail hypothesis tests (e.g. \\(H_a: \\mu \\ne \\mu_0\\) when testing the mean).\n\nInterpretation. If the \\(p\\)-value is very small, it means that\n\neither we observed a miracle,\nor the null hypothesis might be wrong.\n\nDecision-making rule. We can show that rejecting the null hypothesis when \\(p \\le \\alpha\\) also produces a decision-making rule that guarantees a probability of type I error at most \\(\\alpha\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#decision-making-summary-right-tail-scenario",
@@ -193,112 +256,112 @@
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#statistical-power-of-a-test",
     "title": "Hypothesis Testing",
     "section": "Statistical power of a test",
-    "text": "Statistical power of a test\n\nDefinition. It is the probability of correctly rejecting the null hypothesis, i.e. to reject it when the alternative is in fact correct. It is often denoted by \\(\\mu\\). In terms of events, it is defined by: \\[ \\mu := \\mathbb{P}_{H_a}(\\mbox{Reject } H_0). \\]\nUsage. The statistical power of a test is an important aspect of the test because:\n\nit is an important performance indicator to compare different testing procedures (observe that there is not a unique statistic to perform a given test);\nit is often used in clinical trials or other types of trials (e.g. crash tests) to calibrate the number of observations required to achieve a given statistical power.\n\nRemarks.\n\nThe statistical power \\(\\mu\\) is equal to \\(1 - \\beta\\), where \\(\\beta\\) is the greek letter often used to designate the probability of type II errors, \\(\\beta := \\mathbb{P}_{H_a}(\\mbox{Do not reject } H_0)\\).\nPower calculations are difficult because it requires to put ourselves under \\(H_a\\), which is often of the form \\(\\mu &gt; \\mu_0\\) or \\(\\mu &lt; \\mu_0\\) or \\(\\mu \\ne \\mu_0\\). In other words, you often lack information to compute probabilities assuming that the alternative hypothesis is true. You have to assess how the power changes as you explore different alternatives."
+    "text": "Statistical power of a test\n\n\nDefinition. It is the probability of correctly rejecting the null hypothesis, i.e. to reject it when the alternative is in fact correct. It is often denoted by \\(\\mu\\). In terms of events, it is defined by: \\[ \\mu := \\mathbb{P}_{H_a}(\\mbox{Reject } H_0). \\]\nUsage. The statistical power of a test is an important aspect of the test because:\n\nit is an important performance indicator to compare different testing procedures (observe that there is not a unique statistic to perform a given test);\nit is often used in clinical trials or other types of trials (e.g. crash tests) to calibrate the number of observations required to achieve a given statistical power.\n\nRemarks.\n\nThe statistical power \\(\\mu\\) is equal to \\(1 - \\beta\\), where \\(\\beta\\) is the greek letter often used to designate the probability of type II errors, \\(\\beta := \\mathbb{P}_{H_a}(\\mbox{Do not reject } H_0)\\).\nPower calculations are difficult because it requires to put ourselves under \\(H_a\\), which is often of the form \\(\\mu &gt; \\mu_0\\) or \\(\\mu &lt; \\mu_0\\) or \\(\\mu \\ne \\mu_0\\). In other words, you often lack information to compute probabilities assuming that the alternative hypothesis is true. You have to assess how the power changes as you explore different alternatives."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean",
     "title": "Hypothesis Testing",
     "section": "Testing the mean",
-    "text": "Testing the mean\n\nModel. Let \\((X_1, \\dots, X_n)\\) be \\(n\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu, \\sigma^2)\\).\nHypotheses. \\[ H_0: \\mu = \\mu_0 \\quad \\mbox{vs.} \\quad H_a: \\mu \\ne \\mu_0 \\quad \\mbox{or} \\quad H_a: \\mu &gt; \\mu_0 \\quad \\mbox{or} \\quad H_a: \\mu &lt; \\mu_0. \\]\nTest Statistic. \\[ Z_n = \\sqrt{n} \\frac{\\overline X_n - \\mu_0}{\\sigma}. \\]\nProblem. Under the null hypothesis, I do not have complete knowledge to compute the test statistic because I do not know the value of \\(\\sigma\\)."
+    "text": "Testing the mean\n\n\nModel. Let \\((X_1, \\dots, X_n)\\) be \\(n\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu, \\sigma^2)\\).\nHypotheses. \\[ H_0: \\mu = \\mu_0 \\quad \\mbox{vs.} \\quad H_a: \\mu \\ne \\mu_0 \\quad \\mbox{or} \\quad H_a: \\mu &gt; \\mu_0 \\quad \\mbox{or} \\quad H_a: \\mu &lt; \\mu_0. \\]\nTest Statistic. \\[ Z_n = \\sqrt{n} \\frac{\\overline X_n - \\mu_0}{\\sigma}. \\]\nProblem. Under the null hypothesis, I do not have complete knowledge to compute the test statistic because I do not know the value of \\(\\sigma\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean-with-known-variance",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean-with-known-variance",
     "title": "Hypothesis Testing",
     "section": "Testing the mean with known variance",
-    "text": "Testing the mean with known variance\n\nProblem solved. I now have complete knowledge to compute the test statistic.\nNull distribution. The null distribution is \\[ Z_n \\stackrel{H_0}{\\sim} \\mathcal{N}(0, 1). \\]\nR function. None"
+    "text": "Testing the mean with known variance\n\n\nProblem solved. I now have complete knowledge to compute the test statistic.\nNull distribution. The null distribution is \\[ Z_n \\stackrel{H_0}{\\sim} \\mathcal{N}(0, 1). \\]\nR function. None"
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean-with-unknown-variance",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-mean-with-unknown-variance",
     "title": "Hypothesis Testing",
     "section": "Testing the mean with unknown variance",
-    "text": "Testing the mean with unknown variance\n\nProblem solved. I plug in the empirical standard deviation instead of \\(\\sigma\\) in the definition of the test statistic.\nTest Statistic. \\[ T_n = \\frac{\\overline X_n - \\mu_0}{\\sqrt{\\frac{S_{n-1}^2}{n}}}, \\quad \\mbox{with} \\quad S_{n-1}^2 := \\frac{1}{n-1} \\sum_{i = 1}^n (X_i - \\overline X)^2. \\]\nNull distribution. \\[ T_n \\stackrel{H_0}{\\sim} \\mathcal{S}tudent(n-1). \\]\nR function. t.test()"
+    "text": "Testing the mean with unknown variance\n\n\nProblem solved. I plug in the empirical standard deviation instead of \\(\\sigma\\) in the definition of the test statistic.\nTest Statistic. \\[ T_n = \\frac{\\overline X_n - \\mu_0}{\\sqrt{\\frac{S_{n-1}^2}{n}}}, \\quad \\mbox{with} \\quad S_{n-1}^2 := \\frac{1}{n-1} \\sum_{i = 1}^n (X_i - \\overline X)^2. \\]\nNull distribution. \\[ T_n \\stackrel{H_0}{\\sim} \\mathcal{S}tudent(n-1). \\]\nR function. t.test()"
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance",
     "title": "Hypothesis Testing",
     "section": "Testing the variance",
-    "text": "Testing the variance\n\nAssumptions. Let \\((X_1, \\dots, X_n)\\) be \\(n\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu, \\sigma^2)\\).\nHypotheses. \\[ H_0: \\sigma^2 = \\sigma_0^2 \\quad \\mbox{vs.} \\quad H_a: \\sigma^2 \\ne \\sigma_0^2 \\quad \\mbox{or} \\quad H_a: \\sigma^2 &gt; \\sigma_0^2 \\quad \\mbox{or} \\quad H_a: \\sigma^2 &lt; \\sigma_0^2. \\]\nTest Statistic. \\[ U_n = \\sum_{i = 1}^n \\frac{(X_i - \\mu)^2}{\\sigma_0^2}. \\]\nProblem. Under the null hypothesis, I do not have complete knowledge to compute the test statistic because I do not know the value of \\(\\mu\\)."
+    "text": "Testing the variance\n\n\nAssumptions. Let \\((X_1, \\dots, X_n)\\) be \\(n\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu, \\sigma^2)\\).\nHypotheses. \\[ H_0: \\sigma^2 = \\sigma_0^2 \\quad \\mbox{vs.} \\quad H_a: \\sigma^2 \\ne \\sigma_0^2 \\quad \\mbox{or} \\quad H_a: \\sigma^2 &gt; \\sigma_0^2 \\quad \\mbox{or} \\quad H_a: \\sigma^2 &lt; \\sigma_0^2. \\]\nTest Statistic. \\[ U_n = \\sum_{i = 1}^n \\frac{(X_i - \\mu)^2}{\\sigma_0^2}. \\]\nProblem. Under the null hypothesis, I do not have complete knowledge to compute the test statistic because I do not know the value of \\(\\mu\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance-with-known-mean",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance-with-known-mean",
     "title": "Hypothesis Testing",
     "section": "Testing the variance with known mean",
-    "text": "Testing the variance with known mean\n\nProblem solved. I now have complete knowledge to compute the test statistic.\nNull distribution. The null distribution is \\[ U_n \\stackrel{H_0}{\\sim} \\chi^2(n). \\]\nR function. None."
+    "text": "Testing the variance with known mean\n\n\nProblem solved. I now have complete knowledge to compute the test statistic.\nNull distribution. The null distribution is \\[ U_n \\stackrel{H_0}{\\sim} \\chi^2(n). \\]\nR function. None."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance-with-unknown-mean",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-the-variance-with-unknown-mean",
     "title": "Hypothesis Testing",
     "section": "Testing the variance with unknown mean",
-    "text": "Testing the variance with unknown mean\n\nProblem solved. I plug in the empirical mean instead of \\(\\mu\\) in the definition of the test statistic.\nTest Statistic. \\[ U_{n-1} = \\sum_{i = 1}^n \\frac{\\left( X_i - \\overline X_n \\right)^2}{\\sigma_0^2}. \\]\nNull distribution. \\[ U_{n-1} \\stackrel{H_0}{\\sim} \\chi^2(n-1). \\]\nR function. None."
+    "text": "Testing the variance with unknown mean\n\n\nProblem solved. I plug in the empirical mean instead of \\(\\mu\\) in the definition of the test statistic.\nTest Statistic. \\[ U_{n-1} = \\sum_{i = 1}^n \\frac{\\left( X_i - \\overline X_n \\right)^2}{\\sigma_0^2}. \\]\nNull distribution. \\[ U_{n-1} \\stackrel{H_0}{\\sim} \\chi^2(n-1). \\]\nR function. None."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-a-proportion",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-a-proportion",
     "title": "Hypothesis Testing",
     "section": "Testing a proportion",
-    "text": "Testing a proportion\nHere we want to test whether the proportion \\(p\\) of individuals in a given population who have a feature of interest is equal to a pre-specified rate.\n\nModel. Let \\((X_1, \\dots, X_n)\\) be \\(n\\) i.i.d. random variables that follow a Bernoulli distribution \\(\\mathcal{B}e(p)\\). The interpretation is that \\(X_i\\) measures if individual \\(i\\) possesses the characteristic of which we want to know the proportion or not.\nHypotheses. \\[ H_0: p = p_0 \\quad \\mbox{vs.} \\quad H_a: p \\ne p_0 \\quad \\mbox{or} \\quad H_a: p &gt; p_0 \\quad \\mbox{or} \\quad H_a: p &lt; p_0. \\]\nTest Statistic. \\[ B_n = \\sum_{i=1}^n X_i \\]\nNull distribution. \\[ B_n \\sim \\mathcal{B}inom(n,p_0) \\]\nR function. binom.test()"
+    "text": "Testing a proportion\n\nHere we want to test whether the proportion \\(p\\) of individuals in a given population who have a feature of interest is equal to a pre-specified rate.\n\nModel. Let \\((X_1, \\dots, X_n)\\) be \\(n\\) i.i.d. random variables that follow a Bernoulli distribution \\(\\mathcal{B}e(p)\\). The interpretation is that \\(X_i\\) measures if individual \\(i\\) possesses the characteristic of which we want to know the proportion or not.\nHypotheses. \\[ H_0: p = p_0 \\quad \\mbox{vs.} \\quad H_a: p \\ne p_0 \\quad \\mbox{or} \\quad H_a: p &gt; p_0 \\quad \\mbox{or} \\quad H_a: p &lt; p_0. \\]\nTest Statistic. \\[ B_n = \\sum_{i=1}^n X_i \\]\nNull distribution. \\[ B_n \\sim \\mathcal{B}inom(n,p_0) \\]\nR function. binom.test()"
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-variance-differences",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-variance-differences",
     "title": "Hypothesis Testing",
     "section": "Testing for variance differences",
-    "text": "Testing for variance differences\n\nModel. Let \\((X_1, \\dots, X_{n_x})\\) be \\(n_X\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_X, \\sigma_X^2)\\) and \\((Y_1, \\dots, Y_{n_Y})\\) be \\(n_Y\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_Y, \\sigma_Y^2)\\). Assume furthermore that the two samples are statistically independent.\nHypotheses. \\[ H_0: \\sigma_X^2 = \\sigma_Y^2 \\quad \\mbox{vs.} \\quad H_a: \\sigma_X^2 \\ne \\sigma_Y^2 \\quad \\mbox{or} \\quad H_a: \\sigma_X^2 &gt; \\sigma_Y^2 \\quad \\mbox{or} \\quad H_a: \\sigma_X^2 &lt; \\sigma_Y^2 \\]\nTest Statistic. \\[ V_n = \\frac{S_X^2}{S_Y^2}, \\quad \\mbox{with} \\quad S_X^2 = \\frac{1}{n_X - 1} \\sum_{i = 1}^{n_X} (X_i - \\overline X_n)^2 \\quad \\mbox{and} \\quad S_Y^2 = \\frac{1}{n_Y - 1} \\sum_{i = 1}^{n_Y} (Y_i - \\overline Y_n)^2 \\]\nNull distribution. \\[ V_n \\stackrel{H_0}{\\sim} \\mathcal{F}isher(n_X - 1, n_Y - 1) \\]\nR function. var.test()\nValidity. Relies on the normality assumption and independence within and between samples."
+    "text": "Testing for variance differences\n\n\nModel. Let \\((X_1, \\dots, X_{n_x})\\) be \\(n_X\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_X, \\sigma_X^2)\\) and \\((Y_1, \\dots, Y_{n_Y})\\) be \\(n_Y\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_Y, \\sigma_Y^2)\\). Assume furthermore that the two samples are statistically independent.\nHypotheses. \\[ H_0: \\sigma_X^2 = \\sigma_Y^2 \\quad \\mbox{vs.} \\quad H_a: \\sigma_X^2 \\ne \\sigma_Y^2 \\quad \\mbox{or} \\quad H_a: \\sigma_X^2 &gt; \\sigma_Y^2 \\quad \\mbox{or} \\quad H_a: \\sigma_X^2 &lt; \\sigma_Y^2 \\]\nTest Statistic. \\[ V_n = \\frac{S_X^2}{S_Y^2}, \\quad \\mbox{with} \\quad S_X^2 = \\frac{1}{n_X - 1} \\sum_{i = 1}^{n_X} (X_i - \\overline X_n)^2 \\quad \\mbox{and} \\quad S_Y^2 = \\frac{1}{n_Y - 1} \\sum_{i = 1}^{n_Y} (Y_i - \\overline Y_n)^2 \\]\nNull distribution. \\[ V_n \\stackrel{H_0}{\\sim} \\mathcal{F}isher(n_X - 1, n_Y - 1) \\]\nR function. var.test()\nValidity. Relies on the normality assumption and independence within and between samples."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences",
     "title": "Hypothesis Testing",
     "section": "Testing for mean differences",
-    "text": "Testing for mean differences\n\nModel. Let \\((X_1, \\dots, X_{n_x})\\) be \\(n_X\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_X, \\sigma_X^2)\\) and \\((Y_1, \\dots, Y_{n_Y})\\) be \\(n_Y\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_Y, \\sigma_Y^2)\\). Assume furthermore that the two samples are statistically independent.\nHypotheses. \\[ H_0: \\mu_X = \\mu_Y \\quad \\mbox{vs.} \\quad H_a: \\mu_X \\ne \\mu_Y \\quad \\mbox{or} \\quad H_a: \\mu_X &gt; \\mu_Y \\quad \\mbox{or} \\quad H_a: \\mu_X &lt; \\mu_Y \\]\nR function. t.test()\nValidity. Relies on the normality assumption and independence within and between samples."
+    "text": "Testing for mean differences\n\n\nModel. Let \\((X_1, \\dots, X_{n_x})\\) be \\(n_X\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_X, \\sigma_X^2)\\) and \\((Y_1, \\dots, Y_{n_Y})\\) be \\(n_Y\\) i.i.d. random variables that follow a normal distribution \\(\\mathcal{N}(\\mu_Y, \\sigma_Y^2)\\). Assume furthermore that the two samples are statistically independent.\nHypotheses. \\[ H_0: \\mu_X = \\mu_Y \\quad \\mbox{vs.} \\quad H_a: \\mu_X \\ne \\mu_Y \\quad \\mbox{or} \\quad H_a: \\mu_X &gt; \\mu_Y \\quad \\mbox{or} \\quad H_a: \\mu_X &lt; \\mu_Y \\]\nR function. t.test()\nValidity. Relies on the normality assumption and independence within and between samples."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences-when-variances-are-equal",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences-when-variances-are-equal",
     "title": "Hypothesis Testing",
     "section": "Testing for mean differences when variances are equal",
-    "text": "Testing for mean differences when variances are equal\n\nTest Statistic. Let \\(\\delta = \\mu_X - \\mu_Y\\) be the mean difference and \\(\\delta_0\\) be the assumed mean difference under \\(H_0\\). Then, \\[\nT_n = \\frac{\\left( \\overline X_n - \\overline Y_n \\right) - \\delta_0}{\\sqrt{S_\\mathrm{pooled}^2 \\left( \\frac{1}{n_X} + \\frac{1}{n_Y} \\right)}} \\mbox{ with } S_\\mathrm{pooled}^2 = \\frac{(n_X - 1) S_X^2 + (n_Y - 1) S_Y^2}{n_X + n_Y - 2}\n\\]\nNull distribution. \\[\nT_n \\stackrel{H_0}{\\sim} \\mathcal{S}tudent(n_X + n_Y - 2)\n\\]"
+    "text": "Testing for mean differences when variances are equal\n\n\nTest Statistic. Let \\(\\delta = \\mu_X - \\mu_Y\\) be the mean difference and \\(\\delta_0\\) be the assumed mean difference under \\(H_0\\). Then, \\[\nT_n = \\frac{\\left( \\overline X_n - \\overline Y_n \\right) - \\delta_0}{\\sqrt{S_\\mathrm{pooled}^2 \\left( \\frac{1}{n_X} + \\frac{1}{n_Y} \\right)}} \\mbox{ with } S_\\mathrm{pooled}^2 = \\frac{(n_X - 1) S_X^2 + (n_Y - 1) S_Y^2}{n_X + n_Y - 2}\n\\]\nNull distribution. \\[\nT_n \\stackrel{H_0}{\\sim} \\mathcal{S}tudent(n_X + n_Y - 2)\n\\]"
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences-when-variances-are-not-equal",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#testing-for-mean-differences-when-variances-are-not-equal",
     "title": "Hypothesis Testing",
     "section": "Testing for mean differences when variances are not equal",
-    "text": "Testing for mean differences when variances are not equal\n\nTest Statistic. \\[\nT_n = \\frac{\\left( \\overline X_n - \\overline Y_n \\right) - \\delta_0}{\\sqrt{\\frac{S_X^2}{n_X} + \\frac{S_Y^2}{n_Y}}}\n\\]\nNull distribution. \\[\nT_n \\stackrel{H_0}{\\sim} \\mathcal{S}tudent(m)\n\\] where the degree of freedom \\(m\\) of the Student’s law is obtained either via: \\[\nm = \\frac{\\left( \\frac{S_X^2}{n_X} + \\frac{S_Y^2}{n_Y} \\right)^2}{\\frac{\\left( \\frac{S_X^2}{n_X} \\right)^2}{n_X-1} + \\frac{\\left( \\frac{S_Y^2}{n_Y} \\right)^2}{n_Y-1}}\n\\]"
+    "text": "Testing for mean differences when variances are not equal\n\n\nTest Statistic. \\[\nT_n = \\frac{\\left( \\overline X_n - \\overline Y_n \\right) - \\delta_0}{\\sqrt{\\frac{S_X^2}{n_X} + \\frac{S_Y^2}{n_Y}}}\n\\]\nNull distribution. \\[\nT_n \\stackrel{H_0}{\\sim} \\mathcal{S}tudent(m) \\mbox{ with } m = \\frac{\\left( \\frac{S_X^2}{n_X} + \\frac{S_Y^2}{n_Y} \\right)^2}{\\frac{\\left( \\frac{S_X^2}{n_X} \\right)^2}{n_X-1} + \\frac{\\left( \\frac{S_Y^2}{n_Y} \\right)^2}{n_Y-1}}.\n\\]"
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#shapiro-wilk-test",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#shapiro-wilk-test",
     "title": "Hypothesis Testing",
     "section": "Shapiro-Wilk test",
-    "text": "Shapiro-Wilk test\n\nHypotheses. \\[ H_0: (X_1, \\dots, X_n) \\stackrel{i.i.d.}{\\sim} \\mathcal{N}(\\mu, \\sigma^2) \\quad \\mbox{vs.} \\quad H_a: (X_1, \\dots, X_n) \\not\\sim \\mathcal{N}(\\mu, \\sigma^2). \\]\nTest Statistic. \\[\nT_n = {\\left(\\sum_{i=1}^n a_i X_{(i)}\\right)^2 \\over \\sum_{i=1}^n (X_i-\\overline{X}_n)^2}\n\\] where \\(X_{(i)}\\) is the order statistic for observation \\(i\\), \\(\\overline X_n\\) the sample mean and \\((a_1, \\dots, a_n)\\) are weights computed from the first two moments of the order statistics of standard normal variables.\nNull distribution. \\[ T \\stackrel{H_0}{\\sim} \\mathcal{W}ilks(n). \\]\nR function. shapiro.test()\nValidity. The sample size should meet \\(3 \\le n \\le 5000\\). The Wilks distribution is approximated except for \\(n=3\\)."
+    "text": "Shapiro-Wilk test\n\n\nHypotheses. \\[ H_0: (X_1, \\dots, X_n) \\stackrel{i.i.d.}{\\sim} \\mathcal{N}(\\mu, \\sigma^2) \\quad \\mbox{vs.} \\quad H_a: (X_1, \\dots, X_n) \\not\\sim \\mathcal{N}(\\mu, \\sigma^2). \\]\nTest Statistic. \\[\nT_n = {\\left(\\sum_{i=1}^n a_i X_{(i)}\\right)^2 \\over \\sum_{i=1}^n (X_i-\\overline{X}_n)^2}\n\\] where \\(X_{(i)}\\) is the order statistic for observation \\(i\\), \\(\\overline X_n\\) the sample mean and \\((a_1, \\dots, a_n)\\) are weights computed from the first two moments of the order statistics of standard normal variables.\nNull distribution. \\[ T \\stackrel{H_0}{\\sim} \\mathcal{W}ilks(n). \\]\nR function. shapiro.test()\nValidity. The sample size should meet \\(3 \\le n \\le 5000\\). The Wilks distribution is approximated except for \\(n=3\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#kolmogorov-smirnov-test",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#kolmogorov-smirnov-test",
     "title": "Hypothesis Testing",
     "section": "Kolmogorov-Smirnov test",
-    "text": "Kolmogorov-Smirnov test\n\nHypotheses. \\[ H_0: (X_1, \\dots, X_n) \\stackrel{i.i.d.}{\\sim} F_0 \\quad \\mbox{vs.} \\quad H_a: (X_1, \\dots, X_n) \\not\\sim F_0. \\]\nTest Statistic. \\[\nT_n = \\sup_{x \\in \\mathbb R} | F_n(x) - F(x)|\n\\] where \\(F_n\\) is the cumulative distribution function and \\(F\\) is the cumulative distribution function of the law under testing.\nNull distribution. \\[ \\sqrt{n} T \\xrightarrow{\\mathcal{L}} \\sup_{x \\in \\mathbb R} | B(F(x))|, \\] where \\(B\\) is the Brownian bridge.\nR function. ks.test()\nValidity. Asymptotic."
+    "text": "Kolmogorov-Smirnov test\n\n\nHypotheses. \\[ H_0: (X_1, \\dots, X_n) \\stackrel{i.i.d.}{\\sim} F_0 \\quad \\mbox{vs.} \\quad H_a: (X_1, \\dots, X_n) \\not\\sim F_0. \\]\nTest Statistic. \\[\nT_n = \\sup_{x \\in \\mathbb R} | F_n(x) - F(x)|\n\\] where \\(F_n\\) is the cumulative distribution function and \\(F\\) is the cumulative distribution function of the law under testing.\nNull distribution. \\[ \\sqrt{n} T \\xrightarrow{\\mathcal{L}} \\sup_{x \\in \\mathbb R} | B(F(x))|, \\] where \\(B\\) is the Brownian bridge.\nR function. ks.test()\nValidity. Asymptotic."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#chi2-test-of-adequacy-for-a-single-categorical-variable",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#chi2-test-of-adequacy-for-a-single-categorical-variable",
     "title": "Hypothesis Testing",
     "section": "\\(\\chi^2\\) test of adequacy for a single categorical variable",
-    "text": "\\(\\chi^2\\) test of adequacy for a single categorical variable\n\nModel. We group observations in classes and we compare the observed frequencies of these classes to the corresponding theoretical frequencies as given by the hypothesized law \\(F_0\\).\nHypotheses. \\(H_0: (X_1, \\dots, X_n) \\stackrel{i.i.d.}{\\sim} F_0 \\quad \\mbox{vs.} \\quad H_a: (X_1, \\dots, X_n) \\not\\sim F_0\\).\nTest Statistic. \\[\nU_n = n\\sum_{i=1}^k\\frac{(f_i-f_{0i})^2}{f_{0i}},\n\\] where \\(n\\) is the total number of observations, \\(k\\) the number of classes, \\(f_i = n_i / n\\) and \\(f_{i0}\\) the theoretical frequency of class \\(i\\), i.e. the probability that the random variable ends up in class \\(i\\).\nNull distribution. \\[ U_n \\xrightarrow{\\mathcal{L}} \\chi^2_{k - 1 - \\ell}, \\mbox{ where } \\ell \\mbox{ is the number of estimated parameters for } F_0.\\]\nR function. chisq.test()\nValidity. Requires large class frequencies. Typically, \\(n_i \\ge 5\\)."
+    "text": "\\(\\chi^2\\) test of adequacy for a single categorical variable\n\n\nModel. We group observations in classes and we compare the observed frequencies of these classes to the corresponding theoretical frequencies as given by the hypothesized law \\(F_0\\).\nHypotheses. \\(H_0: (X_1, \\dots, X_n) \\stackrel{i.i.d.}{\\sim} F_0 \\quad \\mbox{vs.} \\quad H_a: (X_1, \\dots, X_n) \\not\\sim F_0\\).\nTest Statistic. \\[\nU_n = n\\sum_{i=1}^k\\frac{(f_i-f_{0i})^2}{f_{0i}},\n\\] where \\(n\\) is the total number of observations, \\(k\\) the number of classes, \\(f_i = n_i / n\\) and \\(f_{i0}\\) the theoretical frequency of class \\(i\\), i.e. the probability that the random variable ends up in class \\(i\\).\nNull distribution. \\[ U_n \\xrightarrow{\\mathcal{L}} \\chi^2_{k - 1 - \\ell}, \\mbox{ where } \\ell \\mbox{ is the number of estimated parameters for } F_0.\\]\nR function. chisq.test()\nValidity. Requires large class frequencies. Typically, \\(n_i \\ge 5\\)."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#chi-2-test-of-independence-between-two-categorical-variables",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#chi-2-test-of-independence-between-two-categorical-variables",
     "title": "Hypothesis Testing",
     "section": "\\(\\chi ^2\\) test of independence between two categorical variables",
-    "text": "\\(\\chi ^2\\) test of independence between two categorical variables\n\nModel. Let \\(X = (Y, Z) = ((Y_1, Z_1), \\dots, (Y_n, Z_n))\\) be a bivariate sample of \\(n\\) i.i.d. pairs of categorical random variables. Let \\(\\nu\\) be the law of \\((Y_1, Z_1)\\), \\(\\mu\\) the law of \\(Y_1\\) and \\(\\lambda\\) the law of \\(Z_1\\). Let \\(\\{y_1, \\dots, y_s\\}\\) be the set of possible values for \\(Y_1\\) and \\(\\{z_1, \\dots, z_r\\}\\) the set of possible values for \\(Z_1\\). For \\(\\ell \\in \\{1, \\dots, s\\}\\) et \\(h \\in \\{1, \\dots, r\\}\\), let \\[ N_{\\ell,\\cdot} = \\left| \\left\\{ i  \\in \\{1, \\dots, n\\}; Y_i = y_\\ell \\right\\} \\right|,\\quad N_{\\cdot, h} = \\left| \\left\\{ i  \\in \\{1, \\dots, n\\}; Z_i = z_h \\right\\} \\right|, \\\\ N_{\\ell,h} = \\left| \\left\\{(i \\in \\{1, \\dots, n\\}; Y_i = y_\\ell, Z_i = z_h \\right\\} \\right|.\n\\]\nHypotheses. \\(H_0: \\nu = \\mu \\otimes \\lambda \\quad \\mbox{vs.} \\quad H_a: \\nu \\ne \\mu \\otimes \\lambda\\).\nTest statistic. \\[ U_n = n  \\sum_{\\ell = 1}^s \\sum_{h = 1}^r \\frac{ \\left( \\frac{N_{\\ell, h}}{n}  -  \\frac{N_{\\ell, \\cdot}}{n} \\frac{N_{\\cdot, h}}{n} \\right)^2 }{ \\frac{N_{\\ell, \\cdot}}{n} \\frac{N_{\\cdot, h}}{n} }. \\]\nNull distribution. \\(U_n \\xrightarrow{\\mathcal{L}} \\chi^2 \\left( (s-1)(r-1) \\right)\\).\nR function. chisq.test()\nValidity. Asymptotic. Often, \\(n \\gg 30\\) and \\(N_{\\ell, h} \\gg 5\\), for each pair \\((\\ell, h)\\).\n\n\n\n\n\nData Science with R - aymeric.stamm@cnrs.fr - https://astamm.github.io/"
+    "text": "\\(\\chi ^2\\) test of independence between two categorical variables\n\n\nModel. Let \\(X = (Y, Z) = ((Y_1, Z_1), \\dots, (Y_n, Z_n))\\) be a bivariate sample of \\(n\\) i.i.d. pairs of categorical random variables. Let \\(\\nu\\) be the law of \\((Y_1, Z_1)\\), \\(\\mu\\) the law of \\(Y_1\\) and \\(\\lambda\\) the law of \\(Z_1\\). Let \\(\\{y_1, \\dots, y_s\\}\\) be the set of possible values for \\(Y_1\\) and \\(\\{z_1, \\dots, z_r\\}\\) the set of possible values for \\(Z_1\\). For \\(\\ell \\in \\{1, \\dots, s\\}\\) et \\(h \\in \\{1, \\dots, r\\}\\), let \\[ N_{\\ell,\\cdot} = \\left| \\left\\{ i  \\in \\{1, \\dots, n\\}; Y_i = y_\\ell \\right\\} \\right|,\\quad N_{\\cdot, h} = \\left| \\left\\{ i  \\in \\{1, \\dots, n\\}; Z_i = z_h \\right\\} \\right|, \\\\ N_{\\ell,h} = \\left| \\left\\{(i \\in \\{1, \\dots, n\\}; Y_i = y_\\ell, Z_i = z_h \\right\\} \\right|.\n\\]\nHypotheses. \\(H_0: \\nu = \\mu \\otimes \\lambda \\quad \\mbox{vs.} \\quad H_a: \\nu \\ne \\mu \\otimes \\lambda\\).\nTest statistic. \\[ U_n = n  \\sum_{\\ell = 1}^s \\sum_{h = 1}^r \\frac{ \\left( \\frac{N_{\\ell, h}}{n}  -  \\frac{N_{\\ell, \\cdot}}{n} \\frac{N_{\\cdot, h}}{n} \\right)^2 }{ \\frac{N_{\\ell, \\cdot}}{n} \\frac{N_{\\cdot, h}}{n} }. \\]\nNull distribution. \\(U_n \\xrightarrow{\\mathcal{L}} \\chi^2 \\left( (s-1)(r-1) \\right)\\).\nR function. chisq.test()\nValidity. Asymptotic. Often, \\(n \\gg 30\\) and \\(N_{\\ell, h} \\gg 5\\), for each pair \\((\\ell, h)\\).\n\n\n\n\n\n\nData Science with R - aymeric.stamm@cnrs.fr - https://astamm.github.io/"
   },
   {
     "objectID": "03_Transform/03-Transform-Exercises.html",
@@ -431,7 +494,7 @@
     "href": "index.html#requirements",
     "title": "Instructions for the class",
     "section": "Requirements",
-    "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\nR packages:\n\n{babynames}\n{plotly}\n{tidyverse}"
+    "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\nR packages:\n\n{babynames}\n{jtools}\n{plotly}\n{tidyverse}"
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html",
@@ -537,5 +600,222 @@
     "title": "Authoring with Quarto",
     "section": "Section 2",
     "text": "Section 2\nText written in markdown.\n\nggplot(data = mpg) +\n  geom_point(aes(x = displ, y = hwy, color = class))\n\n\n\n\n\n\n\n\n…and so on."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#the-linear-regression-model",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#the-linear-regression-model",
+    "title": "Linear Regression with R",
+    "section": "The linear regression model",
+    "text": "The linear regression model\n\nThe goal is to propose and estimate a model for explaining a continuous response variable \\(Y_i\\) from a number of fixed predictors \\(x_{i1}, \\dots, x_{ik}\\).\nMathematically, the model reads: \\[ Y_i = \\beta_0 + \\beta_1 x_{i1} + \\dots + \\beta_k x_{ik} + \\varepsilon_i, \\quad \\mbox{with} \\quad \\mathbb{E}[\\varepsilon_i] = 0 \\quad \\mbox{and} \\quad \\mathbb{V}\\mbox{ar}[\\varepsilon_i] = \\sigma^2. \\]\nWe can summarize the assumptions on which relies the linear regression model as follows:\n\nThe predictors are fixed. This means that we do not assume (or take into account the) intrinsic variability in the predictor values. The randomness of \\(Y_i\\) all comes from the error term \\(\\varepsilon_i\\). In particular, it implies that considering a sample of \\(n\\) i.i.d. random response variables \\(Y_1, \\dots, Y_n\\) boils down to assuming that \\(\\varepsilon_1, \\dots, \\varepsilon_n\\) are i.i.d.;\nThe error random variables \\(\\varepsilon_i\\) are centered and of constant variance. Combined with Assumption 1, this means that \\(\\mathbb{E}[\\boldsymbol{\\varepsilon}] = \\mathbf{0}\\) and \\(\\mathrm{Cov}[\\boldsymbol{\\varepsilon}] = \\sigma^2 \\mathbb{I}_n\\);\n[optional] Parametric hypothesis testing and confidence intervals further require the assumption of normality for the error vector, i.e. \\(\\boldsymbol{\\varepsilon} \\sim \\mathcal{N}(\\mathbf{0}, \\sigma^2 \\mathbb{I}_n)\\)."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-estimation-problem",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-estimation-problem",
+    "title": "Linear Regression with R",
+    "section": "Model Estimation Problem",
+    "text": "Model Estimation Problem\n\nMatrix representation\n\n\\(Y_1, \\dots, Y_n\\) sample of \\(n\\) i.i.d. random response variables with associated observed values \\(y_1, \\dots, y_n\\),\nDesign matrix \\(\\mathbb{X}\\) of size \\(n \\times (k + 1)\\) with \\(x_{ij}\\) at row \\(i\\) and column \\(j\\) leading to \\(\\mathbf{y} = \\mathbb{X} \\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\).\nWarning: a regression is linear in the \\(\\boldsymbol{\\beta}\\) coefficients, not in the predictors.\n\nParameters to be estimated\n\nthe regression coefficients \\(\\boldsymbol{\\beta}\\); and,\nthe common error variance term \\(\\sigma^2\\).\n\nHow to estimate the best parameters?\n\\[ \\mbox{SSD}(\\boldsymbol{\\beta}, \\sigma^2; \\mathbf{y}, \\mathbb{X}) := (\\mathbf{y} - \\mathbb{X} \\boldsymbol{\\beta})^\\top (\\mathbf{y} - \\mathbb{X} \\boldsymbol{\\beta}) = \\sum_{i = 1}^n (y_i - (\\beta_0 + \\beta_1 x_{i1} + \\dots + \\beta_k x_{ik}))^2 .\\]"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#the-case-of-categorical-predictors",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#the-case-of-categorical-predictors",
+    "title": "Linear Regression with R",
+    "section": "The case of categorical predictors",
+    "text": "The case of categorical predictors\n\nIf a predictor is categorical, how do we fill in the numeric matrix \\(\\mathbb{X}\\)?\nDummy variables\n\nA categorical variable with two categories (sex for instance) can be transformed in a single numeric variable sex == \"male\", which evaluates to \\(1\\) if sex is \"male\" and to \\(0\\) if sex is \"female\" (remember logicals are numbers in R).\nA categorical variable with three categories (origin which stores the acronym of the New York airport for departure in the flights data set) can be converted into two numeric variables as shown in the table below:\n\n\n\norigin\noriginJFK\noriginLGA\n\n\n\n\nEWR\n0\n0\n\n\nJFK\n1\n0\n\n\nLGA\n0\n1"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-estimators",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-estimators",
+    "title": "Linear Regression with R",
+    "section": "Model Estimators",
+    "text": "Model Estimators\n\nEstimator of the coefficients (unbiased)\n\\[ \\widehat{\\boldsymbol{\\beta}} := (\\mathbb{X}^T \\mathbb{X})^{-1} \\mathbb{X}^\\top \\mathbf{Y}, \\]\nFitted responses\n\\[ \\widehat{\\mathbf{Y}} = \\mathbb{X} \\widehat{\\boldsymbol{\\beta}} = \\mathbb{X} (\\mathbb{X}^T \\mathbb{X})^{-1} \\mathbb{X}^\\top \\mathbf{Y} = \\mathbb{H} \\mathbf{Y}. \\]\nEstimator of the constant variance term \\(\\sigma^2\\) (unbiased)\n\\[ \\widehat{\\sigma^2} := \\frac{(\\mathbf{Y} - \\widehat{\\mathbf{Y}})^\\top (\\mathbf{Y} - \\widehat{\\mathbf{Y}})}{n - k - 1}. \\]"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#hat-matrix-and-leverage",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#hat-matrix-and-leverage",
+    "title": "Linear Regression with R",
+    "section": "Hat matrix and leverage",
+    "text": "Hat matrix and leverage\n\nHat matrix (projection matrix, influence matrix)\n\\[ \\mathbb{H} = \\mathbb{X} (\\mathbb{X}^T \\mathbb{X})^{-1} \\mathbb{X}^\\top \\]\nLeverage\n\nThe diagonal terms of \\(\\mathbb{H}\\) are such that \\(0 \\le h_{ii} \\le 1\\).\n\\(h_{ii}\\) is called the leverage score of observation \\((y_i, x_{i1}, \\dots, x_{ik})\\).\nThe leverage score does not depend on \\(y_i\\) at all but only on the predictor values.\nWith some abuse of notation, we can write: \\[ h_{ii} = \\frac{\\partial \\widehat{Y_i}}{\\partial Y_i}, \\] which illustrates that the leverage measures the degree by which the \\(i\\)-th measured value influences the \\(i\\)-th fitted value."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#residuals",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#residuals",
+    "title": "Linear Regression with R",
+    "section": "Residuals",
+    "text": "Residuals\n\n\nNatural definition. Difference between observed and fitted response values: \\[ \\widehat{\\boldsymbol{\\varepsilon}} := \\mathbf{y} - \\widehat{\\mathbf{y}} = (\\mathbb{I}_n - \\mathbb{H}) \\mathbf{y}. \\]\n\\(\\mathbb{E}[\\widehat{\\boldsymbol{\\varepsilon}}] = \\mathbf{0}\\)\nResiduals do not have constant variance: \\[ \\mathbb{V}\\mbox{ar}[\\widehat{\\varepsilon}_i] = \\sigma^2 (1 - h_{ii}). \\]\nResiduals are not uncorrelated: \\[ \\mbox{Cov}(\\widehat{\\varepsilon}_i, \\widehat{\\varepsilon}_j) = -\\sigma^2 h_{ij}, \\mbox{ for } i \\ne j. \\]\nStandardized residuals. Residuals with almost constant variance (also known as internally studentized residuals): \\[ r_i := \\frac{\\widehat{\\varepsilon}_i}{s(\\widehat{\\varepsilon}_i)} = \\frac{\\widehat{\\varepsilon}_i}{\\sqrt{\\widehat{\\sigma^2} \\left( 1 - h_{ii} \\right)}}. \\]"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#studentized-residuals",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#studentized-residuals",
+    "title": "Linear Regression with R",
+    "section": "Studentized residuals",
+    "text": "Studentized residuals\n\n\nDefinition. Studentized residuals for any given data point are calculated from a model fit to every other data point except the one in question. They are also called externally studentized residuals, deleted residuals or jackknifed residuals. \\[ t_i := \\frac{y_i - \\widehat{y}_i^{(-i)}}{\\sqrt{\\widehat{\\sigma^2}^{(-i)} \\left( 1 - h_{ii} \\right)}} = r_i \\left( \\frac{n - k - 2}{n - k - 1 - r_i^2} \\right)^{1/2}, \\] where \\(n\\) is the total number of observations and \\(k\\) is the number of predictors used in the model.\nDistribution. If the normality assumption of the original regression model is met, a studentized residual follows a Student’s t-distribution.\nApplication. The motivation behind studentized residuals comes from their use in outlier testing. If we suspect a point is an outlier, then it was not generated from the assumed model, by definition. Therefore it would be a mistake – a violation of assumptions – to include that outlier in the fitting of the model. Studentized residuals are widely used in practical outlier detection.\nSource. https://stats.stackexchange.com/questions/204708/is-studentized-residuals-v-s-standardized-residuals-in-lm-model"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#cooks-distance",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#cooks-distance",
+    "title": "Linear Regression with R",
+    "section": "Cook’s distance",
+    "text": "Cook’s distance\n\n\nDefinition. Cook’s distance \\(D_i\\) of observation \\(i\\) (for \\(i = 1, \\dots, n\\)) is defined as a scaled sum of squared differences between fitted values obtained by including or excluding that observation: \\[ D_i := \\frac{ \\sum_{j = 1}^{n} \\left( \\widehat{y}_j - \\widehat{y}_j^{(-i)} \\right)^2}{\\widehat{\\sigma^2} (k+1)} = \\frac{r_i^2}{k+1} \\frac{h_{ii}}{1-h_{ii}}. \\]\nIf observation \\(i\\) is an outlier, in the sense that it has probably been drawn from another distribution with respect to the other observations, then \\(r_i\\) should be excessively high, which tends to increase Cook’s distance;\nIf observation \\(i\\) has a lot of influence (high leverage score), then Cook’s distance increases.\nYou can have cases in which an observation might have high influence but is not necessarily an outlier and therefore should be kept for analysis.\nThe reverse can happen as well. Some points with low influence (low leverage score) can be outliers (high residual value). In this case, we could be tempted to remove the observation because it violates our assumption.\nCook’s distance does not help in the above two situations, but it does not really matter, because, in both cases, we can safely include the corresponding observation into our regression."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#confidence-intervals",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#confidence-intervals",
+    "title": "Linear Regression with R",
+    "section": "Confidence intervals",
+    "text": "Confidence intervals\n\nGoal\nCompute a confidence interval for the mean response \\(\\mathbf{x}_i^\\top \\boldsymbol{\\beta}\\) at an already observed point \\(\\mathbf{x}_i\\), \\(i=1,\\dots,n\\).\nPoint estimator of \\(\\mathbf{x}_i^\\top \\boldsymbol{\\beta}\\)\n\\[ \\mathbf{x}_i^\\top \\widehat{\\boldsymbol{\\beta}} \\sim \\mathcal{N} \\left( \\mathbf{x}_i^\\top \\boldsymbol{\\beta}, \\sigma^2 \\mathbf{x}_i^\\top (\\mathbb{X}^\\top \\mathbb{X})^{-1} \\mathbf{x}_i \\right), \\]\nPoint estimator of \\(\\sigma^2\\)\nWe do not know \\(\\sigma^2\\) but we have that: \\[ \\frac{\\widehat{\\sigma^2}}{\\sigma^2} \\sim \\chi^2(n-k-1), \\] and \\(\\widehat{\\boldsymbol{\\beta}}\\) and \\(\\widehat{\\sigma^2}\\) are statistically independent."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#confidence-intervals-continued",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#confidence-intervals-continued",
+    "title": "Linear Regression with R",
+    "section": "Confidence intervals (continued)",
+    "text": "Confidence intervals (continued)\n\nPivotal statistic\nA pivotal statistic for a parameter \\(\\theta\\) is a random variable \\(T(\\theta)\\) such that\n\nthe only unknown in its definition (computation) is the parameter that we aim at estimating,\nthe distribution of \\(T(\\theta)\\) is known and does not depend on the unknown parameter \\(\\theta\\),\n\nWhen the parameter is the mean response \\(\\mathbf{x}_i^\\top \\boldsymbol{\\beta}\\) at \\(\\mathbf{x}_i\\), we can use the following pivotal statistic:\n\\[ \\frac{\\mathbf{x}_i^\\top \\boldsymbol{\\beta} - \\mathbf{x}_i^\\top \\widehat{\\boldsymbol{\\beta}}}{\\sqrt{\\widehat{\\sigma^2} \\mathbf{x}_i^\\top (\\mathbb{X}^\\top \\mathbb{X})^{-1} \\mathbf{x}_i}} \\sim \\mathcal{S}tudent(n-k-1). \\]\nConstruction of the confidence interval\nWe can express a \\((1-\\alpha)\\%\\) confidence interval for the mean response \\(\\mathbf{x}_i^\\top \\boldsymbol{\\beta}\\) at \\(\\mathbf{x}_i\\) as: \\[ \\mathbb{P} \\left( \\mathbf{x}_i^\\top \\boldsymbol{\\beta} \\in \\left[ \\mathbf{x}_i^\\top \\widehat{\\boldsymbol{\\beta}} \\pm t_{1-\\frac{\\alpha}{2}}(n-k-1) \\sqrt{\\widehat{\\sigma^2} \\mathbf{x}_i^\\top (\\mathbb{X}^\\top \\mathbb{X})^{-1} \\mathbf{x}_i} \\right] \\right) = 1 - \\alpha. \\]"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#prediction-intervals",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#prediction-intervals",
+    "title": "Linear Regression with R",
+    "section": "Prediction intervals",
+    "text": "Prediction intervals\n\nGoal\nCompute a prediction interval for a new not yet observed response \\(Y_{n+1}\\) at a new observed point \\(\\mathbf{x}_{n+1}\\): \\[ Y_{n+1} = \\mathbf{x}_{n+1}^\\top \\boldsymbol{\\beta} + \\varepsilon_{n+1} \\sim \\mathcal{N} \\left( \\mathbf{x}_{n+1}^\\top \\boldsymbol{\\beta}, \\sigma^2 \\right), \\]\nPoint estimator of \\(Y_{n+1}\\)\n\\[ \\widehat{Y_{n+1}} = \\mathbf{x}_{n+1}^\\top \\widehat{\\boldsymbol{\\beta}} \\sim \\mathcal{N}  \\left( \\mathbf{x}_{n+1}^\\top \\boldsymbol{\\beta}, \\sigma^2 \\mathbf{x}_{n+1}^\\top (\\mathbb{X}^\\top \\mathbb{X})^{-1} \\mathbf{x}_{n+1} \\right), \\]\nPoint estimator of \\(\\sigma^2\\)\nWe do not know \\(\\sigma^2\\) but we have that: \\[ \\frac{\\widehat{\\sigma^2}}{\\sigma^2} \\sim \\chi^2(n-k-1), \\] and \\(\\widehat{\\boldsymbol{\\beta}}\\) and \\(\\widehat{\\sigma^2}\\) are statistically independent."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#prediction-intervals-continued",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#prediction-intervals-continued",
+    "title": "Linear Regression with R",
+    "section": "Prediction intervals (continued)",
+    "text": "Prediction intervals (continued)\n\nPivotal statistic\nWe can now define a random variable of known distribution whose only unknown (once the \\(n\\)-sample is observed) is \\(Y_{n+1}\\): \\[ \\frac{Y_{n+1} - \\widehat{Y_{n+1}}}{\\sqrt{\\widehat{\\sigma^2} \\left( 1 + \\mathbf{x}_{n+1}^\\top (\\mathbb{X}^\\top \\mathbb{X})^{-1} \\mathbf{x}_{n+1} \\right)}} \\sim \\mathcal{S}tudent(n-k-1). \\]\nConstruction of the prediction interval\nWe can express a \\((1-\\alpha)\\%\\) prediction interval for the new not yet observed response \\(Y_{n+1}\\) at \\(\\mathbf{x}_{n+1}\\) as: \\[ \\mathbb{P} \\left( Y_{n+1} \\in \\left[ \\widehat{Y_{n+1}} \\pm t_{1-\\frac{\\alpha}{2}}(n-k-1) \\sqrt{\\widehat{\\sigma^2} \\left( 1 + \\mathbf{x}_{n+1}^\\top (\\mathbb{X}^\\top \\mathbb{X})^{-1} \\mathbf{x}_{n+1} \\right)} \\right] \\right) = 1 - \\alpha. \\]"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-step-visualization",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-step-visualization",
+    "title": "Linear Regression with R",
+    "section": "First step: Visualization",
+    "text": "First step: Visualization\n\nThe most important first thing you should do before any modeling attempt is to look at your data.\n\n\n\n\n\n\n\n\n\nAs you can see, both data sets seem to generate the same linear regression predictions, although we already clearly understand which one will go sideways…"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#second-step-modeling",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#second-step-modeling",
+    "title": "Linear Regression with R",
+    "section": "Second step: Modeling",
+    "text": "Second step: Modeling\n\n\nWe know the R function to fit linear regression models is lm().\nWe have seen its syntax for simple models.\nWe have been introduced to the broom package for retrieving relevant information from the output of lm().\nThe broom::glance() help page will provide you with a short summary of the information retrieved by glance().\nThe broom::tidy() help page will provide you with a short summary of the information retrieved by tidy().\nThe broom::augment() help page will provide you with a short summary of the information retrieved by augment()."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#third-step-model-diagnosis",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#third-step-model-diagnosis",
+    "title": "Linear Regression with R",
+    "section": "Third step: Model Diagnosis",
+    "text": "Third step: Model Diagnosis\n\nYou must always remember that, even though R facilitates computations, it does not verify for you that the assumptions required by the model are met by your data!\nThis is where model diagnosis comes into play. You can almost entirely diagnose your model graphically. Using the grammar of graphics in ggplot2, this can be achieved using the ggfortify package.\n\n# install.packages(\"ggfortify\")\nlibrary(ggfortify)\nfirst_model |&gt; \n  autoplot(which = 1:6, label.size = 3, nrow = 2) + \n  theme_bw()"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#reminder-model-assumptions",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#reminder-model-assumptions",
+    "title": "Linear Regression with R",
+    "section": "Reminder: model assumptions",
+    "text": "Reminder: model assumptions\n\nLinear regression makes several assumptions about the data, such as :\n\nLinearity of the data. The relationship between the predictor (x) and the outcome (y) is assumed to be linear.\nNormality of residuals. The residual errors are assumed to be normally distributed.\nHomogeneity of residuals variance. The residuals are assumed to have a constant variance (homoscedasticity)\nIndependence of residuals error terms.\n\nYou should check whether or not these assumptions hold true. Potential problems include:\n\nNon-linearity of the outcome - predictor relationships\nHeteroscedasticity: Non-constant variance of error terms.\nPresence of influential values in the data that can be:\n\nOutliers: extreme values in the outcome (y) variable\nHigh-leverage points: extreme values in the predictors (x) variable\n\n\nAll these assumptions and potential problems can be checked by producing some diagnostic plots visualizing the residual errors.\nSource: http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-residuals-vs-fitted-values",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-residuals-vs-fitted-values",
+    "title": "Linear Regression with R",
+    "section": "First data set: Residuals vs fitted values",
+    "text": "First data set: Residuals vs fitted values\n\n\n\n\n\n\n\n\n\n\nUsage\nTo check for non-linearity not accounted for; a horizontal line, without distinct patterns is an indication for a linear relationship, which is good."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-normal-qq-plot",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-normal-qq-plot",
+    "title": "Linear Regression with R",
+    "section": "First data set: Normal QQ plot",
+    "text": "First data set: Normal QQ plot\n\n\n\n\n\n\n\n\n\n\nUsage\nTo check the normality of residuals; good if residuals follow the straight dashed line."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-scale-location-plot",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-scale-location-plot",
+    "title": "Linear Regression with R",
+    "section": "First data set: Scale-location plot",
+    "text": "First data set: Scale-location plot\n\n\n\n\n\n\n\n\n\n\nUsage\nTo check the homoscedasticity assumption (constant variance); horizontal line with equally spread points is a good indication of homoscedasticity."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-influential-points-and-outliers",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-influential-points-and-outliers",
+    "title": "Linear Regression with R",
+    "section": "First data set: Influential points and outliers",
+    "text": "First data set: Influential points and outliers\n\n\n\n\n\n\n\n\n\n\nUsage\n\nTo check the zero-mean assumption on the residuals and to spot potential outliers in the top and bottom right corners (residuals vs leverages plot)\nTo spot potential outliers as observations with the largest Cook’s distance."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#second-data-set-model-diagnosis",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#second-data-set-model-diagnosis",
+    "title": "Linear Regression with R",
+    "section": "Second data set: Model diagnosis",
+    "text": "Second data set: Model diagnosis"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-specification",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-specification",
+    "title": "Linear Regression with R",
+    "section": "Model specification",
+    "text": "Model specification\n\n\nmod &lt;- lm(formula = response ~ predictors, data = fancy_data)\n\nThe left-hand side of ~ must contain the response variable as named in the atomic vector storing its values or in the data set containing it.\nThe right-hand side specifies the predictors and will therefore be a combination of potentially transformed variables from your data set (or from atomic vectors defined in your R environment). To get the proper syntax for the rhs of the formula, you should be know the set of allowed operators that have a specific interpretation by R when used within a formula:\n\n+ for adding terms.\n- for removing terms.\n: for adding interaction terms only.\n* for crossing variables, i.e. adding variables and their interactions.\n%in% for nesting variables, i.e. adding one variable and its interaction with another.\n^ for limiting variable crossing to a specified order\n. for adding all other variables in the matrix that have not yet been included in the model."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-specification-continued",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-specification-continued",
+    "title": "Linear Regression with R",
+    "section": "Model specification (continued)",
+    "text": "Model specification (continued)\n\nLinear regression assumes that the response variable (y) and at least one predictor (x) are continuous variables. The following table summarizes the effect of operators when adding a variable z to the predictors. When z is categorical, we assume that it can take \\(h\\) unique possible values \\(z_0, z_1, \\dots, z_{h-1}\\).\n\n\n\n\n\n\n\n\nType of z\nFormula\nModel\n\n\n\n\nContinuous\ny ~ x + z\n\\(Y = \\beta_0 + \\beta_1 x + \\beta_2 z + \\varepsilon\\)\n\n\nContinuous\ny ~ x : z\n\\(Y = \\beta_0 + \\beta_1 x z + \\varepsilon\\)\n\n\nContinuous\ny ~ x * z\n\\(Y = \\beta_0 + \\beta_1 x + \\beta_2 z + \\beta_3 x z + \\varepsilon\\)\n\n\nCategorical\ny ~ x + z\n\\(Y = \\beta_0^{(0)} + \\sum_{\\ell = 1}^{h-1} \\beta_\\ell^{(0)} \\delta_{\\{z = z_\\ell\\}} + \\beta_1^{(1)} x + \\varepsilon\\)\n\n\nCategorical\ny ~ x : z\n\\(Y = \\beta_0^{(0)} + \\beta_1^{(1)} x + \\sum_{\\ell = 1}^{h-1} \\beta_\\ell^{(1)} x \\delta_{\\{z = z_\\ell\\}} + \\varepsilon\\)\n\n\nCategorical\ny ~ x * z\n\\(Y = \\beta_0^{(0)} + \\sum_{\\ell = 1}^{h-1} \\beta_\\ell^{(0)} \\delta_{\\{z = z_\\ell\\}} + \\beta_0^{(1)} x + \\sum_{\\ell = 1}^{h-1} \\beta_\\ell^{(1)} x \\delta_{\\{z = z_\\ell\\}} + \\varepsilon\\)"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#i",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#i",
+    "title": "Linear Regression with R",
+    "section": "I()",
+    "text": "I()\n\nWhat strikes from the previous table is that the natural multiplication of variables within a formula does not simply adds the product of the predictors in the model but also the predictors themselves.\nWhat if you want to actually perform an arithmetic operation on your predictors to include a transformed predictor in your model? For example, you might want to include both \\(x\\) and \\(x^2\\) in your model. You have two options:\n\nYou compute all of the (possibly transformed) predictors you want to include in your model beforehand and store them in the data set (remember dplyr::mutate() which will help you achieve this goal easily); or,\nYou use the as-is operator I(). In this case, you instruct lm() that the operations declared within I() must be performed outside from the formula environment and before generating the design matrix for the model."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#effective-model-summaries",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#effective-model-summaries",
+    "title": "Linear Regression with R",
+    "section": "Effective Model Summaries",
+    "text": "Effective Model Summaries\n\nThere are two possible software suites:\n\neither jtools and interactions packages:\nor ggeffects and sjPlot packages.\n\n\n# install.packages(c(\"jtools\", \"interactions\"))\n# install.packages(c(\"ggeffects\", \"sjPlot\"))\nfit &lt;- lm(metascore ~ imdb_rating + log(us_gross) + genre5, data = jtools::movies)\nfit2 &lt;- lm(metascore ~ imdb_rating + log(us_gross) + log(budget) + genre5, data = jtools::movies)\n\nThey both provide tools for summarizing and visualising models, marginal effects, interactions and model predictions.\n\n\n\njtools::summ(fit)\n\n\n\n\n\nObservations\n831 (10 missing obs. deleted)\n\n\nDependent variable\nmetascore\n\n\nType\nOLS linear regression\n\n\n\n\n \n\n\n\n\nF(6,824)\n169.37\n\n\nR²\n0.55\n\n\nAdj. R²\n0.55\n\n\n\n\n \n\n\n\n\n\nEst.\nS.E.\nt val.\np\n\n\n\n\n(Intercept)\n-39.96\n5.92\n-6.75\n0.00\n\n\nimdb_rating\n12.80\n0.49\n25.89\n0.00\n\n\nlog(us_gross)\n0.47\n0.31\n1.52\n0.13\n\n\ngenre5Comedy\n6.32\n1.06\n5.95\n0.00\n\n\ngenre5Drama\n7.66\n1.08\n7.12\n0.00\n\n\ngenre5Horror/Thriller\n-0.73\n1.51\n-0.48\n0.63\n\n\ngenre5Other\n5.86\n3.25\n1.80\n0.07\n\n\n\n Standard errors: OLS\n\n\n\n\n\n\n\n\n\n\n\n\n\njtools::plot_summs(fit, fit2, inner_ci_level = .9)"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#effect-plot---continuous-predictor",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#effect-plot---continuous-predictor",
+    "title": "Linear Regression with R",
+    "section": "Effect plot - Continuous predictor",
+    "text": "Effect plot - Continuous predictor\n\nfit &lt;- lm(cty ~ displ + year + cyl + class + fl, data = mpg)\nfit_poly &lt;- lm(cty ~ poly(displ, 2) + year + cyl + class + fl, data = mpg)\n\n\n\n\njtools::effect_plot(fit, pred = displ, interval = TRUE, plot.points = TRUE)\n\n\n\n\n\n\n\n\n\njtools::effect_plot(fit_poly, pred = displ, interval = TRUE, plot.points = TRUE)\n\n\n\n\n\n\n\n\n\n\njtools::effect_plot(fit, pred = displ, interval = TRUE, partial.residuals = TRUE)\n\n\n\n\n\n\n\n\n\njtools::effect_plot(fit_poly, pred = displ, interval = TRUE, partial.residuals = TRUE)"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#effect-plot---categorical-predictor",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#effect-plot---categorical-predictor",
+    "title": "Linear Regression with R",
+    "section": "Effect plot - Categorical predictor",
+    "text": "Effect plot - Categorical predictor\n\njtools::effect_plot(fit, pred = fl, interval = TRUE, partial.residuals = TRUE, jitter = .2)"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#interaction-plots",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#interaction-plots",
+    "title": "Linear Regression with R",
+    "section": "Interaction plots",
+    "text": "Interaction plots\n\nThis is handled by the interaction package.\n\nJohnson-Neyman plot: sim_slopes()\nTwo-way interaction with at least one continuous predictor: interact_plot()\nTwo-way interaction between categorical predictors: cat_plot()"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#collinearity-multicollinearity",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#collinearity-multicollinearity",
+    "title": "Linear Regression with R",
+    "section": "Collinearity & Multicollinearity",
+    "text": "Collinearity & Multicollinearity\n\n\n(Multi)-collinearity refers to high correlation in two or more independent variables in the regression model.\nMulticollinearity can arise from poorly designed experiments (Data-based multicollinearity) or from creating new independent variables related to the existing ones (structural multicollinearity).\nCorrelation plots are a great tool to explore colinearity between two variables. They can be seamlessly computed and visualized using packages such as corrr or ggcorrplot."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor",
+    "title": "Linear Regression with R",
+    "section": "Variation Inflation Factor",
+    "text": "Variation Inflation Factor\n\n\nThe Variance inflation factor (VIF) measures the degree of multicollinearity or collinearity in the regression model.\n\\[\n\\mathrm{VIF}_i = \\frac{1}{1 - R_i^2},\n\\]\nwhere \\(R_i^2\\) is the multiple correlation coefficient associated to the regression of \\(X_i\\) against all remaining independent variables.\n\n\n\n\nYou can add VIFs to the summary of a model as follows:\n\n\n\n\n\n\nObservations\n234\n\n\nDependent variable\ncty\n\n\nType\nOLS linear regression\n\n\n\n\n \n\n\n\n\nF(13,220)\n100.37\n\n\nR²\n0.86\n\n\nAdj. R²\n0.85\n\n\n\n\n \n\n\n\n\n\nEst.\nS.E.\nt val.\np\nVIF\n\n\n\n\n(Intercept)\n-199.79\n51.14\n-3.91\n0.00\nNA\n\n\ndispl\n-1.02\n0.29\n-3.53\n0.00\n11.76\n\n\nyear\n0.12\n0.03\n4.52\n0.00\n1.11\n\n\ncyl\n-0.85\n0.20\n-4.26\n0.00\n8.69\n\n\nclasscompact\n-2.81\n1.00\n-2.83\n0.01\n3.69\n\n\nclassmidsize\n-2.95\n0.97\n-3.05\n0.00\n3.69\n\n\nclassminivan\n-5.08\n1.05\n-4.82\n0.00\n3.69\n\n\nclasspickup\n-5.89\n0.92\n-6.37\n0.00\n3.69\n\n\nclasssubcompact\n-2.63\n1.01\n-2.61\n0.01\n3.69\n\n\nclasssuv\n-5.59\n0.88\n-6.33\n0.00\n3.69\n\n\nfld\n5.93\n1.85\n3.21\n0.00\n1.60\n\n\nfle\n-5.13\n1.81\n-2.84\n0.00\n1.60\n\n\nflp\n-2.97\n1.72\n-1.73\n0.08\n1.60\n\n\nflr\n-1.69\n1.70\n-0.99\n0.32\n1.60\n\n\n\n Standard errors: OLS\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVIFs are always at least equal to 1.\nIn some domains, VIF over 2 is worthy of suspicion. Others set the bar higher, at 5 or 10. Others still will say you shouldn’t pay attention to these at all. Ultimately, the main thing to consider is that small effects are more likely to be “drowned out” by higher VIFs, but this may just be a natural, unavoidable fact with your model (e.g., there is no problem with high VIFs when you have an interaction effect).\nShould you care?\n\nIf you are interested in causal inference, yes;\notherwise, no."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-selection",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-selection",
+    "title": "Linear Regression with R",
+    "section": "Model selection",
+    "text": "Model selection\n\n\nForward selection, which involves starting with no variables in the model, testing the addition of each variable using a chosen model fit criterion, adding the variable (if any) whose inclusion gives the most statistically significant improvement of the fit, and repeating this process until none improves the model to a statistically significant extent.\nBackward elimination, which involves starting with all candidate variables, testing the deletion of each variable using a chosen model fit criterion, deleting the variable (if any) whose loss gives the most statistically insignificant deterioration of the model fit, and repeating this process until no further variables can be deleted without a statistically significant loss of fit.\nA list of possible and often used model fit criterion is available on the Wikipedia Model Selection page. In R, the basic stats::step() function uses the Akaike’s information criterion (AIC) and allows to perform forward selection (direction = \"forward\") or backward elimination (direction = \"backward\").\n\n\n\n\n\n\nData Science with R - aymeric.stamm@cnrs.fr - https://astamm.github.io/"
   }
 ]

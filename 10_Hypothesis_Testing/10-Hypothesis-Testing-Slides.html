@@ -249,7 +249,6 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
-      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -363,6 +362,7 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 </section>
 <section id="general-data-modeling-framework" class="slide level2">
 <h2>General data modeling framework</h2>
+<div class="r-fit-text">
 <ul>
 <li>You have some data <span class="math inline">\(\{x_1, \dots, x_n\}\)</span> that you presume have been sampled <strong>independently</strong> from their corresponding random variables <span class="math inline">\(\{X_1, \dots, X_n\}\)</span>;</li>
 <li>You formulate a simple hypothesis <span class="math inline">\(H_0\)</span>, called <em>null</em> hypothesis, about the distribution from which this data were sampled;</li>
@@ -373,6 +373,7 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li>You lack evidence to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(t_0\)</span> ends up in the central part of the null distribution of <span class="math inline">\(T\)</span>.</li>
 <li><strong>Warning:</strong> It is straightforward from this setup to understand that the problem is not symmetric in the hypotheses. Indeed, the procedure relies on what happens when <span class="math inline">\(H_0\)</span> is true but does not depend on <span class="math inline">\(H_a\)</span>.</li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="test-statistic" class="title-slide slide level1 center">
@@ -381,6 +382,7 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 </section>
 <section id="theoretical-aspects" class="slide level2">
 <h2>Theoretical aspects</h2>
+<div class="r-fit-text">
 <p>You design a <strong>test statistic</strong> <span class="math inline">\(T(X_1, \dots, X_n)\)</span> for the purpose of performing this test which must satisfy at least the first three of the following four properties:</p>
 <ul>
 <li>It evaluates to real values;</li>
@@ -388,9 +390,11 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li><strong>If</strong> <span class="math inline">\(H_0\)</span> is true, then small values of the statistic should comfort you with the idea that <span class="math inline">\(H_0\)</span> is a reasonable assumption, while larger values of the statistic should generate suspicion about <span class="math inline">\(H_0\)</span> <strong>in favor</strong> of the alternative hypothesis <span class="math inline">\(H_a\)</span>;</li>
 <li>[<em>optional</em>] <strong>If</strong> <span class="math inline">\(H_0\)</span> is true, then it can be very helpful to have access to the (asymptotic) distribution of the test statistic under <em>classical</em> assumptions (such as normality).</li>
 </ul>
+</div>
 </section>
 <section id="example-test-on-the-mean" class="slide level2">
 <h2>Example: Test on the mean</h2>
+<div class="r-fit-text">
 <p>Suppose you have a sample of <span class="math inline">\(n\)</span> <em>i.i.d.</em> random variables <span class="math inline">\(X_1, \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\)</span> and you know the value of <span class="math inline">\(\sigma^2\)</span>. We want to test whether the mean <span class="math inline">\(\mu\)</span> of the distribution is equal to some pre-specified value <span class="math inline">\(\mu_0\)</span>. We can therefore use <span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu \ne \mu_0\)</span>. At this point, a good candidate test statistic to look at for performing this test is: <span class="math display">\[ T(X_1, \dots, X_n) := \sqrt{n} \frac{\overline X - \mu_0}{\sigma}, \quad \mbox{with} \quad \overline X := \frac{1}{n} \sum_{i=1}^n X_i. \]</span></p>
 <ul>
 <li>It evaluates to real values;</li>
@@ -398,18 +402,22 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li>The sample mean <span class="math inline">\(\overline X\)</span> is an unbiased estimator of the true unknown mean <span class="math inline">\(\mu\)</span>; so, if <span class="math inline">\(H_0\)</span> is true, then <span class="math inline">\(\overline X\)</span> will produce values that are close to <span class="math inline">\(\mu_0\)</span>; hence, small values of <span class="math inline">\(T\)</span> will comfort you with the idea that <span class="math inline">\(H_0\)</span> is a reasonable assumption, while larger values, both positive or negative, of the statistic should generate suspicion about <span class="math inline">\(H_0\)</span> <strong>in favor</strong> of the alternative hypothesis <span class="math inline">\(H_a\)</span>;</li>
 <li>If you assume normality and independence of the sample, then <span class="math inline">\(T \sim \mathcal{N}(0, 1)\)</span> under <span class="math inline">\(H_0\)</span>.</li>
 </ul>
+</div>
 </section>
 <section id="distribution-of-the-test-statistic-under-h_0" class="slide level2">
 <h2>Distribution of the test statistic under <span class="math inline">\(H_0\)</span></h2>
+<div class="r-fit-text">
 <ul>
 <li><p><strong>Parametric testing.</strong> If you designed your test statistic carefully, you might have access to its theoretical distribution when <span class="math inline">\(H_0\)</span> is true under distributional assumptions about the data. This is called <strong>parametric</strong> hypothesis testing.</p></li>
 <li><p><strong>Asymptotic testing.</strong> If it is not the case, you can often derive the theoretical distribution of the statistic under the null hypothesis asymptotically, i.e.&nbsp;assuming that you have a large sample (<span class="math inline">\(n \gg 1\)</span>); this is called <strong>asymptotic</strong> hypothesis testing.</p></li>
 <li><p><strong>Bootstrap testing.</strong> If you are in a large sample size regime but still cannot have access to the theoretical distribution of your test statistic, you can approach this distribution using bootstrapping; this is called <strong>bootstrap</strong> hypothesis testing.</p></li>
 <li><p><strong>Permutation testing.</strong> If you are in a low sample size regime, then you can approach the distribution of the test statistic using permutations; this is called <strong>permutation</strong> hypothesis testing.</p></li>
 </ul>
+</div>
 </section>
 <section id="two-sided-vs.-one-sided-hypothesis-tests" class="slide level2">
 <h2>Two-sided vs.&nbsp;one-sided hypothesis tests</h2>
+<div class="r-fit-text">
 <p>Depending on what you put into the alternative hypothesis <span class="math inline">\(H_a\)</span>, larger values of the test statistic that raise suspicion regarding the validity of <span class="math inline">\(H_0\)</span> might mean:</p>
 <ul>
 <li>larger values only on the right tail of the null distribution of <span class="math inline">\(T\)</span>;</li>
@@ -417,9 +425,11 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li>larger values on both tails.</li>
 </ul>
 <p>In the first two cases, we say that the test is <strong>one-sided</strong>. In the latter case, we say that the test is <strong>two-sided</strong> because we interpret large values in both tails as suspicious.</p>
+</div>
 </section>
-<section id="example-test-on-the-mean-continued" class="slide level2 scrollable">
+<section id="example-test-on-the-mean-continued" class="slide level2">
 <h2>Example: Test on the mean (<em>continued</em>)</h2>
+<div class="r-fit-text">
 <p>Suppose you have a sample of <span class="math inline">\(n\)</span> <em>i.i.d.</em> random variables <span class="math inline">\(X_1, \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\)</span> and you know the value of <span class="math inline">\(\sigma^2\)</span>. We want to test whether the mean <span class="math inline">\(\mu\)</span> of the distribution is equal to some pre-specified value <span class="math inline">\(\mu_0\)</span>. As we have seen, a good candidate test statistic to look at for performing this test is:</p>
 <p><span class="math display">\[ T(X_1, \dots, X_n) := \sqrt{n} \frac{\overline X - \mu_0}{\sigma}, \quad \mbox{with} \quad \overline X := \frac{1}{n} \sum_{i=1}^n X_i. \]</span></p>
 <p>Now, using this test statistic, we might be interested in performing three different tests:</p>
@@ -428,9 +438,11 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li><span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu &lt; \mu_0\)</span>;</li>
 <li><span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu \ne \mu_0\)</span>.</li>
 </ol>
+</div>
 </section>
 <section id="h_0-mu-mu_0-vs.-h_a-mu-mu_0" class="slide level2">
 <h2><span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu &gt; \mu_0\)</span></h2>
+<div class="r-fit-text">
 <p><span class="math display">\[ T(X_1, \dots, X_n) := \sqrt{n} \frac{\overline X - \mu_0}{\sigma} \]</span> Remember that we must look at large values of <span class="math inline">\(T\)</span> that raise suspicion <strong>in favor</strong> of <span class="math inline">\(H_a\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -447,9 +459,11 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li><p>Large positive values of <span class="math inline">\(T\)</span> that happen when the true mean is far more than <span class="math inline">\(\mu_0\)</span> <strong>does</strong> raise suspicion <strong>in favor</strong> of <span class="math inline">\(H_a\)</span>.</p></li>
 <li><p><strong>Conclusion:</strong> we are interested only in the <strong>right</strong> tail of the null distribution of <span class="math inline">\(T\)</span> to find evidence to reject <span class="math inline">\(H_0\)</span>.</p></li>
 </ul>
+</div>
 </section>
 <section id="h_0-mu-mu_0-vs.-h_a-mu-mu_0-1" class="slide level2">
 <h2><span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu &lt; \mu_0\)</span></h2>
+<div class="r-fit-text">
 <p><span class="math display">\[ T(X_1, \dots, X_n) := \sqrt{n} \frac{\overline X - \mu_0}{\sigma} \]</span> Remember that we must look at large values of <span class="math inline">\(T\)</span> that raise suspicion <strong>in favor</strong> of <span class="math inline">\(H_a\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -466,9 +480,11 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li><p>Large positive values of <span class="math inline">\(T\)</span> that happen when the true mean is far less than <span class="math inline">\(\mu_0\)</span> <strong>does</strong> raise suspicion <strong>in favor</strong> of <span class="math inline">\(H_a\)</span>.</p></li>
 <li><p><strong>Conclusion:</strong> we are interested only in the <strong>left</strong> tail of the null distribution of <span class="math inline">\(T\)</span> to find evidence to reject <span class="math inline">\(H_0\)</span>.</p></li>
 </ul>
+</div>
 </section>
 <section id="h_0-mu-mu_0-vs.-h_a-mu-ne-mu_0" class="slide level2">
 <h2><span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu \ne \mu_0\)</span></h2>
+<div class="r-fit-text">
 <p><span class="math display">\[ T(X_1, \dots, X_n) := \sqrt{n} \frac{\overline X - \mu_0}{\sigma} \]</span> Remember that we must look at large values of <span class="math inline">\(T\)</span> that raise suspicion <strong>in favor</strong> of <span class="math inline">\(H_a\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -485,6 +501,7 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li><p>Large positive values of <span class="math inline">\(T\)</span> that happen when the true mean is far less than <span class="math inline">\(\mu_0\)</span> <strong>does</strong> raise suspicion <strong>in favor</strong> of <span class="math inline">\(H_a\)</span>.</p></li>
 <li><p><strong>Conclusion:</strong> we are interested in both the <strong>left</strong> and the <strong>right</strong> tails of the null distribution of <span class="math inline">\(T\)</span> to find evidence to reject <span class="math inline">\(H_0\)</span>.</p></li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="making-a-decision" class="title-slide slide level1 center">
@@ -493,6 +510,7 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 </section>
 <section id="type-i-and-type-ii-errors" class="slide level2">
 <h2>Type I and Type II errors</h2>
+<div class="r-fit-text">
 <p>So we are now at a point where we know which tail(s) which we should look at and we now need to make a decision as to what <em>large</em> means. In other words, above which <strong>threshold</strong> on all possible values of my test statistic should I consider that I can reject <span class="math inline">\(H_0\)</span>.</p>
 <ul>
 <li>Notice that you are going to take this decision based on the null distribution.</li>
@@ -528,25 +546,31 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <ul>
 <li>The only error rate you can control is the type I error rate because it is a probability computed <strong>assuming that the null hypothesis is true</strong>, which is exactly the situation we put ourselves in for making the decision (i.e.&nbsp;looking at the tails of the null distribution of <span class="math inline">\(T\)</span>).</li>
 </ul>
+</div>
 </section>
 <section id="significance-level" class="slide level2">
 <h2>Significance level</h2>
+<div class="r-fit-text">
 <ul>
 <li><p>At this point, you can decide that you do not want to make more than a certain amount of type I errors. So you want to force that <span class="math inline">\(\mathbb{P}_{H_0}(\mbox{reject } H_0) \le \alpha\)</span>, for some upper bound threshold <span class="math inline">\(\alpha\)</span> on the probability of type I errors. This threshold is called <strong>significance level</strong> of the test and is often denoted by the greek letter <span class="math inline">\(\alpha\)</span>.</p></li>
 <li><p>Let us now translate what this rule implies for the right-tail alternative case. The event “<span class="math inline">\(\mbox{reject } H_0\)</span>” translates in this case into <span class="math inline">\(T &gt; x\)</span> for some <span class="math inline">\(x\)</span> value of the test statistic <span class="math inline">\(T\)</span>. Hence, the rule becomes: <span class="math display">\[ \mathbb{P}_{H_0}(T &gt; x) \le \alpha \\ \Leftrightarrow 1 - \mathbb{P}_{H_0}(T \le x) \le \alpha \\ \Leftrightarrow 1 - F_T^{\left(H_0\right)}(x) \le \alpha \\ \Leftrightarrow F_T^{\left(H_0\right)}(x) \ge 1 - \alpha \]</span> verified for all <span class="math inline">\(x \ge q_{1-\alpha}\)</span>, where <span class="math inline">\(q_{1-\alpha}\)</span> is the quantile of order <span class="math inline">\(1-\alpha\)</span> of the null distribution of <span class="math inline">\(T\)</span>.</p></li>
 </ul>
+</div>
 </section>
 <section id="significance-level-continued" class="slide level2">
 <h2>Significance level (<em>continued</em>)</h2>
+<div class="r-fit-text">
 <p><strong>Decision-making rule</strong>:</p>
 <ul>
 <li>We reject <span class="math inline">\(H_0\)</span> if the value <span class="math inline">\(t_0\)</span> of the test statistic computed on the observed sample is greater than the quantile of order <span class="math inline">\(1-\alpha\)</span> of the null distribution of <span class="math inline">\(T\)</span>;</li>
 <li>We decide that we lack evidence to reject <span class="math inline">\(H_0\)</span> if the value <span class="math inline">\(t_0\)</span> of the test statistic calculated on the observed sample is smaller than the quantile of order <span class="math inline">\(1-\alpha\)</span> of the null distribution of <span class="math inline">\(T\)</span>.</li>
 <li>This decision-making rule guarantees that the probability of making a type I error is upper-bounded by the significance level <span class="math inline">\(\alpha\)</span>.</li>
 </ul>
+</div>
 </section>
 <section id="p-value" class="slide level2 flexbox vcenter">
 <h2>p-value</h2>
+<div class="r-fit-text">
 <ul>
 <li><p><strong>Definition.</strong> The <strong>p-value</strong> is a scalar value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> that measures <em>what was the probability, assuming that the null hypothesis</em> <span class="math inline">\(H_0\)</span> is true, of observing the data we did observe, or data even more in favor of the alternative hypothesis.</p></li>
 <li><p><strong>Mathematical expression.</strong> If <span class="math inline">\(t_0\)</span> is the value of the test statistic computed from the observed sample, then:</p>
@@ -562,6 +586,7 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 </ul></li>
 <li><p><strong>Decision-making rule.</strong> We can show that rejecting the null hypothesis when <span class="math inline">\(p \le \alpha\)</span> also produces a decision-making rule that guarantees a probability of type I error at most <span class="math inline">\(\alpha\)</span>.</p></li>
 </ul>
+</div>
 </section>
 <section id="decision-making-summary-right-tail-scenario" class="slide level2">
 <h2>Decision-Making: Summary (right-tail scenario)</h2>
@@ -569,7 +594,7 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/pvalue-alpha.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="images/pvalue-alpha.png" class="quarto-figure quarto-figure-center"></a></p>
+<p><a href="images/pvalue-alpha.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="images/pvalue-alpha.png" class="quarto-figure quarto-figure-center" style="width:65.0%"></a></p>
 </figure>
 </div>
 </div>
@@ -577,6 +602,7 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 </section>
 <section id="statistical-power-of-a-test" class="slide level2">
 <h2>Statistical power of a test</h2>
+<div class="r-fit-text">
 <ul>
 <li><p><strong>Definition.</strong> It is the probability of correctly rejecting the null hypothesis, <em>i.e.</em> to reject it when the alternative is in fact correct. It is often denoted by <span class="math inline">\(\mu\)</span>. In terms of events, it is defined by: <span class="math display">\[ \mu := \mathbb{P}_{H_a}(\mbox{Reject } H_0). \]</span></p></li>
 <li><p><strong>Usage.</strong> The statistical power of a test is an important aspect of the test because:</p>
@@ -590,66 +616,82 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li>Power calculations are difficult because it requires to put ourselves under <span class="math inline">\(H_a\)</span>, which is often of the form <span class="math inline">\(\mu &gt; \mu_0\)</span> or <span class="math inline">\(\mu &lt; \mu_0\)</span> or <span class="math inline">\(\mu \ne \mu_0\)</span>. In other words, you often lack information to compute probabilities assuming that the alternative hypothesis is true. You have to assess how the power changes as you explore different alternatives.</li>
 </ul></li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="compliance-testing" class="title-slide slide level1 center">
 <h1>Compliance testing</h1>
+<div class="r-fit-text">
 <p>Compliance testing aims at determining whether a process, product, or service complies with the requirements of a specification, technical standard, contract, or regulation.</p>
+</div>
 </section>
 <section id="testing-the-mean" class="slide level2">
 <h2>Testing the mean</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Model.</strong> Let <span class="math inline">\((X_1, \dots, X_n)\)</span> be <span class="math inline">\(n\)</span> <em>i.i.d.</em> random variables that follow a normal distribution <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span>.</li>
 <li><strong>Hypotheses.</strong> <span class="math display">\[ H_0: \mu = \mu_0 \quad \mbox{vs.} \quad H_a: \mu \ne \mu_0 \quad \mbox{or} \quad H_a: \mu &gt; \mu_0 \quad \mbox{or} \quad H_a: \mu &lt; \mu_0. \]</span></li>
 <li><strong>Test Statistic.</strong> <span class="math display">\[ Z_n = \sqrt{n} \frac{\overline X_n - \mu_0}{\sigma}. \]</span></li>
 <li><strong>Problem.</strong> Under the null hypothesis, I do not have complete knowledge to compute the test statistic because I do not know the value of <span class="math inline">\(\sigma\)</span>.</li>
 </ul>
+</div>
 </section>
 <section id="testing-the-mean-with-known-variance" class="slide level2">
 <h2>Testing the mean with known variance</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Problem solved.</strong> I now have complete knowledge to compute the test statistic.</li>
 <li><strong>Null distribution.</strong> The null distribution is <span class="math display">\[ Z_n \stackrel{H_0}{\sim} \mathcal{N}(0, 1). \]</span></li>
 <li><strong>R function.</strong> None</li>
 </ul>
+</div>
 </section>
 <section id="testing-the-mean-with-unknown-variance" class="slide level2">
 <h2>Testing the mean with unknown variance</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Problem solved.</strong> I plug in the empirical standard deviation instead of <span class="math inline">\(\sigma\)</span> in the definition of the test statistic.</li>
 <li><strong>Test Statistic.</strong> <span class="math display">\[ T_n = \frac{\overline X_n - \mu_0}{\sqrt{\frac{S_{n-1}^2}{n}}}, \quad \mbox{with} \quad S_{n-1}^2 := \frac{1}{n-1} \sum_{i = 1}^n (X_i - \overline X)^2. \]</span></li>
 <li><strong>Null distribution.</strong> <span class="math display">\[ T_n \stackrel{H_0}{\sim} \mathcal{S}tudent(n-1). \]</span></li>
 <li><strong>R function.</strong> <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/t.test.html">t.test()</a></li>
 </ul>
+</div>
 </section>
 <section id="testing-the-variance" class="slide level2">
 <h2>Testing the variance</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Assumptions.</strong> Let <span class="math inline">\((X_1, \dots, X_n)\)</span> be <span class="math inline">\(n\)</span> <em>i.i.d.</em> random variables that follow a normal distribution <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span>.</li>
 <li><strong>Hypotheses.</strong> <span class="math display">\[ H_0: \sigma^2 = \sigma_0^2 \quad \mbox{vs.} \quad H_a: \sigma^2 \ne \sigma_0^2 \quad \mbox{or} \quad H_a: \sigma^2 &gt; \sigma_0^2 \quad \mbox{or} \quad H_a: \sigma^2 &lt; \sigma_0^2. \]</span></li>
 <li><strong>Test Statistic.</strong> <span class="math display">\[ U_n = \sum_{i = 1}^n \frac{(X_i - \mu)^2}{\sigma_0^2}. \]</span></li>
 <li><strong>Problem.</strong> Under the null hypothesis, I do not have complete knowledge to compute the test statistic because I do not know the value of <span class="math inline">\(\mu\)</span>.</li>
 </ul>
+</div>
 </section>
 <section id="testing-the-variance-with-known-mean" class="slide level2">
 <h2>Testing the variance with known mean</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Problem solved.</strong> I now have complete knowledge to compute the test statistic.</li>
 <li><strong>Null distribution.</strong> The null distribution is <span class="math display">\[ U_n \stackrel{H_0}{\sim} \chi^2(n). \]</span></li>
 <li><strong>R function.</strong> None.</li>
 </ul>
+</div>
 </section>
 <section id="testing-the-variance-with-unknown-mean" class="slide level2">
 <h2>Testing the variance with unknown mean</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Problem solved.</strong> I plug in the empirical mean instead of <span class="math inline">\(\mu\)</span> in the definition of the test statistic.</li>
 <li><strong>Test Statistic.</strong> <span class="math display">\[ U_{n-1} = \sum_{i = 1}^n \frac{\left( X_i - \overline X_n \right)^2}{\sigma_0^2}. \]</span></li>
 <li><strong>Null distribution.</strong> <span class="math display">\[ U_{n-1} \stackrel{H_0}{\sim} \chi^2(n-1). \]</span></li>
 <li><strong>R function.</strong> None.</li>
 </ul>
+</div>
 </section>
 <section id="testing-a-proportion" class="slide level2">
 <h2>Testing a proportion</h2>
+<div class="r-fit-text">
 <p>Here we want to test whether the proportion <span class="math inline">\(p\)</span> of individuals in a given population who have a feature of interest is equal to a pre-specified rate.</p>
 <ul>
 <li><strong>Model.</strong> Let <span class="math inline">\((X_1, \dots, X_n)\)</span> be <span class="math inline">\(n\)</span> <em>i.i.d.</em> random variables that follow a Bernoulli distribution <span class="math inline">\(\mathcal{B}e(p)\)</span>. The interpretation is that <span class="math inline">\(X_i\)</span> measures if individual <span class="math inline">\(i\)</span> possesses the characteristic of which we want to know the proportion or not.</li>
@@ -658,14 +700,18 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li><strong>Null distribution.</strong> <span class="math display">\[ B_n \sim \mathcal{B}inom(n,p_0) \]</span></li>
 <li><strong>R function.</strong> <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/binom.test.html">binom.test()</a></li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="two-sample-testing" class="title-slide slide level1 center">
 <h1>Two-Sample Testing</h1>
+<div class="r-fit-text">
 <p>Hypothesis tests for comparing the distributions that generated two independent samples.</p>
+</div>
 </section>
 <section id="testing-for-variance-differences" class="slide level2">
 <h2>Testing for variance differences</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Model.</strong> Let <span class="math inline">\((X_1, \dots, X_{n_x})\)</span> be <span class="math inline">\(n_X\)</span> <em>i.i.d.</em> random variables that follow a normal distribution <span class="math inline">\(\mathcal{N}(\mu_X, \sigma_X^2)\)</span> and <span class="math inline">\((Y_1, \dots, Y_{n_Y})\)</span> be <span class="math inline">\(n_Y\)</span> <em>i.i.d.</em> random variables that follow a normal distribution <span class="math inline">\(\mathcal{N}(\mu_Y, \sigma_Y^2)\)</span>. Assume furthermore that the two samples are statistically independent.</li>
 <li><strong>Hypotheses.</strong> <span class="math display">\[ H_0: \sigma_X^2 = \sigma_Y^2 \quad \mbox{vs.} \quad H_a: \sigma_X^2 \ne \sigma_Y^2 \quad \mbox{or} \quad H_a: \sigma_X^2 &gt; \sigma_Y^2 \quad \mbox{or} \quad H_a: \sigma_X^2 &lt; \sigma_Y^2 \]</span></li>
@@ -674,18 +720,22 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li><strong>R function.</strong> <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/var.test.html">var.test()</a></li>
 <li><strong>Validity.</strong> Relies on the normality assumption and independence within and between samples.</li>
 </ul>
+</div>
 </section>
 <section id="testing-for-mean-differences" class="slide level2">
 <h2>Testing for mean differences</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Model.</strong> Let <span class="math inline">\((X_1, \dots, X_{n_x})\)</span> be <span class="math inline">\(n_X\)</span> <em>i.i.d.</em> random variables that follow a normal distribution <span class="math inline">\(\mathcal{N}(\mu_X, \sigma_X^2)\)</span> and <span class="math inline">\((Y_1, \dots, Y_{n_Y})\)</span> be <span class="math inline">\(n_Y\)</span> <em>i.i.d.</em> random variables that follow a normal distribution <span class="math inline">\(\mathcal{N}(\mu_Y, \sigma_Y^2)\)</span>. Assume furthermore that the two samples are statistically independent.</li>
 <li><strong>Hypotheses.</strong> <span class="math display">\[ H_0: \mu_X = \mu_Y \quad \mbox{vs.} \quad H_a: \mu_X \ne \mu_Y \quad \mbox{or} \quad H_a: \mu_X &gt; \mu_Y \quad \mbox{or} \quad H_a: \mu_X &lt; \mu_Y \]</span></li>
 <li><strong>R function.</strong> <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/t.test.html">t.test()</a></li>
 <li><strong>Validity.</strong> Relies on the normality assumption and independence within and between samples.</li>
 </ul>
+</div>
 </section>
 <section id="testing-for-mean-differences-when-variances-are-equal" class="slide level2">
 <h2>Testing for mean differences when variances are equal</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Test Statistic.</strong> Let <span class="math inline">\(\delta = \mu_X - \mu_Y\)</span> be the mean difference and <span class="math inline">\(\delta_0\)</span> be the assumed mean difference under <span class="math inline">\(H_0\)</span>. Then, <span class="math display">\[
 T_n = \frac{\left( \overline X_n - \overline Y_n \right) - \delta_0}{\sqrt{S_\mathrm{pooled}^2 \left( \frac{1}{n_X} + \frac{1}{n_Y} \right)}} \mbox{ with } S_\mathrm{pooled}^2 = \frac{(n_X - 1) S_X^2 + (n_Y - 1) S_Y^2}{n_X + n_Y - 2}
@@ -694,27 +744,31 @@ T_n = \frac{\left( \overline X_n - \overline Y_n \right) - \delta_0}{\sqrt{S_\ma
 T_n \stackrel{H_0}{\sim} \mathcal{S}tudent(n_X + n_Y - 2)
 \]</span></li>
 </ul>
+</div>
 </section>
 <section id="testing-for-mean-differences-when-variances-are-not-equal" class="slide level2">
 <h2>Testing for mean differences when variances are not equal</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Test Statistic.</strong> <span class="math display">\[
 T_n = \frac{\left( \overline X_n - \overline Y_n \right) - \delta_0}{\sqrt{\frac{S_X^2}{n_X} + \frac{S_Y^2}{n_Y}}}
 \]</span></li>
 <li><strong>Null distribution.</strong> <span class="math display">\[
-T_n \stackrel{H_0}{\sim} \mathcal{S}tudent(m)
-\]</span> where the degree of freedom <span class="math inline">\(m\)</span> of the Student’s law is obtained either via: <span class="math display">\[
-m = \frac{\left( \frac{S_X^2}{n_X} + \frac{S_Y^2}{n_Y} \right)^2}{\frac{\left( \frac{S_X^2}{n_X} \right)^2}{n_X-1} + \frac{\left( \frac{S_Y^2}{n_Y} \right)^2}{n_Y-1}}
+T_n \stackrel{H_0}{\sim} \mathcal{S}tudent(m) \mbox{ with } m = \frac{\left( \frac{S_X^2}{n_X} + \frac{S_Y^2}{n_Y} \right)^2}{\frac{\left( \frac{S_X^2}{n_X} \right)^2}{n_X-1} + \frac{\left( \frac{S_Y^2}{n_Y} \right)^2}{n_Y-1}}.
 \]</span></li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="adequacy-testing" class="title-slide slide level1 center">
 <h1>Adequacy testing</h1>
+<div class="r-fit-text">
 <p>Adequacy tests aim at determining if the distribution of the observations is coherent with a given probability distribution.</p>
+</div>
 </section>
 <section id="shapiro-wilk-test" class="slide level2">
 <h2>Shapiro-Wilk test</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Hypotheses.</strong> <span class="math display">\[ H_0: (X_1, \dots, X_n) \stackrel{i.i.d.}{\sim} \mathcal{N}(\mu, \sigma^2) \quad \mbox{vs.} \quad H_a: (X_1, \dots, X_n) \not\sim \mathcal{N}(\mu, \sigma^2). \]</span></li>
 <li><strong>Test Statistic.</strong> <span class="math display">\[
@@ -724,9 +778,11 @@ T_n = {\left(\sum_{i=1}^n a_i X_{(i)}\right)^2 \over \sum_{i=1}^n (X_i-\overline
 <li><strong>R function.</strong> <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/shapiro.test.html">shapiro.test()</a></li>
 <li><strong>Validity.</strong> The sample size should meet <span class="math inline">\(3 \le n \le 5000\)</span>. The Wilks distribution is approximated except for <span class="math inline">\(n=3\)</span>.</li>
 </ul>
+</div>
 </section>
 <section id="kolmogorov-smirnov-test" class="slide level2">
 <h2>Kolmogorov-Smirnov test</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Hypotheses.</strong> <span class="math display">\[ H_0: (X_1, \dots, X_n) \stackrel{i.i.d.}{\sim} F_0 \quad \mbox{vs.} \quad H_a: (X_1, \dots, X_n) \not\sim F_0. \]</span></li>
 <li><strong>Test Statistic.</strong> <span class="math display">\[
@@ -736,9 +792,11 @@ T_n = \sup_{x \in \mathbb R} | F_n(x) - F(x)|
 <li><strong>R function.</strong> <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/ks.test.html">ks.test()</a></li>
 <li><strong>Validity.</strong> Asymptotic.</li>
 </ul>
+</div>
 </section>
 <section id="chi2-test-of-adequacy-for-a-single-categorical-variable" class="slide level2">
 <h2><span class="math inline">\(\chi^2\)</span> test of adequacy for a single categorical variable</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Model.</strong> We group observations in classes and we compare the observed frequencies of these classes to the corresponding theoretical frequencies as given by the hypothesized law <span class="math inline">\(F_0\)</span>.</li>
 <li><strong>Hypotheses.</strong> <span class="math inline">\(H_0: (X_1, \dots, X_n) \stackrel{i.i.d.}{\sim} F_0 \quad \mbox{vs.} \quad H_a: (X_1, \dots, X_n) \not\sim F_0\)</span>.</li>
@@ -749,9 +807,11 @@ U_n = n\sum_{i=1}^k\frac{(f_i-f_{0i})^2}{f_{0i}},
 <li><strong>R function.</strong> <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/chisq.test.html">chisq.test()</a></li>
 <li><strong>Validity.</strong> Requires large class frequencies. Typically, <span class="math inline">\(n_i \ge 5\)</span>.</li>
 </ul>
+</div>
 </section>
 <section id="chi-2-test-of-independence-between-two-categorical-variables" class="slide level2">
 <h2><span class="math inline">\(\chi ^2\)</span> test of independence between two categorical variables</h2>
+<div class="r-fit-text">
 <ul>
 <li><strong>Model.</strong> Let <span class="math inline">\(X = (Y, Z) = ((Y_1, Z_1), \dots, (Y_n, Z_n))\)</span> be a bivariate sample of <span class="math inline">\(n\)</span> <em>i.i.d.</em> pairs of categorical random variables. Let <span class="math inline">\(\nu\)</span> be the law of <span class="math inline">\((Y_1, Z_1)\)</span>, <span class="math inline">\(\mu\)</span> the law of <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(\lambda\)</span> the law of <span class="math inline">\(Z_1\)</span>. Let <span class="math inline">\(\{y_1, \dots, y_s\}\)</span> be the set of possible values for <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(\{z_1, \dots, z_r\}\)</span> the set of possible values for <span class="math inline">\(Z_1\)</span>. For <span class="math inline">\(\ell \in \{1, \dots, s\}\)</span> et <span class="math inline">\(h \in \{1, \dots, r\}\)</span>, let <span class="math display">\[ N_{\ell,\cdot} = \left| \left\{ i  \in \{1, \dots, n\}; Y_i = y_\ell \right\} \right|,\quad N_{\cdot, h} = \left| \left\{ i  \in \{1, \dots, n\}; Z_i = z_h \right\} \right|, \\ N_{\ell,h} = \left| \left\{(i \in \{1, \dots, n\}; Y_i = y_\ell, Z_i = z_h \right\} \right|.
 \]</span></li>
@@ -761,9 +821,10 @@ U_n = n\sum_{i=1}^k\frac{(f_i-f_{0i})^2}{f_{0i}},
 <li><strong>R function.</strong> <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/chisq.test.html">chisq.test()</a></li>
 <li><strong>Validity.</strong> Asymptotic. Often, <span class="math inline">\(n \gg 30\)</span> and <span class="math inline">\(N_{\ell, h} \gg 5\)</span>, for each pair <span class="math inline">\((\ell, h)\)</span>.</li>
 </ul>
+</div>
 
 <div class="quarto-auto-generated-content">
-<p><img src="images/logo-lmjl.png" class="slide-logo"></p>
+<p><img src="../logo-lmjl.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>Data Science with R - <a href="mailto:aymeric.stamm@cnrs.fr" class="email">aymeric.stamm@cnrs.fr</a> - <a href="https://astamm.github.io/" class="uri">https://astamm.github.io/</a></p>
 </div>
@@ -802,7 +863,7 @@ U_n = n\sum_{i=1}^k\frac{(f_i-f_{0i})^2}{f_{0i}},
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
-'smaller': true,
+'smaller': false,
  
         // Display controls in the bottom right corner
         controls: false,
@@ -1360,7 +1421,7 @@ U_n = n\sum_{i=1}^k\frac{(f_i-f_{0i})^2}{f_{0i}},
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
