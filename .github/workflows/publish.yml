@@ -33,16 +33,8 @@ jobs:
                paste(getRversion(), R.version$platform, R.version$arch, R.version$os)
              )
            )
-           install.packages(c("tidyverse", "kableExtra", "babynames"))
+           install.packages(c("tidyverse", "kableExtra", "babynames", "jtools"))
         shell: Rscript {0}
-
-      - name: Setup OpenMP
-        run: |
-          brew install libomp
-          mkdir ~/.R
-          echo "CPPFLAGS += -I/opt/homebrew/opt/libomp/include -Xclang -fopenmp" > ~/.R/Makevars
-          echo "LDFLAGS += -L/opt/homebrew/opt/libomp/lib -lomp" >> ~/.R/Makevars
-        shell: bash
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2

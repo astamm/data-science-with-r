@@ -61,5 +61,6 @@ written in [Quarto](https://quarto.org).
 - R packages: 
 
     - [{babynames}](https://hadley.github.io/babynames/)
+    - [{jtools}](https://jtools.jacob-long.com)
     - [{plotly}](https://plotly.com/r/)
     - [{tidyverse}](https://www.tidyverse.org)

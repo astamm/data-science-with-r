@@ -32,10 +32,14 @@ website:
         menu:
           - text: "1 Hypothesis Testing"
             href: 10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.qmd
+          - text: "2 Linear Modeling"
+            href: 11_Linear_Modeling/11-Linear-Modeling-Slides.qmd
       - text: "Exploratory Data Analysis - Labs"
         menu:
           - text: "1 Hypothesis Testing"
             href: 10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.qmd
+          - text: "2 Linear Modeling"
+            href: 11_Linear_Modeling/11-Linear-Modeling-Exercises.qmd
     right:
       - icon: github
         href: https://github.com/astamm/data-science-with-r/
