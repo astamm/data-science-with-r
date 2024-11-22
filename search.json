@@ -501,21 +501,21 @@
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html",
     "title": "Hypothesis Testing",
     "section": "",
-    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the energy efficiency?\nDoes that mean that the data significantly prove that the energy efficiency is larger than the expected nominal value?"
+    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the mean energy efficiency?\nDoes that mean that the data significantly prove that the mean energy efficiency is larger than the expected nominal value?"
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-1",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-1",
     "title": "Hypothesis Testing",
     "section": "",
-    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the energy efficiency?\nDoes that mean that the data significantly prove that the energy efficiency is larger than the expected nominal value?"
+    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the mean energy efficiency?\nDoes that mean that the data significantly prove that the mean energy efficiency is larger than the expected nominal value?"
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-2",
     "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-2",
     "title": "Hypothesis Testing",
     "section": "Exercise 2",
-    "text": "Exercise 2\nA study about air pollution done by a research station measured, on \\(8\\) different air samples, the following values of a polluant (in \\(\\mu\\)g/m\\(^2\\)):\n\\[ 2.2 \\quad 1.8 \\quad 3.1 \\quad 2.0 \\quad 2.4 \\quad 2.0 \\quad 2.1 \\quad 1.2 \\]\nAssuming that the sampled population is normal,\n\nCan we say that the polluant is present with less than \\(2.5 \\mu\\)g/m\\(^2\\)?\nCan we say that the polluant is present with less than \\(2.4 \\mu\\)g/m\\(^2\\)?\nIs the normality hypothesis essential to justify the method used?"
+    "text": "Exercise 2\nA study about air pollution done by a research station measured, on \\(8\\) different air samples, the following values of a polluant concentration (in \\(\\mu\\)g/m\\(^2\\)):\n\\[ 2.2 \\quad 1.8 \\quad 3.1 \\quad 2.0 \\quad 2.4 \\quad 2.0 \\quad 2.1 \\quad 1.2 \\]\nAssuming that the sampled population is normal,\n\nCan we say that the mean polluant concentration is present with less than \\(2.5 \\mu\\)g/m\\(^2\\)?\nCan we say that the mean polluant concentration is present with less than \\(2.4 \\mu\\)g/m\\(^2\\)?\nIs the normality hypothesis essential to justify the method used?"
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-3",
