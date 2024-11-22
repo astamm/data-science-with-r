@@ -13,7 +13,7 @@ affiliations:
     country: France
 format:
   revealjs:
-    footer: "Data Science with R - <aymeric.stamm@cnrs.fr> - <https://astamm.github.io/>"
+    footer: "Data Science with R - <aymeric.stamm@cnrs.fr> - <https://astamm.github.io/data-science-with-r/>"
     slide-number: true
     logo: ../logo-lmjl.png
     theme: simple
@@ -30,6 +30,8 @@ format:
         }
         </style>
 lightbox: true
+filters:
+  - slide-contents-wrap
 ---
 
 ```{r setup}
