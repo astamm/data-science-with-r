@@ -19,6 +19,9 @@ format:
     theme: simple
     code-annotations: select
     chalkboard: true
+    plugins:
+      - name: "Reveal Slide Contents Wrap"
+        src: "../_extensions/g-simmons/slide-contents-wrap/reveal-slide-contents-wrap.js"
     include-in-header: 
       text: |
         <style>
@@ -30,8 +33,6 @@ format:
         }
         </style>
 lightbox: true
-filters:
-  - slide-contents-wrap
 ---
 
 ```{r setup, include=FALSE}

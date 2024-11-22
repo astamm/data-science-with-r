@@ -27,21 +27,24 @@ the following energy efficiencies (in percentage):
 $$ 91.6, \quad 88.75, \quad 90.8, \quad 89.95, \quad 91.3 $$
 
 1. Is the data in accordance with the specifications?
-2. What is a point estimate of the energy efficiency?
-3. Does that mean that the data significantly prove that the energy efficiency 
-is larger than the expected nominal value?
+2. What is a point estimate of the mean energy efficiency?
+3. Does that mean that the data significantly prove that the mean energy
+efficiency is larger than the expected nominal value?
 
 ## Exercise 2
 
 A study about air pollution done by a research station measured, on $8$
-different air samples, the following values of a polluant (in $\mu$g/m$^2$):
+different air samples, the following values of a polluant concentration (in
+$\mu$g/m$^2$):
 
 $$ 2.2 \quad 1.8 \quad 3.1 \quad 2.0 \quad 2.4 \quad 2.0 \quad 2.1 \quad 1.2 $$
 
 Assuming that the sampled population is normal,
 
-1. Can we say that the polluant is present with less than $2.5 \mu$g/m$^2$?
-2. Can we say that the polluant is present with less than $2.4 \mu$g/m$^2$?
+1. Can we say that the mean polluant concentration is present with less than
+$2.5 \mu$g/m$^2$?
+2. Can we say that the mean polluant concentration is present with less than
+$2.4 \mu$g/m$^2$?
 3. Is the normality hypothesis essential to justify the method used?
 
 ## Exercise 3
