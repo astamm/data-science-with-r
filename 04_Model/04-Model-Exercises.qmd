@@ -80,7 +80,8 @@ wages |>
 
 ## Your Turn 6
 
-Use `add_predictions()` to make the plot below.
+Use `add_predictions()` to make the plot below. Facetting is by level of
+education.
 
 ![](04-Model-Exercises-6.png)
 
@@ -98,6 +99,12 @@ mod_ehs <- wages|>
 ## Your Turn 7
 
 Use `gather_residuals()` to make the plot below.
+
+::: {.callout-caution}
+Models `mod_h` and `mod_ehs` should be available in your environment because you
+fitted them in previous sections. But you have to fit and store the model
+`mod_eh` which stands for `education` and `height`.
+:::
 
 ![](04-Model-Exercises-7.png)
 
