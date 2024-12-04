@@ -648,14 +648,14 @@
     "href": "04_Model/04-Model-Exercises.html#your-turn-6",
     "title": "Models",
     "section": "Your Turn 6",
-    "text": "Your Turn 6\nUse add_predictions() to make the plot below.\n\n\n# In case you haven't made the ehs model\nmod_ehs &lt;- wages|&gt; \n  lm(log(income) ~ education + height + sex, data = _)\n\n# Make plot here"
+    "text": "Your Turn 6\nUse add_predictions() to make the plot below. Facetting is by level of education.\n\n\n# In case you haven't made the ehs model\nmod_ehs &lt;- wages|&gt; \n  lm(log(income) ~ education + height + sex, data = _)\n\n# Make plot here"
   },
   {
     "objectID": "04_Model/04-Model-Exercises.html#your-turn-7",
     "href": "04_Model/04-Model-Exercises.html#your-turn-7",
     "title": "Models",
     "section": "Your Turn 7",
-    "text": "Your Turn 7\nUse gather_residuals() to make the plot below.\n\n\n# Make the plot here"
+    "text": "Your Turn 7\nUse gather_residuals() to make the plot below.\n\n\n\n\n\n\nCaution\n\n\n\nModels mod_h and mod_ehs should be available in your environment because you fitted them in previous sections. But you have to fit and store the model mod_eh which stands for education and height.\n\n\n\n\n# Make the plot here"
   },
   {
     "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#the-linear-regression-model",
