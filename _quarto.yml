@@ -20,6 +20,8 @@ website:
             href: 02_Visualize/02-Visualize-Slides.pdf
           - text: "3 Transform"
             href: 03_Transform/03-Transform-Slides.pdf
+          - text: "4 Model"
+            href: 04_Model/04-Model-Slides.pdf
       - text: "Data Wrangling - Labs"
         menu:
           - text: "1 Introduction"
@@ -28,6 +30,8 @@ website:
             href: 02_Visualize/02-Visualize-Exercises.qmd
           - text: "3 Transform"
             href: 03_Transform/03-Transform-Exercises.qmd
+          - text: "4 Model"
+            href: 04_Model/04-Model-Exercises.qmd
       - text: "Exploratory Data Analysis - Slides"
         menu:
           - text: "1 Hypothesis Testing"
