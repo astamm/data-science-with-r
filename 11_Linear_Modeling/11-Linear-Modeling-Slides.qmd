@@ -521,7 +521,6 @@ jtools::effect_plot(fit, pred = fl, interval = TRUE, partial.residuals = TRUE, j
 
 ## Interaction plots
 
-::: {.r-fit-text}
 This is handled by the `interaction` package.
 
 -   Johnson-Neyman plot: [`sim_slopes()`](https://interactions.jacob-long.com/index.html)
@@ -529,17 +528,14 @@ This is handled by the `interaction` package.
 -   Two-way interaction with at least one continuous predictor: [`interact_plot()`](https://interactions.jacob-long.com/articles/interactions.html)
 
 -   Two-way interaction between categorical predictors: [`cat_plot()`](https://interactions.jacob-long.com/articles/categorical.html)
-:::
 
 ## Collinearity & Multicollinearity
 
-::: {.r-fit-text}
 -   (Multi)-collinearity refers to high correlation in two or more independent variables in the regression model.
 
 -   Multicollinearity can arise from poorly designed experiments (Data-based multicollinearity) or from creating new independent variables related to the existing ones (structural multicollinearity).
 
 -   *Correlation plots* are a great tool to explore colinearity between two variables. They can be seamlessly computed and visualized using packages such as [`corrr`](https://corrr.tidymodels.org/index.html) or [`ggcorrplot`](https://rpkgs.datanovia.com/ggcorrplot/index.html).
-:::
 
 ## Variation Inflation Factor (1/3)
 
