@@ -24,6 +24,8 @@ website:
             href: 04_Model/04-Model-Slides.pdf
           - text: "5 Report"
             href: 05_Report/05-Report-Slides.pdf
+          - text: "6 Tidy"
+            href: 06_Tidy/06-Tidy-Slides.pdf
       - text: "Data Wrangling - Labs"
         menu:
           - text: "1 Introduction"
@@ -36,6 +38,8 @@ website:
             href: 04_Model/04-Model-Exercises.qmd
           - text: "5 Report"
             href: 05_Report/05-Report-Exercises.qmd
+          - text: "6 Tidy"
+            href: 06_Tidy/06-Tidy-Exercises.qmd
       - text: "Exploratory Data Analysis - Slides"
         menu:
           - text: "1 Hypothesis Testing"
