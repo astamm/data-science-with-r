@@ -1,0 +1,125 @@
+---
+title: "`r params$name`"
+format:
+  dashboard:
+    orientation: columns
+    theme: simple
+    expandable: false
+    scrolling: true
+params: 
+  name: "Diane"
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(babynames)
+
+name_data <- babynames |> 
+  filter(name == params$name) |> 
+  complete(year = 1880:2017, sex, name, fill = list(prop = 0, n = 0)) |> 
+  mutate(sex = case_when(
+    sex == "M" ~ "Male", 
+    sex == "F" ~ "Female"
+  ))
+
+most <- name_data |> 
+  filter(n == max(n))
+
+sex_data <- name_data |> 
+  group_by(sex) |> 
+  summarise(n = sum(n)) 
+
+sex <- sex_data |> 
+  filter(n == max(n)) |> 
+  pull("sex") |> 
+  switch("Male" = "boy's", "Female" = "girl's")
+
+color <- if (sex == "boy's") {
+  bslib::value_box_theme(bg = "#e6f2fd", fg = "#0B538E")
+} else {
+  bslib::value_box_theme(bg = "#fde6e6", fg = "#8e0b0b")
+}
+```
+
+## Column {width=30%}
+
+```{r}
+bslib::value_box(
+  title = "Total Children",
+  value = sum(name_data$n),
+  showcase = fontawesome::fa("area-chart"),
+  theme = color
+)
+```
+
+```{r}
+bslib::value_box(
+  title = "Most Popular Year",
+  value = most$year,
+  showcase = fontawesome::fa("calendar"),
+  theme = color
+)
+```
+
+```{r}
+icon <- if (sex == "boy's") "male" else "female"
+
+bslib::value_box(
+  title = "Sex",
+  value = sex,
+  showcase = fontawesome::fa(icon),
+  theme = color,
+  glue::glue("(Usually a {sex} name)")
+)
+```
+
+```{r}
+bslib::value_box(
+  title = "Popularity Meter",
+  theme = color,
+  value = flexdashboard::gauge(
+    value = sum(name_data$n),
+    min = 0,
+    max = 5173828,
+    sectors = flexdashboard::gaugeSectors(
+      success = c(0, 1724609),
+      warning = c(1724610, 3449219),
+      danger = c(3449220, 5173828)
+    )
+  ),
+  height = "25%"
+)
+```
+
+```{r}
+# bslib::value_box(
+#   title = "Gender Strength",
+#   theme = color,
+#   value = flexdashboard::gauge(
+#     value = round(max(sex_data$n) / sum(sex_data$n) * 100),
+#     min = 0,
+#     max = 100,
+#     symbol = '%'
+#   )
+# )
+```
+
+## Column {height=70%}
+
+```{r}
+#| component: plot
+#| title: "Popularity Over Time"
+#| echo: false
+name_data |> 
+  ggplot() +
+  geom_ribbon(
+    mapping = aes(x = year, ymax = prop, fill = sex), 
+    ymin = 0, alpha = 0.5
+  ) +
+  labs(
+    title = glue::glue("The proportion of boys and girls named {params$name}, 1880-2017"), 
+    caption = "Data from the US Social Security Administration", 
+    y = "proportion") +
+  theme_bw()
+```

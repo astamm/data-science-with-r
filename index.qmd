@@ -27,13 +27,13 @@ and the exercises in the above *Data Wranging - Labs* tab. The slides are
 written partly with Keynote (exported as PDFs) and partly in Quarto reveajs
 slides. The exercises are written in [Quarto](https://quarto.org).
 
-| Part | Title | Slides | Exercises | Data |
-|------|-------|--------|-----------|------|
+| Part | Title | Slides | Exercises | Suppl. Material |
+|------|-------|--------|-----------|-----------------|
 | 1    | Introduction | [PDF](01_Introduction/01-Introduction-Slides.pdf) | [Quarto](01_Introduction/01-Introduction-Exercises.qmd) | |
 | 2    | Visualize Data | [PDF](02_Visualize/02-Visualize-Slides.pdf) | [Quarto](02_Visualize/02-Visualize-Exercises.qmd) | |
 | 3    | Transform Data | [PDF](03_Transform/03-Transform-Slides.pdf) | [Quarto](03_Transform/03-Transform-Exercises.qmd) | [CSV](03_Transform/babynames.csv) |
 | 4    | Model Data | [PDF](04_Model/04-Model-Slides.pdf) | [Quarto](04_Model/04-Model-Exercises.qmd) | [ZIP](04_Model/04-Model-Data.zip) |
-| 5    | Communicate Data | [PDF](slides/05-communicate-data.pdf) | [Quarto](labs/05-communicate-data.Rmd) | |
+| 5    | Communicate Data | [PDF](05_Report/05-Report-Slides.pdf) | [Quarto](05_Report/05-Report-Exercises.qmd) | [Quarto](05_Report/05-Report-Parameters.qmd) |
 | 6    | Tidy Data | [PDF](slides/06-tidy-data.pdf) | [Quarto](labs/06-tidy-data.Rmd) | |
 | 7    | Join Data | [PDF](slides/07-join-data.pdf) | [Quarto](labs/07-join-data.Rmd) | |
 | 8    | Manipulate Data Types | [PDF](slides/08-manipulate-data-types.pdf) | [Quarto](labs/08-manipulate-data-types.Rmd) | |
