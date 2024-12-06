@@ -2,6 +2,11 @@
 title: "Instructions for the class"
 ---
 
+::: {.callout-important title="Homework Assignment"}
+New announcement about the homework assignment.
+Checkout the [homework assignment page](project.qmd).
+:::
+
 ## Disclaimer
 
 This repository is build on the work of [Garrett

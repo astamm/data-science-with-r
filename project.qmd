@@ -1,0 +1,37 @@
+---
+title: "Car accidents in France"
+---
+
+## Description of the data set
+
+This page explains the project proposed to dig deeper into Quarto and its features. The project is about car accidents in France. The data is available on the [Open Data platform of the French government](https://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/). The data is available in the form of several CSV files. The data contains information about car accidents in France from 2005 to 2023. The data contains information about the date and time of the accident, the location of the accident, the number of people involved in the accident, the number of people injured, the number of people killed, the type of vehicles involved in the accident, the type of road, the weather conditions, the lighting conditions, the type of intersection, the type of collision, the type of accident, the causes of the accident, etc.
+
+## Aims of the project
+
+The project aims to dig into interactive Quarto dashboards to analyze the data and extract insights. The project *can* involve the following steps:
+
+1. Data collection: Download the data from the Open Data platform of the French government. You can use packages such as [{readr}](https://readr.tidyverse.org/) or [{readxl}](https://readxl.tidyverse.org/) to read the data into R.
+2. Data preprocessing: Clean the data, handle missing values, and transform the data into a suitable format for analysis. For this task, you can use:
+
+    - [{dplyr}](https://dplyr.tidyverse.org/) and [{tidyr}](https://tidyr.tidyverse.org/) and other tidyverse packages for data manipulation and reshaping;
+    - [{skimr}](https://docs.ropensci.org/skimr/) to get a summary of the data;
+    - [{janitor}](https://sfirke.github.io/janitor/) to clean the data;
+    - [{naniar}](https://naniar.njtierney.com/) to visualize missing values and take informed decisions about handling them.
+
+3. Data analysis: Use [Quarto Dashboard](https://quarto.org/docs/dashboards/) and [shiny](https://shiny.rstudio.com/) to create **interactive** dashboards to analyze the data and extract insights. See <https://quarto.org/docs/dashboards/interactivity/> for easy interactivity in Quarto dashboard using Shiny.
+
+4. Data visualization: Use [{ggplot2}](https://ggplot2.tidyverse.org/) and [{plotly}](https://plotly.com/r/) to create interactive visualizations to present the insights.
+5. Spatial Data: Use appropriate packages to create maps to visualize the location of accidents with superimposed relevant information.
+
+The project will help to understand the patterns and trends in car accidents in France and identify the factors that contribute to accidents. The project will also help to explore the relationship between different variables and their impact on accidents. The project will be a good example to showcase the capabilities of Quarto for data analysis and visualization.
+
+## Rules & Expected delivrables
+
+The following delivrables are expected from the project **on Monday, 6th January 2025 at 11:59 PM at the latest**:
+
+1. **Interactive** dashboards to analyze the data and extract insights.
+2. A Quarto document detailing the thinking process and actual steps taken that led to the provided dashboards.
+
+Hence, delivrables should be made of two `.qmd` files.
+
+The project is to be done in groups of **3 students**. You should email the instructor with the names of the students in your group by **Tuesday, 10th December 2024**. The instructor will assign a group number to each group. The group number should be included in the Quarto document and the interactive dashboards.

@@ -40,18 +40,20 @@ website:
             href: 05_Report/05-Report-Exercises.qmd
           - text: "6 Tidy"
             href: 06_Tidy/06-Tidy-Exercises.qmd
-      - text: "Exploratory Data Analysis - Slides"
+      - text: "EDA - Slides"
         menu:
           - text: "1 Hypothesis Testing"
             href: 10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.qmd
           - text: "2 Linear Modeling"
             href: 11_Linear_Modeling/11-Linear-Modeling-Slides.qmd
-      - text: "Exploratory Data Analysis - Labs"
+      - text: "EDA - Labs"
         menu:
           - text: "1 Hypothesis Testing"
             href: 10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.qmd
           - text: "2 Linear Modeling"
             href: 11_Linear_Modeling/11-Linear-Modeling-Exercises.qmd
+      - text: "Homework Assignment"
+        href: project.qmd
     right:
       - icon: github
         href: https://github.com/astamm/data-science-with-r/
@@ -62,7 +64,7 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: simple
     css: styles.css
     toc: true
 
