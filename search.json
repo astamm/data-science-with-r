@@ -921,14 +921,14 @@
     "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#interaction-plots",
     "title": "Linear Regression with R",
     "section": "Interaction plots",
-    "text": "Interaction plots\n\nThis is handled by the interaction package.\n\nJohnson-Neyman plot: sim_slopes()\nTwo-way interaction with at least one continuous predictor: interact_plot()\nTwo-way interaction between categorical predictors: cat_plot()"
+    "text": "Interaction plots\nThis is handled by the interaction package.\n\nJohnson-Neyman plot: sim_slopes()\nTwo-way interaction with at least one continuous predictor: interact_plot()\nTwo-way interaction between categorical predictors: cat_plot()"
   },
   {
     "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#collinearity-multicollinearity",
     "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#collinearity-multicollinearity",
     "title": "Linear Regression with R",
     "section": "Collinearity & Multicollinearity",
-    "text": "Collinearity & Multicollinearity\n\n\n(Multi)-collinearity refers to high correlation in two or more independent variables in the regression model.\nMulticollinearity can arise from poorly designed experiments (Data-based multicollinearity) or from creating new independent variables related to the existing ones (structural multicollinearity).\nCorrelation plots are a great tool to explore colinearity between two variables. They can be seamlessly computed and visualized using packages such as corrr or ggcorrplot."
+    "text": "Collinearity & Multicollinearity\n\n(Multi)-collinearity refers to high correlation in two or more independent variables in the regression model.\nMulticollinearity can arise from poorly designed experiments (Data-based multicollinearity) or from creating new independent variables related to the existing ones (structural multicollinearity).\nCorrelation plots are a great tool to explore colinearity between two variables. They can be seamlessly computed and visualized using packages such as corrr or ggcorrplot."
   },
   {
     "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor-13",
