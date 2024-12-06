@@ -19,9 +19,7 @@ format:
     theme: simple
     code-annotations: select
     chalkboard: true
-    plugins:
-      - name: "Reveal Slide Contents Wrap"
-        src: "../_extensions/g-simmons/slide-contents-wrap/reveal-slide-contents-wrap.js"
+    scrollable: true
     include-in-header: 
       text: |
         <style>
@@ -103,7 +101,7 @@ $$ \mbox{SSD}(\boldsymbol{\beta}, \sigma^2; \mathbf{y}, \mathbb{X}) := (\mathbf{
      | LGA      | 0           | 1           |
 :::
 
-## Model Estimators
+## Model Estimators {.smaller}
 
 ::: {.r-fit-text}
 ### Estimator of the coefficients (unbiased)
@@ -312,57 +310,76 @@ Source: <http://www.sthda.com/english/articles/39-regression-model-diagnostics/1
 
 ## First data set: Residuals vs fitted values
 
-::: {.r-fit-text}
+::: {.columns}
+
+::: {.column width="50%"}
 ```{r}
+#| fig-align: center
 first_model |> 
-  autoplot(which = 1, label.size = 3) + 
+  autoplot(which = 1, label.size = 3, ncol = 1, nrow = 1) + 
   theme_bw()
 ```
+:::
 
-### Usage
-
+::: {.column width="50%"}
+::: {.callout-note title="Usage"}
 To check for non-linearity not accounted for; a horizontal line, without distinct patterns is an indication for a linear relationship, which is good.
+:::
+:::
+
 :::
 
 ## First data set: Normal QQ plot
 
-::: {.r-fit-text}
+::: {.columns}
+
+::: {.column width="50%"}
 ```{r}
+#| fig-align: center
 first_model |> 
-  autoplot(which = 2, label.size = 3) + 
+  autoplot(which = 2, label.size = 3, ncol = 1, nrow = 1) + 
   theme_bw()
 ```
+:::
 
-### Usage
-
+::: {.column width="50%"}
+::: {.callout-note title="Usage"}
 To check the normality of residuals; good if residuals follow the straight dashed line.
+:::
+:::
+
 :::
 
 ## First data set: Scale-location plot
 
-::: {.r-fit-text}
+::: {.columns}
+
+::: {.column width="50%"}
 ```{r}
 first_model |> 
-  autoplot(which = 3, label.size = 3) + 
+  autoplot(which = 3, label.size = 3, ncol = 1, nrow = 1) + 
   theme_bw()
 ```
-
-### Usage
-
-To check the homoscedasticity assumption (constant variance); horizontal line with equally spread points is a good indication of homoscedasticity.
 :::
 
-## First data set: Influential points and outliers
+::: {.column width="50%"}
+::: {.callout-note title="Usage"}
+To check the homoscedasticity assumption (constant variance); horizontal line with equally spread points is a good indication of homoscedasticity.
+:::
+:::
 
-::: {.r-fit-text}
+:::
+
+## First data set: Influential points, outliers
+
 ```{r}
+#| fig-height: 3
 first_model |> 
   autoplot(which = 4:6, label.size = 3, nrow = 1) + 
   theme_bw()
 ```
 
-### Usage
-
+::: {.callout-note title="Usage"}
 -   To check the zero-mean assumption on the residuals and to spot potential outliers in the top and bottom right corners (residuals vs leverages plot)
 
 -   To spot potential outliers as observations with the largest Cook's distance.
@@ -524,27 +541,28 @@ This is handled by the `interaction` package.
 -   *Correlation plots* are a great tool to explore colinearity between two variables. They can be seamlessly computed and visualized using packages such as [`corrr`](https://corrr.tidymodels.org/index.html) or [`ggcorrplot`](https://rpkgs.datanovia.com/ggcorrplot/index.html).
 :::
 
-## Variation Inflation Factor
+## Variation Inflation Factor (1/3)
+
+The Variance inflation factor (VIF) measures the degree of multicollinearity or collinearity in the regression model.
+
+$$
+\mathrm{VIF}_i = \frac{1}{1 - R_i^2},
+$$
+
+where $R_i^2$ is the multiple correlation coefficient associated to the regression of $X_i$ against all remaining independent variables.
+
+## Variation Inflation Factor (2/3)
+
+You can add VIFs to the summary of a model as follows:
+
+```{r}
+#| echo: true
+jtools::summ(fit, vifs = TRUE)
+```
+
+## Variation Inflation Factor (3/3)
 
 ::: {.r-fit-text}
--   The Variance inflation factor (VIF) measures the degree of multicollinearity or collinearity in the regression model.
-
-    $$
-    \mathrm{VIF}_i = \frac{1}{1 - R_i^2},
-    $$
-
-    where $R_i^2$ is the multiple correlation coefficient associated to the regression of $X_i$ against all remaining independent variables.
-
-::: columns
-::: column
--   You can add VIFs to the summary of a model as follows:
-
-    ```{r}
-    jtools::summ(fit, vifs = TRUE)
-    ```
-:::
-
-::: column
 -   VIFs are always at least equal to 1.
 
 -   In some domains, VIF over 2 is worthy of suspicion. Others set the bar higher, at 5 or 10. Others still will say you shouldn't pay attention to these at all. Ultimately, the main thing to consider is that small effects are more likely to be "drowned out" by higher VIFs, but this may just be a natural, unavoidable fact with your model (e.g., there is no problem with high VIFs when you have an interaction effect).
@@ -554,8 +572,6 @@ This is handled by the `interaction` package.
     -   If you are interested in causal inference, yes;
 
     -   otherwise, no.
-:::
-:::
 :::
 
 ## Model selection
