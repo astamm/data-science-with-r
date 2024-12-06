@@ -2,42 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://astamm.github.io/data-science-with-r/11_Linear_Modeling/11-Linear-Modeling-Exercises.html</loc>
-    <lastmod>2024-12-04T19:22:53.054Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.484Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/02_Visualize/02-Visualize-Exercises.html</loc>
-    <lastmod>2024-12-04T19:22:52.774Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.296Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/01_Introduction/authoring-with-quarto.html</loc>
-    <lastmod>2024-12-04T19:22:52.766Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.295Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html</loc>
-    <lastmod>2024-12-04T19:22:53.039Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.484Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/index.html</loc>
-    <lastmod>2024-12-04T19:22:53.100Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.486Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Exercises.html</loc>
+    <lastmod>2024-12-06T09:13:14.459Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/03_Transform/03-Transform-Exercises.html</loc>
-    <lastmod>2024-12-04T19:22:52.882Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.335Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Parameters.html</loc>
+    <lastmod>2024-12-06T09:13:14.459Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html</loc>
-    <lastmod>2024-12-04T19:22:53.039Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.484Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/01_Introduction/01-Introduction-Exercises.html</loc>
-    <lastmod>2024-12-04T19:22:52.664Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.269Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/04_Model/04-Model-Exercises.html</loc>
-    <lastmod>2024-12-04T19:22:52.993Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.436Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/11_Linear_Modeling/11-Linear-Modeling-Slides.html</loc>
-    <lastmod>2024-12-04T19:22:53.059Z</lastmod>
+    <lastmod>2024-12-06T09:13:14.485Z</lastmod>
   </url>
 </urlset>

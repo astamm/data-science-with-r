@@ -277,7 +277,7 @@
     "href": "index.html#outline",
     "title": "Instructions for the class",
     "section": "Outline",
-    "text": "Outline\n\nData wrangling with R\nThe class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the above Data Wranging - Slides tab and the exercises in the above Data Wranging - Labs tab. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\nData\n\n\n\n\n1\nIntroduction\nPDF\nQuarto\n\n\n\n2\nVisualize Data\nPDF\nQuarto\n\n\n\n3\nTransform Data\nPDF\nQuarto\nCSV\n\n\n4\nModel Data\nPDF\nQuarto\nZIP\n\n\n5\nCommunicate Data\nPDF\nQuarto\n\n\n\n6\nTidy Data\nPDF\nQuarto\n\n\n\n7\nJoin Data\nPDF\nQuarto\n\n\n\n8\nManipulate Data Types\nPDF\nQuarto\n\n\n\n9\nManipulate Lists\nPDF\nQuarto\n\n\n\n\n\n\nExploratory Data Analysis with R\nThe class is organised in 4 parts each of which has its own set of slides and exercises. The slides are available in the above Exploratory Data Analysis - Slides tab and the exercises in the the above Exploratory Data Analysis - Labs tab. The slides are written in Quarto revealjs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\n\n\n\n\n1\nHypothesis Testing\nQuarto\nQuarto\n\n\n2\nLinear Regression\nQuarto\nQuarto\n\n\n3\nPrincipal Component Analysis\nQuarto\nQuarto\n\n\n4\nClustering\nQuarto\nQuarto"
+    "text": "Outline\n\nData wrangling with R\nThe class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the above Data Wranging - Slides tab and the exercises in the above Data Wranging - Labs tab. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\nSuppl. Material\n\n\n\n\n1\nIntroduction\nPDF\nQuarto\n\n\n\n2\nVisualize Data\nPDF\nQuarto\n\n\n\n3\nTransform Data\nPDF\nQuarto\nCSV\n\n\n4\nModel Data\nPDF\nQuarto\nZIP\n\n\n5\nCommunicate Data\nPDF\nQuarto\nQuarto\n\n\n6\nTidy Data\nPDF\nQuarto\n\n\n\n7\nJoin Data\nPDF\nQuarto\n\n\n\n8\nManipulate Data Types\nPDF\nQuarto\n\n\n\n9\nManipulate Lists\nPDF\nQuarto\n\n\n\n\n\n\nExploratory Data Analysis with R\nThe class is organised in 4 parts each of which has its own set of slides and exercises. The slides are available in the above Exploratory Data Analysis - Slides tab and the exercises in the the above Exploratory Data Analysis - Labs tab. The slides are written in Quarto revealjs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\n\n\n\n\n1\nHypothesis Testing\nQuarto\nQuarto\n\n\n2\nLinear Regression\nQuarto\nQuarto\n\n\n3\nPrincipal Component Analysis\nQuarto\nQuarto\n\n\n4\nClustering\nQuarto\nQuarto"
   },
   {
     "objectID": "index.html#requirements",
@@ -285,6 +285,13 @@
     "title": "Instructions for the class",
     "section": "Requirements",
     "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\nR packages:\n\n{babynames}\n{jtools}\n{plotly}\n{tidyverse}"
+  },
+  {
+    "objectID": "05_Report/05-Report-Exercises.html",
+    "href": "05_Report/05-Report-Exercises.html",
+    "title": "Garrett",
+    "section": "",
+    "text": "There have been TODO children named Garrett. The name Garrett was most popular in TODO, when TODO TODO were named Garrett. Garrett is traditionally a TODO name."
   },
   {
     "objectID": "03_Transform/03-Transform-Exercises.html",
@@ -383,6 +390,13 @@
     "title": "Transform Data",
     "section": "Your Turn 11",
     "text": "Your Turn 11\nGroup babynames by year and then re-rank the data. Filter the results to just rows where rank == 1."
+  },
+  {
+    "objectID": "05_Report/05-Report-Parameters.html",
+    "href": "05_Report/05-Report-Parameters.html",
+    "title": "Garrett",
+    "section": "",
+    "text": "There have been 130211 children named Garrett. The name Garrett was most popular in 2000, when there were 5840 boys named Garrett. Garrett is traditionally a boy’s name."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#general-data-modeling-framework",
