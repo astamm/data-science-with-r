@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidy Data – Data Science with R</title>
+<title>Car accidents in France – Data Science with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,59 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cb6669ef173fa5a3d6a96bd42ebca5e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-cb6669ef173fa5a3d6a96bd42ebca5e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -111,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Data Science with R</span>
     </a>
   </div>
@@ -127,27 +93,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling---slides">    
         <li>
-    <a class="dropdown-item" href="../01_Introduction/01-Introduction-Slides.pdf">
+    <a class="dropdown-item" href="./01_Introduction/01-Introduction-Slides.pdf">
  <span class="dropdown-text">1 Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../02_Visualize/02-Visualize-Slides.pdf">
+    <a class="dropdown-item" href="./02_Visualize/02-Visualize-Slides.pdf">
  <span class="dropdown-text">2 Visualize</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../03_Transform/03-Transform-Slides.pdf">
+    <a class="dropdown-item" href="./03_Transform/03-Transform-Slides.pdf">
  <span class="dropdown-text">3 Transform</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../04_Model/04-Model-Slides.pdf">
+    <a class="dropdown-item" href="./04_Model/04-Model-Slides.pdf">
  <span class="dropdown-text">4 Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../05_Report/05-Report-Slides.pdf">
+    <a class="dropdown-item" href="./05_Report/05-Report-Slides.pdf">
  <span class="dropdown-text">5 Report</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../06_Tidy/06-Tidy-Slides.pdf">
+    <a class="dropdown-item" href="./06_Tidy/06-Tidy-Slides.pdf">
  <span class="dropdown-text">6 Tidy</span></a>
   </li>  
     </ul>
@@ -158,27 +124,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling---labs">    
         <li>
-    <a class="dropdown-item" href="../01_Introduction/01-Introduction-Exercises.html">
+    <a class="dropdown-item" href="./01_Introduction/01-Introduction-Exercises.html">
  <span class="dropdown-text">1 Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../02_Visualize/02-Visualize-Exercises.html">
+    <a class="dropdown-item" href="./02_Visualize/02-Visualize-Exercises.html">
  <span class="dropdown-text">2 Visualize</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../03_Transform/03-Transform-Exercises.html">
+    <a class="dropdown-item" href="./03_Transform/03-Transform-Exercises.html">
  <span class="dropdown-text">3 Transform</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../04_Model/04-Model-Exercises.html">
+    <a class="dropdown-item" href="./04_Model/04-Model-Exercises.html">
  <span class="dropdown-text">4 Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../05_Report/05-Report-Exercises.html">
+    <a class="dropdown-item" href="./05_Report/05-Report-Exercises.html">
  <span class="dropdown-text">5 Report</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../06_Tidy/06-Tidy-Exercises.html">
+    <a class="dropdown-item" href="./06_Tidy/06-Tidy-Exercises.html">
  <span class="dropdown-text">6 Tidy</span></a>
   </li>  
     </ul>
@@ -189,11 +155,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-eda---slides">    
         <li>
-    <a class="dropdown-item" href="../10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html">
+    <a class="dropdown-item" href="./10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html">
  <span class="dropdown-text">1 Hypothesis Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../11_Linear_Modeling/11-Linear-Modeling-Slides.html">
+    <a class="dropdown-item" href="./11_Linear_Modeling/11-Linear-Modeling-Slides.html">
  <span class="dropdown-text">2 Linear Modeling</span></a>
   </li>  
     </ul>
@@ -204,17 +170,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-eda---labs">    
         <li>
-    <a class="dropdown-item" href="../10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html">
+    <a class="dropdown-item" href="./10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html">
  <span class="dropdown-text">1 Hypothesis Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../11_Linear_Modeling/11-Linear-Modeling-Exercises.html">
+    <a class="dropdown-item" href="./11_Linear_Modeling/11-Linear-Modeling-Exercises.html">
  <span class="dropdown-text">2 Linear Modeling</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../project.html"> 
+    <a class="nav-link active" href="./project.html" aria-current="page"> 
 <span class="menu-text">Homework Assignment</span></a>
   </li>  
 </ul>
@@ -240,32 +206,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tidyr" id="toc-tidyr" class="nav-link active" data-scroll-target="#tidyr">tidyr</a>
-  <ul class="collapse">
-  <li><a href="#your-turn-1" id="toc-your-turn-1" class="nav-link" data-scroll-target="#your-turn-1">Your Turn 1</a></li>
-  <li><a href="#your-turn-2" id="toc-your-turn-2" class="nav-link" data-scroll-target="#your-turn-2">Your Turn 2</a></li>
-  <li><a href="#your-turn-3" id="toc-your-turn-3" class="nav-link" data-scroll-target="#your-turn-3">Your Turn 3</a></li>
-  <li><a href="#your-turn-4" id="toc-your-turn-4" class="nav-link" data-scroll-target="#your-turn-4">Your Turn 4</a></li>
-  </ul></li>
-  <li><a href="#who" id="toc-who" class="nav-link" data-scroll-target="#who">who</a>
-  <ul class="collapse">
-  <li><a href="#your-turn-5" id="toc-your-turn-5" class="nav-link" data-scroll-target="#your-turn-5">Your Turn 5</a></li>
-  <li><a href="#your-turn-6" id="toc-your-turn-6" class="nav-link" data-scroll-target="#your-turn-6">Your Turn 6</a></li>
-  </ul></li>
-  <li><a href="#reshaping-final-exam" id="toc-reshaping-final-exam" class="nav-link" data-scroll-target="#reshaping-final-exam">Reshaping Final Exam</a>
-  <ul class="collapse">
-  <li><a href="#your-turn-7" id="toc-your-turn-7" class="nav-link" data-scroll-target="#your-turn-7">Your Turn 7</a></li>
-  </ul></li>
-  <li><a href="#take-aways" id="toc-take-aways" class="nav-link" data-scroll-target="#take-aways">Take Aways</a></li>
+  <li><a href="#description-of-the-data-set" id="toc-description-of-the-data-set" class="nav-link active" data-scroll-target="#description-of-the-data-set">Description of the data set</a></li>
+  <li><a href="#aims-of-the-project" id="toc-aims-of-the-project" class="nav-link" data-scroll-target="#aims-of-the-project">Aims of the project</a></li>
+  <li><a href="#rules-expected-delivrables" id="toc-rules-expected-delivrables" class="nav-link" data-scroll-target="#rules-expected-delivrables">Rules &amp; Expected delivrables</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/06_Tidy/06-Tidy-Exercises.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/06_Tidy/06-Tidy-Exercises.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/project.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/project.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Tidy Data</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/astamm/data-science-with-r/blob/main/06_Tidy/06-Tidy-Exercises.qmd"><i class="bi"></i> Code</button></div></div>
+<h1 class="title">Car accidents in France</h1>
 </div>
 
 
@@ -282,195 +234,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>table1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  country      year  cases population
-  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
-1 Afghanistan  1999    745   19987071
-2 Afghanistan  2000   2666   20595360
-3 Brazil       1999  37737  172006362
-4 Brazil       2000  80488  174504898
-5 China        1999 212258 1272915272
-6 China        2000 213766 1280428583</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>table2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
-   country      year type            count
-   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
- 1 Afghanistan  1999 cases             745
- 2 Afghanistan  1999 population   19987071
- 3 Afghanistan  2000 cases            2666
- 4 Afghanistan  2000 population   20595360
- 5 Brazil       1999 cases           37737
- 6 Brazil       1999 population  172006362
- 7 Brazil       2000 cases           80488
- 8 Brazil       2000 population  174504898
- 9 China        1999 cases          212258
-10 China        1999 population 1272915272
-11 China        2000 cases          213766
-12 China        2000 population 1280428583</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  country      year rate             
-  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            
-1 Afghanistan  1999 745/19987071     
-2 Afghanistan  2000 2666/20595360    
-3 Brazil       1999 37737/172006362  
-4 Brazil       2000 80488/174504898  
-5 China        1999 212258/1272915272
-6 China        2000 213766/1280428583</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  country     `1999` `2000`
-  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1 Afghanistan    745   2666
-2 Brazil       37737  80488
-3 China       212258 213766</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>table4b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  country         `1999`     `2000`
-  &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;
-1 Afghanistan   19987071   20595360
-2 Brazil       172006362  174504898
-3 China       1272915272 1280428583</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>table5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  country     century year  rate             
-  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            
-1 Afghanistan 19      99    745/19987071     
-2 Afghanistan 20      00    2666/20595360    
-3 Brazil      19      99    37737/172006362  
-4 Brazil      20      00    80488/174504898  
-5 China       19      99    212258/1272915272
-6 China       20      00    213766/1280428583</code></pre>
-</div>
-</div>
-<section id="tidyr" class="level1">
-<h1>tidyr</h1>
-<section id="your-turn-1" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn-1">Your Turn 1</h2>
-<p>On a sheet of paper, draw how the cases data set would look if it had the same values grouped into three columns: <strong>country</strong>, <strong>year</strong>, <strong>n</strong></p>
+<section id="description-of-the-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="description-of-the-data-set">Description of the data set</h2>
+<p>This page explains the project proposed to dig deeper into Quarto and its features. The project is about car accidents in France. The data is available on the <a href="https://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/">Open Data platform of the French government</a>. The data is available in the form of several CSV files. The data contains information about car accidents in France from 2005 to 2023. The data contains information about the date and time of the accident, the location of the accident, the number of people involved in the accident, the number of people injured, the number of people killed, the type of vehicles involved in the accident, the type of road, the weather conditions, the lighting conditions, the type of intersection, the type of collision, the type of accident, the causes of the accident, etc.</p>
 </section>
-<section id="your-turn-2" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn-2">Your Turn 2</h2>
-<p>Use <code>pivot_longer()</code> to reorganize <code>table4a</code> into three columns: <strong>country</strong>, <strong>year</strong>, and <strong>cases</strong>.</p>
-</section>
-<section id="your-turn-3" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn-3">Your Turn 3</h2>
-<p>On a sheet of paper, draw how this data set would look if it had the same values grouped into three columns: <strong>city</strong>, <strong>large</strong>, <strong>small</strong></p>
-</section>
-<section id="your-turn-4" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn-4">Your Turn 4</h2>
-<p>Use <code>pivot_wider()</code> to reorganize <code>table2</code> into four columns: <strong>country</strong>, <strong>year</strong>, <strong>cases</strong>, and <strong>population</strong>.</p>
-</section>
-</section>
-<section id="who" class="level1">
-<h1>who</h1>
-<section id="your-turn-5" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn-5">Your Turn 5</h2>
-<p>Gather the 5th through 60th columns of <code>who</code> into a pair of key:value columns named <code>codes</code> and <code>n</code>.</p>
-<p>Then select just the <code>county</code>, <code>year</code>, <code>codes</code> and <code>n</code> variables.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>who</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7,240 × 60
-   country  iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544
-   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
- 1 Afghani… AF    AFG    1980          NA           NA           NA           NA
- 2 Afghani… AF    AFG    1981          NA           NA           NA           NA
- 3 Afghani… AF    AFG    1982          NA           NA           NA           NA
- 4 Afghani… AF    AFG    1983          NA           NA           NA           NA
- 5 Afghani… AF    AFG    1984          NA           NA           NA           NA
- 6 Afghani… AF    AFG    1985          NA           NA           NA           NA
- 7 Afghani… AF    AFG    1986          NA           NA           NA           NA
- 8 Afghani… AF    AFG    1987          NA           NA           NA           NA
- 9 Afghani… AF    AFG    1988          NA           NA           NA           NA
-10 Afghani… AF    AFG    1989          NA           NA           NA           NA
-# ℹ 7,230 more rows
-# ℹ 52 more variables: new_sp_m4554 &lt;dbl&gt;, new_sp_m5564 &lt;dbl&gt;,
-#   new_sp_m65 &lt;dbl&gt;, new_sp_f014 &lt;dbl&gt;, new_sp_f1524 &lt;dbl&gt;,
-#   new_sp_f2534 &lt;dbl&gt;, new_sp_f3544 &lt;dbl&gt;, new_sp_f4554 &lt;dbl&gt;,
-#   new_sp_f5564 &lt;dbl&gt;, new_sp_f65 &lt;dbl&gt;, new_sn_m014 &lt;dbl&gt;,
-#   new_sn_m1524 &lt;dbl&gt;, new_sn_m2534 &lt;dbl&gt;, new_sn_m3544 &lt;dbl&gt;,
-#   new_sn_m4554 &lt;dbl&gt;, new_sn_m5564 &lt;dbl&gt;, new_sn_m65 &lt;dbl&gt;, …</code></pre>
-</div>
-</div>
-</section>
-<section id="your-turn-6" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn-6">Your Turn 6</h2>
-<p>Separate the <code>sexage</code> column into <code>sex</code> and <code>age</code> columns.</p>
-<p><em>(Hint: Be sure to remove each <code>_</code> before running the code and switch eval option to true)</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>who <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">60</span>, <span class="at">names_to =</span> <span class="st">"codes"</span>, <span class="at">values_to =</span> <span class="st">"n"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>iso2, <span class="sc">-</span>iso3) <span class="sc">|&gt;</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(codes, <span class="fu">c</span>(<span class="st">"new"</span>, <span class="st">"type"</span>, <span class="st">"sexage"</span>), <span class="at">sep =</span> <span class="st">"_"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>new) <span class="sc">|&gt;</span> </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  _______________________________</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="reshaping-final-exam" class="level1">
-<h1>Reshaping Final Exam</h1>
-<section id="your-turn-7" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn-7">Your Turn 7</h2>
-<p>Extend this code to reshape the data into a data set with three columns:</p>
+<section id="aims-of-the-project" class="level2">
+<h2 class="anchored" data-anchor-id="aims-of-the-project">Aims of the project</h2>
+<p>The project aims to dig into interactive Quarto dashboards to analyze the data and extract insights. The project <em>can</em> involve the following steps:</p>
 <ol type="1">
-<li><code>year</code></li>
-<li><code>M</code></li>
-<li><code>F</code></li>
+<li><p>Data collection: Download the data from the Open Data platform of the French government. You can use packages such as <a href="https://readr.tidyverse.org/">{readr}</a> or <a href="https://readxl.tidyverse.org/">{readxl}</a> to read the data into R.</p></li>
+<li><p>Data preprocessing: Clean the data, handle missing values, and transform the data into a suitable format for analysis. For this task, you can use:</p>
+<ul>
+<li><a href="https://dplyr.tidyverse.org/">{dplyr}</a> and <a href="https://tidyr.tidyverse.org/">{tidyr}</a> and other tidyverse packages for data manipulation and reshaping;</li>
+<li><a href="https://docs.ropensci.org/skimr/">{skimr}</a> to get a summary of the data;</li>
+<li><a href="https://sfirke.github.io/janitor/">{janitor}</a> to clean the data;</li>
+<li><a href="https://naniar.njtierney.com/">{naniar}</a> to visualize missing values and take informed decisions about handling them.</li>
+</ul></li>
+<li><p>Data analysis: Use <a href="https://quarto.org/docs/dashboards/">Quarto Dashboard</a> and <a href="https://shiny.rstudio.com/">shiny</a> to create <strong>interactive</strong> dashboards to analyze the data and extract insights. See <a href="https://quarto.org/docs/dashboards/interactivity/" class="uri">https://quarto.org/docs/dashboards/interactivity/</a> for easy interactivity in Quarto dashboard using Shiny.</p></li>
+<li><p>Data visualization: Use <a href="https://ggplot2.tidyverse.org/">{ggplot2}</a> and <a href="https://plotly.com/r/">{plotly}</a> to create interactive visualizations to present the insights.</p></li>
+<li><p>Spatial Data: Use appropriate packages to create maps to visualize the location of accidents with superimposed relevant information.</p></li>
 </ol>
-<p>Calculate the percent of male (or female) children by year. Then plot the percent over time.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>babynames <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, sex) <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'year'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 276 × 3
-# Groups:   year [138]
-    year sex        n
-   &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;
- 1  1880 F      90993
- 2  1880 M     110491
- 3  1881 F      91953
- 4  1881 M     100743
- 5  1882 F     107847
- 6  1882 M     113686
- 7  1883 F     112319
- 8  1883 M     104627
- 9  1884 F     129020
-10  1884 M     114442
-# ℹ 266 more rows</code></pre>
-</div>
-</div>
-<hr>
+<p>The project will help to understand the patterns and trends in car accidents in France and identify the factors that contribute to accidents. The project will also help to explore the relationship between different variables and their impact on accidents. The project will be a good example to showcase the capabilities of Quarto for data analysis and visualization.</p>
 </section>
-</section>
-<section id="take-aways" class="level1">
-<h1>Take Aways</h1>
-<p>Data comes in many formats but R prefers just one: <em>tidy data</em>.</p>
-<p>A data set is tidy if and only if:</p>
+<section id="rules-expected-delivrables" class="level2">
+<h2 class="anchored" data-anchor-id="rules-expected-delivrables">Rules &amp; Expected delivrables</h2>
+<p>The following delivrables are expected from the project <strong>on Monday, 6th January 2025 at 11:59 PM at the latest</strong>:</p>
 <ol type="1">
-<li>Every variable is in its own column</li>
-<li>Every observation is in its own row</li>
-<li>Every value is in its own cell (which follows from the above)</li>
+<li><strong>Interactive</strong> dashboards to analyze the data and extract insights.</li>
+<li>A Quarto document detailing the thinking process and actual steps taken that led to the provided dashboards.</li>
 </ol>
-<p>What is a variable and an observation may depend on your immediate goal.</p>
+<p>Hence, delivrables should be made of two <code>.qmd</code> files.</p>
+<p>The project is to be done in groups of <strong>3 students</strong>. You should email the instructor with the names of the students in your group by <strong>Tuesday, 10th December 2024</strong>. The instructor will assign a group number to each group. The group number should be included in the Quarto document and the interactive dashboards.</p>
 
 
 </section>
@@ -563,57 +357,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -952,7 +695,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/06_Tidy/06-Tidy-Exercises.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/06_Tidy/06-Tidy-Exercises.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/project.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/project.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This website is built with <a href="https://quarto.org/">Quarto</a></p>
 </div>
