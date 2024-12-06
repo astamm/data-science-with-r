@@ -844,28 +844,28 @@
     "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-residuals-vs-fitted-values",
     "title": "Linear Regression with R",
     "section": "First data set: Residuals vs fitted values",
-    "text": "First data set: Residuals vs fitted values\n\n\n\n\n\n\n\n\n\n\nUsage\nTo check for non-linearity not accounted for; a horizontal line, without distinct patterns is an indication for a linear relationship, which is good."
+    "text": "First data set: Residuals vs fitted values\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsage\n\n\nTo check for non-linearity not accounted for; a horizontal line, without distinct patterns is an indication for a linear relationship, which is good."
   },
   {
     "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-normal-qq-plot",
     "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-normal-qq-plot",
     "title": "Linear Regression with R",
     "section": "First data set: Normal QQ plot",
-    "text": "First data set: Normal QQ plot\n\n\n\n\n\n\n\n\n\n\nUsage\nTo check the normality of residuals; good if residuals follow the straight dashed line."
+    "text": "First data set: Normal QQ plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsage\n\n\nTo check the normality of residuals; good if residuals follow the straight dashed line."
   },
   {
     "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-scale-location-plot",
     "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-scale-location-plot",
     "title": "Linear Regression with R",
     "section": "First data set: Scale-location plot",
-    "text": "First data set: Scale-location plot\n\n\n\n\n\n\n\n\n\n\nUsage\nTo check the homoscedasticity assumption (constant variance); horizontal line with equally spread points is a good indication of homoscedasticity."
+    "text": "First data set: Scale-location plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsage\n\n\nTo check the homoscedasticity assumption (constant variance); horizontal line with equally spread points is a good indication of homoscedasticity."
   },
   {
-    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-influential-points-and-outliers",
-    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-influential-points-and-outliers",
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-influential-points-outliers",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#first-data-set-influential-points-outliers",
     "title": "Linear Regression with R",
-    "section": "First data set: Influential points and outliers",
-    "text": "First data set: Influential points and outliers\n\n\n\n\n\n\n\n\n\n\nUsage\n\nTo check the zero-mean assumption on the residuals and to spot potential outliers in the top and bottom right corners (residuals vs leverages plot)\nTo spot potential outliers as observations with the largest Cook’s distance."
+    "section": "First data set: Influential points, outliers",
+    "text": "First data set: Influential points, outliers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsage\n\n\n\nTo check the zero-mean assumption on the residuals and to spot potential outliers in the top and bottom right corners (residuals vs leverages plot)\nTo spot potential outliers as observations with the largest Cook’s distance."
   },
   {
     "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#second-data-set-model-diagnosis",
@@ -931,11 +931,25 @@
     "text": "Collinearity & Multicollinearity\n\n\n(Multi)-collinearity refers to high correlation in two or more independent variables in the regression model.\nMulticollinearity can arise from poorly designed experiments (Data-based multicollinearity) or from creating new independent variables related to the existing ones (structural multicollinearity).\nCorrelation plots are a great tool to explore colinearity between two variables. They can be seamlessly computed and visualized using packages such as corrr or ggcorrplot."
   },
   {
-    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor",
-    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor",
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor-13",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor-13",
     "title": "Linear Regression with R",
-    "section": "Variation Inflation Factor",
-    "text": "Variation Inflation Factor\n\n\nThe Variance inflation factor (VIF) measures the degree of multicollinearity or collinearity in the regression model.\n\\[\n\\mathrm{VIF}_i = \\frac{1}{1 - R_i^2},\n\\]\nwhere \\(R_i^2\\) is the multiple correlation coefficient associated to the regression of \\(X_i\\) against all remaining independent variables.\n\n\n\n\nYou can add VIFs to the summary of a model as follows:\n\n\n\n\n\n\nObservations\n234\n\n\nDependent variable\ncty\n\n\nType\nOLS linear regression\n\n\n\n\n \n\n\n\n\nF(13,220)\n100.37\n\n\nR²\n0.86\n\n\nAdj. R²\n0.85\n\n\n\n\n \n\n\n\n\n\nEst.\nS.E.\nt val.\np\nVIF\n\n\n\n\n(Intercept)\n-199.79\n51.14\n-3.91\n0.00\nNA\n\n\ndispl\n-1.02\n0.29\n-3.53\n0.00\n11.76\n\n\nyear\n0.12\n0.03\n4.52\n0.00\n1.11\n\n\ncyl\n-0.85\n0.20\n-4.26\n0.00\n8.69\n\n\nclasscompact\n-2.81\n1.00\n-2.83\n0.01\n3.69\n\n\nclassmidsize\n-2.95\n0.97\n-3.05\n0.00\n3.69\n\n\nclassminivan\n-5.08\n1.05\n-4.82\n0.00\n3.69\n\n\nclasspickup\n-5.89\n0.92\n-6.37\n0.00\n3.69\n\n\nclasssubcompact\n-2.63\n1.01\n-2.61\n0.01\n3.69\n\n\nclasssuv\n-5.59\n0.88\n-6.33\n0.00\n3.69\n\n\nfld\n5.93\n1.85\n3.21\n0.00\n1.60\n\n\nfle\n-5.13\n1.81\n-2.84\n0.00\n1.60\n\n\nflp\n-2.97\n1.72\n-1.73\n0.08\n1.60\n\n\nflr\n-1.69\n1.70\n-0.99\n0.32\n1.60\n\n\n\n Standard errors: OLS\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVIFs are always at least equal to 1.\nIn some domains, VIF over 2 is worthy of suspicion. Others set the bar higher, at 5 or 10. Others still will say you shouldn’t pay attention to these at all. Ultimately, the main thing to consider is that small effects are more likely to be “drowned out” by higher VIFs, but this may just be a natural, unavoidable fact with your model (e.g., there is no problem with high VIFs when you have an interaction effect).\nShould you care?\n\nIf you are interested in causal inference, yes;\notherwise, no."
+    "section": "Variation Inflation Factor (1/3)",
+    "text": "Variation Inflation Factor (1/3)\nThe Variance inflation factor (VIF) measures the degree of multicollinearity or collinearity in the regression model.\n\\[\n\\mathrm{VIF}_i = \\frac{1}{1 - R_i^2},\n\\]\nwhere \\(R_i^2\\) is the multiple correlation coefficient associated to the regression of \\(X_i\\) against all remaining independent variables."
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor-23",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor-23",
+    "title": "Linear Regression with R",
+    "section": "Variation Inflation Factor (2/3)",
+    "text": "Variation Inflation Factor (2/3)\nYou can add VIFs to the summary of a model as follows:\n\njtools::summ(fit, vifs = TRUE)\n\n\n\n\n\nObservations\n234\n\n\nDependent variable\ncty\n\n\nType\nOLS linear regression\n\n\n\n\n \n\n\n\n\nF(13,220)\n100.37\n\n\nR²\n0.86\n\n\nAdj. R²\n0.85\n\n\n\n\n \n\n\n\n\n\nEst.\nS.E.\nt val.\np\nVIF\n\n\n\n\n(Intercept)\n-199.79\n51.14\n-3.91\n0.00\nNA\n\n\ndispl\n-1.02\n0.29\n-3.53\n0.00\n11.76\n\n\nyear\n0.12\n0.03\n4.52\n0.00\n1.11\n\n\ncyl\n-0.85\n0.20\n-4.26\n0.00\n8.69\n\n\nclasscompact\n-2.81\n1.00\n-2.83\n0.01\n3.69\n\n\nclassmidsize\n-2.95\n0.97\n-3.05\n0.00\n3.69\n\n\nclassminivan\n-5.08\n1.05\n-4.82\n0.00\n3.69\n\n\nclasspickup\n-5.89\n0.92\n-6.37\n0.00\n3.69\n\n\nclasssubcompact\n-2.63\n1.01\n-2.61\n0.01\n3.69\n\n\nclasssuv\n-5.59\n0.88\n-6.33\n0.00\n3.69\n\n\nfld\n5.93\n1.85\n3.21\n0.00\n1.60\n\n\nfle\n-5.13\n1.81\n-2.84\n0.00\n1.60\n\n\nflp\n-2.97\n1.72\n-1.73\n0.08\n1.60\n\n\nflr\n-1.69\n1.70\n-0.99\n0.32\n1.60\n\n\n\n Standard errors: OLS"
+  },
+  {
+    "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor-33",
+    "href": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#variation-inflation-factor-33",
+    "title": "Linear Regression with R",
+    "section": "Variation Inflation Factor (3/3)",
+    "text": "Variation Inflation Factor (3/3)\n\n\nVIFs are always at least equal to 1.\nIn some domains, VIF over 2 is worthy of suspicion. Others set the bar higher, at 5 or 10. Others still will say you shouldn’t pay attention to these at all. Ultimately, the main thing to consider is that small effects are more likely to be “drowned out” by higher VIFs, but this may just be a natural, unavoidable fact with your model (e.g., there is no problem with high VIFs when you have an interaction effect).\nShould you care?\n\nIf you are interested in causal inference, yes;\notherwise, no."
   },
   {
     "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#model-selection",
