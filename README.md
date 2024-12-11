@@ -33,7 +33,7 @@ slides. The exercises are written in [Quarto](https://quarto.org).
 | 4    | Model Data | [PDF](04_Model/04-Model-Slides.pdf) | [Quarto](04_Model/04-Model-Exercises.qmd) | [ZIP](04_Model/04-Model-Data.zip) |
 | 5    | Communicate Data | [PDF](05_Report/05-Report-Slides.pdf) | [Quarto](05_Report/05-Report-Exercises.qmd) | [Quarto](05_Report/05-Report-Parameters.qmd) |
 | 6    | Tidy Data | [PDF](06_Tidy/06-Tidy-Slides.pdf) | [Quarto](06_Tidy/06-Tidy-Exercises.qmd) | |
-| 7    | Join Data | [PDF](slides/07-join-data.pdf) | [Quarto](labs/07-join-data.Rmd) | |
+| 7    | Join Data | [PDF](07_Join/07-Join-Slides.pdf) | [Quarto](07_Join/07-Join-Exercises.qmd) | |
 | 8    | Manipulate Data Types | [PDF](slides/08-manipulate-data-types.pdf) | [Quarto](labs/08-manipulate-data-types.Rmd) | |
 | 9    | Manipulate Lists | [PDF](slides/09-manipulate-lists.pdf) | [Quarto](labs/09-manipulate-lists.Rmd) | |
 

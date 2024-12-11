@@ -33,7 +33,7 @@ jobs:
                paste(getRversion(), R.version$platform, R.version$arch, R.version$os)
              )
            )
-           install.packages(c("tidyverse", "kableExtra", "babynames", "ggfortify", "jtools"))
+           install.packages(c("tidyverse", "kableExtra", "babynames", "ggfortify", "jtools", "nycflights13", "DT"))
         shell: Rscript {0}
 
       - name: Render and Publish

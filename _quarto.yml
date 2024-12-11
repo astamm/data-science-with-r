@@ -26,6 +26,8 @@ website:
             href: 05_Report/05-Report-Slides.pdf
           - text: "6 Tidy"
             href: 06_Tidy/06-Tidy-Slides.pdf
+          - text: "7 Join"
+            href: 07_Join/07-Join-Slides.pdf
       - text: "Data Wrangling - Labs"
         menu:
           - text: "1 Introduction"
@@ -40,6 +42,8 @@ website:
             href: 05_Report/05-Report-Exercises.qmd
           - text: "6 Tidy"
             href: 06_Tidy/06-Tidy-Exercises.qmd
+          - text: "7 Join"
+            href: 07_Join/07-Join-Exercises.qmd
       - text: "EDA - Slides"
         menu:
           - text: "1 Hypothesis Testing"
