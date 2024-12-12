@@ -1,0 +1,45 @@
+---
+title: "First Exam"
+subtitle: "Data Manipulation and Visualization"
+date: 2024-12-12
+author: "Put your name here"
+format:
+  html:
+    code-tools:
+      source: repo
+---
+
+## Data
+
+The data set you are going to work on is the `penguins` data set. The data set
+contains data on the body mass, flipper length, species of penguins. The data
+set is available in the {palmerpenguins} package. You can install the package
+using the following code:
+
+```r
+install.packages("palmerpenguins")
+```
+
+## Goal
+
+The goal of this exam is to reproduce the following plot using the `penguins`
+data set:
+
+![](penguins.png)
+
+Hint: You need to carefully analze the plot to understand how you need to
+manipulate the original data set in order to get the correct answer. For the
+sake of clarity, *with fixed slopes* means that the slopes of the lines are the
+same for all species and sexes. *with varying slopes* means that the slopes of
+the lines are different for each species and sex.
+
+## Rules & Expected delivrables
+
+The exam starts at 11am on Friday, 13th December 2024 and ends at 12pm on
+the same day. You are not allowed to communicate with anyone during the exam.
+
+The following delivrable is expected by email to the instructor by 12:15pm on
+Friday, 13th December 2024:
+
+- A Quarto file **which renders without error** with the code to reproduce the
+plot. The name of the file must be of the form `exam1_<your_name>.qmd`.

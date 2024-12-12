@@ -62,6 +62,8 @@ website:
             href: 11_Linear_Modeling/11-Linear-Modeling-Exercises.qmd
       - text: "Homework Assignment"
         href: project.qmd
+      - text: "First Exam"
+        href: exam1.qmd
     right:
       - icon: github
         href: https://github.com/astamm/data-science-with-r/
