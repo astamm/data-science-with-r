@@ -2,66 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://astamm.github.io/data-science-with-r/11_Linear_Modeling/11-Linear-Modeling-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.409Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.638Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/02_Visualize/02-Visualize-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.091Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.372Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/04_Model/04-Model-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.268Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.526Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/01_Introduction/authoring-with-quarto.html</loc>
-    <lastmod>2024-12-12T06:16:14.091Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.372Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.406Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.637Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/08_Types/08-Types-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.379Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Parameters.html</loc>
-    <lastmod>2024-12-12T06:16:14.299Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/06_Tidy/06-Tidy-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.329Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/03_Transform/03-Transform-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.137Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.299Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.613Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/index.html</loc>
-    <lastmod>2024-12-12T06:16:14.411Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.639Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Exercises.html</loc>
+    <lastmod>2024-12-12T10:15:13.548Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/03_Transform/03-Transform-Exercises.html</loc>
+    <lastmod>2024-12-12T10:15:13.417Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/06_Tidy/06-Tidy-Exercises.html</loc>
+    <lastmod>2024-12-12T10:15:13.575Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Parameters.html</loc>
+    <lastmod>2024-12-12T10:15:13.549Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/exam1.html</loc>
+    <lastmod>2024-12-12T10:15:13.639Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html</loc>
-    <lastmod>2024-12-12T06:16:14.406Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.637Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/01_Introduction/01-Introduction-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.055Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.339Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/07_Join/07-Join-Exercises.html</loc>
-    <lastmod>2024-12-12T06:16:14.358Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.595Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/project.html</loc>
-    <lastmod>2024-12-12T06:16:14.413Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.642Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/11_Linear_Modeling/11-Linear-Modeling-Slides.html</loc>
-    <lastmod>2024-12-12T06:16:14.410Z</lastmod>
+    <lastmod>2024-12-12T10:15:13.638Z</lastmod>
   </url>
 </urlset>

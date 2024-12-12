@@ -364,67 +364,46 @@
     "text": "Your Turn 7\nFill in the blank to:\nExtract the day of the week of each flight (as a full name) from time_hour.\nPlot the average arrival delay by day as a column chart (bar chart).\n(Hint: Be sure to remove each _ before turning eval to true)\n\nflights |&gt; \n  mutate(weekday = _______________________________) |&gt; \n  group_by(weekday) |&gt; \n  filter(!is.na(arr_delay)) |&gt; \n  summarise(avg_delay = mean(arr_delay)) |&gt; \n  ggplot() +\n    geom_col(mapping = aes(x = weekday, y = avg_delay))"
   },
   {
-    "objectID": "05_Report/05-Report-Parameters.html",
-    "href": "05_Report/05-Report-Parameters.html",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Instructions for the class",
+    "section": "",
+    "text": "Homework Assignment\n\n\n\nNew announcement about the homework assignment. Checkout the homework assignment page."
+  },
+  {
+    "objectID": "index.html#disclaimer",
+    "href": "index.html#disclaimer",
+    "title": "Instructions for the class",
+    "section": "Disclaimer",
+    "text": "Disclaimer\nThis repository is build on the work of Garrett Grolemund from posit. In particular, it reuses an important part of the material he developed for tidyverse-related workshops, which is available at https://github.com/rstudio-education/remaster-the-tidyverse under the Creative Commons BY-SA 4.0 copyright."
+  },
+  {
+    "objectID": "index.html#material",
+    "href": "index.html#material",
+    "title": "Instructions for the class",
+    "section": "Material",
+    "text": "Material\nThe main webpage is at https://astamm.github.io/data-science-with-r/."
+  },
+  {
+    "objectID": "index.html#outline",
+    "href": "index.html#outline",
+    "title": "Instructions for the class",
+    "section": "Outline",
+    "text": "Outline\n\nData wrangling with R\nThe class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the above Data Wranging - Slides tab and the exercises in the above Data Wranging - Labs tab. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\nSuppl. Material\n\n\n\n\n1\nIntroduction\nPDF\nQuarto\n\n\n\n2\nVisualize Data\nPDF\nQuarto\n\n\n\n3\nTransform Data\nPDF\nQuarto\nCSV\n\n\n4\nModel Data\nPDF\nQuarto\nZIP\n\n\n5\nCommunicate Data\nPDF\nQuarto\nQuarto\n\n\n6\nTidy Data\nPDF\nQuarto\n\n\n\n7\nJoin Data\nPDF\nQuarto\n\n\n\n8\nManipulate Data Types\nPDF\nQuarto\n\n\n\n9\nManipulate Lists\nPDF\nQuarto\n\n\n\n\n\n\nExploratory Data Analysis with R\nThe class is organised in 4 parts each of which has its own set of slides and exercises. The slides are available in the above Exploratory Data Analysis - Slides tab and the exercises in the the above Exploratory Data Analysis - Labs tab. The slides are written in Quarto revealjs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\n\n\n\n\n1\nHypothesis Testing\nQuarto\nQuarto\n\n\n2\nLinear Regression\nQuarto\nQuarto\n\n\n3\nPrincipal Component Analysis\nQuarto\nQuarto\n\n\n4\nClustering\nQuarto\nQuarto"
+  },
+  {
+    "objectID": "index.html#requirements",
+    "href": "index.html#requirements",
+    "title": "Instructions for the class",
+    "section": "Requirements",
+    "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\nTidyverse: https://www.tidyverse.org\nSpecific R packages by theme:\n\nData sets:\n\n{babynames}: a data set of frequency of baby names in the US from 1880 to 2017.\n\nData visualization:\n\n{ggplot2}: a package that implements the grammar of graphics.\n{plotly}: an interactive plotting library.\n\nModel summaries:\n\n{broom}: a package that provides tidy summaries of model outputs.\n{modelr}: a package that provides functions for modelling within the tidyverse.\n{jtools}: a package that provides functions for summarizing and visualizing model outputs and main effects.\n{interactions}: a package that provides functions for visualizing the effect of interactions in regression models."
+  },
+  {
+    "objectID": "05_Report/05-Report-Exercises.html",
+    "href": "05_Report/05-Report-Exercises.html",
     "title": "Garrett",
     "section": "",
-    "text": "There have been 130211 children named Garrett. The name Garrett was most popular in 2000, when there were 5840 boys named Garrett. Garrett is traditionally a boy’s name."
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html",
-    "href": "06_Tidy/06-Tidy-Exercises.html",
-    "title": "Tidy Data",
-    "section": "",
-    "text": "table1\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\ntable2\n\n# A tibble: 12 × 4\n   country      year type            count\n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583\n\ntable3\n\n# A tibble: 6 × 3\n  country      year rate             \n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583\n\ntable4a\n\n# A tibble: 3 × 3\n  country     `1999` `2000`\n  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;\n1 Afghanistan    745   2666\n2 Brazil       37737  80488\n3 China       212258 213766\n\ntable4b\n\n# A tibble: 3 × 3\n  country         `1999`     `2000`\n  &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan   19987071   20595360\n2 Brazil       172006362  174504898\n3 China       1272915272 1280428583\n\ntable5\n\n# A tibble: 6 × 4\n  country     century year  rate             \n  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            \n1 Afghanistan 19      99    745/19987071     \n2 Afghanistan 20      00    2666/20595360    \n3 Brazil      19      99    37737/172006362  \n4 Brazil      20      00    80488/174504898  \n5 China       19      99    212258/1272915272\n6 China       20      00    213766/1280428583"
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-1",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-1",
-    "title": "Tidy Data",
-    "section": "Your Turn 1",
-    "text": "Your Turn 1\nOn a sheet of paper, draw how the cases data set would look if it had the same values grouped into three columns: country, year, n"
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-2",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-2",
-    "title": "Tidy Data",
-    "section": "Your Turn 2",
-    "text": "Your Turn 2\nUse pivot_longer() to reorganize table4a into three columns: country, year, and cases."
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-3",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-3",
-    "title": "Tidy Data",
-    "section": "Your Turn 3",
-    "text": "Your Turn 3\nOn a sheet of paper, draw how this data set would look if it had the same values grouped into three columns: city, large, small"
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-4",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-4",
-    "title": "Tidy Data",
-    "section": "Your Turn 4",
-    "text": "Your Turn 4\nUse pivot_wider() to reorganize table2 into four columns: country, year, cases, and population."
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-5",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-5",
-    "title": "Tidy Data",
-    "section": "Your Turn 5",
-    "text": "Your Turn 5\nGather the 5th through 60th columns of who into a pair of key:value columns named codes and n.\nThen select just the county, year, codes and n variables.\n\nwho\n\n# A tibble: 7,240 × 60\n   country  iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544\n   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;\n 1 Afghani… AF    AFG    1980          NA           NA           NA           NA\n 2 Afghani… AF    AFG    1981          NA           NA           NA           NA\n 3 Afghani… AF    AFG    1982          NA           NA           NA           NA\n 4 Afghani… AF    AFG    1983          NA           NA           NA           NA\n 5 Afghani… AF    AFG    1984          NA           NA           NA           NA\n 6 Afghani… AF    AFG    1985          NA           NA           NA           NA\n 7 Afghani… AF    AFG    1986          NA           NA           NA           NA\n 8 Afghani… AF    AFG    1987          NA           NA           NA           NA\n 9 Afghani… AF    AFG    1988          NA           NA           NA           NA\n10 Afghani… AF    AFG    1989          NA           NA           NA           NA\n# ℹ 7,230 more rows\n# ℹ 52 more variables: new_sp_m4554 &lt;dbl&gt;, new_sp_m5564 &lt;dbl&gt;,\n#   new_sp_m65 &lt;dbl&gt;, new_sp_f014 &lt;dbl&gt;, new_sp_f1524 &lt;dbl&gt;,\n#   new_sp_f2534 &lt;dbl&gt;, new_sp_f3544 &lt;dbl&gt;, new_sp_f4554 &lt;dbl&gt;,\n#   new_sp_f5564 &lt;dbl&gt;, new_sp_f65 &lt;dbl&gt;, new_sn_m014 &lt;dbl&gt;,\n#   new_sn_m1524 &lt;dbl&gt;, new_sn_m2534 &lt;dbl&gt;, new_sn_m3544 &lt;dbl&gt;,\n#   new_sn_m4554 &lt;dbl&gt;, new_sn_m5564 &lt;dbl&gt;, new_sn_m65 &lt;dbl&gt;, …"
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-6",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-6",
-    "title": "Tidy Data",
-    "section": "Your Turn 6",
-    "text": "Your Turn 6\nSeparate the sexage column into sex and age columns.\n(Hint: Be sure to remove each _ before running the code and switch eval option to true)\n\nwho |&gt; \n  pivot_longer(cols = 5:60, names_to = \"codes\", values_to = \"n\") |&gt; \n  select(-iso2, -iso3) |&gt; \n  separate(codes, c(\"new\", \"type\", \"sexage\"), sep = \"_\") |&gt; \n  select(-new) |&gt; \n  _______________________________"
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-7",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-7",
-    "title": "Tidy Data",
-    "section": "Your Turn 7",
-    "text": "Your Turn 7\nExtend this code to reshape the data into a data set with three columns:\n\nyear\nM\nF\n\nCalculate the percent of male (or female) children by year. Then plot the percent over time.\n\nbabynames |&gt; \n  group_by(year, sex) |&gt; \n  summarise(n = sum(n))\n\n`summarise()` has grouped output by 'year'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 276 × 3\n# Groups:   year [138]\n    year sex        n\n   &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;\n 1  1880 F      90993\n 2  1880 M     110491\n 3  1881 F      91953\n 4  1881 M     100743\n 5  1882 F     107847\n 6  1882 M     113686\n 7  1883 F     112319\n 8  1883 M     104627\n 9  1884 F     129020\n10  1884 M     114442\n# ℹ 266 more rows"
+    "text": "There have been TODO children named Garrett. The name Garrett was most popular in TODO, when TODO TODO were named Garrett. Garrett is traditionally a TODO name."
   },
   {
     "objectID": "03_Transform/03-Transform-Exercises.html",
@@ -525,46 +504,95 @@
     "text": "Your Turn 11\nGroup babynames by year and then re-rank the data. Filter the results to just rows where rank == 1."
   },
   {
-    "objectID": "05_Report/05-Report-Exercises.html",
-    "href": "05_Report/05-Report-Exercises.html",
+    "objectID": "06_Tidy/06-Tidy-Exercises.html",
+    "href": "06_Tidy/06-Tidy-Exercises.html",
+    "title": "Tidy Data",
+    "section": "",
+    "text": "table1\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\ntable2\n\n# A tibble: 12 × 4\n   country      year type            count\n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583\n\ntable3\n\n# A tibble: 6 × 3\n  country      year rate             \n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583\n\ntable4a\n\n# A tibble: 3 × 3\n  country     `1999` `2000`\n  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;\n1 Afghanistan    745   2666\n2 Brazil       37737  80488\n3 China       212258 213766\n\ntable4b\n\n# A tibble: 3 × 3\n  country         `1999`     `2000`\n  &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan   19987071   20595360\n2 Brazil       172006362  174504898\n3 China       1272915272 1280428583\n\ntable5\n\n# A tibble: 6 × 4\n  country     century year  rate             \n  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            \n1 Afghanistan 19      99    745/19987071     \n2 Afghanistan 20      00    2666/20595360    \n3 Brazil      19      99    37737/172006362  \n4 Brazil      20      00    80488/174504898  \n5 China       19      99    212258/1272915272\n6 China       20      00    213766/1280428583"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-1",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-1",
+    "title": "Tidy Data",
+    "section": "Your Turn 1",
+    "text": "Your Turn 1\nOn a sheet of paper, draw how the cases data set would look if it had the same values grouped into three columns: country, year, n"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-2",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-2",
+    "title": "Tidy Data",
+    "section": "Your Turn 2",
+    "text": "Your Turn 2\nUse pivot_longer() to reorganize table4a into three columns: country, year, and cases."
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-3",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-3",
+    "title": "Tidy Data",
+    "section": "Your Turn 3",
+    "text": "Your Turn 3\nOn a sheet of paper, draw how this data set would look if it had the same values grouped into three columns: city, large, small"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-4",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-4",
+    "title": "Tidy Data",
+    "section": "Your Turn 4",
+    "text": "Your Turn 4\nUse pivot_wider() to reorganize table2 into four columns: country, year, cases, and population."
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-5",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-5",
+    "title": "Tidy Data",
+    "section": "Your Turn 5",
+    "text": "Your Turn 5\nGather the 5th through 60th columns of who into a pair of key:value columns named codes and n.\nThen select just the county, year, codes and n variables.\n\nwho\n\n# A tibble: 7,240 × 60\n   country  iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544\n   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;\n 1 Afghani… AF    AFG    1980          NA           NA           NA           NA\n 2 Afghani… AF    AFG    1981          NA           NA           NA           NA\n 3 Afghani… AF    AFG    1982          NA           NA           NA           NA\n 4 Afghani… AF    AFG    1983          NA           NA           NA           NA\n 5 Afghani… AF    AFG    1984          NA           NA           NA           NA\n 6 Afghani… AF    AFG    1985          NA           NA           NA           NA\n 7 Afghani… AF    AFG    1986          NA           NA           NA           NA\n 8 Afghani… AF    AFG    1987          NA           NA           NA           NA\n 9 Afghani… AF    AFG    1988          NA           NA           NA           NA\n10 Afghani… AF    AFG    1989          NA           NA           NA           NA\n# ℹ 7,230 more rows\n# ℹ 52 more variables: new_sp_m4554 &lt;dbl&gt;, new_sp_m5564 &lt;dbl&gt;,\n#   new_sp_m65 &lt;dbl&gt;, new_sp_f014 &lt;dbl&gt;, new_sp_f1524 &lt;dbl&gt;,\n#   new_sp_f2534 &lt;dbl&gt;, new_sp_f3544 &lt;dbl&gt;, new_sp_f4554 &lt;dbl&gt;,\n#   new_sp_f5564 &lt;dbl&gt;, new_sp_f65 &lt;dbl&gt;, new_sn_m014 &lt;dbl&gt;,\n#   new_sn_m1524 &lt;dbl&gt;, new_sn_m2534 &lt;dbl&gt;, new_sn_m3544 &lt;dbl&gt;,\n#   new_sn_m4554 &lt;dbl&gt;, new_sn_m5564 &lt;dbl&gt;, new_sn_m65 &lt;dbl&gt;, …"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-6",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-6",
+    "title": "Tidy Data",
+    "section": "Your Turn 6",
+    "text": "Your Turn 6\nSeparate the sexage column into sex and age columns.\n(Hint: Be sure to remove each _ before running the code and switch eval option to true)\n\nwho |&gt; \n  pivot_longer(cols = 5:60, names_to = \"codes\", values_to = \"n\") |&gt; \n  select(-iso2, -iso3) |&gt; \n  separate(codes, c(\"new\", \"type\", \"sexage\"), sep = \"_\") |&gt; \n  select(-new) |&gt; \n  _______________________________"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-7",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-7",
+    "title": "Tidy Data",
+    "section": "Your Turn 7",
+    "text": "Your Turn 7\nExtend this code to reshape the data into a data set with three columns:\n\nyear\nM\nF\n\nCalculate the percent of male (or female) children by year. Then plot the percent over time.\n\nbabynames |&gt; \n  group_by(year, sex) |&gt; \n  summarise(n = sum(n))\n\n`summarise()` has grouped output by 'year'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 276 × 3\n# Groups:   year [138]\n    year sex        n\n   &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;\n 1  1880 F      90993\n 2  1880 M     110491\n 3  1881 F      91953\n 4  1881 M     100743\n 5  1882 F     107847\n 6  1882 M     113686\n 7  1883 F     112319\n 8  1883 M     104627\n 9  1884 F     129020\n10  1884 M     114442\n# ℹ 266 more rows"
+  },
+  {
+    "objectID": "05_Report/05-Report-Parameters.html",
+    "href": "05_Report/05-Report-Parameters.html",
     "title": "Garrett",
     "section": "",
-    "text": "There have been TODO children named Garrett. The name Garrett was most popular in TODO, when TODO TODO were named Garrett. Garrett is traditionally a TODO name."
+    "text": "There have been 130211 children named Garrett. The name Garrett was most popular in 2000, when there were 5840 boys named Garrett. Garrett is traditionally a boy’s name."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Instructions for the class",
+    "objectID": "exam1.html",
+    "href": "exam1.html",
+    "title": "First Exam",
     "section": "",
-    "text": "Homework Assignment\n\n\n\nNew announcement about the homework assignment. Checkout the homework assignment page."
+    "text": "The data set you are going to work on is the penguins data set. The data set contains data on the body mass, flipper length, species of penguins. The data set is available in the {palmerpenguins} package. You can install the package using the following code:\ninstall.packages(\"palmerpenguins\")"
   },
   {
-    "objectID": "index.html#disclaimer",
-    "href": "index.html#disclaimer",
-    "title": "Instructions for the class",
-    "section": "Disclaimer",
-    "text": "Disclaimer\nThis repository is build on the work of Garrett Grolemund from posit. In particular, it reuses an important part of the material he developed for tidyverse-related workshops, which is available at https://github.com/rstudio-education/remaster-the-tidyverse under the Creative Commons BY-SA 4.0 copyright."
+    "objectID": "exam1.html#data",
+    "href": "exam1.html#data",
+    "title": "First Exam",
+    "section": "",
+    "text": "The data set you are going to work on is the penguins data set. The data set contains data on the body mass, flipper length, species of penguins. The data set is available in the {palmerpenguins} package. You can install the package using the following code:\ninstall.packages(\"palmerpenguins\")"
   },
   {
-    "objectID": "index.html#material",
-    "href": "index.html#material",
-    "title": "Instructions for the class",
-    "section": "Material",
-    "text": "Material\nThe main webpage is at https://astamm.github.io/data-science-with-r/."
+    "objectID": "exam1.html#goal",
+    "href": "exam1.html#goal",
+    "title": "First Exam",
+    "section": "Goal",
+    "text": "Goal\nThe goal of this exam is to reproduce the following plot using the penguins data set:\n\nHint: You need to carefully analze the plot to understand how you need to manipulate the original data set in order to get the correct answer. For the sake of clarity, with fixed slopes means that the slopes of the lines are the same for all species and sexes. with varying slopes means that the slopes of the lines are different for each species and sex."
   },
   {
-    "objectID": "index.html#outline",
-    "href": "index.html#outline",
-    "title": "Instructions for the class",
-    "section": "Outline",
-    "text": "Outline\n\nData wrangling with R\nThe class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the above Data Wranging - Slides tab and the exercises in the above Data Wranging - Labs tab. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\nSuppl. Material\n\n\n\n\n1\nIntroduction\nPDF\nQuarto\n\n\n\n2\nVisualize Data\nPDF\nQuarto\n\n\n\n3\nTransform Data\nPDF\nQuarto\nCSV\n\n\n4\nModel Data\nPDF\nQuarto\nZIP\n\n\n5\nCommunicate Data\nPDF\nQuarto\nQuarto\n\n\n6\nTidy Data\nPDF\nQuarto\n\n\n\n7\nJoin Data\nPDF\nQuarto\n\n\n\n8\nManipulate Data Types\nPDF\nQuarto\n\n\n\n9\nManipulate Lists\nPDF\nQuarto\n\n\n\n\n\n\nExploratory Data Analysis with R\nThe class is organised in 4 parts each of which has its own set of slides and exercises. The slides are available in the above Exploratory Data Analysis - Slides tab and the exercises in the the above Exploratory Data Analysis - Labs tab. The slides are written in Quarto revealjs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\n\n\n\n\n1\nHypothesis Testing\nQuarto\nQuarto\n\n\n2\nLinear Regression\nQuarto\nQuarto\n\n\n3\nPrincipal Component Analysis\nQuarto\nQuarto\n\n\n4\nClustering\nQuarto\nQuarto"
-  },
-  {
-    "objectID": "index.html#requirements",
-    "href": "index.html#requirements",
-    "title": "Instructions for the class",
-    "section": "Requirements",
-    "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\nTidyverse: https://www.tidyverse.org\nSpecific R packages by theme:\n\nData sets:\n\n{babynames}: a data set of frequency of baby names in the US from 1880 to 2017.\n\nData visualization:\n\n{ggplot2}: a package that implements the grammar of graphics.\n{plotly}: an interactive plotting library.\n\nModel summaries:\n\n{broom}: a package that provides tidy summaries of model outputs.\n{modelr}: a package that provides functions for modelling within the tidyverse.\n{jtools}: a package that provides functions for summarizing and visualizing model outputs and main effects.\n{interactions}: a package that provides functions for visualizing the effect of interactions in regression models."
+    "objectID": "exam1.html#rules-expected-delivrables",
+    "href": "exam1.html#rules-expected-delivrables",
+    "title": "First Exam",
+    "section": "Rules & Expected delivrables",
+    "text": "Rules & Expected delivrables\nThe exam starts at 11am on Friday, 13th December 2024 and ends at 12pm on the same day. You are not allowed to communicate with anyone during the exam.\nThe following delivrable is expected by email to the instructor by 12:15pm on Friday, 13th December 2024:\n\nA Quarto file which renders without error with the code to reproduce the plot. The name of the file must be of the form exam1_&lt;your_name&gt;.qmd."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#general-data-modeling-framework",
