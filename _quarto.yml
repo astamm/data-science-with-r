@@ -28,6 +28,8 @@ website:
             href: 06_Tidy/06-Tidy-Slides.pdf
           - text: "7 Join"
             href: 07_Join/07-Join-Slides.pdf
+          - text: "8 Types"
+            href: 08_Types/08-Types-Slides.pdf
       - text: "Data Wrangling - Labs"
         menu:
           - text: "1 Introduction"
@@ -44,6 +46,8 @@ website:
             href: 06_Tidy/06-Tidy-Exercises.qmd
           - text: "7 Join"
             href: 07_Join/07-Join-Exercises.qmd
+          - text: "8 Types"
+            href: 08_Types/08-Types-Exercises.qmd
       - text: "EDA - Slides"
         menu:
           - text: "1 Hypothesis Testing"
