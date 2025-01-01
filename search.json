@@ -368,7 +368,7 @@
     "href": "index.html",
     "title": "Instructions for the class",
     "section": "",
-    "text": "Homework Assignment\n\n\n\nNew announcement about the homework assignment. Checkout the homework assignment page."
+    "text": "Homework Assignment (2025-01-01)\n\n\n\nNew announcement about the homework assignment.\nDelivrable is expected to be a ZIP archive containing the two .qmd files (report and dashboard) along with all the necessary data files.\nPlease ensure that both files compile withour error.\nCheckout the homework assignment page."
   },
   {
     "objectID": "index.html#disclaimer",
@@ -865,7 +865,7 @@
     "href": "project.html#rules-expected-delivrables",
     "title": "Car accidents in France",
     "section": "Rules & Expected delivrables",
-    "text": "Rules & Expected delivrables\nThe following delivrables are expected from the project on Monday, 6th January 2025 at 11:59 PM at the latest:\n\nInteractive dashboards to analyze the data and extract insights.\nA Quarto document detailing the thinking process and actual steps taken that led to the provided dashboards.\n\nHence, delivrables should be made of two .qmd files.\nThe project is to be done in groups of 3 students. You should email the instructor with the names of the students in your group by Tuesday, 10th December 2024. The instructor will assign a group number to each group. The group number should be included in the Quarto document and the interactive dashboards."
+    "text": "Rules & Expected delivrables\nThe following delivrables are expected from the project on Monday, 6th January 2025 at 11:59 PM at the latest:\n\nInteractive dashboards to analyze the data and extract insights.\nA Quarto document detailing the thinking process and actual steps taken that led to the provided dashboards.\n\nHence, delivrables should be made of two .qmd files.\nThe project is to be done in groups of 3 students. You should email the instructor with the names of the students in your group by Tuesday, 10th December 2024. The instructor will assign a group number to each group. The group number should be included in the Quarto document and the interactive dashboards.\n\n\n\n\n\n\nDelivrable\n\n\n\nDelivrable is expected to be a ZIP archive containing the two .qmd files (report and dashboard) along with all the necessary data files.\nPlease ensure that both files compile withour error."
   },
   {
     "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#the-linear-regression-model",
