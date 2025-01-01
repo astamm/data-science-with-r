@@ -35,3 +35,9 @@ The following delivrables are expected from the project **on Monday, 6th January
 Hence, delivrables should be made of two `.qmd` files.
 
 The project is to be done in groups of **3 students**. You should email the instructor with the names of the students in your group by **Tuesday, 10th December 2024**. The instructor will assign a group number to each group. The group number should be included in the Quarto document and the interactive dashboards.
+
+::: {.callout-important title="Delivrable"}
+Delivrable is expected to be a ZIP archive containing the two `.qmd` files (report and dashboard) along with all the necessary data files.
+
+Please ensure that both files compile withour error.
+:::

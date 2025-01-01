@@ -2,8 +2,13 @@
 title: "Instructions for the class"
 ---
 
-::: {.callout-important title="Homework Assignment"}
+::: {.callout-important title="Homework Assignment (2025-01-01)"}
 New announcement about the homework assignment.
+
+Delivrable is expected to be a ZIP archive containing the two `.qmd` files (report and dashboard) along with all the necessary data files.
+
+Please ensure that both files compile withour error.
+
 Checkout the [homework assignment page](project.qmd).
 :::
 
