@@ -63,95 +63,781 @@
     "text": "Exercise 7\nAnalysis of the mussels data set, which contains the following variables:\n\n\n\nVariable name\nDescription\n\n\n\n\nlength\nLength of a mussel (mm)\n\n\nwidth\nWidth of a mussel (mm)\n\n\nheight\nHeight of a mussel (mm)\n\n\nsize\nMass of a mussel (g)\n\n\nweight\nWeight of eatable part of a mussel (g)\n\n\n\nWe want to study how the eatable part of a mussel varies as a function of the other four variables using a multiple linear regression."
   },
   {
-    "objectID": "12_PCA/12-PCA-Exercises.html",
-    "href": "12_PCA/12-PCA-Exercises.html",
-    "title": "PCA - Exercises",
+    "objectID": "12_PCA/12-PCA-Slides.html",
+    "href": "12_PCA/12-PCA-Slides.html",
+    "title": "Principal Component Analysis",
     "section": "",
-    "text": "Cette base contient:\n\nles enregistrements des températures des capitales européennes de Janvier à Décembre\nles coordonnées GPS de chaque ville\namplitude thermale : Différence entre les températures maximales et minimales\nmoyenne annuelle\nune variable qualitative : la direction (S, N, O, E).\n\nExécuter une PCA pour dégager des profils type de température et quelles villes les suivent."
+    "text": "If you’ve worked with a lot of variables before, you know this can present problems. Do you understand the relationships between each variable? Do you have so many variables that you are in danger of overfitting your model to your data or that you might be violating assumptions of whichever modeling tactic you’re using?\nYou might ask the question, “How do I take all of the variables I’ve collected and focus on only a few of them?” In technical terms, you want to “reduce the dimension of your feature space.” By reducing the dimension of your feature space, you have fewer relationships between variables to consider and you are less likely to overfit your model.\nThink about linear regression:\n\nmulticollinearity issues;\ndifficult to use strategies like backward elimination.\n\n\n\n\nWhat ?\nPrincipal component analysis is a technique for feature extraction — so it combines our input variables in a specific way, then we can drop the “least important” variables while still retaining the most valuable parts of all of the variables! As an added benefit, each of the “new” variables after PCA are all independent of one another.\nHow ?\nThe dimension reduction is achieved by identifying the principal directions, called principal components, in which the data varies.\nPCA assumes that the directions with the largest variances are the most “important” (i.e, the most principal).\nWhen to use?\n\nDo you want to reduce the number of variables, but aren’t able to identify variables to completely remove from consideration?\nDo you want to ensure your variables are independent of one another?\nAre you comfortable making your independent variables less interpretable?\n\n\n\n\n\n\n\nThe 1st principal component (PC) accounts for the largest possible variance in the data set;\ni.e. the line in which the projection of the points (red dots) is the most spread out.\nThe second PC is uncorrelated to the 1st PC and maximizes the remaining variance;\netc.\n\n\n\n\n\nContext.\n\\(\\mathbf{X}_1, \\dots, \\mathbf{X}_n\\) a sample of \\(n\\) i.i.d. random vectors in \\(\\mathbb{R}^p\\). Let \\(\\mathbb{X} = (\\mathbf{X}_1, \\dots, \\mathbf{X}_n)^\\top\\) be the \\(n \\times p\\) data matrix, whose \\(j\\)-th column is the vector \\(\\mathbf{x}_j\\) containing the \\(n\\) observations on the \\(j\\)-th variable. Let \\(\\Sigma\\) be the covariance structure of the \\(\\mathbf{X}_i\\)’s.\nDetermination of the 1st PC\nThe 1st principal component (PC) accounts for the largest possible variance in the data set.\n\n\nSearch a linear projection \\(\\mathbf{a} \\in \\mathbb{R}^p\\) of the original variables (columns of \\(\\mathbb{X}\\)) with maximal variance. Such projection reads \\(\\mathbb{X} \\mathbf{a}\\) of which each component has variance: \\[ \\mathrm{Var}( \\left[ \\mathbb{X} \\mathbf{a} \\right]_i) = \\mathbf{a}^\\top \\Sigma \\mathbf{a}. \\]\n\n\n\n\n\n\nRequires additional constraint because maximum does not exist in \\(\\mathbb{R}^p\\): search for \\(\\| \\mathbf{a} \\| = 1\\).\nThe sample covariance \\(S\\) is an unbiased estimator of \\(\\Sigma\\), hence we can instead solve: \\[ \\max_{\\mathbf{a} \\in \\mathcal{S}^{p-1}} \\mathbf{a}^\\top S \\mathbf{a} = \\max_{\\mathbf{a} \\in \\mathbb{R}^p} \\frac{\\mathbf{a}^\\top S \\mathbf{a}}{\\mathbf{a}^\\top \\mathbf{a}} \\]\nSolution is eigenvector of \\(S\\) associated to the largest eigenvalue:\n\nconstrained problem is equivalent to maximizing \\(\\mathbf{a}^\\top S \\mathbf{a} - \\lambda (\\mathbf{a}^\\top \\mathbf{a} - 1)\\);\ndifferentiation leads to \\(S \\mathbf{a} = \\lambda \\mathbf{a}\\); hence, \\(\\mathbf{a}\\) is an eigenvector of \\(S\\);\nhence we get \\(\\mathbf{a}^\\top S \\mathbf{a} = \\lambda\\) which means that \\(\\lambda\\) must be the largest eigenvalue of \\(S\\) in order to maximize \\(\\mathbf{a}^\\top S \\mathbf{a}\\).\n\n\n\n\n\n\n\n\n\n\nprcomp() and princomp() from built-in R stats package,\nPCA() from FactoMineR package,\ndudi.pca() from ade4 package.\n\n\n\n\nThe FactoMineR::PCA() function.\n\n\n\nThe factoextra package.\n\n\n\n\n\nAthletes’ performance during two sporting events (Decastar and OlympicG)\nIt contains \\(41\\) individuals (athletes) described by \\(13\\) variables.\n\n\n\n\n\n\n\n\n\n\nPCA allows to describe a data set, to summarize a data set, to reduce the dimensionality. We want to perform a PCA on all the individuals of the data set to answer several questions:\n\n\nTwo athletes will be close to each other if their results to the events are close. We want to see the variability between the individuals.\n\nAre there similarities between individuals for all the variables?\nCan we establish different profiles of individuals?\nCan we oppose a group of individuals to another one?\n\n\n\n\nWe want to see if there are linear relationships between variables. The two objectives are to summarize the correlation matrix and to look for synthetic variables: can we resume the performance of an athlete by a small number of variables?\n\n\n\nCan we characterize groups of individuals by variables?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nActive individuals: Individuals used for PCA.\nSupplementary individuals: Coordinates of these individuals will be predicted using the PCA information and parameters obtained using active individuals.\nActive variables: Variables used for PCA.\nSupplementary variables: Coordinates of these variables will be predicted also. These can be:\n\nSupplementary continuous variables: Cols 11 and 12 correspond respectively to the rank and the points of athletes.\nSupplementary qualitative variables: Col 13 corresponds to the two athletic meetings (2004 Olympic Game or 2004 Decastar). This is a categorical variable. It can be used to color individuals by groups.\n\n\n\n\n\n\n\n\nPCA linearly combines original variables to maximize variance\nIf one variable is measured in meter and another in centimeter, the first one will contribute more to the variance than the second one, even if the intrinsic variability of each variable is the same.\n\n\n \\(\\Longrightarrow\\) We need to scale the variables prior to performing PCA! \n\n\n\n\n\\[ x_{ij} \\leftarrow \\frac{x_{ij} - \\overline{x}_j}{\\sqrt{\\frac{1}{n-1} \\sum_{\\ell=1}^n (x_{\\ell j} - \\overline{x}_j)^2}} \\]\n\n \\(\\Longrightarrow\\) The function PCA() in FactoMineR, standardizes the data automatically. \n\n\n\n\n\n\nPCA(\n  # a data frame with n rows (individuals) and p columns (numeric variables)\n  X = , \n  \n  # number of dimensions kept in the results (by default 5)\n  ncp = , \n  \n  # a vector indicating the indexes of the supplementary individuals\n  ind.sup = , \n  \n  # a vector indicating the indexes of the quantitative supplementary variables\n  quanti.sup = ,\n  \n  # a vector indicating the indexes of the categorical supplementary variables\n  quali.sup = , \n  \n  # boolean, if TRUE (default) a graph is displayed\n  graph = \n)\n\n\n\n\n\nPCA(X = decathlon[, 1:10], graph = FALSE)\n\n\n\n**Results for the Principal Component Analysis (PCA)**\nThe analysis was performed on 41 individuals, described by 10 variables\n*The results are available in the following objects:\n\n   name               description                          \n1  \"$eig\"             \"eigenvalues\"                        \n2  \"$var\"             \"results for the variables\"          \n3  \"$var$coord\"       \"coord. for the variables\"           \n4  \"$var$cor\"         \"correlations variables - dimensions\"\n5  \"$var$cos2\"        \"cos2 for the variables\"             \n6  \"$var$contrib\"     \"contributions of the variables\"     \n7  \"$ind\"             \"results for the individuals\"        \n8  \"$ind$coord\"       \"coord. for the individuals\"         \n9  \"$ind$cos2\"        \"cos2 for the individuals\"           \n10 \"$ind$contrib\"     \"contributions of the individuals\"   \n11 \"$call\"            \"summary statistics\"                 \n12 \"$call$centre\"     \"mean of the variables\"              \n13 \"$call$ecart.type\" \"standard error of the variables\"    \n14 \"$call$row.w\"      \"weights for the individuals\"        \n15 \"$call$col.w\"      \"weights for the variables\"          \n\n\n\n\n\n\n\n\nIt helps with interpretation of PCA.\nNo matter what function you decide to use (stats::prcomp(), FactoMiner::PCA(), ade4::dudi.pca(), ExPosition::epPCA()), you can easily extract and visualize the results of PCA using R functions provided in the factoextra R package.\n\n\n\n\n\nget_eigenvalue(): Extract the eigenvalues/variances of principal components.\nfviz_screeplot(): Visualize the eigenvalues / proportion of explained variance.\nget_pca_ind(), get_pca_var(): Extract the results for individuals and variables, respectively.\nfviz_pca_ind(), fviz_pca_var(): Visualize the results individuals and variables, respectively.\nfviz_pca_biplot(): Make a biplot of individuals and variables."
   },
   {
-    "objectID": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-temperature.csv",
-    "href": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-temperature.csv",
-    "title": "PCA - Exercises",
+    "objectID": "12_PCA/12-PCA-Slides.html#dimensionality-reduction",
+    "href": "12_PCA/12-PCA-Slides.html#dimensionality-reduction",
+    "title": "Principal Component Analysis",
     "section": "",
-    "text": "Cette base contient:\n\nles enregistrements des températures des capitales européennes de Janvier à Décembre\nles coordonnées GPS de chaque ville\namplitude thermale : Différence entre les températures maximales et minimales\nmoyenne annuelle\nune variable qualitative : la direction (S, N, O, E).\n\nExécuter une PCA pour dégager des profils type de température et quelles villes les suivent."
+    "text": "If you’ve worked with a lot of variables before, you know this can present problems. Do you understand the relationships between each variable? Do you have so many variables that you are in danger of overfitting your model to your data or that you might be violating assumptions of whichever modeling tactic you’re using?\nYou might ask the question, “How do I take all of the variables I’ve collected and focus on only a few of them?” In technical terms, you want to “reduce the dimension of your feature space.” By reducing the dimension of your feature space, you have fewer relationships between variables to consider and you are less likely to overfit your model.\nThink about linear regression:\n\nmulticollinearity issues;\ndifficult to use strategies like backward elimination."
   },
   {
-    "objectID": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-chicken.csv",
-    "href": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-chicken.csv",
-    "title": "PCA - Exercises",
-    "section": "Le jeu de données chicken.csv",
-    "text": "Le jeu de données chicken.csv\n\nDescription : 43 poulets ayant subis 6 régimes : régime normal (N), Jeûne pendant 16h (F16), Jeûne pendant 16h et puis se réalimenter pendant 5h (F16R5), (F16R16), (F48), (F48R24)\nVariables : Après le régime, on a effectué une analyse des gènes utilisant une puce ADN : 7407 expressions de gènes.\nObjectif : Voir si les gènes s’expriment différemment selon le niveau de stress. Combien de temps faut-il au poulet pour revenir à la situation normale ?"
-  },
-  {
-    "objectID": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-orange.csv",
-    "href": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-orange.csv",
-    "title": "PCA - Exercises",
-    "section": "Le jeu de données orange.csv",
-    "text": "Le jeu de données orange.csv\nSix jus d’orange de fabriquants différents ont été évalués. Toutes les variables sont-elles indisensables ? Y a-t-il des jus qui se dégagent comme particulièrement bons ? mauvais ?"
-  },
-  {
-    "objectID": "project.html",
-    "href": "project.html",
-    "title": "Car accidents in France",
+    "objectID": "12_PCA/12-PCA-Slides.html#pca",
+    "href": "12_PCA/12-PCA-Slides.html#pca",
+    "title": "Principal Component Analysis",
     "section": "",
-    "text": "This page explains the project proposed to dig deeper into Quarto and its features. The project is about car accidents in France. The data is available on the Open Data platform of the French government. The data is available in the form of several CSV files. The data contains information about car accidents in France from 2005 to 2023. The data contains information about the date and time of the accident, the location of the accident, the number of people involved in the accident, the number of people injured, the number of people killed, the type of vehicles involved in the accident, the type of road, the weather conditions, the lighting conditions, the type of intersection, the type of collision, the type of accident, the causes of the accident, etc."
+    "text": "What ?\nPrincipal component analysis is a technique for feature extraction — so it combines our input variables in a specific way, then we can drop the “least important” variables while still retaining the most valuable parts of all of the variables! As an added benefit, each of the “new” variables after PCA are all independent of one another.\nHow ?\nThe dimension reduction is achieved by identifying the principal directions, called principal components, in which the data varies.\nPCA assumes that the directions with the largest variances are the most “important” (i.e, the most principal).\nWhen to use?\n\nDo you want to reduce the number of variables, but aren’t able to identify variables to completely remove from consideration?\nDo you want to ensure your variables are independent of one another?\nAre you comfortable making your independent variables less interpretable?"
   },
   {
-    "objectID": "project.html#description-of-the-data-set",
-    "href": "project.html#description-of-the-data-set",
-    "title": "Car accidents in France",
+    "objectID": "12_PCA/12-PCA-Slides.html#principle",
+    "href": "12_PCA/12-PCA-Slides.html#principle",
+    "title": "Principal Component Analysis",
     "section": "",
-    "text": "This page explains the project proposed to dig deeper into Quarto and its features. The project is about car accidents in France. The data is available on the Open Data platform of the French government. The data is available in the form of several CSV files. The data contains information about car accidents in France from 2005 to 2023. The data contains information about the date and time of the accident, the location of the accident, the number of people involved in the accident, the number of people injured, the number of people killed, the type of vehicles involved in the accident, the type of road, the weather conditions, the lighting conditions, the type of intersection, the type of collision, the type of accident, the causes of the accident, etc."
+    "text": "The 1st principal component (PC) accounts for the largest possible variance in the data set;\ni.e. the line in which the projection of the points (red dots) is the most spread out.\nThe second PC is uncorrelated to the 1st PC and maximizes the remaining variance;\netc."
   },
   {
-    "objectID": "project.html#aims-of-the-project",
-    "href": "project.html#aims-of-the-project",
-    "title": "Car accidents in France",
-    "section": "Aims of the project",
-    "text": "Aims of the project\nThe project aims to dig into interactive Quarto dashboards to analyze the data and extract insights. The project can involve the following steps:\n\nData collection: Download the data from the Open Data platform of the French government. You can use packages such as {readr} or {readxl} to read the data into R.\nData preprocessing: Clean the data, handle missing values, and transform the data into a suitable format for analysis. For this task, you can use:\n\n{dplyr} and {tidyr} and other tidyverse packages for data manipulation and reshaping;\n{skimr} to get a summary of the data;\n{janitor} to clean the data;\n{naniar} to visualize missing values and take informed decisions about handling them.\n\nData analysis: Use Quarto Dashboard and shiny to create interactive dashboards to analyze the data and extract insights. See https://quarto.org/docs/dashboards/interactivity/ for easy interactivity in Quarto dashboard using Shiny.\nData visualization: Use {ggplot2} and {plotly} to create interactive visualizations to present the insights.\nSpatial Data: Use appropriate packages to create maps to visualize the location of accidents with superimposed relevant information.\n\nThe project will help to understand the patterns and trends in car accidents in France and identify the factors that contribute to accidents. The project will also help to explore the relationship between different variables and their impact on accidents. The project will be a good example to showcase the capabilities of Quarto for data analysis and visualization."
-  },
-  {
-    "objectID": "project.html#rules-expected-delivrables",
-    "href": "project.html#rules-expected-delivrables",
-    "title": "Car accidents in France",
-    "section": "Rules & Expected delivrables",
-    "text": "Rules & Expected delivrables\nThe following delivrables are expected from the project on Monday, 6th January 2025 at 11:59 PM at the latest:\n\nInteractive dashboards to analyze the data and extract insights.\nA Quarto document detailing the thinking process and actual steps taken that led to the provided dashboards.\n\nHence, delivrables should be made of two .qmd files.\nThe project is to be done in groups of 3 students. You should email the instructor with the names of the students in your group by Tuesday, 10th December 2024. The instructor will assign a group number to each group. The group number should be included in the Quarto document and the interactive dashboards.\n\n\n\n\n\n\nDelivrable\n\n\n\nDelivrable is expected to be a ZIP archive containing the two .qmd files (report and dashboard) along with all the necessary data files.\nPlease ensure that both files compile withour error."
-  },
-  {
-    "objectID": "07_Join/07-Join-Exercises.html",
-    "href": "07_Join/07-Join-Exercises.html",
-    "title": "Join Data with dplyr",
+    "objectID": "12_PCA/12-PCA-Slides.html#mathematical-formalism",
+    "href": "12_PCA/12-PCA-Slides.html#mathematical-formalism",
+    "title": "Principal Component Analysis",
     "section": "",
-    "text": "flights\n\n# A tibble: 336,776 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\nVisualizing a raw tibble is not that pretty. Let’s wrap the next output in a DT::datatable() function to make it more readable:\n\nDT::datatable(airlines)"
+    "text": "Context.\n\\(\\mathbf{X}_1, \\dots, \\mathbf{X}_n\\) a sample of \\(n\\) i.i.d. random vectors in \\(\\mathbb{R}^p\\). Let \\(\\mathbb{X} = (\\mathbf{X}_1, \\dots, \\mathbf{X}_n)^\\top\\) be the \\(n \\times p\\) data matrix, whose \\(j\\)-th column is the vector \\(\\mathbf{x}_j\\) containing the \\(n\\) observations on the \\(j\\)-th variable. Let \\(\\Sigma\\) be the covariance structure of the \\(\\mathbf{X}_i\\)’s.\nDetermination of the 1st PC\nThe 1st principal component (PC) accounts for the largest possible variance in the data set.\n\n\nSearch a linear projection \\(\\mathbf{a} \\in \\mathbb{R}^p\\) of the original variables (columns of \\(\\mathbb{X}\\)) with maximal variance. Such projection reads \\(\\mathbb{X} \\mathbf{a}\\) of which each component has variance: \\[ \\mathrm{Var}( \\left[ \\mathbb{X} \\mathbf{a} \\right]_i) = \\mathbf{a}^\\top \\Sigma \\mathbf{a}. \\]\n\n\n\n\n\n\nRequires additional constraint because maximum does not exist in \\(\\mathbb{R}^p\\): search for \\(\\| \\mathbf{a} \\| = 1\\).\nThe sample covariance \\(S\\) is an unbiased estimator of \\(\\Sigma\\), hence we can instead solve: \\[ \\max_{\\mathbf{a} \\in \\mathcal{S}^{p-1}} \\mathbf{a}^\\top S \\mathbf{a} = \\max_{\\mathbf{a} \\in \\mathbb{R}^p} \\frac{\\mathbf{a}^\\top S \\mathbf{a}}{\\mathbf{a}^\\top \\mathbf{a}} \\]\nSolution is eigenvector of \\(S\\) associated to the largest eigenvalue:\n\nconstrained problem is equivalent to maximizing \\(\\mathbf{a}^\\top S \\mathbf{a} - \\lambda (\\mathbf{a}^\\top \\mathbf{a} - 1)\\);\ndifferentiation leads to \\(S \\mathbf{a} = \\lambda \\mathbf{a}\\); hence, \\(\\mathbf{a}\\) is an eigenvector of \\(S\\);\nhence we get \\(\\mathbf{a}^\\top S \\mathbf{a} = \\lambda\\) which means that \\(\\lambda\\) must be the largest eigenvalue of \\(S\\) in order to maximize \\(\\mathbf{a}^\\top S \\mathbf{a}\\)."
   },
   {
-    "objectID": "07_Join/07-Join-Exercises.html#your-turn-1",
-    "href": "07_Join/07-Join-Exercises.html#your-turn-1",
-    "title": "Join Data with dplyr",
+    "objectID": "12_PCA/12-PCA-Slides.html#r-packages",
+    "href": "12_PCA/12-PCA-Slides.html#r-packages",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "prcomp() and princomp() from built-in R stats package,\nPCA() from FactoMineR package,\ndudi.pca() from ade4 package.\n\n\n\n\nThe FactoMineR::PCA() function.\n\n\n\nThe factoextra package."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#case-study",
+    "href": "12_PCA/12-PCA-Slides.html#case-study",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Athletes’ performance during two sporting events (Decastar and OlympicG)\nIt contains \\(41\\) individuals (athletes) described by \\(13\\) variables."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#objectives",
+    "href": "12_PCA/12-PCA-Slides.html#objectives",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "PCA allows to describe a data set, to summarize a data set, to reduce the dimensionality. We want to perform a PCA on all the individuals of the data set to answer several questions:\n\n\nTwo athletes will be close to each other if their results to the events are close. We want to see the variability between the individuals.\n\nAre there similarities between individuals for all the variables?\nCan we establish different profiles of individuals?\nCan we oppose a group of individuals to another one?\n\n\n\n\nWe want to see if there are linear relationships between variables. The two objectives are to summarize the correlation matrix and to look for synthetic variables: can we resume the performance of an athlete by a small number of variables?\n\n\n\nCan we characterize groups of individuals by variables?"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#pca-terminology",
+    "href": "12_PCA/12-PCA-Slides.html#pca-terminology",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Active individuals: Individuals used for PCA.\nSupplementary individuals: Coordinates of these individuals will be predicted using the PCA information and parameters obtained using active individuals.\nActive variables: Variables used for PCA.\nSupplementary variables: Coordinates of these variables will be predicted also. These can be:\n\nSupplementary continuous variables: Cols 11 and 12 correspond respectively to the rank and the points of athletes.\nSupplementary qualitative variables: Col 13 corresponds to the two athletic meetings (2004 Olympic Game or 2004 Decastar). This is a categorical variable. It can be used to color individuals by groups."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#data-standardization",
+    "href": "12_PCA/12-PCA-Slides.html#data-standardization",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "PCA linearly combines original variables to maximize variance\nIf one variable is measured in meter and another in centimeter, the first one will contribute more to the variance than the second one, even if the intrinsic variability of each variable is the same.\n\n\n \\(\\Longrightarrow\\) We need to scale the variables prior to performing PCA! \n\n\n\n\n\\[ x_{ij} \\leftarrow \\frac{x_{ij} - \\overline{x}_j}{\\sqrt{\\frac{1}{n-1} \\sum_{\\ell=1}^n (x_{\\ell j} - \\overline{x}_j)^2}} \\]\n\n \\(\\Longrightarrow\\) The function PCA() in FactoMineR, standardizes the data automatically."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#pca-syntax",
+    "href": "12_PCA/12-PCA-Slides.html#pca-syntax",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "PCA(\n  # a data frame with n rows (individuals) and p columns (numeric variables)\n  X = , \n  \n  # number of dimensions kept in the results (by default 5)\n  ncp = , \n  \n  # a vector indicating the indexes of the supplementary individuals\n  ind.sup = , \n  \n  # a vector indicating the indexes of the quantitative supplementary variables\n  quanti.sup = ,\n  \n  # a vector indicating the indexes of the categorical supplementary variables\n  quali.sup = , \n  \n  # boolean, if TRUE (default) a graph is displayed\n  graph = \n)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#running-pca",
+    "href": "12_PCA/12-PCA-Slides.html#running-pca",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "PCA(X = decathlon[, 1:10], graph = FALSE)\n\n\n\n**Results for the Principal Component Analysis (PCA)**\nThe analysis was performed on 41 individuals, described by 10 variables\n*The results are available in the following objects:\n\n   name               description                          \n1  \"$eig\"             \"eigenvalues\"                        \n2  \"$var\"             \"results for the variables\"          \n3  \"$var$coord\"       \"coord. for the variables\"           \n4  \"$var$cor\"         \"correlations variables - dimensions\"\n5  \"$var$cos2\"        \"cos2 for the variables\"             \n6  \"$var$contrib\"     \"contributions of the variables\"     \n7  \"$ind\"             \"results for the individuals\"        \n8  \"$ind$coord\"       \"coord. for the individuals\"         \n9  \"$ind$cos2\"        \"cos2 for the individuals\"           \n10 \"$ind$contrib\"     \"contributions of the individuals\"   \n11 \"$call\"            \"summary statistics\"                 \n12 \"$call$centre\"     \"mean of the variables\"              \n13 \"$call$ecart.type\" \"standard error of the variables\"    \n14 \"$call$row.w\"      \"weights for the individuals\"        \n15 \"$call$col.w\"      \"weights for the variables\""
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#visualization-and-interpretation",
+    "href": "12_PCA/12-PCA-Slides.html#visualization-and-interpretation",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "It helps with interpretation of PCA.\nNo matter what function you decide to use (stats::prcomp(), FactoMiner::PCA(), ade4::dudi.pca(), ExPosition::epPCA()), you can easily extract and visualize the results of PCA using R functions provided in the factoextra R package.\n\n\n\n\n\nget_eigenvalue(): Extract the eigenvalues/variances of principal components.\nfviz_screeplot(): Visualize the eigenvalues / proportion of explained variance.\nget_pca_ind(), get_pca_var(): Extract the results for individuals and variables, respectively.\nfviz_pca_ind(), fviz_pca_var(): Visualize the results individuals and variables, respectively.\nfviz_pca_biplot(): Make a biplot of individuals and variables."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#eigenvalues-variances",
+    "href": "12_PCA/12-PCA-Slides.html#eigenvalues-variances",
+    "title": "Principal Component Analysis",
+    "section": "Eigenvalues / Variances",
+    "text": "Eigenvalues / Variances\n\n Eigenvalues measure the amount of variation retained by each principal component. \n\n\neig_val &lt;- get_eigenvalue(res_pca)\nhtml_table(eig_val)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#choosing-the-appropriate-number-of-pcs",
+    "href": "12_PCA/12-PCA-Slides.html#choosing-the-appropriate-number-of-pcs",
+    "title": "Principal Component Analysis",
+    "section": "Choosing the appropriate number of PCs",
+    "text": "Choosing the appropriate number of PCs\nEigenvalues can be used to determine the number of principal components to retain after PCA.\n\nGuidelines.\n\nAn eigenvalue &gt; 1 indicates that PCs account for more variance than accounted by one of the original variables in standardized data. This is commonly used as a cutoff point for which PCs are retained. This holds true only when the data are standardized.\nBalance between a small number to achieve dimensionality reduction well and proporition of total variance explained.\nLook at the first few principal components to find interesting patterns in the data.\n\n\n\nGraphical tool.\n\n\n\n\n\n\n\n\n\n\nfviz_screeplot(res_pca, addlabels = TRUE)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#variable-information-in-pca",
+    "href": "12_PCA/12-PCA-Slides.html#variable-information-in-pca",
+    "title": "Principal Component Analysis",
+    "section": "Variable Information in PCA",
+    "text": "Variable Information in PCA\n\nVariable information extraction\n\nvar_info &lt;- get_pca_var(res_pca)\n\n\n\nComponents\n\nvar_info$coord: Coordinates for the variables.\nvar_info$cos2: Quality of representation of variables by PC: var.cos2 = var.coord * var.coord.\nvar_info$contrib: Contributions of the variables to the principal components: (var.cos2 * 100) / (sum cos2 of the component).\n\n\n\nUsage\n\nInvestigate the ability of PCs to strongly represent variables.\nDescribe each PC in terms of the most contributing variables."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#coord-correlation-variables-components",
+    "href": "12_PCA/12-PCA-Slides.html#coord-correlation-variables-components",
+    "title": "Principal Component Analysis",
+    "section": "$coord: Correlation variables & components",
+    "text": "$coord: Correlation variables & components\n\n\n\n\n\n\n\nProperty: norms of column vectors is 1 (eigenvectors).\nConsequence: each coordinate is in [-1,1]."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#fviz_pca_var-correlation-circle",
+    "href": "12_PCA/12-PCA-Slides.html#fviz_pca_var-correlation-circle",
+    "title": "Principal Component Analysis",
+    "section": "fviz_pca_var(): Correlation circle",
+    "text": "fviz_pca_var(): Correlation circle\n\nfviz_pca_var(res_pca, col.var = \"black\")"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#cos2-quality-of-representation",
+    "href": "12_PCA/12-PCA-Slides.html#cos2-quality-of-representation",
+    "title": "Principal Component Analysis",
+    "section": "$cos2: Quality of representation",
+    "text": "$cos2: Quality of representation\n\n\n\n\n\n\n\nPositive and negative strong correlations of PCs to a given variable imply that the PCs represent it well.\nSquared correlations thus measure quality of representation."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#cos2-graphical-tool-1",
+    "href": "12_PCA/12-PCA-Slides.html#cos2-graphical-tool-1",
+    "title": "Principal Component Analysis",
+    "section": "$cos2: Graphical tool 1",
+    "text": "$cos2: Graphical tool 1\n\ncorrplot::corrplot(var_info$cos2, is.corr = FALSE)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#cos2-graphical-tool-2",
+    "href": "12_PCA/12-PCA-Slides.html#cos2-graphical-tool-2",
+    "title": "Principal Component Analysis",
+    "section": "$cos2: Graphical tool 2",
+    "text": "$cos2: Graphical tool 2\n\n# Total cos2 of variables on Dim.1 and Dim.2\nfactoextra::fviz_cos2(res_pca, choice = \"var\", axes = 1:2)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#cos2-summary",
+    "href": "12_PCA/12-PCA-Slides.html#cos2-summary",
+    "title": "Principal Component Analysis",
+    "section": "$cos2: Summary",
+    "text": "$cos2: Summary\n\n\nThe cos2 values are used to estimate the quality of the representation.\nHigh cos2 indicates a good representation of the variable by the corresponding PC.\nLow cos2 indicates that the variable is poorly represented by the corresponding PC.\nVariables close to circle in plot are very well represented by the 1st two PCs.\nVariables close to center in plot are not well represented by the 1st two PCs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfactoextra::fviz_pca_var(X = res_pca, \n                         col.var = \"cos2\",\n                         gradient.cols = viridis::viridis(3),\n                         repel = TRUE) # Avoid text overlapping"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#contrib-important-variables",
+    "href": "12_PCA/12-PCA-Slides.html#contrib-important-variables",
+    "title": "Principal Component Analysis",
+    "section": "$contrib: Important variables",
+    "text": "$contrib: Important variables\n\n\n\n\n\n\n\n\nVariables correlating with Dim.1 (PC1) and Dim.2 (PC2) are the most important to explain the variability in the data set.\nVariables that do not correlate with any PC or only with the last ones are variables might be removed to simplify the overall analysis."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#contrib-graphical-tool-1",
+    "href": "12_PCA/12-PCA-Slides.html#contrib-graphical-tool-1",
+    "title": "Principal Component Analysis",
+    "section": "$contrib: Graphical tool 1",
+    "text": "$contrib: Graphical tool 1\n\ncorrplot::corrplot(var_info$contrib, is.corr = FALSE)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#contrib-graphical-tool-2",
+    "href": "12_PCA/12-PCA-Slides.html#contrib-graphical-tool-2",
+    "title": "Principal Component Analysis",
+    "section": "$contrib: Graphical tool 2",
+    "text": "$contrib: Graphical tool 2\n\n\n# Contributions of variables to PC1\nfactoextra::fviz_contrib(\n  X = res_pca, \n  choice = \"var\", \n  axes = 1, \n  top = 10\n)\n\n\n\n\n\n\n\n\n\n\n\n# Contributions of variables to PC2\nfactoextra::fviz_contrib(\n  X = res_pca, \n  choice = \"var\", \n  axes = 2, \n  top = 10\n)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#contrib-summary",
+    "href": "12_PCA/12-PCA-Slides.html#contrib-summary",
+    "title": "Principal Component Analysis",
+    "section": "$contrib: Summary",
+    "text": "$contrib: Summary\n\nfactoextra::fviz_pca_var(\n  X = res_pca, \n  col.var = \"contrib\",\n  gradient.cols = viridis::viridis(3),\n  repel = TRUE\n)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#component-description",
+    "href": "12_PCA/12-PCA-Slides.html#component-description",
+    "title": "Principal Component Analysis",
+    "section": "Component description",
+    "text": "Component description\n\nres_pca_var_desc &lt;- FactoMineR::dimdesc(res = res_pca, axes = c(1, 2), proba = 0.05)\n\n\nDescription of PC1\n\n\n\n\n\n\n\n\nDescription of PC2"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#the-reduced-space",
+    "href": "12_PCA/12-PCA-Slides.html#the-reduced-space",
+    "title": "Principal Component Analysis",
+    "section": "The reduced space",
+    "text": "The reduced space\n\nIndividual information extraction\n\nind_info &lt;- get_pca_ind(res_pca)\n\n\n\nComponents\n\nind_info$coord: Coordinates of the individuals.\nind_info$cos2: Quality of representation of individuals by PC: ind.cos2 = ind.coord * ind.coord.\nind_info$contrib: Contributions of the individuals to the principal components: (ind.cos2 * 100) / (sum cos2 of the component).\n\n\n\nUsage\n\nThe reduced space should allow easier identification of patterns, provided that it represents them well.\nIndividuals that are similar are grouped together on the plot."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#first-factorial-plane-quality",
+    "href": "12_PCA/12-PCA-Slides.html#first-factorial-plane-quality",
+    "title": "Principal Component Analysis",
+    "section": "First factorial plane & quality",
+    "text": "First factorial plane & quality\n\nfactoextra::fviz_pca_ind(\n  X = res_pca, \n  col.ind = \"cos2\", \n  gradient.cols = viridis::viridis(3),\n  repel = TRUE # Avoid text overlapping (slow if many points)\n)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#first-factorial-plane-contribution",
+    "href": "12_PCA/12-PCA-Slides.html#first-factorial-plane-contribution",
+    "title": "Principal Component Analysis",
+    "section": "First factorial plane & contribution",
+    "text": "First factorial plane & contribution\n\n# Total contribution on PC1 and PC2\nfactoextra::fviz_contrib(res_pca, choice = \"ind\", axes = 1:2)"
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#first-factorial-plane-colored-by-groups",
+    "href": "12_PCA/12-PCA-Slides.html#first-factorial-plane-colored-by-groups",
+    "title": "Principal Component Analysis",
+    "section": "First factorial plane colored by groups",
+    "text": "First factorial plane colored by groups\n\nfactoextra::fviz_pca_ind(\n  X = res_pca,\n  col.ind = decathlon$competition[1:23], # color by groups\n  palette = viridis::viridis(3),\n  addEllipses = TRUE, # Concentration ellipses\n  legend.title = \"Competition\"\n)\n\n\n\nThis plot is useful to understand the ability of a factorial plane to discriminate individuals based on some feature.\nHere, we see a tendency with positive score on PC1 for athletes at the Olympics and negative PC1 scores for athletes at the Decastar.\nBut, ellipses seem to overlap significantly."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#biplot",
+    "href": "12_PCA/12-PCA-Slides.html#biplot",
+    "title": "Principal Component Analysis",
+    "section": "Biplot",
+    "text": "Biplot\n\nfactoextra::fviz_pca_biplot(\n  X = res.pca, \n  repel = TRUE,\n  col.var = \"#2E9FDF\", # Variables color\n  col.ind = \"#696969\"  # Individuals color\n)\n\n\n\nOnly useful when there is a low number of variables and individuals in the data set; otherwise unreadable.\nCoordinate of individuals and variables are not constructed on the same space: focus on the direction of variables but not on their absolute positions.\nAn individual that is on the same side of a given variable has a high value for this variable.\nAn individual that is on the opposite side of a given variable has a low value for this variable."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#interpretation",
+    "href": "12_PCA/12-PCA-Slides.html#interpretation",
+    "title": "Principal Component Analysis",
+    "section": "Interpretation",
+    "text": "Interpretation\n\nThe first two dimensions resume 50% of the total inertia (i.e. the total variance of data set).\nThe variable 100m is correlated negatively to the variable long.jump. When an athlete performs a short time when running 100m, he can jump a big distance. Here one has to be careful because a low value for the variables 100m, 400m, 110m.hurdle and 1500m means a high score: the shorter an athlete runs, the more points he scores.\nThe first axis opposes athletes who are good everywhere like Karpov during the Olympic Games to those who are bad everywhere like Bourguignon during the Decastar. This dimension is particularly linked to the variables of speed and long jump which constitute a homogeneous group.\nThe second axis opposes athletes who are strong (variables Discus and Shot.put) to those who are weak.\nThe variables Discus, Shot.put and High.jump are not much correlated to the variables 100m, 400m, 110m.hurdle and Long.jump. This means that strength is not much correlated to speed.\n\n\n At this point, we can divide the first factorial plane into four parts: fast and strong athletes (like Sebrle), slow athletes (like Casarsa), fast but weak athletes (like Warners) and slow and weak athletes (like Lorenzo)."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#your-turn",
+    "href": "12_PCA/12-PCA-Slides.html#your-turn",
+    "title": "Principal Component Analysis",
+    "section": "Your turn",
+    "text": "Your turn\n\nNavigate into the 12-PCA folder of the 12-PCA project on RStudio Cloud.\nOpen the file 12-PCA-Exercises.Rmd and perform the PCA analyses for the proposed data sets."
+  },
+  {
+    "objectID": "12_PCA/12-PCA-Slides.html#references",
+    "href": "12_PCA/12-PCA-Slides.html#references",
+    "title": "Principal Component Analysis",
+    "section": "References",
+    "text": "References\n\n(https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c)\n(http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/)\n(https://builtin.com/data-science/step-step-explanation-principal-component-analysis)\n(https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.2015.0202)\n(http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/)\n(http://factominer.free.fr/factomethods/principal-components-analysis.html)"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html",
+    "href": "02_Visualize/02-Visualize-Exercises.html",
+    "title": "Visualize Data",
+    "section": "",
+    "text": "Add a setup chunk that loads the tidyverse packages and turn the global option eval to true in the above YAML header.\n\nmpg"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-0",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-0",
+    "title": "Visualize Data",
+    "section": "",
+    "text": "Add a setup chunk that loads the tidyverse packages and turn the global option eval to true in the above YAML header.\n\nmpg"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-1",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-1",
+    "title": "Visualize Data",
     "section": "Your Turn 1",
-    "text": "Your Turn 1\nWhich airlines had the largest arrival delays? Complete the code below.\n\nJoin airlines to flights\nCompute and order the average arrival delays by airline. Display full names, no codes.\n\n(Hint: Be sure to remove each _ before turning eval to true)\n\nflights |&gt;\n  filter(!is.na(arr_delay)) |&gt;\n  __________________  |&gt;\n  group_by(_________) |&gt;\n  __________________  |&gt;\n  arrange(__________)"
+    "text": "Your Turn 1\nRun the code on the slide to make a graph. Pay strict attention to spelling, capitalization, and parentheses!"
   },
   {
-    "objectID": "07_Join/07-Join-Exercises.html#your-turn-2",
-    "href": "07_Join/07-Join-Exercises.html#your-turn-2",
-    "title": "Join Data with dplyr",
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-2",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-2",
+    "title": "Visualize Data",
     "section": "Your Turn 2",
-    "text": "Your Turn 2\nJoin flights and airports by dest and faa.\nThen for each name, compute the distance from NYC and the average arr_delay. Hint: use first() to get the first value of distance.\nOrder by average delay, worst to best.\n(Hint: Be sure to remove each _ before turning eval to true)\n\nflights |&gt; \n  filter(!is.na(arr_delay)) |&gt;\n  ______(airports, __________________) |&gt;\n  group_by(name) |&gt;\n  _________(distance = _____________, \n               delay = _____________) |&gt;\n  ______(_____(delay))"
+    "text": "Your Turn 2\nAdd color, size, alpha, and shape aesthetics to your graph. Experiment.\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy))"
   },
   {
-    "objectID": "07_Join/07-Join-Exercises.html#your-turn-3",
-    "href": "07_Join/07-Join-Exercises.html#your-turn-3",
-    "title": "Join Data with dplyr",
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#help-me",
+    "href": "02_Visualize/02-Visualize-Exercises.html#help-me",
+    "title": "Visualize Data",
+    "section": "Help Me",
+    "text": "Help Me\nWhat do facet_grid() and facet_wrap() do? (run the code, interpret, convince your group)\n\n# Makes a plot that the commands below will modify\nq &lt;- ggplot(mpg) + geom_point(aes(x = displ, y = hwy))\n\nq + facet_grid(cols = vars(cyl))\nq + facet_grid(rows = vars(drv))\nq + facet_grid(rows = vars(drv), cols = vars(cyl))\nq + facet_wrap(facets = vars(class))"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-3",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-3",
+    "title": "Visualize Data",
     "section": "Your Turn 3",
-    "text": "Your Turn 3\nHow many airports in airports are serviced by flights in flights? (i.e. how many places can you fly to direct from New York?)\nNotice that the column to join on is named faa in the airports data set and dest in the flights data set.\n(Hint: Be sure to remove each _ before turning eval to true)\n\n__________ |&gt;\n _____________________________ |&gt;\n  select(faa)"
+    "text": "Your Turn 3\nAdd the black code to your graph. What does it do?\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(displ, hwy, color = class))"
   },
   {
-    "objectID": "01_Introduction/01-Introduction-Exercises.html",
-    "href": "01_Introduction/01-Introduction-Exercises.html",
-    "title": "Quarto",
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-4",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-4",
+    "title": "Visualize Data",
+    "section": "Your Turn 4",
+    "text": "Your Turn 4\nReplace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.\n\nggplot(mpg) + geom_point(aes(class, hwy))"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-5",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-5",
+    "title": "Visualize Data",
+    "section": "Your Turn 5",
+    "text": "Your Turn 5\nMake a histogram of the hwy variable from mpg. Hint: do not supply a y variable."
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-6",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-6",
+    "title": "Visualize Data",
+    "section": "Your Turn 6",
+    "text": "Your Turn 6\nUse the help page for geom_histogram to make the bins 2 units wide."
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-7",
+    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-7",
+    "title": "Visualize Data",
+    "section": "Your Turn 7",
+    "text": "Your Turn 7\nMake a bar chart class colored by class. Use the help page for geom_bar to choose a “color” aesthetic for class."
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#quiz",
+    "href": "02_Visualize/02-Visualize-Exercises.html#quiz",
+    "title": "Visualize Data",
+    "section": "Quiz",
+    "text": "Quiz\nWhat will this code do?\n\nggplot(mpg) + \n  geom_point(aes(displ, hwy)) +\n  geom_smooth(aes(displ, hwy))"
+  },
+  {
+    "objectID": "02_Visualize/02-Visualize-Exercises.html#quiz-1",
+    "href": "02_Visualize/02-Visualize-Exercises.html#quiz-1",
+    "title": "Visualize Data",
+    "section": "Quiz",
+    "text": "Quiz\nWhat is different about this plot? Run the code!\n\np &lt;- ggplot(mpg) + \n  geom_point(aes(displ, hwy)) +\n  geom_smooth(aes(displ, hwy))\n\nlibrary(plotly)\nggplotly(p)"
+  },
+  {
+    "objectID": "04_Model/04-Model-Exercises.html",
+    "href": "04_Model/04-Model-Exercises.html",
+    "title": "Models",
     "section": "",
-    "text": "This is a Quarto file. It contains plain text interspersed with grey chunks of code. You can use the file to take notes and run code. For example, you can write your name on the line below. Try it:\n\n# You can write code in chunks that look like this.\n# This chunk uses the code plot(cars) to plot a data set.\n# To run the code, click the Green play button at the\n# top right of this chunk. Try it!\nplot(cars)\n\n\n\n\n\n\n\n\nGood job! The results of a code chunk will appear beneath the chunk. You can click the x above the results to make them go away, but let’s not do that.\nYou can open a new Quarto file by going to File &gt; New File &gt; Quarto Document…. Then click OK. But let’s not open a new file now—keep reading this one!\n\nAdding chunks\nTo add a new code chunk, press Cmd+Option+I (Ctrl+Alt+I on Windows), or click the Insert button at the top of this document, then select R. Quarto will add a new, empty chunk at your cursor’s location.\nTry making a code chunk below:\nGood job! For today, you should place all of your R code inside of code chunks.\n\n# Sometimes you might want to run only some of the code \n# in a code chunk. To do that, highlight the code to \n# run and then press Cmd + Enter (Control + Enter on \n# Windows). If you do not highlight any code, R will \n# run the line of code that your cursor is on.\n# Try it now. Run mean(1:5) but not the line below.\nmean(1:5)\n\n[1] 3\n\nwarning(\"You shouldn't run this!\")\n\nWarning: You shouldn't run this!\n\n\n\n# You can click the downward facing arrow to the left of the play button to run\n# every chunk above the current code chunk. This is useful if the code in your\n# chunk uses object that you made in previous chunks.\n# Sys.Date()\n\nDid you notice the green lines (if your RStudio theme is the default one) in the code chunk above? They are code comments, lines of text that R ignores when it runs the code. R will treat everything that appears after # on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that’s fine)!\nRemove the # on the last line of the chunk above and then rerun the chunk. Can you tell what Sys.Date() does?\nBy the way, you only need to use code comments inside of code chunks. R knows not to try to run the text that you write outside of code chunks. You can press Cmd+Shift+C to comment or uncomment a line of code.\n\n\nText formatting\nHave you noticed the funny highlighting that appears in this document? Quarto treats text surrounded by asterisks, double asterisks, and backticks in special ways. It is Quarto’s way of saying that these words are in\n\nitalics\nalso italics\nbold, and\ncode font\n\n*, **, and ` are signals used by a text editing format known as markdown. Quarto uses markdown to turn your plain looking .Rmd documents into polished reports. Let’s give that a try.\n\n\nReports\nWhen you click the Render button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:\n\nTransforms all of your markdown cues into actual formatted text (e.g. bold text, italic text, etc.)\nReruns all of your code chunks in a clean R session and appends the results to the finished report.\nSaves the finished report alongside your .Rmd file\n\nClick the Render button at the top of this document or press Cmd+Shift+K (Ctrl+Shift+K on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking Render now.\nGood job! You’ll learn more about Quarto throughout the day!\n\n\nR Packages\nHere is one last code chunk that we will use in the next exercise. If you uncomment the code and try to run it, it won’t work. If you don’t believe me try!\n\n# ggplot(data = diamonds) + geom_point(aes(x = carat, y = price))"
+    "text": "Change the working directory to the folder where wages.xlsx is located and this file is saved.\nThen import wages.xlsx as wages and copy the code to your setup chunk.\nBe sure to set NA: to NA.\nSwitch the eval option in the YAML header to true."
+  },
+  {
+    "objectID": "04_Model/04-Model-Exercises.html#your-turn-1",
+    "href": "04_Model/04-Model-Exercises.html#your-turn-1",
+    "title": "Models",
+    "section": "",
+    "text": "Change the working directory to the folder where wages.xlsx is located and this file is saved.\nThen import wages.xlsx as wages and copy the code to your setup chunk.\nBe sure to set NA: to NA.\nSwitch the eval option in the YAML header to true."
+  },
+  {
+    "objectID": "04_Model/04-Model-Exercises.html#your-turn-2",
+    "href": "04_Model/04-Model-Exercises.html#your-turn-2",
+    "title": "Models",
+    "section": "Your Turn 2",
+    "text": "Your Turn 2\n\nFit the model\n\n\\[\n\\log(\\text{income}) = \\beta_0 + \\beta_1 \\cdot \\text{education} + \\epsilon\n\\]\n\nStore the result in an object called mod_e.\nExamine the output. What does it look like?"
+  },
+  {
+    "objectID": "04_Model/04-Model-Exercises.html#your-turn-3",
+    "href": "04_Model/04-Model-Exercises.html#your-turn-3",
+    "title": "Models",
+    "section": "Your Turn 3",
+    "text": "Your Turn 3\nUse a pipe to model log(income) against height. Then use broom and dplyr functions to extract:\n\nThe coefficient estimates and their related statistics\nThe adj.r.squared and p.value for the overall model"
+  },
+  {
+    "objectID": "04_Model/04-Model-Exercises.html#your-turn-4",
+    "href": "04_Model/04-Model-Exercises.html#your-turn-4",
+    "title": "Models",
+    "section": "Your Turn 4",
+    "text": "Your Turn 4\nModel log(income) against education and height and sex. Can you interpret the coefficients?"
+  },
+  {
+    "objectID": "04_Model/04-Model-Exercises.html#your-turn-5",
+    "href": "04_Model/04-Model-Exercises.html#your-turn-5",
+    "title": "Models",
+    "section": "Your Turn 5",
+    "text": "Your Turn 5\nAdd + geom_smooth(method = lm) to the code below. What happens?\n\nwages |&gt; \n  ggplot(aes(x = height, y = log(income))) +\n  geom_point(alpha = 0.1)"
+  },
+  {
+    "objectID": "04_Model/04-Model-Exercises.html#your-turn-6",
+    "href": "04_Model/04-Model-Exercises.html#your-turn-6",
+    "title": "Models",
+    "section": "Your Turn 6",
+    "text": "Your Turn 6\nUse add_predictions() to make the plot below. Facetting is by level of education.\n\n\n# In case you haven't made the ehs model\nmod_ehs &lt;- wages|&gt; \n  lm(log(income) ~ education + height + sex, data = _)\n\n# Make plot here"
+  },
+  {
+    "objectID": "04_Model/04-Model-Exercises.html#your-turn-7",
+    "href": "04_Model/04-Model-Exercises.html#your-turn-7",
+    "title": "Models",
+    "section": "Your Turn 7",
+    "text": "Your Turn 7\nUse gather_residuals() to make the plot below.\n\n\n\n\n\n\nCaution\n\n\n\nModels mod_h and mod_ehs should be available in your environment because you fitted them in previous sections. But you have to fit and store the model mod_eh which stands for education and height.\n\n\n\n\n# Make the plot here"
+  },
+  {
+    "objectID": "01_Introduction/authoring-with-quarto.html",
+    "href": "01_Introduction/authoring-with-quarto.html",
+    "title": "Authoring with Quarto",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+  },
+  {
+    "objectID": "01_Introduction/authoring-with-quarto.html#section-1",
+    "href": "01_Introduction/authoring-with-quarto.html#section-1",
+    "title": "Authoring with Quarto",
+    "section": "Section 1",
+    "text": "Section 1\nText written in markdown.\n\n# Code written in R\n(x &lt;- 1:10)\n\n [1]  1  2  3  4  5  6  7  8  9 10"
+  },
+  {
+    "objectID": "01_Introduction/authoring-with-quarto.html#section-2",
+    "href": "01_Introduction/authoring-with-quarto.html#section-2",
+    "title": "Authoring with Quarto",
+    "section": "Section 2",
+    "text": "Section 2\nText written in markdown.\n\nggplot(data = mpg) +\n  geom_point(aes(x = displ, y = hwy, color = class))\n\n\n\n\n\n\n\n\n…and so on."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html",
+    "title": "Hypothesis Testing",
+    "section": "",
+    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the mean energy efficiency?\nDoes that mean that the data significantly prove that the mean energy efficiency is larger than the expected nominal value?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-1",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-1",
+    "title": "Hypothesis Testing",
+    "section": "",
+    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the mean energy efficiency?\nDoes that mean that the data significantly prove that the mean energy efficiency is larger than the expected nominal value?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-2",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-2",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nA study about air pollution done by a research station measured, on \\(8\\) different air samples, the following values of a polluant concentration (in \\(\\mu\\)g/m\\(^2\\)):\n\\[ 2.2 \\quad 1.8 \\quad 3.1 \\quad 2.0 \\quad 2.4 \\quad 2.0 \\quad 2.1 \\quad 1.2 \\]\nAssuming that the sampled population is normal,\n\nCan we say that the mean polluant concentration is present with less than \\(2.5 \\mu\\)g/m\\(^2\\)?\nCan we say that the mean polluant concentration is present with less than \\(2.4 \\mu\\)g/m\\(^2\\)?\nIs the normality hypothesis essential to justify the method used?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-3",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-3",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nA medical inspection in an elementary school during a measles epidemic led to the examination of \\(30\\) children to assess whether they were affected. The results are in a tibble exam which contains the following:\n\n\n# A tibble: 30 × 2\n      Id Status \n   &lt;int&gt; &lt;chr&gt;  \n 1     1 Healthy\n 2     2 Healthy\n 3     3 Healthy\n 4     4 Healthy\n 5     5 Healthy\n 6     6 Healthy\n 7     7 Healthy\n 8     8 Healthy\n 9     9 Healthy\n10    10 Healthy\n# ℹ 20 more rows\n\n\nLet \\(p\\) be the probability that a child from the same school is sick.\n\nDetermine a point estimate \\(\\widehat{p}\\) for \\(p\\).\nThe school will be closed if more than 5% of the children are sick. Can you conclude that, statistically, this is the case? Use a significance level of 5%."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-4",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-4",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nThe capacities (in ampere-hours) of \\(10\\) batteries were recorded as follows:\n\\[ 140, \\quad 136, \\quad 150, \\quad 144, \\quad 148, \\quad 152, \\quad 138, \\quad 141, \\quad 143, \\quad 151 \\]\n\nEstimate the population variance \\(\\sigma^2\\).\nCan we claim that the mean capacity of a battery is greater than 142 ampere-hours ?\nCan we claim that the mean capacity of a battery is greater than 140 ampere-hours ?\nCan we claim that the standard deviation of the capacity is less than 6 ampere-hours ?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-5",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-5",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nA company produces barbed wire in skeins of \\(100\\)m each, nominally. The real length of the skeins is a random variable \\(X\\) distributed as a \\(\\mathcal{N}(\\mu, 4)\\). Measuring \\(10\\) skeins, we get the following lengths:\n\\[ 98.683, 96.599, 99.617, 102.544, 100.110, 102.000, 98.394, 100.324, 98.743, 103.247 \\]\n\nPerform a conformity test at significance level \\(\\alpha = 5\\%\\).\nDetermine, on the basis of the observed values, the p-value of the test."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-6",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-6",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nIn an atmospheric study the researchers registered, over \\(8\\) different samples of air, the following concentration of COG (in micrograms over cubic meter):\n\\[ 2.3;\\; 1.7;\\; 3.2;\\; 2.1;\\; 2.3;\\; 2.0;\\; 2.2;\\; 1.2 \\]\n\nUsing unbiased estimators, determine a point estimate of the mean and variance of COG concentration.\n\nAssume now that the COG concentration is normally distributed.\n\nUsing a suitable statistical tool, establish whether the measured data allow to say that the mean concentration of COG is greater than \\(1.8\\) \\(\\mu\\)g/m\\(^3\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-7",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-7",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 7",
+    "text": "Exercise 7\nOn a total of \\(2350\\) interviewed citizens, \\(1890\\) approve the construction of a new movie theater.\n\nPerform an hypothesis test of level \\(5\\%\\), with null hypothesis that the percentage of citizens that approve the construction is at least \\(81\\%\\), versus the alternative hypothesis that the percentage is less than \\(81\\%\\).\nCompute the \\(p\\)-value of the test.\n[difficult] Determine the minimum sample size such that the power of the test with significance level \\(\\alpha = 0.05\\) when the real proportion \\(p\\) is \\(0.8\\) is at least \\(50\\%\\)."
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-8",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-8",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 8",
+    "text": "Exercise 8\nA computer chip manufacturer claims that no more than \\(1\\%\\) of the chips it sends out are defective. An electronics company, impressed with this claim, has purchased a large quantity of such chips. To determine if the manufacturer’s claim can be taken literally, the company has decided to test a sample of \\(300\\) of these chips. If \\(5\\) of these \\(300\\) chips are found to be defective, should the manufacturer’s claim be rejected?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-9",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-9",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 9",
+    "text": "Exercise 9\nTo determine the impurity level in alloys of steel, two different tests can be used. \\(8\\) specimens are tested, with both procedures, and the results are written in the following table:\n\n\n\nspecimen n.\n1\n2\n3\n4\n5\n6\n7\n8\n\n\n\n\nTest 1\n1.2\n1.3\n1.7\n1.8\n1.5\n1.4\n1.4\n1.3\n\n\nTest 2\n1.4\n1.7\n2.0\n2.1\n1.5\n1.3\n1.7\n1.6\n\n\n\nAssume that the data are normal.\n\nbased on the data in the table, can we state that at significance level \\(\\alpha=5\\%\\) the Test 1 and 2 give a different average level of impurity?\nbased on the data in the table, can we state that at significance level \\(\\alpha=1\\%\\) the Test 2 gives an average level of impurity greater than Test 1?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-10",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-10",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 10",
+    "text": "Exercise 10\nA sample of \\(300\\) voters from region A and \\(200\\) voters from region B showed that the \\(56\\%\\) and the \\(48\\%\\), respectively, prefer a certain candidate. Can we say that at a significance level of \\(5\\%\\) there is a difference between the two regions?"
+  },
+  {
+    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-11",
+    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-11",
+    "title": "Hypothesis Testing",
+    "section": "Exercise 11",
+    "text": "Exercise 11\nIn a sample of \\(100\\) measures of the boiling temperature of a certain liquid, we obtain a sample mean \\(\\overline{x} = 100^{o}C\\) with a sample variance \\(s^2 = 0.0098^{o}C^2\\). Assuming that the observation comes from a normal population:\n\nWhat is the smallest level of significance that would lead to reject the null hypothesis that the variance is \\(\\leq 0.015\\)?\nOn the basis of the previous answer, what decision do we take if we fix the level of the test equal to \\(0.01\\)?"
+  },
+  {
+    "objectID": "08_Types/08-Types-Exercises.html",
+    "href": "08_Types/08-Types-Exercises.html",
+    "title": "Data Types",
+    "section": "",
+    "text": "Use flights to create delayed, a variable that displays whether a flight was delayed (arr_delay &gt; 0).\nThen, remove all rows that contain an NA in delayed.\nFinally, create a summary table that shows:\n\nHow many flights were delayed\n\nWhat proportion of flights were delayed"
+  },
+  {
+    "objectID": "08_Types/08-Types-Exercises.html#your-turn-1",
+    "href": "08_Types/08-Types-Exercises.html#your-turn-1",
+    "title": "Data Types",
+    "section": "",
+    "text": "Use flights to create delayed, a variable that displays whether a flight was delayed (arr_delay &gt; 0).\nThen, remove all rows that contain an NA in delayed.\nFinally, create a summary table that shows:\n\nHow many flights were delayed\n\nWhat proportion of flights were delayed"
+  },
+  {
+    "objectID": "08_Types/08-Types-Exercises.html#your-turn-2",
+    "href": "08_Types/08-Types-Exercises.html#your-turn-2",
+    "title": "Data Types",
+    "section": "Your Turn 2",
+    "text": "Your Turn 2\nFill in the blanks to:\n\nIsolate the last letter of every name\nCreate a logical variable that displays whether the last letter is one of “a”, “e”, “i”, “o”, “u”, or “y”.\nUse a weighted mean to calculate the proportion of children whose name ends in a vowel (by year and sex)\n\nand then display the results as a line plot.\n\n(Hint: Be sure to remove each _ before turning eval to true)\n\nbabynames |&gt; \n  _______(last = _________, \n          vowel = __________) |&gt; \n  group_by(__________) |&gt; \n  _________(p_vowel = weighted.mean(vowel, n)) |&gt; \n  _________ +\n  __________"
+  },
+  {
+    "objectID": "08_Types/08-Types-Exercises.html#your-turn-3",
+    "href": "08_Types/08-Types-Exercises.html#your-turn-3",
+    "title": "Data Types",
+    "section": "Your Turn 3",
+    "text": "Your Turn 3\nRepeat the demonstration, some of whose code is below, to make a sensible graph of average TV consumption by marital status.\n(Hint: Be sure to remove each _ before turning eval to true)\n\ngss_cat |&gt; \n  filter(_is.na(________)) |&gt;\n  group_by(________) |&gt;\n  summarise(_________________) |&gt;\n  ggplot() +\n    geom_point(mapping = aes(x = _______, y = _________________________))"
+  },
+  {
+    "objectID": "08_Types/08-Types-Exercises.html#your-turn-4",
+    "href": "08_Types/08-Types-Exercises.html#your-turn-4",
+    "title": "Data Types",
+    "section": "Your Turn 4",
+    "text": "Your Turn 4\nDo you think liberals or conservatives watch more TV? Compute average tv hours by party ID an then plot the results."
+  },
+  {
+    "objectID": "08_Types/08-Types-Exercises.html#your-turn-5",
+    "href": "08_Types/08-Types-Exercises.html#your-turn-5",
+    "title": "Data Types",
+    "section": "Your Turn 5",
+    "text": "Your Turn 5\nWhat is the best time of day to fly?\nUse the hour and minute variables in flights to make a new variable that shows the time of each flight as an hms.\nThen use a smooth line to plot the relationship between time of day and arr_delay."
+  },
+  {
+    "objectID": "08_Types/08-Types-Exercises.html#your-turn-6",
+    "href": "08_Types/08-Types-Exercises.html#your-turn-6",
+    "title": "Data Types",
+    "section": "Your Turn 6",
+    "text": "Your Turn 6\nWhat is the best day of the week to fly?\nLook at the code skeleton for Your Turn 7. Discuss with your neighbor:\n\nWhat does each line do?\nWhat will the missing parts need to do?"
+  },
+  {
+    "objectID": "08_Types/08-Types-Exercises.html#your-turn-7",
+    "href": "08_Types/08-Types-Exercises.html#your-turn-7",
+    "title": "Data Types",
+    "section": "Your Turn 7",
+    "text": "Your Turn 7\nFill in the blank to:\nExtract the day of the week of each flight (as a full name) from time_hour.\nPlot the average arrival delay by day as a column chart (bar chart).\n(Hint: Be sure to remove each _ before turning eval to true)\n\nflights |&gt; \n  mutate(weekday = _______________________________) |&gt; \n  group_by(weekday) |&gt; \n  filter(!is.na(arr_delay)) |&gt; \n  summarise(avg_delay = mean(arr_delay)) |&gt; \n  ggplot() +\n    geom_col(mapping = aes(x = weekday, y = avg_delay))"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Instructions for the class",
+    "section": "",
+    "text": "Homework Assignment (2025-01-01)\n\n\n\nNew announcement about the homework assignment.\nDelivrable is expected to be a ZIP archive containing the two .qmd files (report and dashboard) along with all the necessary data files.\nPlease ensure that both files compile withour error.\nCheckout the homework assignment page."
+  },
+  {
+    "objectID": "index.html#disclaimer",
+    "href": "index.html#disclaimer",
+    "title": "Instructions for the class",
+    "section": "Disclaimer",
+    "text": "Disclaimer\nThis repository is build on the work of Garrett Grolemund from posit. In particular, it reuses an important part of the material he developed for tidyverse-related workshops, which is available at https://github.com/rstudio-education/remaster-the-tidyverse under the Creative Commons BY-SA 4.0 copyright."
+  },
+  {
+    "objectID": "index.html#material",
+    "href": "index.html#material",
+    "title": "Instructions for the class",
+    "section": "Material",
+    "text": "Material\nThe main webpage is at https://astamm.github.io/data-science-with-r/."
+  },
+  {
+    "objectID": "index.html#outline",
+    "href": "index.html#outline",
+    "title": "Instructions for the class",
+    "section": "Outline",
+    "text": "Outline\n\nData wrangling with R\nThe class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the above Data Wranging - Slides tab and the exercises in the above Data Wranging - Labs tab. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\nSuppl. Material\n\n\n\n\n1\nIntroduction\nPDF\nQuarto\n\n\n\n2\nVisualize Data\nPDF\nQuarto\n\n\n\n3\nTransform Data\nPDF\nQuarto\nCSV\n\n\n4\nModel Data\nPDF\nQuarto\nZIP\n\n\n5\nCommunicate Data\nPDF\nQuarto\nQuarto\n\n\n6\nTidy Data\nPDF\nQuarto\n\n\n\n7\nJoin Data\nPDF\nQuarto\n\n\n\n8\nManipulate Data Types\nPDF\nQuarto\n\n\n\n9\nManipulate Lists\nPDF\nQuarto\n\n\n\n\n\n\nExploratory Data Analysis with R\nThe class is organised in 4 parts each of which has its own set of slides and exercises. The slides are available in the above Exploratory Data Analysis - Slides tab and the exercises in the the above Exploratory Data Analysis - Labs tab. The slides are written in Quarto revealjs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\nSuppl. Material\n\n\n\n\n1\nHypothesis Testing\nQuarto\nQuarto\n\n\n\n2\nLinear Regression\nQuarto\nQuarto\nZIP\n\n\n3\nPrincipal Component Analysis\nRMarkdown\nQuarto\nZIP\n\n\n4\nClustering\nQuarto\nQuarto"
+  },
+  {
+    "objectID": "index.html#requirements",
+    "href": "index.html#requirements",
+    "title": "Instructions for the class",
+    "section": "Requirements",
+    "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\nTidyverse: https://www.tidyverse.org\nSpecific R packages by theme:\n\nData sets:\n\n{babynames}: a data set of frequency of baby names in the US from 1880 to 2017.\n\nData visualization:\n\n{ggplot2}: a package that implements the grammar of graphics.\n{plotly}: an interactive plotting library.\n\nModel summaries:\n\n{broom}: a package that provides tidy summaries of model outputs.\n{modelr}: a package that provides functions for modelling within the tidyverse.\n{jtools}: a package that provides functions for summarizing and visualizing model outputs and main effects.\n{interactions}: a package that provides functions for visualizing the effect of interactions in regression models.\n\nPCA:\n\n{FactoMineR}: a package that provides ready-to-use implementations of standard statistical methods for data analysis.\n{factoextra}: a package that provides functions for extracting and visualizing the results of multivariate data analyses.\n{corrplot}: a package that provides functions for visualizing correlation matrices.\n{viridis}: a package that provides color palettes that are perceptually uniform in both color and black-and-white.\n{huxtable}: a package that provides functions for creating tables in HTML documents."
+  },
+  {
+    "objectID": "05_Report/05-Report-Exercises.html",
+    "href": "05_Report/05-Report-Exercises.html",
+    "title": "Garrett",
+    "section": "",
+    "text": "There have been TODO children named Garrett. The name Garrett was most popular in TODO, when TODO TODO were named Garrett. Garrett is traditionally a TODO name."
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html",
+    "href": "03_Transform/03-Transform-Exercises.html",
+    "title": "Transform Data",
+    "section": "",
+    "text": "Make sure that the .csv file is in the same directory as the .qmd file you’re currently working on. Then import the babynames.csv data set. Give it the name babynames. Then copy the import code into the code chunk below. Does it run?\n\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# ℹ 1,924,655 more rows"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-1",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-1",
+    "title": "Transform Data",
+    "section": "",
+    "text": "Make sure that the .csv file is in the same directory as the .qmd file you’re currently working on. Then import the babynames.csv data set. Give it the name babynames. Then copy the import code into the code chunk below. Does it run?\n\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# ℹ 1,924,655 more rows"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-2",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-2",
+    "title": "Transform Data",
+    "section": "Your Turn 2",
+    "text": "Your Turn 2\nAlter the code to select just the n column:\n\nselect(babynames, name, prop)\n\n# A tibble: 1,924,665 × 2\n   name        prop\n   &lt;chr&gt;      &lt;dbl&gt;\n 1 Mary      0.0724\n 2 Anna      0.0267\n 3 Emma      0.0205\n 4 Elizabeth 0.0199\n 5 Minnie    0.0179\n 6 Margaret  0.0162\n 7 Ida       0.0151\n 8 Alice     0.0145\n 9 Bertha    0.0135\n10 Sarah     0.0132\n# ℹ 1,924,655 more rows"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#quiz",
+    "href": "03_Transform/03-Transform-Exercises.html#quiz",
+    "title": "Transform Data",
+    "section": "Quiz",
+    "text": "Quiz\nWhich of these is NOT a way to select the name and n columns together?\n\nselect(babynames, -c(year, sex, prop))\n\n# A tibble: 1,924,665 × 2\n   name          n\n   &lt;chr&gt;     &lt;int&gt;\n 1 Mary       7065\n 2 Anna       2604\n 3 Emma       2003\n 4 Elizabeth  1939\n 5 Minnie     1746\n 6 Margaret   1578\n 7 Ida        1472\n 8 Alice      1414\n 9 Bertha     1320\n10 Sarah      1288\n# ℹ 1,924,655 more rows\n\nselect(babynames, name:n)\n\n# A tibble: 1,924,665 × 2\n   name          n\n   &lt;chr&gt;     &lt;int&gt;\n 1 Mary       7065\n 2 Anna       2604\n 3 Emma       2003\n 4 Elizabeth  1939\n 5 Minnie     1746\n 6 Margaret   1578\n 7 Ida        1472\n 8 Alice      1414\n 9 Bertha     1320\n10 Sarah      1288\n# ℹ 1,924,655 more rows\n\nselect(babynames, starts_with(\"n\"))\n\n# A tibble: 1,924,665 × 2\n   name          n\n   &lt;chr&gt;     &lt;int&gt;\n 1 Mary       7065\n 2 Anna       2604\n 3 Emma       2003\n 4 Elizabeth  1939\n 5 Minnie     1746\n 6 Margaret   1578\n 7 Ida        1472\n 8 Alice      1414\n 9 Bertha     1320\n10 Sarah      1288\n# ℹ 1,924,655 more rows\n\nselect(babynames, ends_with(\"n\"))\n\n# A tibble: 1,924,665 × 1\n       n\n   &lt;int&gt;\n 1  7065\n 2  2604\n 3  2003\n 4  1939\n 5  1746\n 6  1578\n 7  1472\n 8  1414\n 9  1320\n10  1288\n# ℹ 1,924,655 more rows"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-3",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-3",
+    "title": "Transform Data",
+    "section": "Your Turn 3",
+    "text": "Your Turn 3\nUse filter, babynames, and the logical operators to find:\n\nAll of the names where prop is greater than or equal to 0.08\n\nAll of the children named “Sea”"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-4",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-4",
+    "title": "Transform Data",
+    "section": "Your Turn 4",
+    "text": "Your Turn 4\nUse Boolean operators to return only the rows that contain:\n\nBoys named Sue\n\nNames that were used by exactly 5 or 6 children in 1880\n\nNames that are one of Acura, Lexus, or Yugo"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#help-me",
+    "href": "03_Transform/03-Transform-Exercises.html#help-me",
+    "title": "Transform Data",
+    "section": "Help Me",
+    "text": "Help Me\nWhat is the smallest value of n? What is the largest?"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-5",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-5",
+    "title": "Transform Data",
+    "section": "Your Turn 5",
+    "text": "Your Turn 5\nUse |&gt; to write a sequence of functions that:\n\nFilters babynames to just the girls that were born in 2017, then…\n\nSelects the name and n columns, then…\n\nArranges the results so that the most popular names are near the top."
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-6",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-6",
+    "title": "Transform Data",
+    "section": "Your Turn 6",
+    "text": "Your Turn 6\n\nTrim babynames to just the rows that contain your name and your sex\n\nTrim the result to just the columns that will appear in your graph (not strictly necessary, but useful practice)\nPlot the results as a line graph with year on the x axis and prop on the y axis"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-7",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-7",
+    "title": "Transform Data",
+    "section": "Your Turn 7",
+    "text": "Your Turn 7\nCpmplete the code below to extract the rows where name == \"Khaleesi\". Then use summarise() and sum() and min() to find:\n\nThe total number of children named Khaleesi\nThe first year Khaleesi appeared in the data\n\nMake sure to turn the eval option to true before running the code.\n(Hint: Be sure to remove each _ before running the code)\n\nbabynames ___ \n  filter(_______________________) ___\n  ___________(total = ________, first = _______)"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-8",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-8",
+    "title": "Transform Data",
+    "section": "Your Turn 8",
+    "text": "Your Turn 8\nUse group_by(), summarise(), and arrange() to display the ten most popular names. Compute popularity as the total number of children of a single gender given a name.\nMake sure to turn the eval option to true before running the code.\n(Hint: Be sure to remove each _ before running the code)\n\nbabynames |&gt; \n  _______(name, sex) |&gt; \n  _______(total = _____(n)) |&gt; \n  _______(desc(_____))"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-9",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-9",
+    "title": "Transform Data",
+    "section": "Your Turn 9",
+    "text": "Your Turn 9\nUse group_by() to calculate and then plot the total number of children born each year over time."
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-10",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-10",
+    "title": "Transform Data",
+    "section": "Your Turn 10",
+    "text": "Your Turn 10\nUse mutate() and min_rank()to rank each row in babynames from largest n to lowest n.\nMake sure to turn the eval option to true before running the code.\n(Hint: Be sure to remove each _ before running the code)\n\nbabynames |&gt; \n  ______(rank = _______(____(prop)))"
+  },
+  {
+    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-11",
+    "href": "03_Transform/03-Transform-Exercises.html#your-turn-11",
+    "title": "Transform Data",
+    "section": "Your Turn 11",
+    "text": "Your Turn 11\nGroup babynames by year and then re-rank the data. Filter the results to just rows where rank == 1."
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html",
+    "href": "06_Tidy/06-Tidy-Exercises.html",
+    "title": "Tidy Data",
+    "section": "",
+    "text": "table1\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\ntable2\n\n# A tibble: 12 × 4\n   country      year type            count\n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583\n\ntable3\n\n# A tibble: 6 × 3\n  country      year rate             \n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583\n\ntable4a\n\n# A tibble: 3 × 3\n  country     `1999` `2000`\n  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;\n1 Afghanistan    745   2666\n2 Brazil       37737  80488\n3 China       212258 213766\n\ntable4b\n\n# A tibble: 3 × 3\n  country         `1999`     `2000`\n  &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan   19987071   20595360\n2 Brazil       172006362  174504898\n3 China       1272915272 1280428583\n\ntable5\n\n# A tibble: 6 × 4\n  country     century year  rate             \n  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            \n1 Afghanistan 19      99    745/19987071     \n2 Afghanistan 20      00    2666/20595360    \n3 Brazil      19      99    37737/172006362  \n4 Brazil      20      00    80488/174504898  \n5 China       19      99    212258/1272915272\n6 China       20      00    213766/1280428583"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-1",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-1",
+    "title": "Tidy Data",
+    "section": "Your Turn 1",
+    "text": "Your Turn 1\nOn a sheet of paper, draw how the cases data set would look if it had the same values grouped into three columns: country, year, n"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-2",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-2",
+    "title": "Tidy Data",
+    "section": "Your Turn 2",
+    "text": "Your Turn 2\nUse pivot_longer() to reorganize table4a into three columns: country, year, and cases."
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-3",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-3",
+    "title": "Tidy Data",
+    "section": "Your Turn 3",
+    "text": "Your Turn 3\nOn a sheet of paper, draw how this data set would look if it had the same values grouped into three columns: city, large, small"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-4",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-4",
+    "title": "Tidy Data",
+    "section": "Your Turn 4",
+    "text": "Your Turn 4\nUse pivot_wider() to reorganize table2 into four columns: country, year, cases, and population."
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-5",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-5",
+    "title": "Tidy Data",
+    "section": "Your Turn 5",
+    "text": "Your Turn 5\nGather the 5th through 60th columns of who into a pair of key:value columns named codes and n.\nThen select just the county, year, codes and n variables.\n\nwho\n\n# A tibble: 7,240 × 60\n   country  iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544\n   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;\n 1 Afghani… AF    AFG    1980          NA           NA           NA           NA\n 2 Afghani… AF    AFG    1981          NA           NA           NA           NA\n 3 Afghani… AF    AFG    1982          NA           NA           NA           NA\n 4 Afghani… AF    AFG    1983          NA           NA           NA           NA\n 5 Afghani… AF    AFG    1984          NA           NA           NA           NA\n 6 Afghani… AF    AFG    1985          NA           NA           NA           NA\n 7 Afghani… AF    AFG    1986          NA           NA           NA           NA\n 8 Afghani… AF    AFG    1987          NA           NA           NA           NA\n 9 Afghani… AF    AFG    1988          NA           NA           NA           NA\n10 Afghani… AF    AFG    1989          NA           NA           NA           NA\n# ℹ 7,230 more rows\n# ℹ 52 more variables: new_sp_m4554 &lt;dbl&gt;, new_sp_m5564 &lt;dbl&gt;,\n#   new_sp_m65 &lt;dbl&gt;, new_sp_f014 &lt;dbl&gt;, new_sp_f1524 &lt;dbl&gt;,\n#   new_sp_f2534 &lt;dbl&gt;, new_sp_f3544 &lt;dbl&gt;, new_sp_f4554 &lt;dbl&gt;,\n#   new_sp_f5564 &lt;dbl&gt;, new_sp_f65 &lt;dbl&gt;, new_sn_m014 &lt;dbl&gt;,\n#   new_sn_m1524 &lt;dbl&gt;, new_sn_m2534 &lt;dbl&gt;, new_sn_m3544 &lt;dbl&gt;,\n#   new_sn_m4554 &lt;dbl&gt;, new_sn_m5564 &lt;dbl&gt;, new_sn_m65 &lt;dbl&gt;, …"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-6",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-6",
+    "title": "Tidy Data",
+    "section": "Your Turn 6",
+    "text": "Your Turn 6\nSeparate the sexage column into sex and age columns.\n(Hint: Be sure to remove each _ before running the code and switch eval option to true)\n\nwho |&gt; \n  pivot_longer(cols = 5:60, names_to = \"codes\", values_to = \"n\") |&gt; \n  select(-iso2, -iso3) |&gt; \n  separate(codes, c(\"new\", \"type\", \"sexage\"), sep = \"_\") |&gt; \n  select(-new) |&gt; \n  _______________________________"
+  },
+  {
+    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-7",
+    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-7",
+    "title": "Tidy Data",
+    "section": "Your Turn 7",
+    "text": "Your Turn 7\nExtend this code to reshape the data into a data set with three columns:\n\nyear\nM\nF\n\nCalculate the percent of male (or female) children by year. Then plot the percent over time.\n\nbabynames |&gt; \n  group_by(year, sex) |&gt; \n  summarise(n = sum(n))\n\n`summarise()` has grouped output by 'year'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 276 × 3\n# Groups:   year [138]\n    year sex        n\n   &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;\n 1  1880 F      90993\n 2  1880 M     110491\n 3  1881 F      91953\n 4  1881 M     100743\n 5  1882 F     107847\n 6  1882 M     113686\n 7  1883 F     112319\n 8  1883 M     104627\n 9  1884 F     129020\n10  1884 M     114442\n# ℹ 266 more rows"
+  },
+  {
+    "objectID": "05_Report/05-Report-Parameters.html",
+    "href": "05_Report/05-Report-Parameters.html",
+    "title": "Garrett",
+    "section": "",
+    "text": "There have been 130211 children named Garrett. The name Garrett was most popular in 2000, when there were 5840 boys named Garrett. Garrett is traditionally a boy’s name."
+  },
+  {
+    "objectID": "exam1.html",
+    "href": "exam1.html",
+    "title": "First Exam",
+    "section": "",
+    "text": "The data set you are going to work on is the penguins data set. The data set contains data on the body mass, flipper length, species of penguins. The data set is available in the {palmerpenguins} package. You can install the package using the following code:\ninstall.packages(\"palmerpenguins\")"
+  },
+  {
+    "objectID": "exam1.html#data",
+    "href": "exam1.html#data",
+    "title": "First Exam",
+    "section": "",
+    "text": "The data set you are going to work on is the penguins data set. The data set contains data on the body mass, flipper length, species of penguins. The data set is available in the {palmerpenguins} package. You can install the package using the following code:\ninstall.packages(\"palmerpenguins\")"
+  },
+  {
+    "objectID": "exam1.html#goal",
+    "href": "exam1.html#goal",
+    "title": "First Exam",
+    "section": "Goal",
+    "text": "Goal\nThe goal of this exam is to reproduce the following plot using the penguins data set:\n\nHint: You need to carefully analze the plot to understand how you need to manipulate the original data set in order to get the correct answer. For the sake of clarity, with fixed slopes means that the slopes of the lines are the same for all species and sexes. with varying slopes means that the slopes of the lines are different for each species and sex."
+  },
+  {
+    "objectID": "exam1.html#rules-expected-delivrables",
+    "href": "exam1.html#rules-expected-delivrables",
+    "title": "First Exam",
+    "section": "Rules & Expected delivrables",
+    "text": "Rules & Expected delivrables\nThe exam starts at 11am on Friday, 13th December 2024 and ends at 12pm on the same day. You are not allowed to communicate with anyone during the exam.\nThe following delivrable is expected by email to the instructor by 12:15pm on Friday, 13th December 2024:\n\nA Quarto file which renders without error with the code to reproduce the plot. The name of the file must be of the form exam1_&lt;your_name&gt;.qmd."
   },
   {
     "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html#general-data-modeling-framework",
@@ -364,536 +1050,95 @@
     "text": "\\(\\chi ^2\\) test of independence between two categorical variables\n\n\nModel. Let \\(X = (Y, Z) = ((Y_1, Z_1), \\dots, (Y_n, Z_n))\\) be a bivariate sample of \\(n\\) i.i.d. pairs of categorical random variables. Let \\(\\nu\\) be the law of \\((Y_1, Z_1)\\), \\(\\mu\\) the law of \\(Y_1\\) and \\(\\lambda\\) the law of \\(Z_1\\). Let \\(\\{y_1, \\dots, y_s\\}\\) be the set of possible values for \\(Y_1\\) and \\(\\{z_1, \\dots, z_r\\}\\) the set of possible values for \\(Z_1\\). For \\(\\ell \\in \\{1, \\dots, s\\}\\) et \\(h \\in \\{1, \\dots, r\\}\\), let \\[ N_{\\ell,\\cdot} = \\left| \\left\\{ i  \\in \\{1, \\dots, n\\}; Y_i = y_\\ell \\right\\} \\right|,\\quad N_{\\cdot, h} = \\left| \\left\\{ i  \\in \\{1, \\dots, n\\}; Z_i = z_h \\right\\} \\right|, \\\\ N_{\\ell,h} = \\left| \\left\\{(i \\in \\{1, \\dots, n\\}; Y_i = y_\\ell, Z_i = z_h \\right\\} \\right|.\n\\]\nHypotheses. \\(H_0: \\nu = \\mu \\otimes \\lambda \\quad \\mbox{vs.} \\quad H_a: \\nu \\ne \\mu \\otimes \\lambda\\).\nTest statistic. \\[ U_n = n  \\sum_{\\ell = 1}^s \\sum_{h = 1}^r \\frac{ \\left( \\frac{N_{\\ell, h}}{n}  -  \\frac{N_{\\ell, \\cdot}}{n} \\frac{N_{\\cdot, h}}{n} \\right)^2 }{ \\frac{N_{\\ell, \\cdot}}{n} \\frac{N_{\\cdot, h}}{n} }. \\]\nNull distribution. \\(U_n \\xrightarrow{\\mathcal{L}} \\chi^2 \\left( (s-1)(r-1) \\right)\\).\nR function. chisq.test()\nValidity. Asymptotic. Often, \\(n \\gg 30\\) and \\(N_{\\ell, h} \\gg 5\\), for each pair \\((\\ell, h)\\)."
   },
   {
-    "objectID": "exam1.html",
-    "href": "exam1.html",
-    "title": "First Exam",
+    "objectID": "01_Introduction/01-Introduction-Exercises.html",
+    "href": "01_Introduction/01-Introduction-Exercises.html",
+    "title": "Quarto",
     "section": "",
-    "text": "The data set you are going to work on is the penguins data set. The data set contains data on the body mass, flipper length, species of penguins. The data set is available in the {palmerpenguins} package. You can install the package using the following code:\ninstall.packages(\"palmerpenguins\")"
+    "text": "This is a Quarto file. It contains plain text interspersed with grey chunks of code. You can use the file to take notes and run code. For example, you can write your name on the line below. Try it:\n\n# You can write code in chunks that look like this.\n# This chunk uses the code plot(cars) to plot a data set.\n# To run the code, click the Green play button at the\n# top right of this chunk. Try it!\nplot(cars)\n\n\n\n\n\n\n\n\nGood job! The results of a code chunk will appear beneath the chunk. You can click the x above the results to make them go away, but let’s not do that.\nYou can open a new Quarto file by going to File &gt; New File &gt; Quarto Document…. Then click OK. But let’s not open a new file now—keep reading this one!\n\nAdding chunks\nTo add a new code chunk, press Cmd+Option+I (Ctrl+Alt+I on Windows), or click the Insert button at the top of this document, then select R. Quarto will add a new, empty chunk at your cursor’s location.\nTry making a code chunk below:\nGood job! For today, you should place all of your R code inside of code chunks.\n\n# Sometimes you might want to run only some of the code \n# in a code chunk. To do that, highlight the code to \n# run and then press Cmd + Enter (Control + Enter on \n# Windows). If you do not highlight any code, R will \n# run the line of code that your cursor is on.\n# Try it now. Run mean(1:5) but not the line below.\nmean(1:5)\n\n[1] 3\n\nwarning(\"You shouldn't run this!\")\n\nWarning: You shouldn't run this!\n\n\n\n# You can click the downward facing arrow to the left of the play button to run\n# every chunk above the current code chunk. This is useful if the code in your\n# chunk uses object that you made in previous chunks.\n# Sys.Date()\n\nDid you notice the green lines (if your RStudio theme is the default one) in the code chunk above? They are code comments, lines of text that R ignores when it runs the code. R will treat everything that appears after # on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that’s fine)!\nRemove the # on the last line of the chunk above and then rerun the chunk. Can you tell what Sys.Date() does?\nBy the way, you only need to use code comments inside of code chunks. R knows not to try to run the text that you write outside of code chunks. You can press Cmd+Shift+C to comment or uncomment a line of code.\n\n\nText formatting\nHave you noticed the funny highlighting that appears in this document? Quarto treats text surrounded by asterisks, double asterisks, and backticks in special ways. It is Quarto’s way of saying that these words are in\n\nitalics\nalso italics\nbold, and\ncode font\n\n*, **, and ` are signals used by a text editing format known as markdown. Quarto uses markdown to turn your plain looking .Rmd documents into polished reports. Let’s give that a try.\n\n\nReports\nWhen you click the Render button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:\n\nTransforms all of your markdown cues into actual formatted text (e.g. bold text, italic text, etc.)\nReruns all of your code chunks in a clean R session and appends the results to the finished report.\nSaves the finished report alongside your .Rmd file\n\nClick the Render button at the top of this document or press Cmd+Shift+K (Ctrl+Shift+K on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking Render now.\nGood job! You’ll learn more about Quarto throughout the day!\n\n\nR Packages\nHere is one last code chunk that we will use in the next exercise. If you uncomment the code and try to run it, it won’t work. If you don’t believe me try!\n\n# ggplot(data = diamonds) + geom_point(aes(x = carat, y = price))"
   },
   {
-    "objectID": "exam1.html#data",
-    "href": "exam1.html#data",
-    "title": "First Exam",
+    "objectID": "07_Join/07-Join-Exercises.html",
+    "href": "07_Join/07-Join-Exercises.html",
+    "title": "Join Data with dplyr",
     "section": "",
-    "text": "The data set you are going to work on is the penguins data set. The data set contains data on the body mass, flipper length, species of penguins. The data set is available in the {palmerpenguins} package. You can install the package using the following code:\ninstall.packages(\"palmerpenguins\")"
+    "text": "flights\n\n# A tibble: 336,776 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\nVisualizing a raw tibble is not that pretty. Let’s wrap the next output in a DT::datatable() function to make it more readable:\n\nDT::datatable(airlines)"
   },
   {
-    "objectID": "exam1.html#goal",
-    "href": "exam1.html#goal",
-    "title": "First Exam",
-    "section": "Goal",
-    "text": "Goal\nThe goal of this exam is to reproduce the following plot using the penguins data set:\n\nHint: You need to carefully analze the plot to understand how you need to manipulate the original data set in order to get the correct answer. For the sake of clarity, with fixed slopes means that the slopes of the lines are the same for all species and sexes. with varying slopes means that the slopes of the lines are different for each species and sex."
+    "objectID": "07_Join/07-Join-Exercises.html#your-turn-1",
+    "href": "07_Join/07-Join-Exercises.html#your-turn-1",
+    "title": "Join Data with dplyr",
+    "section": "Your Turn 1",
+    "text": "Your Turn 1\nWhich airlines had the largest arrival delays? Complete the code below.\n\nJoin airlines to flights\nCompute and order the average arrival delays by airline. Display full names, no codes.\n\n(Hint: Be sure to remove each _ before turning eval to true)\n\nflights |&gt;\n  filter(!is.na(arr_delay)) |&gt;\n  __________________  |&gt;\n  group_by(_________) |&gt;\n  __________________  |&gt;\n  arrange(__________)"
   },
   {
-    "objectID": "exam1.html#rules-expected-delivrables",
-    "href": "exam1.html#rules-expected-delivrables",
-    "title": "First Exam",
+    "objectID": "07_Join/07-Join-Exercises.html#your-turn-2",
+    "href": "07_Join/07-Join-Exercises.html#your-turn-2",
+    "title": "Join Data with dplyr",
+    "section": "Your Turn 2",
+    "text": "Your Turn 2\nJoin flights and airports by dest and faa.\nThen for each name, compute the distance from NYC and the average arr_delay. Hint: use first() to get the first value of distance.\nOrder by average delay, worst to best.\n(Hint: Be sure to remove each _ before turning eval to true)\n\nflights |&gt; \n  filter(!is.na(arr_delay)) |&gt;\n  ______(airports, __________________) |&gt;\n  group_by(name) |&gt;\n  _________(distance = _____________, \n               delay = _____________) |&gt;\n  ______(_____(delay))"
+  },
+  {
+    "objectID": "07_Join/07-Join-Exercises.html#your-turn-3",
+    "href": "07_Join/07-Join-Exercises.html#your-turn-3",
+    "title": "Join Data with dplyr",
+    "section": "Your Turn 3",
+    "text": "Your Turn 3\nHow many airports in airports are serviced by flights in flights? (i.e. how many places can you fly to direct from New York?)\nNotice that the column to join on is named faa in the airports data set and dest in the flights data set.\n(Hint: Be sure to remove each _ before turning eval to true)\n\n__________ |&gt;\n _____________________________ |&gt;\n  select(faa)"
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Car accidents in France",
+    "section": "",
+    "text": "This page explains the project proposed to dig deeper into Quarto and its features. The project is about car accidents in France. The data is available on the Open Data platform of the French government. The data is available in the form of several CSV files. The data contains information about car accidents in France from 2005 to 2023. The data contains information about the date and time of the accident, the location of the accident, the number of people involved in the accident, the number of people injured, the number of people killed, the type of vehicles involved in the accident, the type of road, the weather conditions, the lighting conditions, the type of intersection, the type of collision, the type of accident, the causes of the accident, etc."
+  },
+  {
+    "objectID": "project.html#description-of-the-data-set",
+    "href": "project.html#description-of-the-data-set",
+    "title": "Car accidents in France",
+    "section": "",
+    "text": "This page explains the project proposed to dig deeper into Quarto and its features. The project is about car accidents in France. The data is available on the Open Data platform of the French government. The data is available in the form of several CSV files. The data contains information about car accidents in France from 2005 to 2023. The data contains information about the date and time of the accident, the location of the accident, the number of people involved in the accident, the number of people injured, the number of people killed, the type of vehicles involved in the accident, the type of road, the weather conditions, the lighting conditions, the type of intersection, the type of collision, the type of accident, the causes of the accident, etc."
+  },
+  {
+    "objectID": "project.html#aims-of-the-project",
+    "href": "project.html#aims-of-the-project",
+    "title": "Car accidents in France",
+    "section": "Aims of the project",
+    "text": "Aims of the project\nThe project aims to dig into interactive Quarto dashboards to analyze the data and extract insights. The project can involve the following steps:\n\nData collection: Download the data from the Open Data platform of the French government. You can use packages such as {readr} or {readxl} to read the data into R.\nData preprocessing: Clean the data, handle missing values, and transform the data into a suitable format for analysis. For this task, you can use:\n\n{dplyr} and {tidyr} and other tidyverse packages for data manipulation and reshaping;\n{skimr} to get a summary of the data;\n{janitor} to clean the data;\n{naniar} to visualize missing values and take informed decisions about handling them.\n\nData analysis: Use Quarto Dashboard and shiny to create interactive dashboards to analyze the data and extract insights. See https://quarto.org/docs/dashboards/interactivity/ for easy interactivity in Quarto dashboard using Shiny.\nData visualization: Use {ggplot2} and {plotly} to create interactive visualizations to present the insights.\nSpatial Data: Use appropriate packages to create maps to visualize the location of accidents with superimposed relevant information.\n\nThe project will help to understand the patterns and trends in car accidents in France and identify the factors that contribute to accidents. The project will also help to explore the relationship between different variables and their impact on accidents. The project will be a good example to showcase the capabilities of Quarto for data analysis and visualization."
+  },
+  {
+    "objectID": "project.html#rules-expected-delivrables",
+    "href": "project.html#rules-expected-delivrables",
+    "title": "Car accidents in France",
     "section": "Rules & Expected delivrables",
-    "text": "Rules & Expected delivrables\nThe exam starts at 11am on Friday, 13th December 2024 and ends at 12pm on the same day. You are not allowed to communicate with anyone during the exam.\nThe following delivrable is expected by email to the instructor by 12:15pm on Friday, 13th December 2024:\n\nA Quarto file which renders without error with the code to reproduce the plot. The name of the file must be of the form exam1_&lt;your_name&gt;.qmd."
+    "text": "Rules & Expected delivrables\nThe following delivrables are expected from the project on Monday, 6th January 2025 at 11:59 PM at the latest:\n\nInteractive dashboards to analyze the data and extract insights.\nA Quarto document detailing the thinking process and actual steps taken that led to the provided dashboards.\n\nHence, delivrables should be made of two .qmd files.\nThe project is to be done in groups of 3 students. You should email the instructor with the names of the students in your group by Tuesday, 10th December 2024. The instructor will assign a group number to each group. The group number should be included in the Quarto document and the interactive dashboards.\n\n\n\n\n\n\nDelivrable\n\n\n\nDelivrable is expected to be a ZIP archive containing the two .qmd files (report and dashboard) along with all the necessary data files.\nPlease ensure that both files compile withour error."
   },
   {
-    "objectID": "05_Report/05-Report-Parameters.html",
-    "href": "05_Report/05-Report-Parameters.html",
-    "title": "Garrett",
+    "objectID": "12_PCA/12-PCA-Exercises.html",
+    "href": "12_PCA/12-PCA-Exercises.html",
+    "title": "PCA - Exercises",
     "section": "",
-    "text": "There have been 130211 children named Garrett. The name Garrett was most popular in 2000, when there were 5840 boys named Garrett. Garrett is traditionally a boy’s name."
+    "text": "Cette base contient:\n\nles enregistrements des températures des capitales européennes de Janvier à Décembre\nles coordonnées GPS de chaque ville\namplitude thermale : Différence entre les températures maximales et minimales\nmoyenne annuelle\nune variable qualitative : la direction (S, N, O, E).\n\nExécuter une PCA pour dégager des profils type de température et quelles villes les suivent."
   },
   {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html",
-    "href": "06_Tidy/06-Tidy-Exercises.html",
-    "title": "Tidy Data",
+    "objectID": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-temperature.csv",
+    "href": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-temperature.csv",
+    "title": "PCA - Exercises",
     "section": "",
-    "text": "table1\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\ntable2\n\n# A tibble: 12 × 4\n   country      year type            count\n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583\n\ntable3\n\n# A tibble: 6 × 3\n  country      year rate             \n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583\n\ntable4a\n\n# A tibble: 3 × 3\n  country     `1999` `2000`\n  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;\n1 Afghanistan    745   2666\n2 Brazil       37737  80488\n3 China       212258 213766\n\ntable4b\n\n# A tibble: 3 × 3\n  country         `1999`     `2000`\n  &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan   19987071   20595360\n2 Brazil       172006362  174504898\n3 China       1272915272 1280428583\n\ntable5\n\n# A tibble: 6 × 4\n  country     century year  rate             \n  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            \n1 Afghanistan 19      99    745/19987071     \n2 Afghanistan 20      00    2666/20595360    \n3 Brazil      19      99    37737/172006362  \n4 Brazil      20      00    80488/174504898  \n5 China       19      99    212258/1272915272\n6 China       20      00    213766/1280428583"
+    "text": "Cette base contient:\n\nles enregistrements des températures des capitales européennes de Janvier à Décembre\nles coordonnées GPS de chaque ville\namplitude thermale : Différence entre les températures maximales et minimales\nmoyenne annuelle\nune variable qualitative : la direction (S, N, O, E).\n\nExécuter une PCA pour dégager des profils type de température et quelles villes les suivent."
   },
   {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-1",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-1",
-    "title": "Tidy Data",
-    "section": "Your Turn 1",
-    "text": "Your Turn 1\nOn a sheet of paper, draw how the cases data set would look if it had the same values grouped into three columns: country, year, n"
+    "objectID": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-chicken.csv",
+    "href": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-chicken.csv",
+    "title": "PCA - Exercises",
+    "section": "Le jeu de données chicken.csv",
+    "text": "Le jeu de données chicken.csv\n\nDescription : 43 poulets ayant subis 6 régimes : régime normal (N), Jeûne pendant 16h (F16), Jeûne pendant 16h et puis se réalimenter pendant 5h (F16R5), (F16R16), (F48), (F48R24)\nVariables : Après le régime, on a effectué une analyse des gènes utilisant une puce ADN : 7407 expressions de gènes.\nObjectif : Voir si les gènes s’expriment différemment selon le niveau de stress. Combien de temps faut-il au poulet pour revenir à la situation normale ?"
   },
   {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-2",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-2",
-    "title": "Tidy Data",
-    "section": "Your Turn 2",
-    "text": "Your Turn 2\nUse pivot_longer() to reorganize table4a into three columns: country, year, and cases."
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-3",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-3",
-    "title": "Tidy Data",
-    "section": "Your Turn 3",
-    "text": "Your Turn 3\nOn a sheet of paper, draw how this data set would look if it had the same values grouped into three columns: city, large, small"
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-4",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-4",
-    "title": "Tidy Data",
-    "section": "Your Turn 4",
-    "text": "Your Turn 4\nUse pivot_wider() to reorganize table2 into four columns: country, year, cases, and population."
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-5",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-5",
-    "title": "Tidy Data",
-    "section": "Your Turn 5",
-    "text": "Your Turn 5\nGather the 5th through 60th columns of who into a pair of key:value columns named codes and n.\nThen select just the county, year, codes and n variables.\n\nwho\n\n# A tibble: 7,240 × 60\n   country  iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544\n   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;\n 1 Afghani… AF    AFG    1980          NA           NA           NA           NA\n 2 Afghani… AF    AFG    1981          NA           NA           NA           NA\n 3 Afghani… AF    AFG    1982          NA           NA           NA           NA\n 4 Afghani… AF    AFG    1983          NA           NA           NA           NA\n 5 Afghani… AF    AFG    1984          NA           NA           NA           NA\n 6 Afghani… AF    AFG    1985          NA           NA           NA           NA\n 7 Afghani… AF    AFG    1986          NA           NA           NA           NA\n 8 Afghani… AF    AFG    1987          NA           NA           NA           NA\n 9 Afghani… AF    AFG    1988          NA           NA           NA           NA\n10 Afghani… AF    AFG    1989          NA           NA           NA           NA\n# ℹ 7,230 more rows\n# ℹ 52 more variables: new_sp_m4554 &lt;dbl&gt;, new_sp_m5564 &lt;dbl&gt;,\n#   new_sp_m65 &lt;dbl&gt;, new_sp_f014 &lt;dbl&gt;, new_sp_f1524 &lt;dbl&gt;,\n#   new_sp_f2534 &lt;dbl&gt;, new_sp_f3544 &lt;dbl&gt;, new_sp_f4554 &lt;dbl&gt;,\n#   new_sp_f5564 &lt;dbl&gt;, new_sp_f65 &lt;dbl&gt;, new_sn_m014 &lt;dbl&gt;,\n#   new_sn_m1524 &lt;dbl&gt;, new_sn_m2534 &lt;dbl&gt;, new_sn_m3544 &lt;dbl&gt;,\n#   new_sn_m4554 &lt;dbl&gt;, new_sn_m5564 &lt;dbl&gt;, new_sn_m65 &lt;dbl&gt;, …"
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-6",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-6",
-    "title": "Tidy Data",
-    "section": "Your Turn 6",
-    "text": "Your Turn 6\nSeparate the sexage column into sex and age columns.\n(Hint: Be sure to remove each _ before running the code and switch eval option to true)\n\nwho |&gt; \n  pivot_longer(cols = 5:60, names_to = \"codes\", values_to = \"n\") |&gt; \n  select(-iso2, -iso3) |&gt; \n  separate(codes, c(\"new\", \"type\", \"sexage\"), sep = \"_\") |&gt; \n  select(-new) |&gt; \n  _______________________________"
-  },
-  {
-    "objectID": "06_Tidy/06-Tidy-Exercises.html#your-turn-7",
-    "href": "06_Tidy/06-Tidy-Exercises.html#your-turn-7",
-    "title": "Tidy Data",
-    "section": "Your Turn 7",
-    "text": "Your Turn 7\nExtend this code to reshape the data into a data set with three columns:\n\nyear\nM\nF\n\nCalculate the percent of male (or female) children by year. Then plot the percent over time.\n\nbabynames |&gt; \n  group_by(year, sex) |&gt; \n  summarise(n = sum(n))\n\n`summarise()` has grouped output by 'year'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 276 × 3\n# Groups:   year [138]\n    year sex        n\n   &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;\n 1  1880 F      90993\n 2  1880 M     110491\n 3  1881 F      91953\n 4  1881 M     100743\n 5  1882 F     107847\n 6  1882 M     113686\n 7  1883 F     112319\n 8  1883 M     104627\n 9  1884 F     129020\n10  1884 M     114442\n# ℹ 266 more rows"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html",
-    "href": "03_Transform/03-Transform-Exercises.html",
-    "title": "Transform Data",
-    "section": "",
-    "text": "Make sure that the .csv file is in the same directory as the .qmd file you’re currently working on. Then import the babynames.csv data set. Give it the name babynames. Then copy the import code into the code chunk below. Does it run?\n\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# ℹ 1,924,655 more rows"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-1",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-1",
-    "title": "Transform Data",
-    "section": "",
-    "text": "Make sure that the .csv file is in the same directory as the .qmd file you’re currently working on. Then import the babynames.csv data set. Give it the name babynames. Then copy the import code into the code chunk below. Does it run?\n\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# ℹ 1,924,655 more rows"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-2",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-2",
-    "title": "Transform Data",
-    "section": "Your Turn 2",
-    "text": "Your Turn 2\nAlter the code to select just the n column:\n\nselect(babynames, name, prop)\n\n# A tibble: 1,924,665 × 2\n   name        prop\n   &lt;chr&gt;      &lt;dbl&gt;\n 1 Mary      0.0724\n 2 Anna      0.0267\n 3 Emma      0.0205\n 4 Elizabeth 0.0199\n 5 Minnie    0.0179\n 6 Margaret  0.0162\n 7 Ida       0.0151\n 8 Alice     0.0145\n 9 Bertha    0.0135\n10 Sarah     0.0132\n# ℹ 1,924,655 more rows"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#quiz",
-    "href": "03_Transform/03-Transform-Exercises.html#quiz",
-    "title": "Transform Data",
-    "section": "Quiz",
-    "text": "Quiz\nWhich of these is NOT a way to select the name and n columns together?\n\nselect(babynames, -c(year, sex, prop))\n\n# A tibble: 1,924,665 × 2\n   name          n\n   &lt;chr&gt;     &lt;int&gt;\n 1 Mary       7065\n 2 Anna       2604\n 3 Emma       2003\n 4 Elizabeth  1939\n 5 Minnie     1746\n 6 Margaret   1578\n 7 Ida        1472\n 8 Alice      1414\n 9 Bertha     1320\n10 Sarah      1288\n# ℹ 1,924,655 more rows\n\nselect(babynames, name:n)\n\n# A tibble: 1,924,665 × 2\n   name          n\n   &lt;chr&gt;     &lt;int&gt;\n 1 Mary       7065\n 2 Anna       2604\n 3 Emma       2003\n 4 Elizabeth  1939\n 5 Minnie     1746\n 6 Margaret   1578\n 7 Ida        1472\n 8 Alice      1414\n 9 Bertha     1320\n10 Sarah      1288\n# ℹ 1,924,655 more rows\n\nselect(babynames, starts_with(\"n\"))\n\n# A tibble: 1,924,665 × 2\n   name          n\n   &lt;chr&gt;     &lt;int&gt;\n 1 Mary       7065\n 2 Anna       2604\n 3 Emma       2003\n 4 Elizabeth  1939\n 5 Minnie     1746\n 6 Margaret   1578\n 7 Ida        1472\n 8 Alice      1414\n 9 Bertha     1320\n10 Sarah      1288\n# ℹ 1,924,655 more rows\n\nselect(babynames, ends_with(\"n\"))\n\n# A tibble: 1,924,665 × 1\n       n\n   &lt;int&gt;\n 1  7065\n 2  2604\n 3  2003\n 4  1939\n 5  1746\n 6  1578\n 7  1472\n 8  1414\n 9  1320\n10  1288\n# ℹ 1,924,655 more rows"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-3",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-3",
-    "title": "Transform Data",
-    "section": "Your Turn 3",
-    "text": "Your Turn 3\nUse filter, babynames, and the logical operators to find:\n\nAll of the names where prop is greater than or equal to 0.08\n\nAll of the children named “Sea”"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-4",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-4",
-    "title": "Transform Data",
-    "section": "Your Turn 4",
-    "text": "Your Turn 4\nUse Boolean operators to return only the rows that contain:\n\nBoys named Sue\n\nNames that were used by exactly 5 or 6 children in 1880\n\nNames that are one of Acura, Lexus, or Yugo"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#help-me",
-    "href": "03_Transform/03-Transform-Exercises.html#help-me",
-    "title": "Transform Data",
-    "section": "Help Me",
-    "text": "Help Me\nWhat is the smallest value of n? What is the largest?"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-5",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-5",
-    "title": "Transform Data",
-    "section": "Your Turn 5",
-    "text": "Your Turn 5\nUse |&gt; to write a sequence of functions that:\n\nFilters babynames to just the girls that were born in 2017, then…\n\nSelects the name and n columns, then…\n\nArranges the results so that the most popular names are near the top."
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-6",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-6",
-    "title": "Transform Data",
-    "section": "Your Turn 6",
-    "text": "Your Turn 6\n\nTrim babynames to just the rows that contain your name and your sex\n\nTrim the result to just the columns that will appear in your graph (not strictly necessary, but useful practice)\nPlot the results as a line graph with year on the x axis and prop on the y axis"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-7",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-7",
-    "title": "Transform Data",
-    "section": "Your Turn 7",
-    "text": "Your Turn 7\nCpmplete the code below to extract the rows where name == \"Khaleesi\". Then use summarise() and sum() and min() to find:\n\nThe total number of children named Khaleesi\nThe first year Khaleesi appeared in the data\n\nMake sure to turn the eval option to true before running the code.\n(Hint: Be sure to remove each _ before running the code)\n\nbabynames ___ \n  filter(_______________________) ___\n  ___________(total = ________, first = _______)"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-8",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-8",
-    "title": "Transform Data",
-    "section": "Your Turn 8",
-    "text": "Your Turn 8\nUse group_by(), summarise(), and arrange() to display the ten most popular names. Compute popularity as the total number of children of a single gender given a name.\nMake sure to turn the eval option to true before running the code.\n(Hint: Be sure to remove each _ before running the code)\n\nbabynames |&gt; \n  _______(name, sex) |&gt; \n  _______(total = _____(n)) |&gt; \n  _______(desc(_____))"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-9",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-9",
-    "title": "Transform Data",
-    "section": "Your Turn 9",
-    "text": "Your Turn 9\nUse group_by() to calculate and then plot the total number of children born each year over time."
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-10",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-10",
-    "title": "Transform Data",
-    "section": "Your Turn 10",
-    "text": "Your Turn 10\nUse mutate() and min_rank()to rank each row in babynames from largest n to lowest n.\nMake sure to turn the eval option to true before running the code.\n(Hint: Be sure to remove each _ before running the code)\n\nbabynames |&gt; \n  ______(rank = _______(____(prop)))"
-  },
-  {
-    "objectID": "03_Transform/03-Transform-Exercises.html#your-turn-11",
-    "href": "03_Transform/03-Transform-Exercises.html#your-turn-11",
-    "title": "Transform Data",
-    "section": "Your Turn 11",
-    "text": "Your Turn 11\nGroup babynames by year and then re-rank the data. Filter the results to just rows where rank == 1."
-  },
-  {
-    "objectID": "05_Report/05-Report-Exercises.html",
-    "href": "05_Report/05-Report-Exercises.html",
-    "title": "Garrett",
-    "section": "",
-    "text": "There have been TODO children named Garrett. The name Garrett was most popular in TODO, when TODO TODO were named Garrett. Garrett is traditionally a TODO name."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Instructions for the class",
-    "section": "",
-    "text": "Homework Assignment (2025-01-01)\n\n\n\nNew announcement about the homework assignment.\nDelivrable is expected to be a ZIP archive containing the two .qmd files (report and dashboard) along with all the necessary data files.\nPlease ensure that both files compile withour error.\nCheckout the homework assignment page."
-  },
-  {
-    "objectID": "index.html#disclaimer",
-    "href": "index.html#disclaimer",
-    "title": "Instructions for the class",
-    "section": "Disclaimer",
-    "text": "Disclaimer\nThis repository is build on the work of Garrett Grolemund from posit. In particular, it reuses an important part of the material he developed for tidyverse-related workshops, which is available at https://github.com/rstudio-education/remaster-the-tidyverse under the Creative Commons BY-SA 4.0 copyright."
-  },
-  {
-    "objectID": "index.html#material",
-    "href": "index.html#material",
-    "title": "Instructions for the class",
-    "section": "Material",
-    "text": "Material\nThe main webpage is at https://astamm.github.io/data-science-with-r/."
-  },
-  {
-    "objectID": "index.html#outline",
-    "href": "index.html#outline",
-    "title": "Instructions for the class",
-    "section": "Outline",
-    "text": "Outline\n\nData wrangling with R\nThe class is organised in 9 parts each of which has its own set of slides and exercises. The slides are available in the above Data Wranging - Slides tab and the exercises in the above Data Wranging - Labs tab. The slides are written partly with Keynote (exported as PDFs) and partly in Quarto reveajs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\nSuppl. Material\n\n\n\n\n1\nIntroduction\nPDF\nQuarto\n\n\n\n2\nVisualize Data\nPDF\nQuarto\n\n\n\n3\nTransform Data\nPDF\nQuarto\nCSV\n\n\n4\nModel Data\nPDF\nQuarto\nZIP\n\n\n5\nCommunicate Data\nPDF\nQuarto\nQuarto\n\n\n6\nTidy Data\nPDF\nQuarto\n\n\n\n7\nJoin Data\nPDF\nQuarto\n\n\n\n8\nManipulate Data Types\nPDF\nQuarto\n\n\n\n9\nManipulate Lists\nPDF\nQuarto\n\n\n\n\n\n\nExploratory Data Analysis with R\nThe class is organised in 4 parts each of which has its own set of slides and exercises. The slides are available in the above Exploratory Data Analysis - Slides tab and the exercises in the the above Exploratory Data Analysis - Labs tab. The slides are written in Quarto revealjs slides. The exercises are written in Quarto.\n\n\n\nPart\nTitle\nSlides\nExercises\nSuppl. Material\n\n\n\n\n1\nHypothesis Testing\nQuarto\nQuarto\n\n\n\n2\nLinear Regression\nQuarto\nQuarto\nZIP\n\n\n3\nPrincipal Component Analysis\nQuarto\nQuarto\nZIP\n\n\n4\nClustering\nQuarto\nQuarto"
-  },
-  {
-    "objectID": "index.html#requirements",
-    "href": "index.html#requirements",
-    "title": "Instructions for the class",
-    "section": "Requirements",
-    "text": "Requirements\n\nR: https://www.r-project.org\nRStudio: https://posit.co/download/rstudio-desktop/\nQuarto: https://quarto.org/docs/get-started/\nQuarto Drop extension: https://github.com/r-wasm/quarto-drop\nTidyverse: https://www.tidyverse.org\nSpecific R packages by theme:\n\nData sets:\n\n{babynames}: a data set of frequency of baby names in the US from 1880 to 2017.\n\nData visualization:\n\n{ggplot2}: a package that implements the grammar of graphics.\n{plotly}: an interactive plotting library.\n\nModel summaries:\n\n{broom}: a package that provides tidy summaries of model outputs.\n{modelr}: a package that provides functions for modelling within the tidyverse.\n{jtools}: a package that provides functions for summarizing and visualizing model outputs and main effects.\n{interactions}: a package that provides functions for visualizing the effect of interactions in regression models.\n\nPCA:\n\n{FactoMineR}: a package that provides ready-to-use implementations of standard statistical methods for data analysis.\n{factoextra}: a package that provides functions for extracting and visualizing the results of multivariate data analyses.\n{corrplot}: a package that provides functions for visualizing correlation matrices.\n{viridis}: a package that provides color palettes that are perceptually uniform in both color and black-and-white.\n{huxtable}: a package that provides functions for creating tables in HTML documents."
-  },
-  {
-    "objectID": "08_Types/08-Types-Exercises.html",
-    "href": "08_Types/08-Types-Exercises.html",
-    "title": "Data Types",
-    "section": "",
-    "text": "Use flights to create delayed, a variable that displays whether a flight was delayed (arr_delay &gt; 0).\nThen, remove all rows that contain an NA in delayed.\nFinally, create a summary table that shows:\n\nHow many flights were delayed\n\nWhat proportion of flights were delayed"
-  },
-  {
-    "objectID": "08_Types/08-Types-Exercises.html#your-turn-1",
-    "href": "08_Types/08-Types-Exercises.html#your-turn-1",
-    "title": "Data Types",
-    "section": "",
-    "text": "Use flights to create delayed, a variable that displays whether a flight was delayed (arr_delay &gt; 0).\nThen, remove all rows that contain an NA in delayed.\nFinally, create a summary table that shows:\n\nHow many flights were delayed\n\nWhat proportion of flights were delayed"
-  },
-  {
-    "objectID": "08_Types/08-Types-Exercises.html#your-turn-2",
-    "href": "08_Types/08-Types-Exercises.html#your-turn-2",
-    "title": "Data Types",
-    "section": "Your Turn 2",
-    "text": "Your Turn 2\nFill in the blanks to:\n\nIsolate the last letter of every name\nCreate a logical variable that displays whether the last letter is one of “a”, “e”, “i”, “o”, “u”, or “y”.\nUse a weighted mean to calculate the proportion of children whose name ends in a vowel (by year and sex)\n\nand then display the results as a line plot.\n\n(Hint: Be sure to remove each _ before turning eval to true)\n\nbabynames |&gt; \n  _______(last = _________, \n          vowel = __________) |&gt; \n  group_by(__________) |&gt; \n  _________(p_vowel = weighted.mean(vowel, n)) |&gt; \n  _________ +\n  __________"
-  },
-  {
-    "objectID": "08_Types/08-Types-Exercises.html#your-turn-3",
-    "href": "08_Types/08-Types-Exercises.html#your-turn-3",
-    "title": "Data Types",
-    "section": "Your Turn 3",
-    "text": "Your Turn 3\nRepeat the demonstration, some of whose code is below, to make a sensible graph of average TV consumption by marital status.\n(Hint: Be sure to remove each _ before turning eval to true)\n\ngss_cat |&gt; \n  filter(_is.na(________)) |&gt;\n  group_by(________) |&gt;\n  summarise(_________________) |&gt;\n  ggplot() +\n    geom_point(mapping = aes(x = _______, y = _________________________))"
-  },
-  {
-    "objectID": "08_Types/08-Types-Exercises.html#your-turn-4",
-    "href": "08_Types/08-Types-Exercises.html#your-turn-4",
-    "title": "Data Types",
-    "section": "Your Turn 4",
-    "text": "Your Turn 4\nDo you think liberals or conservatives watch more TV? Compute average tv hours by party ID an then plot the results."
-  },
-  {
-    "objectID": "08_Types/08-Types-Exercises.html#your-turn-5",
-    "href": "08_Types/08-Types-Exercises.html#your-turn-5",
-    "title": "Data Types",
-    "section": "Your Turn 5",
-    "text": "Your Turn 5\nWhat is the best time of day to fly?\nUse the hour and minute variables in flights to make a new variable that shows the time of each flight as an hms.\nThen use a smooth line to plot the relationship between time of day and arr_delay."
-  },
-  {
-    "objectID": "08_Types/08-Types-Exercises.html#your-turn-6",
-    "href": "08_Types/08-Types-Exercises.html#your-turn-6",
-    "title": "Data Types",
-    "section": "Your Turn 6",
-    "text": "Your Turn 6\nWhat is the best day of the week to fly?\nLook at the code skeleton for Your Turn 7. Discuss with your neighbor:\n\nWhat does each line do?\nWhat will the missing parts need to do?"
-  },
-  {
-    "objectID": "08_Types/08-Types-Exercises.html#your-turn-7",
-    "href": "08_Types/08-Types-Exercises.html#your-turn-7",
-    "title": "Data Types",
-    "section": "Your Turn 7",
-    "text": "Your Turn 7\nFill in the blank to:\nExtract the day of the week of each flight (as a full name) from time_hour.\nPlot the average arrival delay by day as a column chart (bar chart).\n(Hint: Be sure to remove each _ before turning eval to true)\n\nflights |&gt; \n  mutate(weekday = _______________________________) |&gt; \n  group_by(weekday) |&gt; \n  filter(!is.na(arr_delay)) |&gt; \n  summarise(avg_delay = mean(arr_delay)) |&gt; \n  ggplot() +\n    geom_col(mapping = aes(x = weekday, y = avg_delay))"
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html",
-    "title": "Hypothesis Testing",
-    "section": "",
-    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the mean energy efficiency?\nDoes that mean that the data significantly prove that the mean energy efficiency is larger than the expected nominal value?"
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-1",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-1",
-    "title": "Hypothesis Testing",
-    "section": "",
-    "text": "We want to study the energy efficiency of a chemical reaction that is documented having a nominal energy efficiency of \\(90\\%\\). Based on previous experiments on the same reaction, we know that the energy efficiency is a Gaussian random variable with unknown mean \\(\\mu\\) and variance equal to \\(2\\). In the last \\(5\\) days, the plant has given the following energy efficiencies (in percentage):\n\\[ 91.6, \\quad 88.75, \\quad 90.8, \\quad 89.95, \\quad 91.3 \\]\n\nIs the data in accordance with the specifications?\nWhat is a point estimate of the mean energy efficiency?\nDoes that mean that the data significantly prove that the mean energy efficiency is larger than the expected nominal value?"
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-2",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-2",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 2",
-    "text": "Exercise 2\nA study about air pollution done by a research station measured, on \\(8\\) different air samples, the following values of a polluant concentration (in \\(\\mu\\)g/m\\(^2\\)):\n\\[ 2.2 \\quad 1.8 \\quad 3.1 \\quad 2.0 \\quad 2.4 \\quad 2.0 \\quad 2.1 \\quad 1.2 \\]\nAssuming that the sampled population is normal,\n\nCan we say that the mean polluant concentration is present with less than \\(2.5 \\mu\\)g/m\\(^2\\)?\nCan we say that the mean polluant concentration is present with less than \\(2.4 \\mu\\)g/m\\(^2\\)?\nIs the normality hypothesis essential to justify the method used?"
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-3",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-3",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 3",
-    "text": "Exercise 3\nA medical inspection in an elementary school during a measles epidemic led to the examination of \\(30\\) children to assess whether they were affected. The results are in a tibble exam which contains the following:\n\n\n# A tibble: 30 × 2\n      Id Status \n   &lt;int&gt; &lt;chr&gt;  \n 1     1 Healthy\n 2     2 Healthy\n 3     3 Healthy\n 4     4 Healthy\n 5     5 Healthy\n 6     6 Healthy\n 7     7 Healthy\n 8     8 Healthy\n 9     9 Healthy\n10    10 Healthy\n# ℹ 20 more rows\n\n\nLet \\(p\\) be the probability that a child from the same school is sick.\n\nDetermine a point estimate \\(\\widehat{p}\\) for \\(p\\).\nThe school will be closed if more than 5% of the children are sick. Can you conclude that, statistically, this is the case? Use a significance level of 5%."
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-4",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-4",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 4",
-    "text": "Exercise 4\nThe capacities (in ampere-hours) of \\(10\\) batteries were recorded as follows:\n\\[ 140, \\quad 136, \\quad 150, \\quad 144, \\quad 148, \\quad 152, \\quad 138, \\quad 141, \\quad 143, \\quad 151 \\]\n\nEstimate the population variance \\(\\sigma^2\\).\nCan we claim that the mean capacity of a battery is greater than 142 ampere-hours ?\nCan we claim that the mean capacity of a battery is greater than 140 ampere-hours ?\nCan we claim that the standard deviation of the capacity is less than 6 ampere-hours ?"
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-5",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-5",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 5",
-    "text": "Exercise 5\nA company produces barbed wire in skeins of \\(100\\)m each, nominally. The real length of the skeins is a random variable \\(X\\) distributed as a \\(\\mathcal{N}(\\mu, 4)\\). Measuring \\(10\\) skeins, we get the following lengths:\n\\[ 98.683, 96.599, 99.617, 102.544, 100.110, 102.000, 98.394, 100.324, 98.743, 103.247 \\]\n\nPerform a conformity test at significance level \\(\\alpha = 5\\%\\).\nDetermine, on the basis of the observed values, the p-value of the test."
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-6",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-6",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 6",
-    "text": "Exercise 6\nIn an atmospheric study the researchers registered, over \\(8\\) different samples of air, the following concentration of COG (in micrograms over cubic meter):\n\\[ 2.3;\\; 1.7;\\; 3.2;\\; 2.1;\\; 2.3;\\; 2.0;\\; 2.2;\\; 1.2 \\]\n\nUsing unbiased estimators, determine a point estimate of the mean and variance of COG concentration.\n\nAssume now that the COG concentration is normally distributed.\n\nUsing a suitable statistical tool, establish whether the measured data allow to say that the mean concentration of COG is greater than \\(1.8\\) \\(\\mu\\)g/m\\(^3\\)."
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-7",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-7",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 7",
-    "text": "Exercise 7\nOn a total of \\(2350\\) interviewed citizens, \\(1890\\) approve the construction of a new movie theater.\n\nPerform an hypothesis test of level \\(5\\%\\), with null hypothesis that the percentage of citizens that approve the construction is at least \\(81\\%\\), versus the alternative hypothesis that the percentage is less than \\(81\\%\\).\nCompute the \\(p\\)-value of the test.\n[difficult] Determine the minimum sample size such that the power of the test with significance level \\(\\alpha = 0.05\\) when the real proportion \\(p\\) is \\(0.8\\) is at least \\(50\\%\\)."
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-8",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-8",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 8",
-    "text": "Exercise 8\nA computer chip manufacturer claims that no more than \\(1\\%\\) of the chips it sends out are defective. An electronics company, impressed with this claim, has purchased a large quantity of such chips. To determine if the manufacturer’s claim can be taken literally, the company has decided to test a sample of \\(300\\) of these chips. If \\(5\\) of these \\(300\\) chips are found to be defective, should the manufacturer’s claim be rejected?"
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-9",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-9",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 9",
-    "text": "Exercise 9\nTo determine the impurity level in alloys of steel, two different tests can be used. \\(8\\) specimens are tested, with both procedures, and the results are written in the following table:\n\n\n\nspecimen n.\n1\n2\n3\n4\n5\n6\n7\n8\n\n\n\n\nTest 1\n1.2\n1.3\n1.7\n1.8\n1.5\n1.4\n1.4\n1.3\n\n\nTest 2\n1.4\n1.7\n2.0\n2.1\n1.5\n1.3\n1.7\n1.6\n\n\n\nAssume that the data are normal.\n\nbased on the data in the table, can we state that at significance level \\(\\alpha=5\\%\\) the Test 1 and 2 give a different average level of impurity?\nbased on the data in the table, can we state that at significance level \\(\\alpha=1\\%\\) the Test 2 gives an average level of impurity greater than Test 1?"
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-10",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-10",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 10",
-    "text": "Exercise 10\nA sample of \\(300\\) voters from region A and \\(200\\) voters from region B showed that the \\(56\\%\\) and the \\(48\\%\\), respectively, prefer a certain candidate. Can we say that at a significance level of \\(5\\%\\) there is a difference between the two regions?"
-  },
-  {
-    "objectID": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-11",
-    "href": "10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html#exercise-11",
-    "title": "Hypothesis Testing",
-    "section": "Exercise 11",
-    "text": "Exercise 11\nIn a sample of \\(100\\) measures of the boiling temperature of a certain liquid, we obtain a sample mean \\(\\overline{x} = 100^{o}C\\) with a sample variance \\(s^2 = 0.0098^{o}C^2\\). Assuming that the observation comes from a normal population:\n\nWhat is the smallest level of significance that would lead to reject the null hypothesis that the variance is \\(\\leq 0.015\\)?\nOn the basis of the previous answer, what decision do we take if we fix the level of the test equal to \\(0.01\\)?"
-  },
-  {
-    "objectID": "01_Introduction/authoring-with-quarto.html",
-    "href": "01_Introduction/authoring-with-quarto.html",
-    "title": "Authoring with Quarto",
-    "section": "",
-    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
-  },
-  {
-    "objectID": "01_Introduction/authoring-with-quarto.html#section-1",
-    "href": "01_Introduction/authoring-with-quarto.html#section-1",
-    "title": "Authoring with Quarto",
-    "section": "Section 1",
-    "text": "Section 1\nText written in markdown.\n\n# Code written in R\n(x &lt;- 1:10)\n\n [1]  1  2  3  4  5  6  7  8  9 10"
-  },
-  {
-    "objectID": "01_Introduction/authoring-with-quarto.html#section-2",
-    "href": "01_Introduction/authoring-with-quarto.html#section-2",
-    "title": "Authoring with Quarto",
-    "section": "Section 2",
-    "text": "Section 2\nText written in markdown.\n\nggplot(data = mpg) +\n  geom_point(aes(x = displ, y = hwy, color = class))\n\n\n\n\n\n\n\n\n…and so on."
-  },
-  {
-    "objectID": "04_Model/04-Model-Exercises.html",
-    "href": "04_Model/04-Model-Exercises.html",
-    "title": "Models",
-    "section": "",
-    "text": "Change the working directory to the folder where wages.xlsx is located and this file is saved.\nThen import wages.xlsx as wages and copy the code to your setup chunk.\nBe sure to set NA: to NA.\nSwitch the eval option in the YAML header to true."
-  },
-  {
-    "objectID": "04_Model/04-Model-Exercises.html#your-turn-1",
-    "href": "04_Model/04-Model-Exercises.html#your-turn-1",
-    "title": "Models",
-    "section": "",
-    "text": "Change the working directory to the folder where wages.xlsx is located and this file is saved.\nThen import wages.xlsx as wages and copy the code to your setup chunk.\nBe sure to set NA: to NA.\nSwitch the eval option in the YAML header to true."
-  },
-  {
-    "objectID": "04_Model/04-Model-Exercises.html#your-turn-2",
-    "href": "04_Model/04-Model-Exercises.html#your-turn-2",
-    "title": "Models",
-    "section": "Your Turn 2",
-    "text": "Your Turn 2\n\nFit the model\n\n\\[\n\\log(\\text{income}) = \\beta_0 + \\beta_1 \\cdot \\text{education} + \\epsilon\n\\]\n\nStore the result in an object called mod_e.\nExamine the output. What does it look like?"
-  },
-  {
-    "objectID": "04_Model/04-Model-Exercises.html#your-turn-3",
-    "href": "04_Model/04-Model-Exercises.html#your-turn-3",
-    "title": "Models",
-    "section": "Your Turn 3",
-    "text": "Your Turn 3\nUse a pipe to model log(income) against height. Then use broom and dplyr functions to extract:\n\nThe coefficient estimates and their related statistics\nThe adj.r.squared and p.value for the overall model"
-  },
-  {
-    "objectID": "04_Model/04-Model-Exercises.html#your-turn-4",
-    "href": "04_Model/04-Model-Exercises.html#your-turn-4",
-    "title": "Models",
-    "section": "Your Turn 4",
-    "text": "Your Turn 4\nModel log(income) against education and height and sex. Can you interpret the coefficients?"
-  },
-  {
-    "objectID": "04_Model/04-Model-Exercises.html#your-turn-5",
-    "href": "04_Model/04-Model-Exercises.html#your-turn-5",
-    "title": "Models",
-    "section": "Your Turn 5",
-    "text": "Your Turn 5\nAdd + geom_smooth(method = lm) to the code below. What happens?\n\nwages |&gt; \n  ggplot(aes(x = height, y = log(income))) +\n  geom_point(alpha = 0.1)"
-  },
-  {
-    "objectID": "04_Model/04-Model-Exercises.html#your-turn-6",
-    "href": "04_Model/04-Model-Exercises.html#your-turn-6",
-    "title": "Models",
-    "section": "Your Turn 6",
-    "text": "Your Turn 6\nUse add_predictions() to make the plot below. Facetting is by level of education.\n\n\n# In case you haven't made the ehs model\nmod_ehs &lt;- wages|&gt; \n  lm(log(income) ~ education + height + sex, data = _)\n\n# Make plot here"
-  },
-  {
-    "objectID": "04_Model/04-Model-Exercises.html#your-turn-7",
-    "href": "04_Model/04-Model-Exercises.html#your-turn-7",
-    "title": "Models",
-    "section": "Your Turn 7",
-    "text": "Your Turn 7\nUse gather_residuals() to make the plot below.\n\n\n\n\n\n\nCaution\n\n\n\nModels mod_h and mod_ehs should be available in your environment because you fitted them in previous sections. But you have to fit and store the model mod_eh which stands for education and height.\n\n\n\n\n# Make the plot here"
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html",
-    "href": "02_Visualize/02-Visualize-Exercises.html",
-    "title": "Visualize Data",
-    "section": "",
-    "text": "Add a setup chunk that loads the tidyverse packages and turn the global option eval to true in the above YAML header.\n\nmpg"
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-0",
-    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-0",
-    "title": "Visualize Data",
-    "section": "",
-    "text": "Add a setup chunk that loads the tidyverse packages and turn the global option eval to true in the above YAML header.\n\nmpg"
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-1",
-    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-1",
-    "title": "Visualize Data",
-    "section": "Your Turn 1",
-    "text": "Your Turn 1\nRun the code on the slide to make a graph. Pay strict attention to spelling, capitalization, and parentheses!"
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-2",
-    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-2",
-    "title": "Visualize Data",
-    "section": "Your Turn 2",
-    "text": "Your Turn 2\nAdd color, size, alpha, and shape aesthetics to your graph. Experiment.\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy))"
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#help-me",
-    "href": "02_Visualize/02-Visualize-Exercises.html#help-me",
-    "title": "Visualize Data",
-    "section": "Help Me",
-    "text": "Help Me\nWhat do facet_grid() and facet_wrap() do? (run the code, interpret, convince your group)\n\n# Makes a plot that the commands below will modify\nq &lt;- ggplot(mpg) + geom_point(aes(x = displ, y = hwy))\n\nq + facet_grid(cols = vars(cyl))\nq + facet_grid(rows = vars(drv))\nq + facet_grid(rows = vars(drv), cols = vars(cyl))\nq + facet_wrap(facets = vars(class))"
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-3",
-    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-3",
-    "title": "Visualize Data",
-    "section": "Your Turn 3",
-    "text": "Your Turn 3\nAdd the black code to your graph. What does it do?\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(displ, hwy, color = class))"
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-4",
-    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-4",
-    "title": "Visualize Data",
-    "section": "Your Turn 4",
-    "text": "Your Turn 4\nReplace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.\n\nggplot(mpg) + geom_point(aes(class, hwy))"
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-5",
-    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-5",
-    "title": "Visualize Data",
-    "section": "Your Turn 5",
-    "text": "Your Turn 5\nMake a histogram of the hwy variable from mpg. Hint: do not supply a y variable."
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-6",
-    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-6",
-    "title": "Visualize Data",
-    "section": "Your Turn 6",
-    "text": "Your Turn 6\nUse the help page for geom_histogram to make the bins 2 units wide."
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#your-turn-7",
-    "href": "02_Visualize/02-Visualize-Exercises.html#your-turn-7",
-    "title": "Visualize Data",
-    "section": "Your Turn 7",
-    "text": "Your Turn 7\nMake a bar chart class colored by class. Use the help page for geom_bar to choose a “color” aesthetic for class."
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#quiz",
-    "href": "02_Visualize/02-Visualize-Exercises.html#quiz",
-    "title": "Visualize Data",
-    "section": "Quiz",
-    "text": "Quiz\nWhat will this code do?\n\nggplot(mpg) + \n  geom_point(aes(displ, hwy)) +\n  geom_smooth(aes(displ, hwy))"
-  },
-  {
-    "objectID": "02_Visualize/02-Visualize-Exercises.html#quiz-1",
-    "href": "02_Visualize/02-Visualize-Exercises.html#quiz-1",
-    "title": "Visualize Data",
-    "section": "Quiz",
-    "text": "Quiz\nWhat is different about this plot? Run the code!\n\np &lt;- ggplot(mpg) + \n  geom_point(aes(displ, hwy)) +\n  geom_smooth(aes(displ, hwy))\n\nlibrary(plotly)\nggplotly(p)"
+    "objectID": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-orange.csv",
+    "href": "12_PCA/12-PCA-Exercises.html#le-jeu-de-données-orange.csv",
+    "title": "PCA - Exercises",
+    "section": "Le jeu de données orange.csv",
+    "text": "Le jeu de données orange.csv\nSix jus d’orange de fabriquants différents ont été évalués. Toutes les variables sont-elles indisensables ? Y a-t-il des jus qui se dégagent comme particulièrement bons ? mauvais ?"
   },
   {
     "objectID": "11_Linear_Modeling/11-Linear-Modeling-Slides.html#the-linear-regression-model",
