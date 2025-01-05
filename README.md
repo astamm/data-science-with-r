@@ -80,4 +80,6 @@ written in [Quarto](https://quarto.org).
     - PCA:
     
         - [{FactoMineR}](http://factominer.free.fr): a package that provides ready-to-use implementations of standard statistical methods for data analysis.
-        
+        - [{factoextra}](https://rpkgs.datanovia.com/factoextra/): a package that provides functions for extracting and visualizing the results of multivariate data analyses.
+        - [{corrplot}](https://cran.r-project.org/package=corrplot): a package that provides functions for visualizing correlation matrices.
+        - [{viridis}](https://sjmgarnier.github.io/viridis/): a package that provides color palettes that are perceptually uniform in both color and black-and-white.
