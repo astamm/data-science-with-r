@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quarto – Data Science with R</title>
+<title>PCA - Exercises – Data Science with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -264,19 +230,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#adding-chunks" id="toc-adding-chunks" class="nav-link active" data-scroll-target="#adding-chunks">Adding chunks</a></li>
-  <li><a href="#text-formatting" id="toc-text-formatting" class="nav-link" data-scroll-target="#text-formatting">Text formatting</a></li>
-  <li><a href="#reports" id="toc-reports" class="nav-link" data-scroll-target="#reports">Reports</a></li>
-  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">R Packages</a></li>
+  <li><a href="#le-jeu-de-données-temperature.csv" id="toc-le-jeu-de-données-temperature.csv" class="nav-link active" data-scroll-target="#le-jeu-de-données-temperature.csv">Le jeu de données <code>temperature.csv</code></a></li>
+  <li><a href="#le-jeu-de-données-chicken.csv" id="toc-le-jeu-de-données-chicken.csv" class="nav-link" data-scroll-target="#le-jeu-de-données-chicken.csv">Le jeu de données <code>chicken.csv</code></a></li>
+  <li><a href="#le-jeu-de-données-orange.csv" id="toc-le-jeu-de-données-orange.csv" class="nav-link" data-scroll-target="#le-jeu-de-données-orange.csv">Le jeu de données <code>orange.csv</code></a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/01_Introduction/01-Introduction-Exercises.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/01_Introduction/01-Introduction-Exercises.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/12_PCA/12-PCA-Exercises.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/12_PCA/12-PCA-Exercises.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Quarto</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/astamm/data-science-with-r/blob/main/01_Introduction/01-Introduction-Exercises.qmd"><i class="bi"></i> Code</button></div></div>
+<h1 class="title">PCA - Exercises</h1>
 </div>
 
 
@@ -293,82 +258,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This is a Quarto file. It contains plain text interspersed with grey chunks of code. You can use the file to take notes <em>and</em> run code. For example, you can write your name on the line below. Try it:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can write code in chunks that look like this.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This chunk uses the code plot(cars) to plot a data set.</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># To run the code, click the Green play button at the</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># top right of this chunk. Try it!</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="01-Introduction-Exercises_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Good job! The results of a code chunk will appear beneath the chunk. You can click the x above the results to make them go away, but let’s not do that.</p>
-<p>You can open a new Quarto file by going to <strong>File &gt; New File &gt; Quarto Document…</strong>. Then click OK. But let’s not open a new file now—keep reading this one!</p>
-<section id="adding-chunks" class="level1">
-<h1>Adding chunks</h1>
-<p>To add a new code chunk, press <em>Cmd+Option+I</em> (<em>Ctrl+Alt+I</em> on Windows), or click the <em>Insert</em> button at the top of this document, then select <em>R</em>. Quarto will add a new, empty chunk at your cursor’s location.</p>
-<p>Try making a code chunk below:</p>
-<p>Good job! For today, you should place all of your R code inside of code chunks.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you might want to run only some of the code </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in a code chunk. To do that, highlight the code to </span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># run and then press Cmd + Enter (Control + Enter on </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows). If you do not highlight any code, R will </span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># run the line of code that your cursor is on.</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Try it now. Run mean(1:5) but not the line below.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">warning</span>(<span class="st">"You shouldn't run this!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: You shouldn't run this!</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can click the downward facing arrow to the left of the play button to run</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># every chunk above the current code chunk. This is useful if the code in your</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># chunk uses object that you made in previous chunks.</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.Date()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Did you notice the green lines (if your RStudio theme is the default one) in the code chunk above? They are <em>code comments</em>, lines of text that R ignores when it runs the code. R will treat everything that appears after <code>#</code> on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that’s fine)!</p>
-<p>Remove the <code>#</code> on the last line of the chunk above and then rerun the chunk. Can you tell what <code>Sys.Date()</code> does?</p>
-<p>By the way, you only need to use code comments <em>inside</em> of code chunks. R knows not to try to run the text that you write outside of code chunks. You can press <em>Cmd+Shift+C</em> to comment or uncomment a line of code.</p>
-</section>
-<section id="text-formatting" class="level1">
-<h1>Text formatting</h1>
-<p>Have you noticed the funny highlighting that appears in this document? Quarto treats text surrounded by <em>asterisks</em>, <strong>double asterisks</strong>, and <code>backticks</code> in special ways. It is Quarto’s way of saying that these words are in</p>
+<section id="le-jeu-de-données-temperature.csv" class="level2">
+<h2 class="anchored" data-anchor-id="le-jeu-de-données-temperature.csv">Le jeu de données <code>temperature.csv</code></h2>
+<p>Cette base contient:</p>
 <ul>
-<li><em>italics</em></li>
-<li><em>also italics</em></li>
-<li><strong>bold</strong>, and</li>
-<li><code>code font</code></li>
+<li>les enregistrements des températures des capitales européennes de Janvier à Décembre</li>
+<li>les coordonnées GPS de chaque ville</li>
+<li>amplitude thermale : Différence entre les températures maximales et minimales</li>
+<li>moyenne annuelle</li>
+<li>une variable qualitative : la direction (S, N, O, E).</li>
 </ul>
-<p><code>*</code>, <code>**</code>, and ` are signals used by a text editing format known as <code>markdown</code>. Quarto uses <code>markdown</code> to turn your plain looking .Rmd documents into polished reports. Let’s give that a try.</p>
+<p>Exécuter une PCA pour dégager des profils type de température et quelles villes les suivent.</p>
 </section>
-<section id="reports" class="level1">
-<h1>Reports</h1>
-<p>When you click the <code>Render</code> button at the top of an Quarto file (like this one), Quarto generates a polished copy of your report. Quarto:</p>
-<ol type="1">
-<li>Transforms all of your markdown cues into actual formatted text (e.g.&nbsp;bold text, italic text, etc.)</li>
-<li>Reruns all of your code chunks in a clean R session and appends the results to the finished report.</li>
-<li>Saves the finished report alongside your .Rmd file</li>
-</ol>
-<p>Click the <em>Render</em> button at the top of this document or press <em>Cmd+Shift+K</em> (<em>Ctrl+Shift+K</em> on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking <em>Render</em> now.</p>
-<p>Good job! You’ll learn more about Quarto throughout the day!</p>
+<section id="le-jeu-de-données-chicken.csv" class="level2">
+<h2 class="anchored" data-anchor-id="le-jeu-de-données-chicken.csv">Le jeu de données <code>chicken.csv</code></h2>
+<ul>
+<li>Description : 43 poulets ayant subis 6 régimes : régime normal (N), Jeûne pendant 16h (F16), Jeûne pendant 16h et puis se réalimenter pendant 5h (F16R5), (F16R16), (F48), (F48R24)</li>
+<li>Variables : Après le régime, on a effectué une analyse des gènes utilisant une puce ADN : 7407 expressions de gènes.</li>
+<li>Objectif : Voir si les gènes s’expriment différemment selon le niveau de stress. Combien de temps faut-il au poulet pour revenir à la situation normale ?</li>
+</ul>
 </section>
-<section id="r-packages" class="level1">
-<h1>R Packages</h1>
-<p>Here is one last code chunk that we will use in the next exercise. If you uncomment the code and try to run it, it won’t work. If you don’t believe me try!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(data = diamonds) + geom_point(aes(x = carat, y = price))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="le-jeu-de-données-orange.csv" class="level2">
+<h2 class="anchored" data-anchor-id="le-jeu-de-données-orange.csv">Le jeu de données <code>orange.csv</code></h2>
+<p>Six jus d’orange de fabriquants différents ont été évalués. Toutes les variables sont-elles indisensables ? Y a-t-il des jus qui se dégagent comme particulièrement bons ? mauvais ?</p>
 
 
 </section>
@@ -461,57 +373,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -850,7 +711,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/01_Introduction/01-Introduction-Exercises.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/01_Introduction/01-Introduction-Exercises.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/12_PCA/12-PCA-Exercises.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/12_PCA/12-PCA-Exercises.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This website is built with <a href="https://quarto.org/">Quarto</a></p>
 </div>

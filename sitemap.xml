@@ -2,70 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://astamm.github.io/data-science-with-r/11_Linear_Modeling/11-Linear-Modeling-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.329Z</lastmod>
+    <lastmod>2025-01-05T22:50:03.342Z</lastmod>
   </url>
   <url>
-    <loc>https://astamm.github.io/data-science-with-r/02_Visualize/02-Visualize-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.053Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/04_Model/04-Model-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.207Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/01_Introduction/authoring-with-quarto.html</loc>
-    <lastmod>2025-01-01T13:08:15.052Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.327Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/08_Types/08-Types-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.304Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/index.html</loc>
-    <lastmod>2025-01-01T13:08:15.331Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.237Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/03_Transform/03-Transform-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.095Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/06_Tidy/06-Tidy-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.267Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Parameters.html</loc>
-    <lastmod>2025-01-01T13:08:15.237Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/exam1.html</loc>
-    <lastmod>2025-01-01T13:08:15.331Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html</loc>
-    <lastmod>2025-01-01T13:08:15.328Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/01_Introduction/01-Introduction-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://astamm.github.io/data-science-with-r/07_Join/07-Join-Exercises.html</loc>
-    <lastmod>2025-01-01T13:08:15.287Z</lastmod>
+    <loc>https://astamm.github.io/data-science-with-r/12_PCA/12-PCA-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:03.344Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/project.html</loc>
-    <lastmod>2025-01-01T13:08:15.332Z</lastmod>
+    <lastmod>2025-01-05T22:50:03.350Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/07_Join/07-Join-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:03.296Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/01_Introduction/01-Introduction-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:02.997Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html</loc>
+    <lastmod>2025-01-05T22:50:03.340Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/exam1.html</loc>
+    <lastmod>2025-01-05T22:50:03.347Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Parameters.html</loc>
+    <lastmod>2025-01-05T22:50:03.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/06_Tidy/06-Tidy-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:03.275Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/03_Transform/03-Transform-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:03.091Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/05_Report/05-Report-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:03.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/index.html</loc>
+    <lastmod>2025-01-05T22:50:03.347Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/08_Types/08-Types-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:03.315Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:03.340Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/01_Introduction/authoring-with-quarto.html</loc>
+    <lastmod>2025-01-05T22:50:03.030Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/04_Model/04-Model-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:03.223Z</lastmod>
+  </url>
+  <url>
+    <loc>https://astamm.github.io/data-science-with-r/02_Visualize/02-Visualize-Exercises.html</loc>
+    <lastmod>2025-01-05T22:50:03.030Z</lastmod>
   </url>
   <url>
     <loc>https://astamm.github.io/data-science-with-r/11_Linear_Modeling/11-Linear-Modeling-Slides.html</loc>
-    <lastmod>2025-01-01T13:08:15.329Z</lastmod>
+    <lastmod>2025-01-05T22:50:03.342Z</lastmod>
   </url>
 </urlset>

@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.39">
+  <meta name="generator" content="quarto-1.6.40">
 
   <meta name="author" content="A. Stamm">
   <title>Data Science with R – Linear Regression with R</title>
@@ -455,29 +455,55 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 </div>
 </div>
 </section>
-<section id="reminder-model-assumptions" class="slide level2 scrollable">
-<h2>Reminder: model assumptions</h2>
-<div class="r-fit-text">
-<p>Linear regression makes several assumptions about the data, such as :</p>
+<section id="reminder-model-assumptions-13" class="slide level2 scrollable">
+<h2>Reminder: model assumptions (1/3)</h2>
+<div class="columns">
+<div class="column">
+<div title="Assumptions to check">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Assumptions to check</strong></p>
+</div>
+<div class="callout-content">
 <ol type="1">
-<li><p><strong>Linearity of the data</strong>. The relationship between the predictor (x) and the outcome (y) is assumed to be linear.</p></li>
-<li><p><strong>Normality of residuals</strong>. The residual errors are assumed to be normally distributed.</p></li>
-<li><p><strong>Homogeneity of residuals variance</strong>. The residuals are assumed to have a constant variance (<strong>homoscedasticity</strong>)</p></li>
-<li><p><strong>Independence of residuals error terms</strong>.</p></li>
+<li><strong>Linearity.</strong> The relationship between the predictor (x) and the outcome (y) is assumed to be linear.</li>
+<li><strong>Normality.</strong> The error terms are assumed to be normally distributed.</li>
+<li><strong>Homogeneity of variance.</strong> The error terms are assumed to have a constant variance (<strong>homoscedasticity</strong>).</li>
+<li><strong>Independence.</strong> The error terms are assumed to be independent.</li>
 </ol>
-<p>You should check whether or not these assumptions hold true. Potential problems include:</p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div title="Potential problems to check">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Potential problems to check</strong></p>
+</div>
+<div class="callout-content">
 <ol type="1">
-<li><p><strong>Non-linearity</strong>&nbsp;of the outcome - predictor relationships</p></li>
+<li><p><strong>Non-linearity</strong> of the outcome - predictor relationships</p></li>
 <li><p><strong>Heteroscedasticity</strong>: Non-constant variance of error terms.</p></li>
-<li><p><strong>Presence of influential values</strong>&nbsp;in the data that can be:</p>
+<li><p><strong>Presence of influential and potential outlier values</strong> in the data:</p>
 <ul>
-<li><p>Outliers: extreme values in the outcome (y) variable</p></li>
-<li><p>High-leverage points: extreme values in the predictors (x) variable</p></li>
+<li>Outliers: typically large standardized residuals</li>
+<li>High-leverage points: typically large leverage values</li>
 </ul></li>
 </ol>
-<p>All these assumptions and potential problems can be checked by producing some diagnostic plots visualizing the residual errors.</p>
-<p>Source: <a href="http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/" class="uri">http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/</a></p>
 </div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="first-data-set-residuals-vs-fitted-values" class="slide level2">
 <h2>First data set: Residuals vs fitted values</h2>
@@ -713,17 +739,25 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <li>either <a href="https://jtools.jacob-long.com/index.html"><code>jtools</code></a> and <a href="https://interactions.jacob-long.com"><code>interactions</code></a> packages:</li>
 <li>or <a href="https://strengejacke.github.io/ggeffects/index.html"><code>ggeffects</code></a> and <a href="https://strengejacke.github.io/sjPlot/"><code>sjPlot</code></a> packages.</li>
 </ul>
+<p>They both provide tools for summarizing and visualising models, marginal effects, interactions and model predictions.</p>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># install.packages(c("jtools", "interactions"))</span></span>
 <span id="cb3-2"><a></a><span class="co"># install.packages(c("ggeffects", "sjPlot"))</span></span>
-<span id="cb3-3"><a></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(metascore <span class="sc">~</span> imdb_rating <span class="sc">+</span> <span class="fu">log</span>(us_gross) <span class="sc">+</span> genre5, <span class="at">data =</span> jtools<span class="sc">::</span>movies)</span>
-<span id="cb3-4"><a></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(metascore <span class="sc">~</span> imdb_rating <span class="sc">+</span> <span class="fu">log</span>(us_gross) <span class="sc">+</span> <span class="fu">log</span>(budget) <span class="sc">+</span> genre5, <span class="at">data =</span> jtools<span class="sc">::</span>movies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb3-4"><a></a>  metascore <span class="sc">~</span> imdb_rating <span class="sc">+</span> <span class="fu">log</span>(us_gross) <span class="sc">+</span> genre5, </span>
+<span id="cb3-5"><a></a>  <span class="at">data =</span> jtools<span class="sc">::</span>movies</span>
+<span id="cb3-6"><a></a>)</span>
+<span id="cb3-7"><a></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb3-8"><a></a>  metascore <span class="sc">~</span> imdb_rating <span class="sc">+</span> <span class="fu">log</span>(us_gross) <span class="sc">+</span> <span class="fu">log</span>(budget) <span class="sc">+</span> genre5, </span>
+<span id="cb3-9"><a></a>  <span class="at">data =</span> jtools<span class="sc">::</span>movies</span>
+<span id="cb3-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>They both provide tools for summarizing and visualising models, marginal effects, interactions and model predictions.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
+</section>
+<section id="tabular-summary-12" class="slide level2 smaller">
+<h2>Tabular summary (1/2)</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>jtools<span class="sc">::</span><span class="fu">summ</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>jtools<span class="sc">::</span><span class="fu">summ</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="table-responsive">
 <table class="table table-striped table-hover table-condensed caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -838,65 +872,103 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 </div>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
+</section>
+<section id="tabular-summary-22" class="slide level2 smaller">
+<h2>Tabular summary (2/2)</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>jtools<span class="sc">::</span><span class="fu">plot_summs</span>(fit, fit2, <span class="at">inner_ci_level =</span> .<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>jtools<span class="sc">::</span><span class="fu">export_summs</span>(</span>
+<span id="cb5-2"><a></a>  fit1, fit2, </span>
+<span id="cb5-3"><a></a>  <span class="at">error_format =</span> <span class="st">"[{conf.low}, {conf.high}]"</span>, <span class="at">error_pos =</span> <span class="st">"right"</span></span>
+<span id="cb5-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  ">
+<colgroup><col><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><th colspan="2" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Model 1</th><th colspan="2" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Model 2</th></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(Intercept)</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-39.96 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[-51.58, -28.34]</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-16.47 *&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[-31.16, -1.78]</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">imdb_rating</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">12.80 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[11.83, 13.77]</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">12.28 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[11.30, 13.26]</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">log(us_gross)</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.47&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[-0.14, 1.07]</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.60 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[0.86, 2.34]</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">genre5Comedy</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6.32 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[4.24, 8.41]</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4.84 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[2.70, 6.97]</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">genre5Drama</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">7.66 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[5.55, 9.77]</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6.71 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[4.60, 8.83]</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">genre5Horror/Thriller</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-0.73&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[-3.70, 2.24]</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-2.81&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[-5.84, 0.23]</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">genre5Other</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5.86&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[-0.52, 12.24]</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6.30 *&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[0.01, 12.59]</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">log(budget)</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-2.25 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">[-3.13, -1.37]</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">N</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">831&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">831&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">R2</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.55&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.57&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th colspan="5" style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"> *** p &lt; 0.001;  ** p &lt; 0.01;  * p &lt; 0.05.</th></tr>
+</tbody></table>
+
+</div>
+</div>
+</section>
+<section id="visual-summary" class="slide level2">
+<h2>Visual summary</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>jtools<span class="sc">::</span><span class="fu">plot_summs</span>(fit1, fit2, <span class="at">inner_ci_level =</span> .<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
+<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
 </figure>
 </div>
 </div>
-</div>
-</div></div>
 </div>
 </section>
 <section id="effect-plot---continuous-predictor" class="slide level2">
 <h2>Effect plot - Continuous predictor</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(cty <span class="sc">~</span> displ <span class="sc">+</span> year <span class="sc">+</span> cyl <span class="sc">+</span> class <span class="sc">+</span> fl, <span class="at">data =</span> mpg)</span>
-<span id="cb6-2"><a></a>fit_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(cty <span class="sc">~</span> <span class="fu">poly</span>(displ, <span class="dv">2</span>) <span class="sc">+</span> year <span class="sc">+</span> cyl <span class="sc">+</span> class <span class="sc">+</span> fl, <span class="at">data =</span> mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(cty <span class="sc">~</span> displ <span class="sc">+</span> year <span class="sc">+</span> cyl <span class="sc">+</span> class <span class="sc">+</span> fl, <span class="at">data =</span> mpg)</span>
+<span id="cb7-2"><a></a>fit_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(cty <span class="sc">~</span> <span class="fu">poly</span>(displ, <span class="dv">2</span>) <span class="sc">+</span> year <span class="sc">+</span> cyl <span class="sc">+</span> class <span class="sc">+</span> fl, <span class="at">data =</span> mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit, <span class="at">pred =</span> displ, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">plot.points =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit, <span class="at">pred =</span> displ, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">plot.points =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
+<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit_poly, <span class="at">pred =</span> displ, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">plot.points =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit_poly, <span class="at">pred =</span> displ, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">plot.points =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
+<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit, <span class="at">pred =</span> displ, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">partial.residuals =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit, <span class="at">pred =</span> displ, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">partial.residuals =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
+<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit_poly, <span class="at">pred =</span> displ, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">partial.residuals =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit_poly, <span class="at">pred =</span> displ, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">partial.residuals =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
+<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -906,11 +978,11 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 <section id="effect-plot---categorical-predictor" class="slide level2">
 <h2>Effect plot - Categorical predictor</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit, <span class="at">pred =</span> fl, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">partial.residuals =</span> <span class="cn">TRUE</span>, <span class="at">jitter =</span> .<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(fit, <span class="at">pred =</span> fl, <span class="at">interval =</span> <span class="cn">TRUE</span>, <span class="at">partial.residuals =</span> <span class="cn">TRUE</span>, <span class="at">jitter =</span> .<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
+<p><a href="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="11-Linear-Modeling-Slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -941,11 +1013,11 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 \]</span></p>
 <p>where <span class="math inline">\(R_i^2\)</span> is the multiple correlation coefficient associated to the regression of <span class="math inline">\(X_i\)</span> against all remaining independent variables.</p>
 </section>
-<section id="variation-inflation-factor-23" class="slide level2">
+<section id="variation-inflation-factor-23" class="slide level2 smaller">
 <h2>Variation Inflation Factor (2/3)</h2>
 <p>You can add VIFs to the summary of a model as follows:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>jtools<span class="sc">::</span><span class="fu">summ</span>(fit, <span class="at">vifs =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>jtools<span class="sc">::</span><span class="fu">summ</span>(fit, <span class="at">vifs =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="table-responsive">
 <table class="table table-striped table-hover table-condensed caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1128,30 +1200,56 @@ A. Stamm <a href="https://orcid.org/0000-0002-8725-3654" class="quarto-title-aut
 </section>
 <section id="variation-inflation-factor-33" class="slide level2">
 <h2>Variation Inflation Factor (3/3)</h2>
-<div class="r-fit-text">
 <ul>
-<li><p>VIFs are always at least equal to 1.</p></li>
-<li><p>In some domains, VIF over 2 is worthy of suspicion. Others set the bar higher, at 5 or 10. Others still will say you shouldn’t pay attention to these at all. Ultimately, the main thing to consider is that small effects are more likely to be “drowned out” by higher&nbsp;VIFs, but this may just be a natural, unavoidable fact with your model (e.g., there is no problem with high&nbsp;VIFs&nbsp;when you have an interaction effect).</p></li>
-<li><p>Should you care?</p>
-<ul>
-<li><p>If you are interested in causal inference, yes;</p></li>
-<li><p>otherwise, no.</p></li>
-</ul></li>
+<li>VIFs are always at least equal to 1.</li>
+<li>In some domains, VIF over 2 is worthy of suspicion. Others set the bar higher, at 5 or 10. Others still will say you shouldn’t pay attention to these at all.</li>
+<li>Small effects are more likely to be <em>drowned out</em> by higher VIFs, but this may just be a natural, unavoidable fact with your model (e.g., there is no problem with high VIFs when you have an interaction effect).</li>
 </ul>
-</div>
 </section>
-<section id="model-selection" class="slide level2">
+<section id="model-selection" class="slide level2 smaller scrollable">
 <h2>Model selection</h2>
-<div class="r-fit-text">
+<div title="Forward selection">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Forward selection</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li><strong>Forward selection</strong>, which involves starting with no variables in the model, testing the addition of each variable using a chosen model fit criterion, adding the variable (if any) whose inclusion gives the most statistically significant improvement of the fit, and repeating this process until none improves the model to a statistically significant extent.</li>
-<li><strong>Backward elimination</strong>, which involves starting with all candidate variables, testing the deletion of each variable using a chosen model fit criterion, deleting the variable (if any) whose loss gives the most statistically insignificant deterioration of the model fit, and repeating this process until no further variables can be deleted without a statistically significant loss of fit.</li>
-<li>A list of possible and often used model fit criterion is available on the <a href="https://en.wikipedia.org/wiki/Model_selection">Wikipedia Model Selection</a> page. In R, the basic <code>stats::step()</code> function uses the Akaike’s information criterion (AIC) and allows to perform forward selection (<code>direction = "forward"</code>) or backward elimination (<code>direction = "backward"</code>).</li>
+<li>Start with no variables in the model.</li>
+<li>Test the addition of each variable using a chosen model fit criterion<sup>1</sup>, adding the variable (if any) whose inclusion gives the most statistically significant improvement of the fit</li>
+<li>Repeat until none improves the model to a statistically significant extent.</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div title="Backward elimination">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Backward elimination</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Start with all candidate variables</li>
+<li>Test the deletion of each variable using a chosen model fit criterion, deleting the variable (if any) whose loss gives the most statistically insignificant deterioration of the model fit</li>
+<li>Repeat until no further variables can be deleted without a statistically significant loss of fit.</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 
 
-</section></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>A list of possible and often used model fit criterion is available on the <a href="https://en.wikipedia.org/wiki/Model_selection">Wikipedia Model Selection</a> page. In R, the basic <code>stats::step()</code> function uses the Akaike’s information criterion (AIC) and allows to perform forward selection (<code>direction = "forward"</code>) or backward elimination (<code>direction = "backward"</code>).</p></li></ol></aside></section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../logo-lmjl.png" class="slide-logo"></p>
