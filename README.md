@@ -83,3 +83,4 @@ written in [Quarto](https://quarto.org).
         - [{factoextra}](https://rpkgs.datanovia.com/factoextra/): a package that provides functions for extracting and visualizing the results of multivariate data analyses.
         - [{corrplot}](https://cran.r-project.org/package=corrplot): a package that provides functions for visualizing correlation matrices.
         - [{viridis}](https://sjmgarnier.github.io/viridis/): a package that provides color palettes that are perceptually uniform in both color and black-and-white.
+        - [{huxtable}](https://hughjonesd.github.io/huxtable/): a package that provides functions for creating tables in HTML documents.
