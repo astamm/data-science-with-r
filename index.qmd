@@ -88,3 +88,7 @@ written in [Quarto](https://quarto.org).
         - [{modelr}](https://modelr.tidyverse.org): a package that provides functions for modelling within the tidyverse.
         - [{jtools}](https://jtools.jacob-long.com): a package that provides functions for summarizing and visualizing model outputs and main effects.
         - [{interactions}](https://interactions.jacob-long.com): a package that provides functions for visualizing the effect of interactions in regression models.
+      
+    - PCA:
+    
+        - [{FactoMineR}](http://factominer.free.fr): a package that provides ready-to-use implementations of standard statistical methods for data analysis.

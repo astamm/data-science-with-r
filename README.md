@@ -58,9 +58,26 @@ written in [Quarto](https://quarto.org).
 - RStudio: <https://posit.co/download/rstudio-desktop/>
 - Quarto: <https://quarto.org/docs/get-started/>
 - Quarto Drop extension: <https://github.com/r-wasm/quarto-drop>
-- R packages: 
+- Tidyverse: <https://www.tidyverse.org>
+- Specific R packages by theme: 
 
-    - [{babynames}](https://hadley.github.io/babynames/)
-    - [{jtools}](https://jtools.jacob-long.com)
-    - [{plotly}](https://plotly.com/r/)
-    - [{tidyverse}](https://www.tidyverse.org)
+    - Data sets:
+        
+        - [{babynames}](https://hadley.github.io/babynames/): a data set of frequency of baby names in the US from 1880 to 2017.
+    
+    - Data visualization:
+        
+        - [{ggplot2}](https://ggplot2.tidyverse.org): a package that implements the grammar of graphics.
+        - [{plotly}](https://plotly.com/r/): an interactive plotting library.
+    
+    - Model summaries:
+        
+        - [{broom}](https://broom.tidymodels.org): a package that provides tidy summaries of model outputs.
+        - [{modelr}](https://modelr.tidyverse.org): a package that provides functions for modelling within the tidyverse.
+        - [{jtools}](https://jtools.jacob-long.com): a package that provides functions for summarizing and visualizing model outputs and main effects.
+        - [{interactions}](https://interactions.jacob-long.com): a package that provides functions for visualizing the effect of interactions in regression models.
+      
+    - PCA:
+    
+        - [{FactoMineR}](http://factominer.free.fr): a package that provides ready-to-use implementations of standard statistical methods for data analysis.
+        
