@@ -54,6 +54,8 @@ website:
             href: 10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.qmd
           - text: "2 Linear Modeling"
             href: 11_Linear_Modeling/11-Linear-Modeling-Slides.qmd
+          - text: "3 Principal Component Analysis"
+            href: 12_PCA/12-PCA-Slides.Rmd
       - text: "EDA - Labs"
         menu:
           - text: "1 Hypothesis Testing"
