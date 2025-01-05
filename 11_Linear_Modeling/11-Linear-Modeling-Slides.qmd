@@ -278,34 +278,34 @@ first_model |>
 ```
 :::
 
-## Reminder: model assumptions
+## Reminder: model assumptions (1/3)
 
-::: {.r-fit-text}
-Linear regression makes several assumptions about the data, such as :
+::: {.columns}
 
-1.  **Linearity of the data**. The relationship between the predictor (x) and the outcome (y) is assumed to be linear.
+::: {.column}
 
-2.  **Normality of residuals**. The residual errors are assumed to be normally distributed.
+::: {.callout-important title="Assumptions to check"}
+1.  **Linearity.** The relationship between the predictor (x) and the outcome (y) is assumed to be linear.
+2.  **Normality.** The error terms are assumed to be normally distributed.
+3.  **Homogeneity of variance.** The error terms are assumed to have a constant variance (**homoscedasticity**).
+4.  **Independence.** The error terms are assumed to be independent.
+:::
 
-3.  **Homogeneity of residuals variance**. The residuals are assumed to have a constant variance (**homoscedasticity**)
+:::
 
-4.  **Independence of residuals error terms**.
+::: {.column}
 
-You should check whether or not these assumptions hold true. Potential problems include:
-
-1.  **Non-linearity** of the outcome - predictor relationships
-
+::: {.callout-important title="Potential problems to check"}
+1.  **Non-linearity** of the outcome - predictor relationships
 2.  **Heteroscedasticity**: Non-constant variance of error terms.
+3.  **Presence of influential and potential outlier values** in the data:
 
-3.  **Presence of influential values** in the data that can be:
+    -   Outliers: typically large standardized residuals
+    -   High-leverage points: typically large leverage values
+:::
 
-    -   Outliers: extreme values in the outcome (y) variable
+:::
 
-    -   High-leverage points: extreme values in the predictors (x) variable
-
-All these assumptions and potential problems can be checked by producing some diagnostic plots visualizing the residual errors.
-
-Source: <http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/>
 :::
 
 ## First data set: Residuals vs fitted values
@@ -451,32 +451,46 @@ There are two possible software suites:
 -   either [`jtools`](https://jtools.jacob-long.com/index.html) and [`interactions`](https://interactions.jacob-long.com) packages:
 -   or [`ggeffects`](https://strengejacke.github.io/ggeffects/index.html) and [`sjPlot`](https://strengejacke.github.io/sjPlot/) packages.
 
+They both provide tools for summarizing and visualising models, marginal effects, interactions and model predictions.
+:::
+
 ```{r}
 #| echo: true
 # install.packages(c("jtools", "interactions"))
 # install.packages(c("ggeffects", "sjPlot"))
-fit <- lm(metascore ~ imdb_rating + log(us_gross) + genre5, data = jtools::movies)
-fit2 <- lm(metascore ~ imdb_rating + log(us_gross) + log(budget) + genre5, data = jtools::movies)
+fit1 <- lm(
+  metascore ~ imdb_rating + log(us_gross) + genre5, 
+  data = jtools::movies
+)
+fit2 <- lm(
+  metascore ~ imdb_rating + log(us_gross) + log(budget) + genre5, 
+  data = jtools::movies
+)
 ```
 
-They both provide tools for summarizing and visualising models, marginal effects, interactions and model predictions.
+## Tabular summary (1/2) {.smaller}
 
-::: columns
-::: {.column width="50%"}
 ```{r}
 #| echo: true
-jtools::summ(fit)
+jtools::summ(fit1)
 ```
-:::
 
-::: {.column width="50%"}
+## Tabular summary (2/2) {.smaller}
+
 ```{r}
 #| echo: true
-jtools::plot_summs(fit, fit2, inner_ci_level = .9)
+jtools::export_summs(
+  fit1, fit2, 
+  error_format = "[{conf.low}, {conf.high}]", error_pos = "right"
+)
 ```
-:::
-:::
-:::
+
+## Visual summary
+
+```{r}
+#| echo: true
+jtools::plot_summs(fit1, fit2, inner_ci_level = .9)
+```
 
 ## Effect plot - Continuous predictor
 
@@ -547,7 +561,7 @@ $$
 
 where $R_i^2$ is the multiple correlation coefficient associated to the regression of $X_i$ against all remaining independent variables.
 
-## Variation Inflation Factor (2/3)
+## Variation Inflation Factor (2/3) {.smaller}
 
 You can add VIFs to the summary of a model as follows:
 
@@ -558,22 +572,22 @@ jtools::summ(fit, vifs = TRUE)
 
 ## Variation Inflation Factor (3/3)
 
-::: {.r-fit-text}
--   VIFs are always at least equal to 1.
+- VIFs are always at least equal to 1.
+- In some domains, VIF over 2 is worthy of suspicion. Others set the bar higher, at 5 or 10. Others still will say you shouldn't pay attention to these at all. 
+- Small effects are more likely to be *drowned out* by higher VIFs, but this may just be a natural, unavoidable fact with your model (e.g., there is no problem with high VIFs when you have an interaction effect).
 
--   In some domains, VIF over 2 is worthy of suspicion. Others set the bar higher, at 5 or 10. Others still will say you shouldn't pay attention to these at all. Ultimately, the main thing to consider is that small effects are more likely to be "drowned out" by higher VIFs, but this may just be a natural, unavoidable fact with your model (e.g., there is no problem with high VIFs when you have an interaction effect).
+## Model selection {.smaller}
 
--   Should you care?
-
-    -   If you are interested in causal inference, yes;
-
-    -   otherwise, no.
+::: {.callout-note title="Forward selection"}
+- Start with no variables in the model.
+- Test the addition of each variable using a chosen model fit criterion[^1], adding the variable (if any) whose inclusion gives the most statistically significant improvement of the fit
+- Repeat until none improves the model to a statistically significant extent.
 :::
 
-## Model selection
-
-::: {.r-fit-text}
-- **Forward selection**, which involves starting with no variables in the model, testing the addition of each variable using a chosen model fit criterion, adding the variable (if any) whose inclusion gives the most statistically significant improvement of the fit, and repeating this process until none improves the model to a statistically significant extent.
-- **Backward elimination**, which involves starting with all candidate variables, testing the deletion of each variable using a chosen model fit criterion, deleting the variable (if any) whose loss gives the most statistically insignificant deterioration of the model fit, and repeating this process until no further variables can be deleted without a statistically significant loss of fit.
-- A list of possible and often used model fit criterion is available on the [Wikipedia Model Selection](https://en.wikipedia.org/wiki/Model_selection) page. In R, the basic `stats::step()` function uses the Akaike's information criterion (AIC) and allows to perform forward selection (`direction = "forward"`) or backward elimination (`direction = "backward"`).
+::: {.callout-note title="Backward elimination"}
+- Start with all candidate variables
+- Test the deletion of each variable using a chosen model fit criterion, deleting the variable (if any) whose loss gives the most statistically insignificant deterioration of the model fit
+- Repeat until no further variables can be deleted without a statistically significant loss of fit.
 :::
+
+[^1]: A list of possible and often used model fit criterion is available on the [Wikipedia Model Selection](https://en.wikipedia.org/wiki/Model_selection) page. In R, the basic `stats::step()` function uses the Akaike's information criterion (AIC) and allows to perform forward selection (`direction = "forward"`) or backward elimination (`direction = "backward"`).

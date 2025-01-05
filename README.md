@@ -49,7 +49,7 @@ written in [Quarto](https://quarto.org).
 |------|-------|--------|-----------|-----------------|
 | 1    | Hypothesis Testing | [Quarto](10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.qmd) | [Quarto](10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.qmd) | |
 | 2    | Linear Regression | [Quarto](11_Linear_Modeling/11-Linear-Modeling-Slides.qmd) | [Quarto](11_Linear_Modeling/11-Linear-Modeling-Exercises.qmd) | [ZIP](11_Linear_Modeling/11-Linear-Modeling-Data.zip) |
-| 3    | Principal Component Analysis | [Quarto](12_Principal_Component_Analysis/12-Principal-Component-Analysis-Slides.qmd) | [Quarto](12_Principal_Component_Analysis/12-Principal-Component-Analysis-Exercises.qmd) | |
+| 3    | Principal Component Analysis | [Quarto](12_PCA/12-PCA-Slides.qmd) | [Quarto](12_PCA/12-PCA-Exercises.qmd) | [ZIP](12_PCA/12-PCA-Data.zip) |
 | 4    | Clustering | [Quarto](13_Clustering/13-Clustering-Slides.qmd) | [Quarto](13_Clustering/13-Clustering-Exercises.qmd) | |
 
 ### Requirements

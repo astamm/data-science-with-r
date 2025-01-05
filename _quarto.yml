@@ -8,7 +8,7 @@ website:
   repo-actions: [edit, source, issue]
   page-footer:
     background: light
-    left: Copyright 2024, Aymeric Stamm
+    left: Copyright 2025, Aymeric Stamm
     right: This website is built with [Quarto](https://quarto.org/)
   navbar:
     left:
@@ -60,6 +60,8 @@ website:
             href: 10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.qmd
           - text: "2 Linear Modeling"
             href: 11_Linear_Modeling/11-Linear-Modeling-Exercises.qmd
+          - text: "3 Principal Component Analysis"
+            href: 12_PCA/12-PCA-Exercises.qmd
       - text: "Homework Assignment"
         href: project.qmd
       - text: "First Exam"
