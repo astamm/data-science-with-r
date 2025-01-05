@@ -146,7 +146,7 @@ Can we characterize groups of individuals by variables?
 
 <div style="float: left; width: 55%;">
 ```{r pca-terminology, out.width="90%"}
-knitr::include_graphics("~/Downloads/pca-decathlon.png")
+knitr::include_graphics("pca-decathlon.png")
 ```
 </div>
 
