@@ -2,8 +2,8 @@
 title: "Principal Component Analysis"
 author: "Aymeric Stamm"
 date: "`r Sys.Date()`"
-output:
-  slidy_presentation: 
+format:
+  slidy: 
     widescreen: true
     smaller: true
     df_print: paged
