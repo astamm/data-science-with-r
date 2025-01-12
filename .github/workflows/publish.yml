@@ -36,7 +36,8 @@ jobs:
            install.packages(c(
              "tidyverse", "kableExtra", "babynames", "ggfortify", "jtools",
              "nycflights13", "DT", "FactoMineR", "factoextra", "corrplot",
-             "viridis", "huxtable", "gt", "umap", "janitor", "skimr"
+             "viridis", "huxtable", "gt", "umap", "janitor", "skimr",
+             "ggcorrplot"
            ))
         shell: Rscript {0}
 
