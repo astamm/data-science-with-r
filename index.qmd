@@ -69,7 +69,6 @@ written in [Quarto](https://quarto.org).
 - R: <https://www.r-project.org>
 - RStudio: <https://posit.co/download/rstudio-desktop/>
 - Quarto: <https://quarto.org/docs/get-started/>
-- Quarto Drop extension: <https://github.com/r-wasm/quarto-drop>
 - Tidyverse: <https://www.tidyverse.org>
 - Specific R packages by theme: 
 
@@ -81,6 +80,7 @@ written in [Quarto](https://quarto.org).
         
         - [{ggplot2}](https://ggplot2.tidyverse.org): a package that implements the grammar of graphics.
         - [{plotly}](https://plotly.com/r/): an interactive plotting library.
+        - [{gt}](https://gt.rstudio.com/index.html)
     
     - Model summaries:
         
