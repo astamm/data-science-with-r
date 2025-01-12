@@ -33,7 +33,11 @@ jobs:
                paste(getRversion(), R.version$platform, R.version$arch, R.version$os)
              )
            )
-           install.packages(c("tidyverse", "kableExtra", "babynames", "ggfortify", "jtools", "nycflights13", "DT", "FactoMineR", "factoextra", "corrplot", "viridis", "huxtable", "gt", "umap", "janitor"))
+           install.packages(c(
+             "tidyverse", "kableExtra", "babynames", "ggfortify", "jtools",
+             "nycflights13", "DT", "FactoMineR", "factoextra", "corrplot",
+             "viridis", "huxtable", "gt", "umap", "janitor", "skimr"
+           ))
         shell: Rscript {0}
 
       - name: Render and Publish
