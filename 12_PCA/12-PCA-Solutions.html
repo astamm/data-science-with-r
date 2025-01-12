@@ -1,0 +1,3049 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PCA - Solutions – Data Science with R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-cb6669ef173fa5a3d6a96bd42ebca5e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Data Science with R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-wrangling---slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Wrangling - Slides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling---slides">    
+        <li>
+    <a class="dropdown-item" href="../01_Introduction/01-Introduction-Slides.pdf">
+ <span class="dropdown-text">1 Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../02_Visualize/02-Visualize-Slides.pdf">
+ <span class="dropdown-text">2 Visualize</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../03_Transform/03-Transform-Slides.pdf">
+ <span class="dropdown-text">3 Transform</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../04_Model/04-Model-Slides.pdf">
+ <span class="dropdown-text">4 Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../05_Report/05-Report-Slides.pdf">
+ <span class="dropdown-text">5 Report</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../06_Tidy/06-Tidy-Slides.pdf">
+ <span class="dropdown-text">6 Tidy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07_Join/07-Join-Slides.pdf">
+ <span class="dropdown-text">7 Join</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08_Types/08-Types-Slides.pdf">
+ <span class="dropdown-text">8 Types</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-wrangling---labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Wrangling - Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling---labs">    
+        <li>
+    <a class="dropdown-item" href="../01_Introduction/01-Introduction-Exercises.html">
+ <span class="dropdown-text">1 Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../02_Visualize/02-Visualize-Exercises.html">
+ <span class="dropdown-text">2 Visualize</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../03_Transform/03-Transform-Exercises.html">
+ <span class="dropdown-text">3 Transform</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../04_Model/04-Model-Exercises.html">
+ <span class="dropdown-text">4 Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../05_Report/05-Report-Exercises.html">
+ <span class="dropdown-text">5 Report</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../06_Tidy/06-Tidy-Exercises.html">
+ <span class="dropdown-text">6 Tidy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07_Join/07-Join-Exercises.html">
+ <span class="dropdown-text">7 Join</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08_Types/08-Types-Exercises.html">
+ <span class="dropdown-text">8 Types</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-eda---slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">EDA - Slides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-eda---slides">    
+        <li>
+    <a class="dropdown-item" href="../10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.html">
+ <span class="dropdown-text">1 Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11_Linear_Modeling/11-Linear-Modeling-Slides.html">
+ <span class="dropdown-text">2 Linear Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../12_PCA/12-PCA-Slides.html">
+ <span class="dropdown-text">3 Principal Component Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-eda---labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">EDA - Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-eda---labs">    
+        <li>
+    <a class="dropdown-item" href="../10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.html">
+ <span class="dropdown-text">1 Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11_Linear_Modeling/11-Linear-Modeling-Exercises.html">
+ <span class="dropdown-text">2 Linear Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../12_PCA/12-PCA-Exercises.html">
+ <span class="dropdown-text">3 Principal Component Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-eda---solutions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">EDA - Solutions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-eda---solutions">    
+        <li>
+    <a class="dropdown-item" href="../10_Hypothesis_Testing/10-Hypothesis-Testing-Solutions.html">
+ <span class="dropdown-text">1 Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11_Linear_Modeling/11-Linear-Modeling-Solutions.html">
+ <span class="dropdown-text">2 Linear Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../12_PCA/12-PCA-Solutions.html">
+ <span class="dropdown-text">3 Principal Component Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">Homework Assignment</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../exam1.html"> 
+<span class="menu-text">First Exam</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/astamm/data-science-with-r/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-temperature.csv-data-set" id="toc-the-temperature.csv-data-set" class="nav-link active" data-scroll-target="#the-temperature.csv-data-set">The <code>temperature.csv</code> data set</a>
+  <ul class="collapse">
+  <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import">Data import</a></li>
+  <li><a href="#data-summary" id="toc-data-summary" class="nav-link" data-scroll-target="#data-summary">Data summary</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data visualization</a></li>
+  <li><a href="#principal-component-analysis" id="toc-principal-component-analysis" class="nav-link" data-scroll-target="#principal-component-analysis">Principal component analysis</a></li>
+  </ul></li>
+  <li><a href="#the-chicken.csv-data-set" id="toc-the-chicken.csv-data-set" class="nav-link" data-scroll-target="#the-chicken.csv-data-set">The <code>chicken.csv</code> data set</a>
+  <ul class="collapse">
+  <li><a href="#data-import-visualization" id="toc-data-import-visualization" class="nav-link" data-scroll-target="#data-import-visualization">Data import &amp; Visualization</a></li>
+  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca">PCA</a></li>
+  <li><a href="#analysis-of-the-variables-1" id="toc-analysis-of-the-variables-1" class="nav-link" data-scroll-target="#analysis-of-the-variables-1">Analysis of the variables</a></li>
+  <li><a href="#analysis-of-the-individuals" id="toc-analysis-of-the-individuals" class="nav-link" data-scroll-target="#analysis-of-the-individuals">Analysis of the individuals</a></li>
+  </ul></li>
+  <li><a href="#le-jeu-de-données-orange.csv" id="toc-le-jeu-de-données-orange.csv" class="nav-link" data-scroll-target="#le-jeu-de-données-orange.csv">Le jeu de données <code>orange.csv</code></a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/12_PCA/12-PCA-Solutions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/12_PCA/12-PCA-Solutions.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PCA - Solutions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-temperature.csv-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="the-temperature.csv-data-set">The <code>temperature.csv</code> data set</h2>
+<p>This data set contains:</p>
+<ul>
+<li>monthly recordings of the temperatures of European capitals on a specific year;</li>
+<li>GPS coordinates of each city;</li>
+<li>thermal amplitude: difference between maximal and minimal temperature;</li>
+<li>annual average temperature;</li>
+<li>European area: South, North, West or East.</li>
+</ul>
+<p>Perform a PCA to unravel patterns of temperature and which cities follow them.</p>
+<section id="data-import" class="level3">
+<h3 class="anchored" data-anchor-id="data-import">Data import</h3>
+<p>Let us begin by importing the data. After a quick inspection of the raw data file in a text editor, we find that:</p>
+<ul>
+<li>the data is separated by semicolons;</li>
+<li>the first column contains the city names and have trailing whitespaces.</li>
+</ul>
+<p>We can use the <code>readr::read_delim()</code> function to import the data as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_delim</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"12-PCA-Data/temperature.csv"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">delim =</span> <span class="st">";"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...1`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>temperature</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 35 × 18
+   ...1  January February March April   May  June  July August September October
+   &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Amst…     2.9      2.5   5.7   8.2  12.5  14.8  17.1   17.1      14.5    11.4
+ 2 Athe…     9.1      9.7  11.7  15.4  20.1  24.5  27.4   27.2      23.8    19.2
+ 3 Berl…    -0.2      0.1   4.4   8.2  13.8  16    18.3   18        14.4    10  
+ 4 Brus…     3.3      3.3   6.7   8.9  12.8  15.6  17.8   17.8      15      11.1
+ 5 Buda…    -1.1      0.8   5.5  11.6  17    20.2  22     21.3      16.9    11.3
+ 6 Cope…    -0.4     -0.4   1.3   5.8  11.1  15.4  17.1   16.6      13.3     8.8
+ 7 Dubl…     4.8      5     5.9   7.8  10.4  13.3  15     14.6      12.7     9.7
+ 8 Elsi…    -5.8     -6.2  -2.7   3.1  10.2  14    17.2   14.9       9.7     5.2
+ 9 Kiev     -5.9     -5    -0.3   7.4  14.3  17.8  19.4   18.5      13.7     7.5
+10 Krak…    -3.7     -2     1.9   7.9  13.2  16.9  18.4   17.6      13.7     8.6
+# ℹ 25 more rows
+# ℹ 7 more variables: November &lt;dbl&gt;, December &lt;dbl&gt;, Annual &lt;dbl&gt;,
+#   Amplitude &lt;dbl&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;, Area &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>We notice that the first variable has no name. We can rename it using the <code>dplyr::rename()</code> function as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(temperature, <span class="at">city =</span> ...<span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>temperature</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 35 × 18
+   city  January February March April   May  June  July August September October
+   &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Amst…     2.9      2.5   5.7   8.2  12.5  14.8  17.1   17.1      14.5    11.4
+ 2 Athe…     9.1      9.7  11.7  15.4  20.1  24.5  27.4   27.2      23.8    19.2
+ 3 Berl…    -0.2      0.1   4.4   8.2  13.8  16    18.3   18        14.4    10  
+ 4 Brus…     3.3      3.3   6.7   8.9  12.8  15.6  17.8   17.8      15      11.1
+ 5 Buda…    -1.1      0.8   5.5  11.6  17    20.2  22     21.3      16.9    11.3
+ 6 Cope…    -0.4     -0.4   1.3   5.8  11.1  15.4  17.1   16.6      13.3     8.8
+ 7 Dubl…     4.8      5     5.9   7.8  10.4  13.3  15     14.6      12.7     9.7
+ 8 Elsi…    -5.8     -6.2  -2.7   3.1  10.2  14    17.2   14.9       9.7     5.2
+ 9 Kiev     -5.9     -5    -0.3   7.4  14.3  17.8  19.4   18.5      13.7     7.5
+10 Krak…    -3.7     -2     1.9   7.9  13.2  16.9  18.4   17.6      13.7     8.6
+# ℹ 25 more rows
+# ℹ 7 more variables: November &lt;dbl&gt;, December &lt;dbl&gt;, Annual &lt;dbl&gt;,
+#   Amplitude &lt;dbl&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;, Area &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="data-summary" class="level3">
+<h3 class="anchored" data-anchor-id="data-summary">Data summary</h3>
+<p>The <code>skimr::skim()</code> function provides a nice summary of the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(temperature)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">temperature</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">city</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Area</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">January</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.35</td>
+<td style="text-align: right;">5.50</td>
+<td style="text-align: right;">-9.3</td>
+<td style="text-align: right;">-1.55</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">4.90</td>
+<td style="text-align: right;">10.7</td>
+<td style="text-align: left;">▅▅▇▇▆</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">February</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.22</td>
+<td style="text-align: right;">5.50</td>
+<td style="text-align: right;">-7.9</td>
+<td style="text-align: right;">-0.15</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">5.80</td>
+<td style="text-align: right;">11.8</td>
+<td style="text-align: left;">▂▂▇▂▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">March</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5.23</td>
+<td style="text-align: right;">4.86</td>
+<td style="text-align: right;">-3.7</td>
+<td style="text-align: right;">1.60</td>
+<td style="text-align: right;">5.4</td>
+<td style="text-align: right;">8.50</td>
+<td style="text-align: right;">14.1</td>
+<td style="text-align: left;">▃▂▇▃▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">April</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9.28</td>
+<td style="text-align: right;">3.81</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">7.25</td>
+<td style="text-align: right;">8.9</td>
+<td style="text-align: right;">12.05</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: left;">▅▇▆▆▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">May</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13.91</td>
+<td style="text-align: right;">3.27</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">12.15</td>
+<td style="text-align: right;">13.8</td>
+<td style="text-align: right;">16.35</td>
+<td style="text-align: right;">20.9</td>
+<td style="text-align: left;">▁▃▇▃▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">June</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">17.41</td>
+<td style="text-align: right;">3.32</td>
+<td style="text-align: right;">9.3</td>
+<td style="text-align: right;">15.40</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: right;">19.80</td>
+<td style="text-align: right;">24.5</td>
+<td style="text-align: left;">▁▃▇▃▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">July</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">19.62</td>
+<td style="text-align: right;">3.57</td>
+<td style="text-align: right;">11.1</td>
+<td style="text-align: right;">17.30</td>
+<td style="text-align: right;">18.9</td>
+<td style="text-align: right;">21.75</td>
+<td style="text-align: right;">27.4</td>
+<td style="text-align: left;">▁▅▇▂▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">August</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">18.98</td>
+<td style="text-align: right;">3.73</td>
+<td style="text-align: right;">10.6</td>
+<td style="text-align: right;">16.65</td>
+<td style="text-align: right;">18.3</td>
+<td style="text-align: right;">21.60</td>
+<td style="text-align: right;">27.2</td>
+<td style="text-align: left;">▁▇▇▂▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">September</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15.63</td>
+<td style="text-align: right;">4.11</td>
+<td style="text-align: right;">7.9</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">14.8</td>
+<td style="text-align: right;">18.25</td>
+<td style="text-align: right;">24.3</td>
+<td style="text-align: left;">▂▇▇▂▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">October</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11.00</td>
+<td style="text-align: right;">4.32</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">8.65</td>
+<td style="text-align: right;">10.2</td>
+<td style="text-align: right;">13.30</td>
+<td style="text-align: right;">19.4</td>
+<td style="text-align: left;">▅▇▆▂▅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">November</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6.07</td>
+<td style="text-align: right;">4.57</td>
+<td style="text-align: right;">-1.1</td>
+<td style="text-align: right;">3.20</td>
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">7.90</td>
+<td style="text-align: right;">14.9</td>
+<td style="text-align: left;">▆▇▆▂▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">December</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.88</td>
+<td style="text-align: right;">4.97</td>
+<td style="text-align: right;">-6.0</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">1.7</td>
+<td style="text-align: right;">5.40</td>
+<td style="text-align: right;">12.0</td>
+<td style="text-align: left;">▃▇▇▃▅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Annual</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10.27</td>
+<td style="text-align: right;">3.96</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">7.75</td>
+<td style="text-align: right;">9.7</td>
+<td style="text-align: right;">12.65</td>
+<td style="text-align: right;">18.2</td>
+<td style="text-align: left;">▅▇▃▁▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Amplitude</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">18.32</td>
+<td style="text-align: right;">4.51</td>
+<td style="text-align: right;">10.2</td>
+<td style="text-align: right;">14.90</td>
+<td style="text-align: right;">18.5</td>
+<td style="text-align: right;">21.45</td>
+<td style="text-align: right;">27.6</td>
+<td style="text-align: left;">▃▇▇▆▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Latitude</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">49.04</td>
+<td style="text-align: right;">7.10</td>
+<td style="text-align: right;">37.2</td>
+<td style="text-align: right;">43.90</td>
+<td style="text-align: right;">50.0</td>
+<td style="text-align: right;">53.35</td>
+<td style="text-align: right;">64.1</td>
+<td style="text-align: left;">▆▅▇▃▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Longitude</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13.01</td>
+<td style="text-align: right;">9.70</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">5.05</td>
+<td style="text-align: right;">10.5</td>
+<td style="text-align: right;">19.30</td>
+<td style="text-align: right;">37.6</td>
+<td style="text-align: left;">▇▇▃▂▂</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We learn from it that the data contains 18 variables and 35 observations. The <code>skimr::skim()</code> function also provides a nice summary of the data types and the number of missing values. We can see that the <code>city</code> and <code>Area</code> variables are character vectors and that there are no missing values.</p>
+</section>
+<section id="data-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="data-visualization">Data visualization</h3>
+<p>The first 13 columns are the temperature measurements for each month. We can use the <code>dplyr::select()</code> function to select these columns and the <code>city</code> column as identifier:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>temperature_sub <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(temperature, <span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>temperature_sub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 35 × 13
+   city  January February March April   May  June  July August September October
+   &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Amst…     2.9      2.5   5.7   8.2  12.5  14.8  17.1   17.1      14.5    11.4
+ 2 Athe…     9.1      9.7  11.7  15.4  20.1  24.5  27.4   27.2      23.8    19.2
+ 3 Berl…    -0.2      0.1   4.4   8.2  13.8  16    18.3   18        14.4    10  
+ 4 Brus…     3.3      3.3   6.7   8.9  12.8  15.6  17.8   17.8      15      11.1
+ 5 Buda…    -1.1      0.8   5.5  11.6  17    20.2  22     21.3      16.9    11.3
+ 6 Cope…    -0.4     -0.4   1.3   5.8  11.1  15.4  17.1   16.6      13.3     8.8
+ 7 Dubl…     4.8      5     5.9   7.8  10.4  13.3  15     14.6      12.7     9.7
+ 8 Elsi…    -5.8     -6.2  -2.7   3.1  10.2  14    17.2   14.9       9.7     5.2
+ 9 Kiev     -5.9     -5    -0.3   7.4  14.3  17.8  19.4   18.5      13.7     7.5
+10 Krak…    -3.7     -2     1.9   7.9  13.2  16.9  18.4   17.6      13.7     8.6
+# ℹ 25 more rows
+# ℹ 2 more variables: November &lt;dbl&gt;, December &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Next, we use the <code>tidyr::pivot_longer()</code> function to reshape the data into a long format which is required for visualization with <a href="https://ggplot2.tidyverse.org"><strong>ggplot2</strong></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>temperature_sub <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  temperature_sub, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="sc">-</span>city, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">"month"</span>, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">"temperature"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>temperature_sub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 420 × 3
+   city      month     temperature
+   &lt;chr&gt;     &lt;chr&gt;           &lt;dbl&gt;
+ 1 Amsterdam January           2.9
+ 2 Amsterdam February          2.5
+ 3 Amsterdam March             5.7
+ 4 Amsterdam April             8.2
+ 5 Amsterdam May              12.5
+ 6 Amsterdam June             14.8
+ 7 Amsterdam July             17.1
+ 8 Amsterdam August           17.1
+ 9 Amsterdam September        14.5
+10 Amsterdam October          11.4
+# ℹ 410 more rows</code></pre>
+</div>
+</div>
+<p>Next, we convert the <code>month</code> column to a proper date-time format using the <code>lubridate::parse_date_time()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>temperature_sub <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  temperature_sub, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">parse_date_time</span>(month, <span class="at">orders =</span> <span class="st">"m"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>temperature_sub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 420 × 3
+   city      month               temperature
+   &lt;chr&gt;     &lt;dttm&gt;                    &lt;dbl&gt;
+ 1 Amsterdam 0000-01-01 00:00:00         2.9
+ 2 Amsterdam 0000-02-01 00:00:00         2.5
+ 3 Amsterdam 0000-03-01 00:00:00         5.7
+ 4 Amsterdam 0000-04-01 00:00:00         8.2
+ 5 Amsterdam 0000-05-01 00:00:00        12.5
+ 6 Amsterdam 0000-06-01 00:00:00        14.8
+ 7 Amsterdam 0000-07-01 00:00:00        17.1
+ 8 Amsterdam 0000-08-01 00:00:00        17.1
+ 9 Amsterdam 0000-09-01 00:00:00        14.5
+10 Amsterdam 0000-10-01 00:00:00        11.4
+# ℹ 410 more rows</code></pre>
+</div>
+</div>
+<p>Now we can plot the temperature measurements for each city using the <code>ggplot2::ggplot()</code> function. We also use the <code>scales::scale_x_datetime()</code> function to format the x-axis labels to only show the month names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>temperature_sub <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> temperature, <span class="at">group =</span> city)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_datetime</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">date_format</span>(<span class="st">"%b"</span>)) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Month"</span>, </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Temperature (°C)"</span>, </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"City"</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is hard to see from this plot which cities have similar temperature profiles. A principal component analysis (PCA) might help us to find out.</p>
+</section>
+<section id="principal-component-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="principal-component-analysis">Principal component analysis</h3>
+<p>It is important that PCA be performed on exclusively numeric variables. Hence, we first need to use <code>dplyr::select()</code> to retain only the columns corresponding to the monthly temperatures:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(temperature, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Before performing PCA, it is important to standardize the data. For this purpose, we can use the <code>base::scale()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">scale</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, we are going to use <code>FactoMineR::PCA()</code> to perform the PCA and the <a href="https://rpkgs.datanovia.com/factoextra/"><strong>factoextra</strong></a> package for visualization of the results. When visualizing observations, the package uses the rownames of the input data frame to label the observations. Hence, we anticipate here and affect the city names as rownames of the data set:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(X) <span class="ot">&lt;-</span> temperature<span class="sc">$</span>city</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can perform the PCA using the <code>FactorMineR::PCA()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pca_results <span class="ot">&lt;-</span> FactoMineR<span class="sc">::</span><span class="fu">PCA</span>(X, <span class="at">graph =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="choice-of-the-reduced-dimension" class="level4">
+<h4 class="anchored" data-anchor-id="choice-of-the-reduced-dimension">Choice of the reduced dimension</h4>
+<p>We can also use the <code>factoextra::fviz_screeplot()</code> function to plot the eigenvalues:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_screeplot</span>(pca_results, <span class="at">addlabels =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And the eigenvalues can be extracted with:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">get_eigenvalue</span>(pca_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         eigenvalue variance.percent cumulative.variance.percent
+Dim.1  1.042445e+01     86.870441346                    86.87044
+Dim.2  1.370499e+00     11.420823117                    98.29126
+Dim.3  1.205076e-01      1.004230241                    99.29549
+Dim.4  4.233298e-02      0.352774838                    99.64827
+Dim.5  2.292280e-02      0.191023370                    99.83929
+Dim.6  8.684234e-03      0.072368614                    99.91166
+Dim.7  4.178064e-03      0.034817200                    99.94648
+Dim.8  2.930325e-03      0.024419371                    99.97090
+Dim.9  1.475750e-03      0.012297915                    99.98320
+Dim.10 8.529732e-04      0.007108110                    99.99030
+Dim.11 7.862929e-04      0.006552441                    99.99686
+Dim.12 3.772122e-04      0.003143435                   100.00000</code></pre>
+</div>
+</div>
+<p>This suggests that the first two principal components explain almost all the variance in the data.</p>
+</section>
+<section id="analysis-of-the-variables" class="level4">
+<h4 class="anchored" data-anchor-id="analysis-of-the-variables">Analysis of the variables</h4>
+<p>We can use the <code>factoextra::fviz_pca_var()</code> function to visualize the coordinates of the variables in the proposed reduced space consisting of the first two principal directions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_pca_var</span>(pca_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We see from the above correlation circle that:</p>
+<ul>
+<li>the first principal component seems to produce a rather uniformly weighted average temperature over the year; a high score on this component means a high average temperature over the year.</li>
+<li>the second principal component instead contrasts temperatures between the warmest months (summer months) and the coldest months (winter months) hence somehow providing an estimate of the range between maximal and mininal temperature; a high score on this component means an elevated difference between maximal and minimal temperature over the year.</li>
+</ul>
+<p>We can assess whether each original variable is well represented by the first two principal components by looking at the <code>cos2</code> values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cos2 <span class="ot">&lt;-</span> factoextra<span class="sc">::</span><span class="fu">get_pca_var</span>(pca_results)<span class="sc">$</span>cos2[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(cos2, <span class="at">is.corr =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The original variables are indeed well represented. They even would all be well represented by the first component only.</p>
+<p>We can confirm the interpretation of the first two principal components that we were able to give from the correlation circle by looking at the contribution of each original variable to the principal components:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">&lt;-</span> factoextra<span class="sc">::</span><span class="fu">get_pca_var</span>(pca_results)<span class="sc">$</span>contrib[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(contrib, <span class="at">is.corr =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="analysis-of-the-city-temperature-profiles" class="level4">
+<h4 class="anchored" data-anchor-id="analysis-of-the-city-temperature-profiles">Analysis of the city temperature profiles</h4>
+<p>We can use the <code>factoextra::fviz_pca_ind()</code> function to visualize the cities in the plane defined by the first two principal components:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_pca_ind</span>(pca_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The plane is naturally divided into 4 panels:</p>
+<ul>
+<li>The top left panel groups cities with negative scores on the first component but positive scores on the second component reflecting rather low average temperature but relatively high thermal amplitude.</li>
+<li>The top right panel groups cities with positive scores on the first component and positive scores on the second component reflecting rather high average temperature and relatively high thermal amplitude.</li>
+<li>The bottom left panel groups cities with negative scores on the first component and negative scores on the second component reflecting rather low average temperature and relatively low thermal amplitude.</li>
+<li>The bottom right panel groups cities with positive scores on the first component but negative scores on the second component reflecting rather high average temperature but relatively low thermal amplitude.</li>
+</ul>
+<p>We can also add colors to the plot to see if the area of the cities is correlated with the temperature profiles:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_pca_ind</span>(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  pca_results,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.ind =</span> temperature<span class="sc">$</span>Area, <span class="co"># color by groups</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">palette =</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="dv">4</span>),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="st">"By Area"</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is interesting as it reflects that:</p>
+<ul>
+<li>western capitals have a medium average temperature and medium thermal amplitude.</li>
+<li>nothern capitals are grouped in the bottom left panel.</li>
+<li>eastern capitals are grouped in the top left panel.</li>
+<li>southern capitals are grouped on the right side with cities that are therefore globally warm but with some of them featuring a high thermal amplitude like Milan while others featuring a more stable temperature over the year like Lisbon.</li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled" title="Interpretation of units">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretation of units
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The fact that some cities have a negative score on the second principal component does not mean that winter achieves higher temperature w.r.t. summer.</p>
+<p>Recall that temperatures have been standardized across cities. Hence, if you want to interpret the scores in terms of temperatures, you should do it by hand with something like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>orig_temp <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(temperature[, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>])</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>loadings <span class="ot">&lt;-</span> factoextra<span class="sc">::</span><span class="fu">get_pca_var</span>(pca_results)<span class="sc">$</span>coord[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> orig_temp <span class="sc">%*%</span> loadings</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>scores_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">City =</span> temperature<span class="sc">$</span>city, </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">PC1 =</span> scores[, <span class="dv">1</span>], </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">PC2 =</span> scores[, <span class="dv">2</span>]</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(scores_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="vwjyjtyhil" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vwjyjtyhil table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#vwjyjtyhil thead, #vwjyjtyhil tbody, #vwjyjtyhil tfoot, #vwjyjtyhil tr, #vwjyjtyhil td, #vwjyjtyhil th {
+  border-style: none;
+}
+
+#vwjyjtyhil p {
+  margin: 0;
+  padding: 0;
+}
+
+#vwjyjtyhil .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#vwjyjtyhil .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vwjyjtyhil .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vwjyjtyhil .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vwjyjtyhil .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vwjyjtyhil .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vwjyjtyhil .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vwjyjtyhil .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vwjyjtyhil .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#vwjyjtyhil .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#vwjyjtyhil .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vwjyjtyhil .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vwjyjtyhil .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vwjyjtyhil .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vwjyjtyhil .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vwjyjtyhil .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vwjyjtyhil .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#vwjyjtyhil .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#vwjyjtyhil .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vwjyjtyhil .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vwjyjtyhil .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vwjyjtyhil .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vwjyjtyhil .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vwjyjtyhil .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vwjyjtyhil .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vwjyjtyhil .gt_left {
+  text-align: left;
+}
+
+#vwjyjtyhil .gt_center {
+  text-align: center;
+}
+
+#vwjyjtyhil .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vwjyjtyhil .gt_font_normal {
+  font-weight: normal;
+}
+
+#vwjyjtyhil .gt_font_bold {
+  font-weight: bold;
+}
+
+#vwjyjtyhil .gt_font_italic {
+  font-style: italic;
+}
+
+#vwjyjtyhil .gt_super {
+  font-size: 65%;
+}
+
+#vwjyjtyhil .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#vwjyjtyhil .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vwjyjtyhil .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#vwjyjtyhil .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#vwjyjtyhil .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#vwjyjtyhil .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#vwjyjtyhil .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#vwjyjtyhil .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#vwjyjtyhil div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="City" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">City</th>
+<th id="PC1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">PC1</th>
+<th id="PC2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">PC2</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Amsterdam</td>
+<td class="gt_row gt_right" headers="PC1">109.75002</td>
+<td class="gt_row gt_right" headers="PC2">20.07679</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Athens</td>
+<td class="gt_row gt_right" headers="PC1">198.59930</td>
+<td class="gt_row gt_right" headers="PC2">25.31486</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Berlin</td>
+<td class="gt_row gt_right" headers="PC1">100.57744</td>
+<td class="gt_row gt_right" headers="PC2">26.73047</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Brussels</td>
+<td class="gt_row gt_right" headers="PC1">114.61657</td>
+<td class="gt_row gt_right" headers="PC2">20.60132</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Budapest</td>
+<td class="gt_row gt_right" headers="PC1">121.84567</td>
+<td class="gt_row gt_right" headers="PC2">33.06963</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Copenhagen</td>
+<td class="gt_row gt_right" headers="PC1">87.01508</td>
+<td class="gt_row gt_right" headers="PC2">25.23984</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Dublin</td>
+<td class="gt_row gt_right" headers="PC1">103.31766</td>
+<td class="gt_row gt_right" headers="PC2">14.35165</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Elsinki</td>
+<td class="gt_row gt_right" headers="PC1">52.66654</td>
+<td class="gt_row gt_right" headers="PC2">31.43762</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Kiev</td>
+<td class="gt_row gt_right" headers="PC1">78.60049</td>
+<td class="gt_row gt_right" headers="PC2">36.91400</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Krakow</td>
+<td class="gt_row gt_right" headers="PC1">86.57091</td>
+<td class="gt_row gt_right" headers="PC2">31.42295</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Lisbon</td>
+<td class="gt_row gt_right" headers="PC1">177.96301</td>
+<td class="gt_row gt_right" headers="PC2">15.27917</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">London</td>
+<td class="gt_row gt_right" headers="PC1">108.28743</td>
+<td class="gt_row gt_right" headers="PC2">19.03678</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Madrid</td>
+<td class="gt_row gt_right" headers="PC1">154.79387</td>
+<td class="gt_row gt_right" headers="PC2">26.79321</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Minsk</td>
+<td class="gt_row gt_right" headers="PC1">60.59012</td>
+<td class="gt_row gt_right" headers="PC2">35.15569</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Moscow</td>
+<td class="gt_row gt_right" headers="PC1">56.10806</td>
+<td class="gt_row gt_right" headers="PC2">38.98164</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Oslo</td>
+<td class="gt_row gt_right" headers="PC1">62.27592</td>
+<td class="gt_row gt_right" headers="PC2">30.17793</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Paris</td>
+<td class="gt_row gt_right" headers="PC1">123.96285</td>
+<td class="gt_row gt_right" headers="PC2">21.37080</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Prague</td>
+<td class="gt_row gt_right" headers="PC1">101.58740</td>
+<td class="gt_row gt_right" headers="PC2">29.64837</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Reykjavik</td>
+<td class="gt_row gt_right" headers="PC1">51.03193</td>
+<td class="gt_row gt_right" headers="PC2">16.05866</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Rome</td>
+<td class="gt_row gt_right" headers="PC1">171.82598</td>
+<td class="gt_row gt_right" headers="PC2">23.94100</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Sarajevo</td>
+<td class="gt_row gt_right" headers="PC1">105.54795</td>
+<td class="gt_row gt_right" headers="PC2">27.96790</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Sofia</td>
+<td class="gt_row gt_right" headers="PC1">107.82834</td>
+<td class="gt_row gt_right" headers="PC2">29.99347</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Stockholm</td>
+<td class="gt_row gt_right" headers="PC1">64.97559</td>
+<td class="gt_row gt_right" headers="PC2">28.84649</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Antwerp</td>
+<td class="gt_row gt_right" headers="PC1">113.97189</td>
+<td class="gt_row gt_right" headers="PC2">20.71773</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Barcelona</td>
+<td class="gt_row gt_right" headers="PC1">180.85690</td>
+<td class="gt_row gt_right" headers="PC2">20.44746</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Bordeaux</td>
+<td class="gt_row gt_right" headers="PC1">141.80864</td>
+<td class="gt_row gt_right" headers="PC2">20.95166</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Edinburgh</td>
+<td class="gt_row gt_right" headers="PC1">92.78014</td>
+<td class="gt_row gt_right" headers="PC2">16.47195</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Frankfurt</td>
+<td class="gt_row gt_right" headers="PC1">108.90323</td>
+<td class="gt_row gt_right" headers="PC2">26.73563</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Geneva</td>
+<td class="gt_row gt_right" headers="PC1">108.15154</td>
+<td class="gt_row gt_right" headers="PC2">26.93270</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Genoa</td>
+<td class="gt_row gt_right" headers="PC1">178.52320</td>
+<td class="gt_row gt_right" headers="PC2">21.81177</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Milan</td>
+<td class="gt_row gt_right" headers="PC1">141.14609</td>
+<td class="gt_row gt_right" headers="PC2">31.35509</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">Palermo</td>
+<td class="gt_row gt_right" headers="PC1">196.51068</td>
+<td class="gt_row gt_right" headers="PC2">19.84736</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Seville</td>
+<td class="gt_row gt_right" headers="PC1">203.30276</td>
+<td class="gt_row gt_right" headers="PC2">22.04190</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="City">St. Petersburg</td>
+<td class="gt_row gt_right" headers="PC1">50.62120</td>
+<td class="gt_row gt_right" headers="PC2">36.91273</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="City">Zurich</td>
+<td class="gt_row gt_right" headers="PC1">96.74811</td>
+<td class="gt_row gt_right" headers="PC2">26.57796</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="the-chicken.csv-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="the-chicken.csv-data-set">The <code>chicken.csv</code> data set</h2>
+<p>It regroups 43 chickens who went through six different diets:</p>
+<ul>
+<li>normal diet (N),</li>
+<li>fast for 16h (F16),</li>
+<li>fast for 16h and back to normal diet for 5h (F16R5),</li>
+<li>fast for 16h and back to normal diet for 16h (F16R16),</li>
+<li>fast for 48h (F48),</li>
+<li>fast for 48h and back to normal diet for 24h (F48R24).</li>
+</ul>
+<p>After each process, chicken underwent gene expression sequencing and 7406 gene expressions were collected.</p>
+<ul>
+<li>Can we conclude that genes express differently according to the stress level?</li>
+<li>How much time is needed for chicken to go back to normality in terms of gene expression?</li>
+</ul>
+<section id="data-import-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="data-import-visualization">Data import &amp; Visualization</h3>
+<p>A quick glance at the content of the CSV file shows that the delimiter is the semi-colon. We can therefore resort to <code>readr::read_delim()</code> to import the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_delim</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"12-PCA-Data/chicken.csv"</span>, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">delim =</span> <span class="st">";"</span>, </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7,406 × 44
+   gene         N_1     N_2     N_3     N_4      N_6     N_7     j16_3   j16_4
+   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 A4GALT  -0.153   -0.0126 -0.140   0.208  -0.461   -0.217  -0.130    -0.295 
+ 2 A4GNT    0.00873 -0.0130  0.0126  0.0713  0.515    0.158   0.600     0.171 
+ 3 AACS     0.0426   0.173  -0.0219 -0.0788 -0.00269 -0.0894 -0.0548    0.0145
+ 4 AADACL1  0.161    0.205   0.185   0.0576  0.307    0.309   0.000618 -0.0414
+ 5 AADACL2 -0.374    0.0320 -0.411   0.0361 -0.490   -0.145  -0.112    -0.151 
+ 6 AADACL3 -0.445    0.0638  0.444   0.106  -0.455   -0.0628 -0.0906    0.104 
+ 7 AAK1    -0.216   -0.157  -0.306  -0.238  -0.218   -0.114  -0.0109   -0.226 
+ 8 AAMP     1.23     0.650   0.350   1.25    0.138    0.690  -0.903    -0.594 
+ 9 AARS     0.425    0.0293  0.195  -0.0334 -0.189   -0.297   0.0937    0.0522
+10 AARS2   -0.118   -0.189  -0.486   0.414  -0.404   -0.182  -0.598    -0.508 
+# ℹ 7,396 more rows
+# ℹ 35 more variables: j16_5 &lt;dbl&gt;, j16_6 &lt;dbl&gt;, j16_7 &lt;dbl&gt;, j16r5_1 &lt;dbl&gt;,
+#   j16r5_2 &lt;dbl&gt;, j16r5_3 &lt;dbl&gt;, j16r5_4 &lt;dbl&gt;, j16r5_5 &lt;dbl&gt;, j16r5_6 &lt;dbl&gt;,
+#   j16r5_7 &lt;dbl&gt;, j16r5_8 &lt;dbl&gt;, j16r16_1 &lt;dbl&gt;, j16r16_2 &lt;dbl&gt;,
+#   j16r16_3 &lt;dbl&gt;, j16r16_4 &lt;dbl&gt;, j16r16_5 &lt;dbl&gt;, j16r16_6 &lt;dbl&gt;,
+#   j16r16_7 &lt;dbl&gt;, j16r16_8 &lt;dbl&gt;, j16r16_9 &lt;dbl&gt;, j48_1 &lt;dbl&gt;, j48_2 &lt;dbl&gt;,
+#   j48_3 &lt;dbl&gt;, j48_4 &lt;dbl&gt;, j48_6 &lt;dbl&gt;, j48_7 &lt;dbl&gt;, j48r24_1 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>The analysis that we want to do puts the focus on the chicken rather that on genes. However, the raw data records genes in rows and chicken in columns grouped by diet. We therefore proceed with some data manipulation to get the data set with 43 rows corresponding to chickens. First, we use <code>tidyr::pivot_longer()</code> to have all variables expect <code>gene</code> become the values of a unique column coined <code>name</code> and the corresponding values in the table for these variables in a unique column coined <code>value</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(df, <span class="at">cols =</span> <span class="sc">-</span>gene)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 318,458 × 3
+   gene   name    value
+   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;
+ 1 A4GALT N_1   -0.153 
+ 2 A4GALT N_2   -0.0126
+ 3 A4GALT N_3   -0.140 
+ 4 A4GALT N_4    0.208 
+ 5 A4GALT N_6   -0.461 
+ 6 A4GALT N_7   -0.217 
+ 7 A4GALT j16_3 -0.130 
+ 8 A4GALT j16_4 -0.295 
+ 9 A4GALT j16_5 -0.130 
+10 A4GALT j16_6 -0.220 
+# ℹ 318,448 more rows</code></pre>
+</div>
+</div>
+<p>Now, we can see that the <code>name</code> column encodes two different informations:</p>
+<ul>
+<li>the type of diet given to the chicken; and,</li>
+<li>the chicken ID in his group.</li>
+</ul>
+<p>We therefore use <code>tidyr::separate()</code> to get each piece of information into its own column:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">separate</span>(df, <span class="at">col =</span> name, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"diet"</span>, <span class="st">"id"</span>), <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 318,458 × 4
+   gene   diet  id      value
+   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;
+ 1 A4GALT N     1     -0.153 
+ 2 A4GALT N     2     -0.0126
+ 3 A4GALT N     3     -0.140 
+ 4 A4GALT N     4      0.208 
+ 5 A4GALT N     6     -0.461 
+ 6 A4GALT N     7     -0.217 
+ 7 A4GALT j16   3     -0.130 
+ 8 A4GALT j16   4     -0.295 
+ 9 A4GALT j16   5     -0.130 
+10 A4GALT j16   6     -0.220 
+# ℹ 318,448 more rows</code></pre>
+</div>
+</div>
+<p>Finally, we perform a last reshaping of the data set to get each gene in a dedicated column via <code>tidyr::pivot_wider()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>chk <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(df, <span class="at">names_from =</span> gene, <span class="at">values_from =</span> value)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>chk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 43 × 7,408
+   diet  id     A4GALT    A4GNT     AACS  AADACL1 AADACL2 AADACL3    AAK1   AAMP
+   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+ 1 N     1     -0.153   0.00873  0.0426   1.61e-1 -0.374  -0.445  -0.216   1.23 
+ 2 N     2     -0.0126 -0.0130   0.173    2.05e-1  0.0320  0.0638 -0.157   0.650
+ 3 N     3     -0.140   0.0126  -0.0219   1.85e-1 -0.411   0.444  -0.306   0.350
+ 4 N     4      0.208   0.0713  -0.0788   5.76e-2  0.0361  0.106  -0.238   1.25 
+ 5 N     6     -0.461   0.515   -0.00269  3.07e-1 -0.490  -0.455  -0.218   0.138
+ 6 N     7     -0.217   0.158   -0.0894   3.09e-1 -0.145  -0.0628 -0.114   0.690
+ 7 j16   3     -0.130   0.600   -0.0548   6.18e-4 -0.112  -0.0906 -0.0109 -0.903
+ 8 j16   4     -0.295   0.171    0.0145  -4.14e-2 -0.151   0.104  -0.226  -0.594
+ 9 j16   5     -0.130   0.723   -0.120    1.27e-1 -0.187  -1.23   -0.151  -0.733
+10 j16   6     -0.220   0.743    0.200    6.10e-2 -0.265  -0.157  -0.141  -0.683
+# ℹ 33 more rows
+# ℹ 7,398 more variables: AARS &lt;dbl&gt;, AARS2 &lt;dbl&gt;, AARSD1 &lt;dbl&gt;, AASS &lt;dbl&gt;,
+#   AATF &lt;dbl&gt;, ABAT &lt;dbl&gt;, ABAT1 &lt;dbl&gt;, ABCA1 &lt;dbl&gt;, ABCA3 &lt;dbl&gt;,
+#   ABCB10 &lt;dbl&gt;, ABCB7 &lt;dbl&gt;, ABCC4 &lt;dbl&gt;, ABCC5 &lt;dbl&gt;, ABCD3 &lt;dbl&gt;,
+#   ABCD4 &lt;dbl&gt;, ABCE1 &lt;dbl&gt;, ABCF2 &lt;dbl&gt;, ABCG1 &lt;dbl&gt;, ABCG2 &lt;dbl&gt;,
+#   ABCG4 &lt;dbl&gt;, ABHD11 &lt;dbl&gt;, ABHD12 &lt;dbl&gt;, ABHD2 &lt;dbl&gt;, ABHD3 &lt;dbl&gt;,
+#   ABHD5 &lt;dbl&gt;, ABI1 &lt;dbl&gt;, ABI2 &lt;dbl&gt;, ABL1 &lt;dbl&gt;, ABL11 &lt;dbl&gt;, ABL2 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>It is difficult to provide insightful visualization in the original space of variables which is of dimension 7406. We therefore begin with performing PCA and then we will provide hopefully insightful visualizations in reduced space.</p>
+</section>
+<section id="pca" class="level3">
+<h3 class="anchored" data-anchor-id="pca">PCA</h3>
+<p>First, we select the numerical variables on which we want to perform the PCA and we standardize them:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> chk <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>diet, <span class="sc">-</span>id) <span class="sc">|&gt;</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, we can perform the PCA:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pca_res <span class="ot">&lt;-</span> FactoMineR<span class="sc">::</span><span class="fu">PCA</span>(X, <span class="at">graph =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="choice-of-the-reduced-dimension-1" class="level4">
+<h4 class="anchored" data-anchor-id="choice-of-the-reduced-dimension-1">Choice of the reduced dimension</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_screeplot</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  pca_res, </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">addlabels =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncp =</span> <span class="dv">42</span>L</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The elbow method applied to the screeplot suggests to keep either 1, 6, 8 or 16 components. We can look at the cumulative percentage of variance explained:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pca_res <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  factoextra<span class="sc">::</span><span class="fu">get_eigenvalue</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">cols_label</span>(</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">eigenvalue =</span> <span class="st">"Eigenvalue"</span>,</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">variance_percent =</span> <span class="st">"Percentage of variance explained"</span>,</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cumulative_variance_percent =</span> <span class="st">"Cumulative percentage of variance explained"</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="mcbybsmpah" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mcbybsmpah table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mcbybsmpah thead, #mcbybsmpah tbody, #mcbybsmpah tfoot, #mcbybsmpah tr, #mcbybsmpah td, #mcbybsmpah th {
+  border-style: none;
+}
+
+#mcbybsmpah p {
+  margin: 0;
+  padding: 0;
+}
+
+#mcbybsmpah .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mcbybsmpah .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mcbybsmpah .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mcbybsmpah .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mcbybsmpah .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mcbybsmpah .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mcbybsmpah .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mcbybsmpah .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mcbybsmpah .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mcbybsmpah .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mcbybsmpah .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mcbybsmpah .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mcbybsmpah .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mcbybsmpah .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mcbybsmpah .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mcbybsmpah .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mcbybsmpah .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mcbybsmpah .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mcbybsmpah .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mcbybsmpah .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mcbybsmpah .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mcbybsmpah .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mcbybsmpah .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mcbybsmpah .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mcbybsmpah .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mcbybsmpah .gt_left {
+  text-align: left;
+}
+
+#mcbybsmpah .gt_center {
+  text-align: center;
+}
+
+#mcbybsmpah .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mcbybsmpah .gt_font_normal {
+  font-weight: normal;
+}
+
+#mcbybsmpah .gt_font_bold {
+  font-weight: bold;
+}
+
+#mcbybsmpah .gt_font_italic {
+  font-style: italic;
+}
+
+#mcbybsmpah .gt_super {
+  font-size: 65%;
+}
+
+#mcbybsmpah .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mcbybsmpah .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mcbybsmpah .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mcbybsmpah .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mcbybsmpah .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mcbybsmpah .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mcbybsmpah .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mcbybsmpah .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mcbybsmpah div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="eigenvalue" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Eigenvalue</th>
+<th id="variance_percent" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Percentage of variance explained</th>
+<th id="cumulative_variance_percent" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Cumulative percentage of variance explained</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">1453.57240</td>
+<td class="gt_row gt_right" headers="variance_percent">19.6269565</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">19.62696</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">692.78785</td>
+<td class="gt_row gt_right" headers="variance_percent">9.3544133</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">28.98137</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">536.20796</td>
+<td class="gt_row gt_right" headers="variance_percent">7.2401831</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">36.22155</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">434.45335</td>
+<td class="gt_row gt_right" headers="variance_percent">5.8662348</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">42.08779</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">374.62157</td>
+<td class="gt_row gt_right" headers="variance_percent">5.0583523</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">47.14614</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">324.08250</td>
+<td class="gt_row gt_right" headers="variance_percent">4.3759451</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">51.52209</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">273.79824</td>
+<td class="gt_row gt_right" headers="variance_percent">3.6969787</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">55.21906</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">263.23096</td>
+<td class="gt_row gt_right" headers="variance_percent">3.5542933</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">58.77336</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">238.82728</td>
+<td class="gt_row gt_right" headers="variance_percent">3.2247809</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">61.99814</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">212.22641</td>
+<td class="gt_row gt_right" headers="variance_percent">2.8656010</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">64.86374</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">205.86862</td>
+<td class="gt_row gt_right" headers="variance_percent">2.7797545</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">67.64349</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">186.68809</td>
+<td class="gt_row gt_right" headers="variance_percent">2.5207682</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">70.16426</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">161.71254</td>
+<td class="gt_row gt_right" headers="variance_percent">2.1835342</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">72.34780</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">146.67462</td>
+<td class="gt_row gt_right" headers="variance_percent">1.9804837</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">74.32828</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">134.41024</td>
+<td class="gt_row gt_right" headers="variance_percent">1.8148831</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">76.14316</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">128.77791</td>
+<td class="gt_row gt_right" headers="variance_percent">1.7388321</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">77.88199</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">109.49173</td>
+<td class="gt_row gt_right" headers="variance_percent">1.4784192</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">79.36041</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">104.11595</td>
+<td class="gt_row gt_right" headers="variance_percent">1.4058324</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">80.76625</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">98.79454</td>
+<td class="gt_row gt_right" headers="variance_percent">1.3339798</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">82.10023</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">91.34045</td>
+<td class="gt_row gt_right" headers="variance_percent">1.2333304</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">83.33356</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">83.86158</td>
+<td class="gt_row gt_right" headers="variance_percent">1.1323465</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">84.46590</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">80.15492</td>
+<td class="gt_row gt_right" headers="variance_percent">1.0822971</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">85.54820</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">79.43852</td>
+<td class="gt_row gt_right" headers="variance_percent">1.0726238</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">86.62082</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">74.46548</td>
+<td class="gt_row gt_right" headers="variance_percent">1.0054751</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">87.62630</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">70.99072</td>
+<td class="gt_row gt_right" headers="variance_percent">0.9585568</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">88.58486</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">66.21149</td>
+<td class="gt_row gt_right" headers="variance_percent">0.8940250</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">89.47888</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">62.68820</td>
+<td class="gt_row gt_right" headers="variance_percent">0.8464515</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">90.32533</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">60.07860</td>
+<td class="gt_row gt_right" headers="variance_percent">0.8112153</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">91.13655</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">58.69024</td>
+<td class="gt_row gt_right" headers="variance_percent">0.7924688</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">91.92902</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">56.15042</td>
+<td class="gt_row gt_right" headers="variance_percent">0.7581747</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">92.68719</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">54.70237</td>
+<td class="gt_row gt_right" headers="variance_percent">0.7386224</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">93.42581</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">52.81262</td>
+<td class="gt_row gt_right" headers="variance_percent">0.7131059</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">94.13892</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">50.97364</td>
+<td class="gt_row gt_right" headers="variance_percent">0.6882749</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">94.82719</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">48.64270</td>
+<td class="gt_row gt_right" headers="variance_percent">0.6568012</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">95.48400</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">48.15634</td>
+<td class="gt_row gt_right" headers="variance_percent">0.6502342</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">96.13423</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">46.40970</td>
+<td class="gt_row gt_right" headers="variance_percent">0.6266500</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">96.76088</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">44.81239</td>
+<td class="gt_row gt_right" headers="variance_percent">0.6050822</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">97.36596</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">42.90186</td>
+<td class="gt_row gt_right" headers="variance_percent">0.5792851</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">97.94525</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">40.79995</td>
+<td class="gt_row gt_right" headers="variance_percent">0.5509040</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">98.49615</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">39.33001</td>
+<td class="gt_row gt_right" headers="variance_percent">0.5310560</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">99.02721</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="eigenvalue">38.25896</td>
+<td class="gt_row gt_right" headers="variance_percent">0.5165942</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">99.54380</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="eigenvalue">33.78608</td>
+<td class="gt_row gt_right" headers="variance_percent">0.4561987</td>
+<td class="gt_row gt_right" headers="cumulative_variance_percent">100.00000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>In this case, we see that keeping 6 components retains only 50% of the inertia, keeping 8 components makes it up almost to 60% and going for 16 components makes us above the 75% of inertia.</p>
+<p>If we use the rule that pertains to keeping all components with an explained variance above 1, then we would keep 42 components.</p>
+<p>Finally, we can get an estimate of the <em>optimal</em> number of components to keep by minimizing the generalized cross-validation score optained as the mean reconstruction error of each chicken gene expression from the reconstructed gene expression using outputs of a PCA computed on all chickens expect that one. The function <code>FactoMineR::estim_ncp()</code> does exactly that for us:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> FactoMineR<span class="sc">::</span><span class="fu">estim_ncp</span>(X, <span class="at">ncp.min =</span> <span class="dv">1</span>, <span class="at">ncp.max =</span> <span class="dv">42</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">gcv =</span> out<span class="sc">$</span>criterion, <span class="at">ncp =</span> <span class="fu">seq_along</span>(gcv)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ncp, <span class="at">y =</span> gcv)) <span class="sc">+</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>ncp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="analysis-of-the-variables-1" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-the-variables-1">Analysis of the variables</h3>
+<p>The analysis of variables by means of visualizations or tables becomes tricky as the number of variables grows. Typically here, drawing the correlation circle with 7406 arrows would not be of any help. That’s why the <code>factoextra::fviz_pca_var()</code> comes with an optional argument <code>select.var</code> which instruct the function to visualize only the variables that satisfy some constraints. For example, in the code below, we ask it to retain only variables with a cumulated <code>cos2</code> value in the first principal plane above 0.8. This allows to visualize only those variables which are well represented in that plane:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_pca_var</span>(pca_res, <span class="at">select.var =</span> <span class="fu">list</span>(<span class="at">cos2 =</span> <span class="fl">0.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="analysis-of-the-individuals" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-the-individuals">Analysis of the individuals</h3>
+<p>We can project chickens onto the first principal plane and color points by diet:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_pca_ind</span>(pca_res, <span class="at">col.ind =</span> chk<span class="sc">$</span>diet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is interesting as it shows that, <strong>in this plane</strong>, only chicken who underwent fast for 48h did not go back to normal gene expression, including those who had been back to normal diet for 24h after the fast.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="The limit of linear projections">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The limit of linear projections
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One has to be careful in the interpretation in such cases. Indeed, we could be tempted to conclude that chicken in all the other types of diet went back to normal gene expression. But we are in fact only looking at the chicken in a reduced space that only accounts for less than 30% of the total inertia in the original data! This is what urged researchers typically in the field of genetics to resort to non-linear methods for dimensional reduction such as tSNE or UMAP, which effectively achieve very small reduced spaces in terms of dimension while retaining most of the original inertia. For instance, the code below illustrate the projection of the data in a reduced space of dimension 2 via UMAP:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>umap_res <span class="ot">&lt;-</span> chk <span class="sc">|&gt;</span> </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>diet, <span class="sc">-</span>id) <span class="sc">|&gt;</span> </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  umap<span class="sc">::</span><span class="fu">umap</span>()</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">X =</span> umap_res<span class="sc">$</span>layout[, <span class="dv">1</span>], </span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Y =</span> umap_res<span class="sc">$</span>layout[, <span class="dv">2</span>], </span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Diet =</span> chk<span class="sc">$</span>diet</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> X, <span class="at">y =</span> Y, <span class="at">color =</span> Diet)) <span class="sc">+</span> </span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-PCA-Solutions_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This clearly illustrates that claiming that chicken who underwent fast for less than 48h go back to normal gene expression on the basis of the results from the PCA would have been completely misleading.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="le-jeu-de-données-orange.csv" class="level2">
+<h2 class="anchored" data-anchor-id="le-jeu-de-données-orange.csv">Le jeu de données <code>orange.csv</code></h2>
+<p>Six jus d’orange de fabriquants différents ont évalués. Toutes les variables sont-elles indisensables ? Y a-t-il des jus qui se dégagent comme particulièrement bons? mauvais ?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>orange <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_delim</span>(<span class="st">"12-PCA-Data/orange.csv"</span>, </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">delim =</span> <span class="st">";"</span>, <span class="at">escape_double =</span> <span class="cn">FALSE</span>, <span class="at">trim_ws =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 6 Columns: 17
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ";"
+chr  (3): Product, Way of preserving, Origin
+dbl (14): Odour intensity, Odour typicality, Pulpiness, Intensity of taste, ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>orange</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 17
+  Product    `Odour intensity` `Odour typicality` Pulpiness `Intensity of taste`
+  &lt;chr&gt;                  &lt;dbl&gt;              &lt;dbl&gt;     &lt;dbl&gt;                &lt;dbl&gt;
+1 Pampryl a…              2.82               2.53      1.66                 3.46
+2 Tropicana…              2.76               2.82      1.91                 3.23
+3 Fruvita f…              2.83               2.88      4                    3.45
+4 Joker amb.              2.76               2.59      1.66                 3.37
+5 Tropicana…              3.2                3.02      3.69                 3.12
+6 Pampryl f…              3.07               2.73      3.34                 3.54
+# ℹ 12 more variables: Acidity &lt;dbl&gt;, Bitterness &lt;dbl&gt;, Sweetness &lt;dbl&gt;,
+#   Glucose &lt;dbl&gt;, Fructose &lt;dbl&gt;, Saccharose &lt;dbl&gt;, `Sweetening power` &lt;dbl&gt;,
+#   pH &lt;dbl&gt;, `Citric acid` &lt;dbl&gt;, `Vitamin C` &lt;dbl&gt;,
+#   `Way of preserving` &lt;chr&gt;, Origin &lt;chr&gt;</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/astamm\.github\.io\/data-science-with-r\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2025, Aymeric Stamm</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/astamm/data-science-with-r/edit/main/12_PCA/12-PCA-Solutions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/astamm/data-science-with-r/blob/main/12_PCA/12-PCA-Solutions.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/astamm/data-science-with-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This website is built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
