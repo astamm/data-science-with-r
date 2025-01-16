@@ -795,14 +795,14 @@
     "href": "Evaluations/2024_2025/03_Final_Exam/FinalExam_20250116.html",
     "title": "Data Science with R",
     "section": "",
-    "text": "Analysis of the mussels data set, which contains the following variables:\n\n\n\nVariable name\nDescription\n\n\n\n\nlength\nLength of a mussel (mm)\n\n\nwidth\nWidth of a mussel (mm)\n\n\nheight\nHeight of a mussel (mm)\n\n\nsize\nMass of a mussel (g)\n\n\nweight\nWeight of eatable part of a mussel (g)\n\n\n\nWe want to study how the eatable part of a mussel varies as a function of the other four variables using a multiple linear regression.\n\n\n\n\n\nMussel Data Set"
+    "text": "Global Instructions\n\n\n\n\nData Sets\n\nAll data sets are available at here. The ZIP file contains two files: an RDS file and a CSV file.\n\nDeliverable\n\nAll you have to do is send the QMD file with your answers and your name as author by mail to the instructor."
   },
   {
     "objectID": "Evaluations/2024_2025/03_Final_Exam/FinalExam_20250116.html#exercise-1",
     "href": "Evaluations/2024_2025/03_Final_Exam/FinalExam_20250116.html#exercise-1",
     "title": "Data Science with R",
-    "section": "",
-    "text": "Analysis of the mussels data set, which contains the following variables:\n\n\n\nVariable name\nDescription\n\n\n\n\nlength\nLength of a mussel (mm)\n\n\nwidth\nWidth of a mussel (mm)\n\n\nheight\nHeight of a mussel (mm)\n\n\nsize\nMass of a mussel (g)\n\n\nweight\nWeight of eatable part of a mussel (g)\n\n\n\nWe want to study how the eatable part of a mussel varies as a function of the other four variables using a multiple linear regression.\n\n\n\n\n\nMussel Data Set"
+    "section": "Exercise 1",
+    "text": "Exercise 1\nAnalysis of the mussels data set, which contains the following variables:\n\n\n\nVariable name\nDescription\n\n\n\n\nlength\nLength of a mussel (mm)\n\n\nwidth\nWidth of a mussel (mm)\n\n\nheight\nHeight of a mussel (mm)\n\n\nsize\nMass of a mussel (g)\n\n\nweight\nWeight of eatable part of a mussel (g)\n\n\n\nWe want to study how the eatable part of a mussel varies as a function of the other four variables using a multiple linear regression.\n\n\n\n\n\nMussel Data Set"
   },
   {
     "objectID": "Evaluations/2024_2025/03_Final_Exam/FinalExam_20250116.html#exercise-2",
@@ -858,14 +858,7 @@
     "href": "index.html",
     "title": "Instructions for the class",
     "section": "",
-    "text": "The instructions are here.\nThe data is here.\n\n\n\n\n\n\nHomework Assignment (2025-01-01)\n\n\n\nNew announcement about the homework assignment.\nDelivrable is expected to be a ZIP archive containing the two .qmd files (report and dashboard) along with all the necessary data files.\nPlease ensure that both files compile withour error.\nCheckout the homework assignment page."
-  },
-  {
-    "objectID": "index.html#final-exam",
-    "href": "index.html#final-exam",
-    "title": "Instructions for the class",
-    "section": "",
-    "text": "The instructions are here.\nThe data is here.\n\n\n\n\n\n\nHomework Assignment (2025-01-01)\n\n\n\nNew announcement about the homework assignment.\nDelivrable is expected to be a ZIP archive containing the two .qmd files (report and dashboard) along with all the necessary data files.\nPlease ensure that both files compile withour error.\nCheckout the homework assignment page."
+    "text": "Final Exam (2025-01-16)\n\n\n\n\nExercises\n\nThe main document that you have to work on is here.\n\nData Sets\n\nAll data sets are available at here. The ZIP file contains two files: an RDS file and a CSV file.\n\nDeliverable\n\nAll you have to do is send the QMD file with your answers and your name as author by mail to the instructor by 12:25pm on 2025-01-16."
   },
   {
     "objectID": "index.html#disclaimer",
