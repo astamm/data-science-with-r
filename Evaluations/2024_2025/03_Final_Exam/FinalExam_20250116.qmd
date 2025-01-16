@@ -3,6 +3,10 @@ title: "Data Science with R"
 subtitle: "Final Exam"
 author: "YOUR NAME HERE"
 date: "2025-01-16"
+format:
+  html:
+    code-tools:
+      source: repo
 ---
 
 ```{r}
@@ -10,6 +14,18 @@ date: "2025-01-16"
 #| include: false
 library(tidyverse)
 ```
+
+::: {.callout-note title="Global Instructions"}
+Data Sets
+
+: All data sets are available at [here](FinalExam_Data.zip). The ZIP file contains
+two files: an RDS file and a CSV file.
+
+Deliverable
+
+: All you have to do is send the QMD file with your answers and your name as
+author by mail to the instructor.
+:::
 
 ## Exercise 1
 

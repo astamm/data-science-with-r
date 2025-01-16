@@ -75,11 +75,11 @@ website:
       - text: "Evaluations"
         menu:
           - text: "First Exam"
-            href: Evaluations/2024_2025/First_Exam/exam1.qmd
+            href: Evaluations/2024_2025/01_First_Exam/exam1.qmd
           - text: "Homework Assignment"
-            href: Evaluations/2024_2025/Homework/project.qmd
+            href: Evaluations/2024_2025/02_Homework/project.qmd
           - text: "Final Exam"
-            href: Evaluations/2024_2025/Final_Exam/FinalExam_20250116.qmd
+            href: Evaluations/2024_2025/03_Final_Exam/FinalExam_20250116.qmd
     right:
       - icon: github
         href: https://github.com/astamm/data-science-with-r/

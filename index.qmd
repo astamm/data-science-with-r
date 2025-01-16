@@ -2,20 +2,34 @@
 title: "Instructions for the class"
 ---
 
-## Final Exam
+::: {.callout-important title="Final Exam (2025-01-16)"}
+Exercises
 
-The instructions are [here](Evaluations/2024_2025/03_Final_Exam/FinalExam_20250116.qmd).
+: The main document that you have to work on is
+[here](Evaluations/2024_2025/03_Final_Exam/FinalExam_20250116.qmd).
 
-The data is [here](Evaluations/2024_2025/03_Final_Exam/FinalExam_Data.zip).
+Data Sets
+
+: All data sets are available at
+[here](Evaluations/2024_2025/03_Final_Exam/FinalExam_Data.zip). The ZIP file
+contains two files: an RDS file and a CSV file.
+
+Deliverable
+
+: All you have to do is send the QMD file with your answers and your name as
+author by mail to the instructor by 12:25pm on 2025-01-16.
+:::
 
 ::: {.callout-important title="Homework Assignment (2025-01-01)"}
 New announcement about the homework assignment.
 
-Delivrable is expected to be a ZIP archive containing the two `.qmd` files (report and dashboard) along with all the necessary data files.
+Deliverable is expected to be a ZIP archive containing the two `.qmd` files
+(report and dashboard) along with all the necessary data files.
 
 Please ensure that both files compile withour error.
 
-Checkout the [homework assignment page](project.qmd).
+Checkout the [homework assignment
+page](Evaluations/2024_2025/02_Homework/project.qmd).
 :::
 
 ## Disclaimer
