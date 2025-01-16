@@ -1,0 +1,149 @@
+---
+title: "Data Science with R"
+subtitle: "Final Exam"
+author: "YOUR NAME HERE"
+date: "2025-01-16"
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+```
+
+## Exercise 1
+
+Analysis of the `mussels` data set, which contains the following variables:
+
+Variable name | Description
+------------- | ----------------
+length        | Length of a mussel (mm)
+width         | Width of a mussel (mm)
+height        | Height of a mussel (mm)
+size          | Mass of a mussel (g)
+weight        | Weight of eatable part of a mussel (g)
+
+We want to study how the eatable part of a mussel varies as a function of the
+other four variables using a multiple linear regression.
+
+```{r}
+#| echo: false
+mussels <- readRDS("mussels.rds")
+mussels |> 
+  gt::gt() |> 
+  gt::tab_header(title = "Mussel Data Set") |> 
+  gt::cols_label(
+    length = gt::html("Length of a mussel<br>(mm)"),
+    width = gt::html("Width of a mussel<br>(mm)"),
+    height = gt::html("Height of a mussel<br>(mm)"),
+    size = gt::html("Mass of a mussel<br>(g)"),
+    weight = gt::html("Wight of eatable part of a mussel<br>(g)")
+  ) |> 
+  gt::opt_interactive()
+```
+
+## Exercise 2
+
+### A data set on taxi prices
+
+This dataset is designed to predict taxi trip fares based on various factors such as distance, time of day, traffic conditions, and more. It provides realistic synthetic data for regression tasks, offering a unique opportunity to explore pricing trends in the taxi industry.
+
+Key Features
+
+: - Distance (in kilometers): The length of the trip.
+- Pickup Time: The starting time of the trip.
+- Dropoff Time: The ending time of the trip.
+- Traffic Condition: Categorical indicator of traffic (light, medium, heavy).
+- Passenger Count: Number of passengers for the trip.
+- Weather Condition: Categorical data for weather (clear, rain, snow).
+- Trip Duration (in minutes): Total trip time.
+- Fare Amount (target): The cost of the trip (in USD).
+
+### Instructions
+
+The code cell below importa the data from `taxi_trip_pricing.csv`, stores it as
+`taxi_pricing` and display its content using the
+[**gt**](https://gt.rstudio.com) package:
+
+```{r}
+taxi_pricing <- read_csv("taxi_trip_pricing.csv", show_col_types = FALSE)
+taxi_pricing |> 
+  gt::gt() |> 
+  gt::tab_header("Taxi Trip Pricing") |> 
+  gt::cols_label(
+    Trip_Distance_km = gt::html("Distance<br>(km)"),
+    Time_of_Day = "Pick-up time of the day",
+    Day_of_Week = "Pick-up day",
+    Passenger_Count = "Number of passengers",
+    Traffic_Conditions = "Traffic conditions",
+    Weather = "Weather",
+    Base_Fare = gt::html("Base fare<br>(&#36;)"),
+    Per_Km_Rate = gt::html("Rate per km<br>(&#36;)"),
+    Per_Minute_Rate = gt::html("Rate per min<br>(&#36;)"),
+    Trip_Duration_Minutes = gt::html("Trip duration<br>(min)"),
+    Trip_Price = gt::html("Trip price<br>(&#36;)")
+  ) |> 
+  gt::opt_interactive()
+```
+
+Using the `taxi_pricing` data set:
+
+- Describe the data set;
+- Visualize the data;
+- Build a model to predict fare amount paying attention to (multi)collinearity issues, model selection, validating linear regression assumptions. Finally present and discuss the effects of what you think the best model is.
+
+Discuss all your choices.
+
+```{r}
+
+```
+
+## Exercise 3
+
+A company produces barbed wire in skeins of $100$m each, nominally. The real length of the skeins is a random variable $X$ distributed as a $\mathcal{N}(\mu, \sigma^2)$. Measuring $10$ skeins, we get the following lengths:
+
+```{r}
+#| echo: false
+skeins <- tibble(
+  skein_length = c(98.683, 96.599, 99.617, 102.544, 100.110, 
+                   102.000, 98.394, 100.324, 98.743, 103.247), 
+  skein_id = seq_along(skein_length)
+)
+skeins |> 
+  gt::gt() |> 
+  gt::tab_header(title = "Skeins Data Set") |> 
+  gt::cols_label(
+    skein_length = gt::html("Length<br>(m)"),
+    skein_id = gt::html("Identification<br>Number<br>")
+  )
+```
+
+1. Perform a conformity test at significance level $\alpha = 5\%$ (define a proper mathematical model for the problem, appropriate hypotheses, a test statistic and the critical region of level $\alpha$).
+2. Determine, on the basis of the observed values, the p-value of the test.
+
+::: {.callout-note}
+**Definition.** If $Z$ is a standard normal random variable and $V$ is a chi-squared random variable with $\nu$ degrees of freedom, then the random variable:
+
+$$
+T = \frac{Z + \rho}{\sqrt{V / \nu}}
+$$
+
+is said to have a *non-central t-distribution* with $\nu$ degrees of freedom and non-centrality parameter $\rho$.
+
+**R implementation.** The function `pt()` computes the cumulative distribution function of a t-distribution. The function `qt()` computes the quantile function of a t-distribution. The function `rt()` generates random numbers from a t-distribution. ALl these functions have an argument `ncp` which is the non-centrality parameter $\delta$.
+:::
+
+Let
+$$
+T_0 = \sqrt{n} \frac{\overline X - \mu_0}{\sigma}
+$$
+be the test statistic and define the following random variable:
+$$
+T = \sqrt{n} \frac{\overline X - \mu}{\sigma}.
+$$
+
+3. What is the distribution of $T$?
+
+The statistical power of the test is defined as $\gamma = \mathbb{P}_{H_a}(\mathrm{Reject }H_0)$. Let also $\delta$ be the difference between the true mean and the nominal mean, i.e. $\delta = \mu - \mu_0$.
+
+4. Plot the power curve which if $\gamma$ as a function of $\delta$.

@@ -2,6 +2,12 @@
 title: "Instructions for the class"
 ---
 
+## Final Exam
+
+The instructions are [here](Evaluations/2024_2025/03_Final_Exam/FinalExam_20250116.qmd).
+
+The data is [here](Evaluations/2024_2025/03_Final_Exam/FinalExam_Data.zip).
+
 ::: {.callout-important title="Homework Assignment (2025-01-01)"}
 New announcement about the homework assignment.
 
