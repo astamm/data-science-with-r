@@ -2,7 +2,7 @@
 title: "Instructions for the class"
 ---
 
-::: {.callout-important title="Final Exam (2025-01-16)"}
+<!-- ::: {.callout-important title="Final Exam (2025-01-16)"}
 Exercises
 
 : The main document that you have to work on is
@@ -30,7 +30,7 @@ Please ensure that both files compile withour error.
 
 Checkout the [homework assignment
 page](Evaluations/2024_2025/02_Homework/project.qmd).
-:::
+::: -->
 
 ## Disclaimer
 
@@ -69,7 +69,7 @@ slides. The exercises are written in [Quarto](https://quarto.org).
 | 8    | Manipulate Data Types | [PDF](08_Types/08-Types-Slides.pdf) | [Quarto](08_Types/08-Types-Exercises.qmd) | |
 | 9    | Manipulate Lists | [PDF](slides/09-manipulate-lists.pdf) | [Quarto](labs/09-manipulate-lists.Rmd) | |
 
-### Exploratory Data Analysis with R
+<!-- ### Exploratory Data Analysis with R
 
 The class is organised in 4 parts each of which has its own set of slides and
 exercises. The slides are available in the above *Exploratory Data Analysis -
@@ -82,12 +82,12 @@ written in [Quarto](https://quarto.org).
 | 1    | Hypothesis Testing | [Quarto](10_Hypothesis_Testing/10-Hypothesis-Testing-Slides.qmd) | [Quarto](10_Hypothesis_Testing/10-Hypothesis-Testing-Exercises.qmd) | |
 | 2    | Linear Regression | [Quarto](11_Linear_Modeling/11-Linear-Modeling-Slides.qmd) | [Quarto](11_Linear_Modeling/11-Linear-Modeling-Exercises.qmd) | [ZIP](11_Linear_Modeling/11-Linear-Modeling-Data.zip) |
 | 3    | Principal Component Analysis | [RMarkdown](12_PCA/12-PCA-Slides.Rmd) | [Quarto](12_PCA/12-PCA-Exercises.qmd) | [ZIP](12_PCA/12-PCA-Data.zip) |
-| 4    | Clustering | [Quarto](13_Clustering/13-Clustering-Slides.qmd) | [Quarto](13_Clustering/13-Clustering-Exercises.qmd) | |
+| 4    | Clustering | [Quarto](13_Clustering/13-Clustering-Slides.qmd) | [Quarto](13_Clustering/13-Clustering-Exercises.qmd) | | -->
 
 ## Requirements
 
 - R: <https://www.r-project.org>
-- RStudio: <https://posit.co/download/rstudio-desktop/>
+- RStudio: <https://posit.co/download/rstudio-desktop/> ou Positron <https://positron.posit.co/download.html>
 - Quarto: <https://quarto.org/docs/get-started/>
 - Tidyverse: <https://www.tidyverse.org>
 - Specific R packages by theme: 
@@ -95,24 +95,37 @@ written in [Quarto](https://quarto.org).
     - Data sets:
         
         - [{babynames}](https://hadley.github.io/babynames/): a data set of frequency of baby names in the US from 1880 to 2017.
+        - [{ncyflights13}](https://nycflights13.tidyverse.org): information about all flights that departed from NYC (e.g. EWR, JFK and LGA) to destinations in the United States, Puerto Rico, and the American Virgin Islands) in 2013: 336,776 flights in total.
     
-    - Data visualization:
+    - Data wrangling:
+
+        - [{janitor}](https://sfirke.github.io/janitor/): simple functions for examining and cleaning dirty data.
+        - [{skimr}](https://docs.ropensci.org/skimr/): a frictionless approach to summary statistics which conforms to the principle of least surprise, displaying summary statistics the user can skim quickly to understand their data.
+        - [{tidyverse}](https://www.tidyverse.org): an opinionated collection of R packages designed for data science.
+    
+    - Extra data visualization packages:
         
-        - [{ggplot2}](https://ggplot2.tidyverse.org): a package that implements the grammar of graphics.
+        - [{ggcorrplot}](https://rpkgs.datanovia.com/ggcorrplot/): visualize easily a correlation matrix using 'ggplot2'.
+        - [{ggfortify}](https://github.com/sinhrks/ggfortify): unified plotting tools for statistics commonly used, such as GLM, time series, PCA families, clustering and survival analysis.
         - [{plotly}](https://plotly.com/r/): an interactive plotting library.
-        - [{gt}](https://gt.rstudio.com/index.html)
+    
+    - Reporting
+
+        - [{DT}](https://rstudio.github.io/DT/): an R interface to the JavaScript library [DataTables](https://datatables.net).
+        - [{gt}](https://gt.rstudio.com/index.html): produce nice-looking display tables.
+        - [{kableExtra}](https://haozhu233.github.io/kableExtra/): construct complex table with `knitr::kable() + |>`.
     
     - Model summaries:
         
         - [{broom}](https://broom.tidymodels.org): a package that provides tidy summaries of model outputs.
-        - [{modelr}](https://modelr.tidyverse.org): a package that provides functions for modelling within the tidyverse.
-        - [{jtools}](https://jtools.jacob-long.com): a package that provides functions for summarizing and visualizing model outputs and main effects.
-        - [{interactions}](https://interactions.jacob-long.com): a package that provides functions for visualizing the effect of interactions in regression models.
+        <!-- - [{jtools}](https://jtools.jacob-long.com): a package that provides functions for summarizing and visualizing model outputs and main effects.
+        - [{interactions}](https://interactions.jacob-long.com): a package that provides functions for visualizing the effect of interactions in regression models. -->
       
-    - PCA:
+    <!-- - PCA:
     
         - [{FactoMineR}](http://factominer.free.fr): a package that provides ready-to-use implementations of standard statistical methods for data analysis.
         - [{factoextra}](https://rpkgs.datanovia.com/factoextra/): a package that provides functions for extracting and visualizing the results of multivariate data analyses.
         - [{corrplot}](https://cran.r-project.org/package=corrplot): a package that provides functions for visualizing correlation matrices.
         - [{viridis}](https://sjmgarnier.github.io/viridis/): a package that provides color palettes that are perceptually uniform in both color and black-and-white.
         - [{huxtable}](https://hughjonesd.github.io/huxtable/): a package that provides functions for creating tables in HTML documents.
+        - [{umap}](https://github.com/tkonopka/umap):  an interface to the UMAP algorithm in R for dimension reduction, including a translation of the original algorithm into R with minimal dependencies. -->
